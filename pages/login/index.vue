@@ -3,9 +3,11 @@
 </template>
 
 <script>
-import Login from '~/components/pages/Login/Login.vue';
+import Login from '~/components/pages/login/login.vue';
 
 export default {
-   components: { Login }
+   components: { 
+    Login 
+  }
 }
 </script>
