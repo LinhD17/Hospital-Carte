@@ -16,9 +16,8 @@ export default {
 
 <style lang="scss" scoped>
 .page-login {
-  padding-left: 40% ;
-  background-color: #e8f5fb;
-  padding-bottom: 120px;
+  padding-bottom: 150px;
   text-align: center !important;
+  background-color: #e8f5fb;
 }
 </style>
