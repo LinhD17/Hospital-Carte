@@ -1,91 +1,89 @@
 <template>
-  <div class="page-login">
-    <div class="login-wrap">
-      <h1 class="login-heading">
-        <img src="@/assets/img/waroku_hk.svg" alt="Waroku ホスピタルカルテ" />
-      </h1>
-      <div class="login-content">
-        <v-form class="login-form">
-          <div class="login-name">
-            <p class="login-lable">ユーザー名</p>
-            <v-text-field
-              name="username"
-              placeholder="テキストを入力"
-              v-model="username"
-              type="text"
-              outlined
-              class="input-field"
-              :rules="[v => !!v || 'Username is required']"
-            ></v-text-field>
-          </div>
-          <div class="login-password">
-            <p class="login-lable">パスワード</p>
-            <v-text-field
-              name="password"
-              :type="show ? 'text' : 'password'"
-              :append-icon="show ? 'mdi-eye' : 'mdi-eye-off'"
-              @click:append="show = !show"
-              placeholder="テキストを入力"
-              v-model="password"
-              outlined
-              class="input-field"
-              :rules="[v => !!v || 'Password is required']"
-            ></v-text-field>
-          </div>
-          <!-- <div class="login-error">
-          </div> -->
-          <v-card-actions class="justify-center">
-            <v-btn class="loginbutton rounded-pill light-blue darken-1" @click="login">ログイン</v-btn>
-          </v-card-actions>
-        </v-form>
-        
-        <div class="login-desc login-desc-padding">
-          <p>Waroku ホスピタルカルテ 1.0.1</p>
-          <p>Copyright RESCHO Inc. All Rights Reserved.</p>
+  <div class="login-wrap">
+    <h1 class="login-heading">
+      <img src="@/assets/img/waroku_hk.svg" alt="Waroku ホスピタルカルテ" />
+    </h1>
+    <div class="login-content">
+      <v-form class="login-form">
+        <div class="login-name">
+          <p class="login-label">ユーザー名</p>
+          <v-text-field
+            name="username"
+            placeholder="テキストを入力"
+            v-model="username"
+            type="text"
+            outlined
+            class="input-field"
+            :rules="[v => !!v || 'Username is required']"
+          ></v-text-field>
         </div>
-          <!-- <v-layout column align-center justify-center class="login-content-1">
-            <v-flex xs12 sm8 md4>
-              <v-card class="elevation-12">
-                <v-card-text>
-                  <v-form class="formpadding">
-                    <div>
-                      <p class="para-align">ユーザー名</p>
-                      <v-text-field
-                        name="username"
-                        placeholder="テキストを入力"
-                        v-model="username"
-                        type="text"
-                        outlined
-                        class="input-field"
-                        :rules="[v => !!v || 'Username is required']"
-                      ></v-text-field>
-                    </div>
-                    <div>
-                      <p>パスワード</p>
-                      <v-text-field
-                        v-model="password"
-                        :type="show ? 'text' : 'password'"
-                        :append-icon="show ? 'mdi-eye' : 'mdi-eye-off'"
-                        @click:append="show = !show"
-                        placeholder="テキストを入力"
-                        outlined
-                        class="input-field"
-                        :rules="[v => !!v || 'Password is required']"
-                      ></v-text-field>
-                    </div>
-                  </v-form>
-                </v-card-text>
-                <v-card-actions class="justify-center">
-                  <v-btn class="loginbutton rounded-pill light-blue darken-1" @click="login">ログイン</v-btn>
-                </v-card-actions>
-                <div class="login-desc login-desc-padding">
-                  <p>Waroku ホスピタルカルテ 1.0.1</p>
-                  <p>Copyright RESCHO Inc. All Rights Reserved.</p>
-                </div>
-              </v-card>
-            </v-flex>
-          </v-layout> -->
+        <div class="login-password">
+          <p class="login-label">パスワード</p>
+          <v-text-field
+            name="password"
+            :type="show ? 'text' : 'password'"
+            :append-icon="show ? 'mdi-eye' : 'mdi-eye-off'"
+            @click:append="show = !show"
+            placeholder="テキストを入力"
+            v-model="password"
+            outlined
+            class="input-field"
+            :rules="[v => !!v || 'Password is required']"
+          ></v-text-field>
+        </div>
+        <!-- <div class="login-error">
+        </div> -->
+        <v-card-actions class="justify-center">
+          <v-btn class="loginbutton rounded-pill light-blue darken-1" @click="login">ログイン</v-btn>
+        </v-card-actions>
+      </v-form>
+      
+      <div class="login-desc login-desc-padding">
+        <p>Waroku ホスピタルカルテ 1.0.1</p>
+        <p>Copyright RESCHO Inc. All Rights Reserved.</p>
       </div>
+        <!-- <v-layout column align-center justify-center class="login-content-1">
+          <v-flex xs12 sm8 md4>
+            <v-card class="elevation-12">
+              <v-card-text>
+                <v-form class="formpadding">
+                  <div>
+                    <p class="para-align">ユーザー名</p>
+                    <v-text-field
+                      name="username"
+                      placeholder="テキストを入力"
+                      v-model="username"
+                      type="text"
+                      outlined
+                      class="input-field"
+                      :rules="[v => !!v || 'Username is required']"
+                    ></v-text-field>
+                  </div>
+                  <div>
+                    <p>パスワード</p>
+                    <v-text-field
+                      v-model="password"
+                      :type="show ? 'text' : 'password'"
+                      :append-icon="show ? 'mdi-eye' : 'mdi-eye-off'"
+                      @click:append="show = !show"
+                      placeholder="テキストを入力"
+                      outlined
+                      class="input-field"
+                      :rules="[v => !!v || 'Password is required']"
+                    ></v-text-field>
+                  </div>
+                </v-form>
+              </v-card-text>
+              <v-card-actions class="justify-center">
+                <v-btn class="loginbutton rounded-pill light-blue darken-1" @click="login">ログイン</v-btn>
+              </v-card-actions>
+              <div class="login-desc login-desc-padding">
+                <p>Waroku ホスピタルカルテ 1.0.1</p>
+                <p>Copyright RESCHO Inc. All Rights Reserved.</p>
+              </div>
+            </v-card>
+          </v-flex>
+        </v-layout> -->
     </div>
   </div>
 </template>
@@ -120,12 +118,11 @@ export default {
 };
 </script>
 <style lang="scss" scoped>
-.page-login {
-  background-color: #e8f5fb;
-}
 .login-wrap{
-  text-align: center;
-  width: 100%;
+  text-align: center !important;
+  width: 40%;
+  margin: 0;
+  padding: auto;
 }
 .login-heading {
   text-align: center;
@@ -133,9 +130,9 @@ export default {
 }
 .login-content {
   text-align: center;
-  width: 25%;
+  width: 100%;
   margin-top: 20px;
-  margin-left: 600px;
+  //margin-left: 600px;
   border: 1px solid #c7ccce;
   border-radius: 10px;
   background-color: #ffffff;
@@ -185,6 +182,12 @@ margin-top: 10px;
     font-size: 12px;
     color: #333333;
   }
+}
+.login-name {
+  text-align: left;
+}
+.login-password {
+  text-align: left;
 }
 </style>
 

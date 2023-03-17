@@ -1,8 +1,10 @@
 <template>
-  <Login />
+  <div class="page-login">
+    <Login />
+  </div>
 </template>
 
-<script>
+<script lang="ts">
 import Login from '~/components/pages/login/login.vue';
 
 export default {
@@ -11,3 +13,12 @@ export default {
   }
 }
 </script>
+
+<style lang="scss" scoped>
+.page-login {
+  padding-left: 40% ;
+  background-color: #e8f5fb;
+  padding-bottom: 120px;
+  text-align: center !important;
+}
+</style>
