@@ -1,10 +1,10 @@
 <template>
   <div class="page-header">
     <v-app-bar class="my-app-bar">
-        <v-toolbar-title class="toolbar-title">
+          <v-toolbar-title class="toolbar-title">
           <img src="@/assets/img/waroku_white.svg" alt="Waroku" />
         </v-toolbar-title>
-        <v-toolbar-items class="d-flex flex-row-reverse toolbar-items">
+        <v-toolbar-items class="toolbar-items">
           <div class="d-flex  align-center" style="min-width: max-content">
             <v-text-field
               solo
@@ -80,15 +80,17 @@
 </script>
 
 <style lang="scss" scoped>
+html,
+body {
+    width: 100%;
+    overflow-x: hidden;
+}
 .page-header::v-deep .v-toolbar__content {
   padding: 0 !important;
 }
 .my-app-bar {
-  elevation: 0 !important;
   background-color: #009eac !important;
-  flat: true !important;
-  height: 58px !important;
-  width: 100vw !important; 
+  height: 58px !important; 
 }
 .divider {
   height: 58px !important;
@@ -106,16 +108,15 @@
   margin-right: 10px;
 }
 .toolbar-title {
+  flex: 1;
   position: absolute;
   left: 0;
 }
-
 .toolbar-items {
+  flex-shrink: 0;
   position: absolute;
   right: 0;
   display: flex;
-  align-items: center;
-  justify-content: flex-end;
-  width: calc(100% - 130px); 
 }
+
 </style>

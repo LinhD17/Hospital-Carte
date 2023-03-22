@@ -20,9 +20,8 @@ export default {
 
 <style lang="scss" scoped>
 .main-menu {
-  padding-left: 40%;
-  background-color: #e8f5fb;
-  padding-bottom: 120px;
-  text-align: center !important;
+  padding: none !important;
+  margin: none !important;
+  text-align: left !important;
 }
 </style>
