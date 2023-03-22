@@ -5,7 +5,7 @@
   </template>
   
   <script lang="ts">
-  import  ScreenContent from '~/components/contents/screenContent.vue';
+  import  ScreenContent from '~/components/global/scheduleContact/wellKnownAndTask/screenContent.vue';
   export default {
      components: { 
         ScreenContent,
@@ -15,6 +15,7 @@
   
   <style lang="scss" scoped>
   .screen {
-    
+    width: 100%;
+    background-color: #f0f0f0;
   }
   </style>

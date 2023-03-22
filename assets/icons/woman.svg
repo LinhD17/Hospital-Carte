@@ -1,0 +1,15 @@
+<svg id="女性アイコン" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20">
+  <g id="グループ_107" data-name="グループ 107" transform="translate(0 0)">
+    <rect id="長方形_109" data-name="長方形 109" width="20" height="20" fill="none"/>
+    <g id="グループ_46" data-name="グループ 46" transform="translate(0 0.028)">
+      <g id="グループ_44" data-name="グループ 44" transform="translate(0.989 0.989)">
+        <ellipse id="楕円形_21" data-name="楕円形 21" cx="8.898" cy="8.898" rx="8.898" ry="8.898" fill="#e65087"/>
+      </g>
+      <ellipse id="楕円形_22" data-name="楕円形 22" cx="2.966" cy="2.966" rx="2.966" ry="2.966" transform="translate(6.921 2.966)" fill="#fff"/>
+      <path id="パス_51" data-name="パス 51" d="M237.509,79.9V74.955A3.966,3.966,0,0,0,233.555,71h0a3.966,3.966,0,0,0-3.955,3.955V79.9Z" transform="translate(-223.668 -61.113)" fill="#fff"/>
+      <g id="グループ_45" data-name="グループ 45">
+        <path id="パス_52" data-name="パス 52" d="M229.887,56.977a7.909,7.909,0,1,1-7.909,7.909,7.933,7.933,0,0,1,7.909-7.909m0-1.977a9.887,9.887,0,1,0,9.887,9.887A9.916,9.916,0,0,0,229.887,55Z" transform="translate(-220 -55)" fill="#e65087"/>
+      </g>
+    </g>
+  </g>
+</svg>
