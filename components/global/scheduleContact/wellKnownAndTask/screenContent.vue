@@ -7,27 +7,32 @@
     <div class="contents">
       <div class="contents-left">
         <important-report class="reports"></important-report>
-        <thread-content class="bulletin-board"></thread-content>
+        <thread-content class="threads"></thread-content>
       </div>
-      <task-content class="contents-right" />
+      <task-content class="tasks" />
     </div>
   </div>
 </template>
 
-<script>
+<script lang="ts">
+import { defineComponent, } from '@nuxtjs/composition-api'
 import globalBaseLayout from '../../general/globalBaseLayout.vue'
 import TaskContent from './TaskContents/TaskContent.vue'
 import ThreadContent from './Thread/ThreadContent.vue'
 import ImportantReport from '~/components/global/scheduleContact/wellKnownAndTask/ImportantReport/ImportantReport.vue'
 
-export default {
+export default defineComponent({
   components: { 
     globalBaseLayout, 
     ImportantReport,
     TaskContent,
     ThreadContent 
   },
-}
+  setup() {
+    // const store = useStore()
+    // console.log('defineComponent', store.getters.systemTime)
+  },
+})
 </script>
 
 <style lang="scss" scoped>
@@ -44,15 +49,17 @@ export default {
   margin: 0 5px 5px ;
   border: 1px solid white;
   border-radius: 8px;
+  overflow: auto hidden;
 }
-.bulletin-board {
+.threads{
   background: white;
   margin: 7px 5px 0;
   height: 49%;
   border: 1px solid white;
   border-radius: 5px;
+  overflow: auto hidden;
 }
-.contents-right {
+.tasks {
   width: 49.5%;
   background-color: white;
   margin: 0px 10px 10px 0px;

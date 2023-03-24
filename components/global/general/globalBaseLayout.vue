@@ -13,8 +13,9 @@
 </template>
 
 <script>
+import { defineComponent } from '@vue/composition-api'
 import screenHeader from '~/components/general/screenHeader.vue'
-export default {
+export default defineComponent({
   components: { 
     screenHeader,
   },
@@ -25,7 +26,7 @@ export default {
   setup() {
     return {}
   },
-}
+})
 </script>
 
 <style lang="scss" scoped>

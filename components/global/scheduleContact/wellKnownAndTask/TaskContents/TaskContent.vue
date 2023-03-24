@@ -3,22 +3,23 @@
       <div>
           <h1 class="title">業務タスク</h1>
           <task-search  class="mt-2"/>
-  
       </div>
       <task-table /> 
     </v-sheet>
   </template>
   
-  <script>
+  <script lang="ts">
+  import { defineComponent } from '@nuxtjs/composition-api';
   import TaskTable from './TaskTable.vue';
   import TaskSearch from './TaskSearch.vue';
-  export default {
+
+  export default defineComponent({
     components: {
       TaskSearch,
       TaskTable 
       },
-  
-  }
+
+  })
   </script>
   
   <style lang="scss" scoped>

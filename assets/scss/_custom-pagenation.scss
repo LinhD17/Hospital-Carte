@@ -1,0 +1,28 @@
+//pagenation
+$pagination-item-font-size : (
+    10px
+);
+$pagination-item-height : (
+    20px
+);
+$pagination-item-min-width : (
+    20px
+);
+$pagination-navigation-height : (
+    20px
+);
+$pagination-navigation-width : (
+    20px
+);
+$pagination-navigation-margin :(
+    5px 5px
+);
+.v-pagination__navigation,.v-pagination__item {
+    box-shadow: none;
+    border: 1px solid #C7CCCE;
+}
+.v-pagination__navigation {
+    .v-icon {
+        font-size: 15px;
+    }
+}

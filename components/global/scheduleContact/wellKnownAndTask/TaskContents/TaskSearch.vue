@@ -18,6 +18,7 @@
             hide-details
             height="28"
             style="width: 100px"
+            :items="['Foo', 'Bar', 'Fizz', 'Buzz']"
             />
         </div>
         <div class="d-flex align-center">
@@ -27,6 +28,7 @@
                 hide-details
                 height="28"
                 style="width: 100px"
+                :items="['Foo', 'Bar', 'Fizz', 'Buzz']"
             />
         </div>
         <!-- check-box -->
@@ -40,9 +42,11 @@
 </template>
 
 <script>
-export default {
+import { defineComponent } from '@nuxtjs/composition-api'
 
-}
+export default defineComponent({
+
+})
 </script>
 
 <style lang="scss" scoped>
