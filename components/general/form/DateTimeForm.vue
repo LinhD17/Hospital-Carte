@@ -9,7 +9,7 @@
         :style="`width: ${widthDatePicker}px; height: ${height}px`"
       ></date-picker>
     </div>
-    <div style="padding-left: 20px">
+    <div style="padding-left: 25px">
       <v-select
         v-model="valuesForm.hour"
         dense
