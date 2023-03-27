@@ -1,5 +1,6 @@
 <template>
-  <div class="task-table ">
+  <div class="task-table">
+    <!--bloking-karte  -->
     <v-data-table
         dense
         :headers="header"
@@ -30,11 +31,12 @@
         </template>
 
         <!-- patient-info-患者情報 -->
-        <!-- <template #[`item.patientInfo`]="{ item }">
-            <a href="#" @click.prevent.stop="clickRow">
+        <template #[`item.patientInfo`]="{ item }">
+            <!-- trong the a ta can viet nhu sau de co the click vao bang va hien ra popup moi <a href="#" @click.prevent.stop="clickRow"> -->
+            <a href="#">
                 <div class="patient-info">
                     <p class="patient-age">{{ item.patient_age }}</p>
-                    <a class="info-cell" href="#"  @click.prevent.stop="clickRow">
+                    <a class="info-cell" href="#">
                         <img
                             v-if="item.patient_gender == 1"
                             src="@/assets/icons/man.svg"
@@ -49,7 +51,7 @@
                 </div>
             </a>
         </template>
-         -->
+        
         <!-- task-タスク -->
         <template #[`item.task`]="{ item }">
             <div class="centered-cell"> 
@@ -91,7 +93,9 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, ref } from '@nuxtjs/composition-api'
+import { defineComponent, ref } from 'vue';
+import moment from 'moment'
+
 // type HeaderCell = {
 //     text: string
 //     value: string
@@ -173,6 +177,7 @@ export default defineComponent({
             pageCount,
             totalCount,
             dummyItems,
+            moment,
             // header,
             // clickRow,
         }
@@ -217,5 +222,10 @@ export default defineComponent({
     justify-content: center;
     align-items: center;
     z-index: 100;
+}
+.patient-info {
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 </style>

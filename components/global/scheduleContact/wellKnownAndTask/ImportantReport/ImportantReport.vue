@@ -12,7 +12,6 @@
 <script>
 import { defineComponent, } from '@nuxtjs/composition-api';
 import ReportTable from './ReportTable.vue';
-// import ReportTable from './ImportTable.vue';
 import SearchField from './SearchField.vue';
 
 export default defineComponent({

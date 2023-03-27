@@ -60,18 +60,14 @@
                     {{ item.to_departments }}
                 </div>
             </template>
-            <!-- <template #[`item.to_departments`]="{ item }">
-                <div class="lefted-cell">
-                    <span class="mr-1" v-for="departments in item.to_departments">
-                        {{ departments.to_department_name }}
-                    </span>
-                </div>
-            </template> -->
-
-
         <!-- detailPathに確認ボタン押したあとの遷移先が入る想定 -->
-
+            <template #[`item.detailPath`]="{ item }">
+                <nuxt-link :to="item.detailPath">
+                    <v-btn color="primary" small>詳細</v-btn>
+                </nuxt-link>
+            </template>
         </v-data-table>
+
         <div class="table-footer text-center">
             <span>全 {{ totalCount }} 件</span>
             <v-pagination
@@ -85,23 +81,24 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, ref } from '@nuxtjs/composition-api';
+import { defineComponent, ref } from '@nuxtjs/composition-api'
+
 // type HeaderCell = {
 //     text: string
 //     value: string
 //     width?: string| number 
 //     sortable: boolean
-// }
+// };
 
 export default defineComponent({
     setup() {
         // const header: HeaderCell[] = [
-        //     { text: '更新日時', value: 'updated_at' },
-        //     { text: '掲示先部署', value: 'to_departments' },
-        //     { text: '投稿者', value: 'staff_name' },
-        //     { text: '件名', value: 'title' },
-        //     { text: '添付', value: 'has_attachments' },
-        //     { text: 'メンション', value: 'has_mentions' },
+        //     { text: '更新日時', value: 'updated_at', sortable: false },
+        //     { text: '掲示先部署', value: 'to_departments', sortable: false },
+        //     { text: '投稿者', value: 'staff_name', sortable: false },
+        //     { text: '件名', value: 'title', sortable: false },
+        //     { text: '添付', value: 'has_attachments', sortable: false },
+        //     { text: 'メンション', value: 'has_mentions', sortable: false },
         // ]
     
         const dummyItems = [

@@ -10,7 +10,7 @@
             @page-count="pageCount = $event"
         >
             <!--table-header  -->
-            <template #[`header`] = "{ props: {headers} }">
+            <template #[`header`] = "{ props: { headers } }">
                 <thead class="custom-header">
                     <tr class="custom-header">
                         <th v-for="(item, id) in headers" :key="id" class="custom-header">
@@ -95,6 +95,8 @@
 
 <script lang="ts">
 import { defineComponent, ref } from '@nuxtjs/composition-api'
+import moment from 'moment'
+
 // type HeaderCell = {
 //   text: string
 //   value: string
@@ -103,7 +105,6 @@ import { defineComponent, ref } from '@nuxtjs/composition-api'
 // }
 export default defineComponent({
     setup() {
-
         // const header: HeaderCell[] = [
         //     { text: '記事種類', value: 'articleType', sortable: false },//ok
         //     { text: '更新日時', value: 'updateDateTime', sortable: false },//ok
@@ -225,6 +226,7 @@ export default defineComponent({
             dummyItems,
             // header,
             // clickPatient,
+            moment,
         }
 
     }

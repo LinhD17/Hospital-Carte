@@ -1,6 +1,6 @@
 <template>
-    <v-sheet class="root">
-      <div>
+    <v-sheet class="root task-root">
+      <div class="root-header mb-2">
           <h1 class="title">業務タスク</h1>
           <task-search  class="mt-2"/>
       </div>
@@ -17,7 +17,9 @@
     components: {
       TaskSearch,
       TaskTable 
-      },
+    },
+    setup() {
+    }
 
   })
   </script>

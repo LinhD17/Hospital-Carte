@@ -1,8 +1,6 @@
 <template>
   <v-menu
     transition="scale-transition"
-    ref="menu"
-    v-model="menu"
     offset-y
     :close-on-content-click="false"
     min-width="auto"
@@ -12,13 +10,13 @@
         v-model="computedDateFormatted"
         persistent-hint
         append-icon="mdi-calendar"
-        clear-icon="mdi-close-circle"
         readonly
-        v-on="on"
-        outlined
+        :class="['date-picker', date && 'has-date']"
         :placeholder="placeaholder"
+        v-on="on"
         dense
-        height="height"
+        clear-icon="mdi-close-circle"
+        :height="height"    
       ></v-text-field>
     </template>
     <v-date-picker
@@ -28,8 +26,8 @@
       :min="min"
       :max="max"
       label="Select a date"
-      @click:clear="clearMessage"
       :first-day-of-week="1"
+      @input="menu = false"
     ></v-date-picker>
   </v-menu>
 </template>
