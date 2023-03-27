@@ -10,15 +10,19 @@
 </template>
 
 <script>
+import { defineComponent, } from '@nuxtjs/composition-api';
 import ReportTable from './ReportTable.vue';
 import SearchField from './SearchField.vue';
 
-export default {
+export default defineComponent({
     components: {
         SearchField, 
         ReportTable,
+    },
+    setup() {
+
     }
-}
+})
 </script>
 
 <style lang="scss" scoped>

@@ -1,29 +1,46 @@
-<!-- phan bang thong bao  -->
 <template>
-    <div class="table-parent ml-3 mr-3">
+    <div class="report-table ml-3 mr-3">
         <v-data-table
             dense
             :headers="header"
-            :ites="dummyItems"
+            :items="dummyItems"
             hide-default-header
             hide-default-footer
-            class="report-table"
+            :page.sync="page"
             @page-count="pageCount = $event"
         >
-            <!--記事種類-->
-            <template #[`item.articleType`]="{}">
+            <!--table-header  -->
+            <template #[`header`] = "{ props: { headers } }">
+                <thead class="custom-header">
+                    <tr class="custom-header">
+                        <th v-for="(item, id) in headers" :key="id" class="custom-header">
+                            <div class="sort-cell">
+                                {{ item.text }}
+                            </div>
+                        </th>
+                    </tr>
+                </thead>
+            </template>
 
+            <!-- table-items -->
+             <!--記事種類-->
+             <template #[`item.articleType`]="{ item }">
+                <div class="centered-cell">
+                    {{ item.articleType }}
+                </div>
             </template>
             <!-- 更新日時 -->
-            <template #[`item.updateDateTime`]="{}">
-
+            <template #[`item.updateDateTime`]="{ item }">
+                <div class="centered-cell">
+                    {{ item.updateDateTime }}
+                </div>
             </template>
-            <!-- 患者情報 -->
-            <template #[`item.patientInfo`]="{}">
+             <!-- 患者情報 -->
+             <template #[`item.patientInfo`]="{ item }">
                 <div class="patient-info">
                     <p class="patient-no">{{ item.patient_no }}</p>
 
-                    <a
+                    <!-- <a
                         class="info-cell"
                         href="#"
                         @click.prevent.stop="clickPatient(item)"
@@ -38,27 +55,35 @@
                         {{ item.patient_name }}
                         <rt>{{ item.patient_name_katakana }}</rt>
                         </ruby>
-                    </a>
+                    </a> -->
                 </div>
             </template>
             <!-- 報告内容 -->
-            <template #[`item.contentsReport`]="{}">
-
+            <template #[`item.contentsReport`]="{ item }">
+                <div class="centered-cell">
+                    {{ item.updateDateTime }}
+                </div>
             </template>
             <!-- 報告者 -->
-            <template #[`item.reporter`]="{}">
+            <template #[`item.reporter`]="{ item }">
+                <div class="centered-cell">
+                    {{ item.reporter }}
+                </div>
 
             </template>
             <!-- 確認 -->
-            <template #[`item.confirmation`]="{}">
-
+            <template #[`item.confirmation`]="{ item }">
+                <div class="centered-cell">
+                    {{ item.confirmation }}
+                </div>
             </template>
         </v-data-table>
-        <!-- nut dem so thu tu trang o cuoi bang -->
+        <!-- dem stt trang o cuoi bang -->
         <div class="table-footer text-center pt-2">
             <span>全 {{totalCount}} 件</span>
             <v-pagination 
             class="ml-4"
+            color="primary"
             v-model="page"
             circle
             :length="pageCount"
@@ -66,18 +91,19 @@
             ></v-pagination>
         </div>
     </div>
-
 </template>
 
 <script lang="ts">
-// import { ref } from '@nuxtjs/composition-api'
+import { defineComponent, ref } from '@nuxtjs/composition-api'
+import moment from 'moment'
+
 // type HeaderCell = {
-//     text: String
-//     value: String 
-//     width?: string | number
-//     sortable: boolean
+//   text: string
+//   value: string
+//   width?: string | number
+//   sortable: boolean
 // }
-export default {
+export default defineComponent({
     setup() {
         // const header: HeaderCell[] = [
         //     { text: '記事種類', value: 'articleType', sortable: false },//ok
@@ -181,33 +207,35 @@ export default {
 
             },
         ]
-        
-        // const page = ref(1)
 
-        // const pageCount = ref(0)
+        const page = ref(1)
 
-        //     const clickPatient = (item: any) => {
-                    // const url = '/karte?patient_uuid=' + item.patient_uuid
-                    // window.open(url)
-                // }
+        const pageCount = ref(0)
 
         const totalCount = dummyItems.length
 
+        // const clickPatient = (item: any) => {
+        //             const url = '/karte?patient_uuid=' + item.patient_uuid
+        //             window.open(url)
+        //         }
+
         return {
-            // page, 
-            // pageCount,
+            page, 
+            pageCount,
             totalCount, 
             dummyItems,
             // header,
             // clickPatient,
+            moment,
         }
-    }
 
-}
+    }
+})
 </script>
 
 <style lang="scss" scoped>
 .report-table {
+    height: 100%;
     border: 0 !important;
     white-space: nowrap;
 
@@ -225,15 +253,28 @@ export default {
 //     cursor: pointer !important;
 //   }
 }
+.custom-header {
+    background-color: #e4e4e4 !important;
+    font-size: 100% !important;
+    text-align: center !important;
+}
+.sort-cell {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  white-space: nowrap;
+}
+.centered-cell {
+    text-align: center;
+}
 .table-footer {
     display: flex;
     position: sticky;
+    bottom: 0;
+    padding: 5px 0;
     justify-content: center;
     align-items: center;
-    top: 0;
-    padding: 10px 0;
-    background-color: #ffffff;
     z-index: 100;
-    //filter: drop-shadow(0 -3px 3px #e6e6e6);
+    height: 50px;
 }
 </style>

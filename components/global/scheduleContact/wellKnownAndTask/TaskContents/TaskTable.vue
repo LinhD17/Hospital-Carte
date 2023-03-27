@@ -1,5 +1,6 @@
 <template>
-  <div>
+  <div class="task-table">
+    <!--bloking-karte  -->
     <v-data-table
         dense
         :headers="header"
@@ -7,33 +8,39 @@
         hide-default-header
         hide-default-footer
         :page.sync="page"
-        class="task-table"
         @page-count="pageCount = $event"
     >
         <!-- header -->
-        <template>
-
+        <template #[`header`] = "{ props: {headers} }">
+            <thead class="custom-header">
+                <tr class="custom-header">
+                    <th v-for="(item, id) in headers" :key="id" class="custom-header">
+                        <div class="sort-cell">
+                            {{ item.text }}
+                        </div>
+                    </th>
+                </tr>
+            </thead>
         </template>
         <!-- items -->
-            <!-- deadLine -->
-        <template #[`item.deadLine`]="{}">
-
+            <!-- deadLine-期限 -->
+        <template #[`item.deadLine`]="{ item }">
+            <div class="centered-cell">
+                {{ item.deadLine }}
+            </div>
         </template>
 
-            <!-- patient-info -->
-            <template #[`item.patientInfo`]="{}">
+        <!-- patient-info-患者情報 -->
+        <template #[`item.patientInfo`]="{ item }">
+            <!-- trong the a ta can viet nhu sau de co the click vao bang va hien ra popup moi <a href="#" @click.prevent.stop="clickRow"> -->
+            <a href="#">
                 <div class="patient-info">
-                    <p class="patient-no">{{ item.patient_no }}</p>
-
-                    <a
-                        class="info-cell"
-                        href="#"
-                        @click.prevent.stop="clickPatient(item)"
-                    >
+                    <p class="patient-age">{{ item.patient_age }}</p>
+                    <a class="info-cell" href="#">
                         <img
-                        v-if="item.patient_gender == 1"
-                        src="@/assets/icons/man.svg"
-                        alt="icon person"
+                            v-if="item.patient_gender == 1"
+                            src="@/assets/icons/man.svg"
+                            alt="icon person"
                         />
                         <img v-else src="@/assets/icons/woman.svg" alt="icon person" />
                         <ruby>
@@ -42,26 +49,35 @@
                         </ruby>
                     </a>
                 </div>
-            </template>
+            </a>
+        </template>
         
-            <!-- task -->
-        <template #[`item.task`]="{}">
-
+        <!-- task-タスク -->
+        <template #[`item.task`]="{ item }">
+            <div class="centered-cell"> 
+                {{ item.task }}
+            </div>
         </template>
 
-            <!-- type -->
-        <template #[`item.type`]="{}">
-
+        <!-- type-分類 -->
+        <template #[`item.type`]="{ item }">
+            <div class="centered-cell"> 
+                {{ item.type }}
+            </div>
         </template>
 
-            <!-- content -->
-        <template #[`item.content`]="{}">
-
+        <!-- content-内容 -->
+        <template #[`item.content`]="{ item }">
+            <div class="centered-cell"> 
+                {{ item.content }}
+            </div>
         </template>
 
-            <!-- status -->
-        <template #[`item.status`]="{}">
-
+        <!-- status-ステータス -->
+        <template #[`item.status`]="{ item}">
+            <div class="centered-cell"> 
+                {{ item.status }}
+            </div>
         </template>
     </v-data-table>
     <div class="table-footer text-center">
@@ -76,9 +92,18 @@
   </div>
 </template>
 
-<script>
-export default {
+<script lang="ts">
+import { defineComponent, ref } from 'vue';
+import moment from 'moment'
 
+// type HeaderCell = {
+//     text: string
+//     value: string
+//     width?: string | number
+//     sortable: boolean
+// }
+
+export default defineComponent({
     setup() {
         // const header: HeaderCell[] = [
         //     { text: '期限', value: 'deadLine', sortable: false },//ok
@@ -93,72 +118,71 @@ export default {
             {
                 deadLine: '2022年06月29日 00時00分00秒',
                 patientInfo: {
-                    patient_no: '111111',
-                    patient_name: 'テスト患者',
-                    patient_name_katakana: 'テストカンジャ',
+                    patient_age: '42',
+                    patient_name: '患者　花子',
+                    patient_name_katakana: 'カンジャ　ハナコ',
                     patient_gender: 1,
                 },
                 task: 'ETCセット',
                 type: 'タスク',
                 content: '患者への説明',
                 status: '未着手',
-
             },
             {
                 deadLine: '2022年06月29日 00時00分00秒',
                 patientInfo: {
-                    patient_no: '111111',
-                    patient_name: 'テスト患者',
-                    patient_name_katakana: 'テストカンジャ',
+                    patient_age: '42',
+                    patient_name: '患者　花子',
+                    patient_name_katakana: 'カンジャ　ハナコ',
                     patient_gender: 1,
                 },
                 task: 'ETCセット',
                 type: 'タスク',
                 content: '患者への説明',
                 status: '未着手',
-
             },
             {
                 deadLine: '2022年06月29日 00時00分00秒',
                 patientInfo: {
-                    patient_no: '111111',
-                    patient_name: 'テスト患者',
-                    patient_name_katakana: 'テストカンジャ',
+                    patient_age: '42',
+                    patient_name: '患者　花子',
+                    patient_name_katakana: 'カンジャ　ハナコ',
                     patient_gender: 1,
                 },
                 task: 'ETCセット',
                 type: 'タスク',
                 content: '患者への説明',
                 status: '未着手',
-
             },
-            {
-
-            },
-            {
-
-            }, 
-            {
-
-            },
-            {
-
-            }, 
+            {},
+            {}, 
+            {},
+            {}, 
         ]
         
 
-        // const page = ref(1)
-        // const pageCount = ref(0)
+        const page = ref(1)
+        const pageCount = ref(0)
         const totalCount = dummyItems.length
 
+        // const clickRow = () => {
+        // const url = '/karte?patient_uuid=16e3d8eb-d4d7-11ec-8902-0a7e192b49f1'
+        // // window.open(url)
+        // modalBlockingKarte.handle.show()
+        // }
+
+
         return {
-            // page,
-            // pageCount,
+            page,
+            pageCount,
             totalCount,
             dummyItems,
+            moment,
+            // header,
+            // clickRow,
         }
     }
-}
+})
 </script>
 
 <style lang="scss" scoped>
@@ -181,6 +205,15 @@ export default {
     //   }
 
 }
+.sort-cell {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  white-space: nowrap;
+}
+.centered-cell {
+    text-align: center;
+}
 .table-footer {
     display: flex;
     position: sticky;
@@ -189,5 +222,10 @@ export default {
     justify-content: center;
     align-items: center;
     z-index: 100;
+}
+.patient-info {
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 </style>

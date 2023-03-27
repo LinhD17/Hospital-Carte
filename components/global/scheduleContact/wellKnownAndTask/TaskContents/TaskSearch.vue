@@ -2,12 +2,16 @@
     <div class="task-search-row">
         <!-- calender -->
         <div class="d-flex align-center calendar">
-            <div class="d-flex align-center" style="width: 113px">
-
+            <div class="d-flex align-center" style="width: 140px">
+                <date-picker 
+                    place-holder=""
+                />
             </div>
-            <span>~</span>
-            <div class="d-flex align-center" style="width: 113px">
-                
+            <span class="mt-3">~</span>
+            <div class="d-flex align-center" style="width: 140px">
+                <date-picker
+                    placeholder=""
+                />
             </div>
         </div>
         <!-- select-box  -->
@@ -18,6 +22,7 @@
             hide-details
             height="28"
             style="width: 100px"
+            :items="['Foo', 'Bar', 'Fizz', 'Buzz']"
             />
         </div>
         <div class="d-flex align-center">
@@ -27,25 +32,73 @@
                 hide-details
                 height="28"
                 style="width: 100px"
+                :items="['Foo', 'Bar', 'Fizz', 'Buzz']"
             />
         </div>
         <!-- check-box -->
         <div class="check-box">
-
+            <v-checkbox 
+                dense
+                hide-details
+                label="完了済表示"
+                class="mt-2"
+            />
         </div>
         <!-- button -->
-        <v-btn color="primary" class="bt-basic h-middle">検索</v-btn>
+        <v-btn 
+            color="primary" 
+            class="bt-basic h-middle" 
+            style="width: 90px"
+        >
+            検索
+        </v-btn>
     </div>
 
 </template>
 
 <script>
-export default {
+import { defineComponent, reactive } from '@nuxtjs/composition-api'
+import moment from 'moment'
+import DatePicker from '~/components/general/form/DatePicker.vue'
 
+export default defineComponent({
+  components: { 
+    DatePicker,
+},
+setup() {
+    const formData = reactive({
+        date: moment().format('YYYY-MM-DD'),
+    })
+    return {
+        formData,
+
+    }
 }
+
+})
 </script>
 
 <style lang="scss" scoped>
+.calendar {
+    flex-wrap: wrap;
+    gap: 12px;
+
+    ::v-deep {
+        .v-input__slot,
+        .v-input__control {
+        height: 28px !important;
+        }
+
+        .date .v-input__control .v-input__append-inner {
+        margin-top: 1px;
+        padding-right: 4px !important;
+        }
+
+        .v-text-field.v-input--dense:not(.v-text-field--outlined) input {
+        padding: 3px 0;
+        }
+    }
+}
 .task-search-row {
     display: flex;
     align-items: center;
@@ -56,5 +109,25 @@ export default {
         margin-top: 12px;
     }
 
+}
+.check-box {
+    ::v-deep {
+    .v-messages {
+      display: none;
+    }
+
+    .v-input {
+      margin-top: 0;
+      padding-top: 0;
+    }
+
+    .v-input__slot {
+      margin-bottom: 0;
+    }
+
+    .v-input--selection-controls__ripple {
+      margin: 0 7px;
+    }
+  }
 }
 </style>
