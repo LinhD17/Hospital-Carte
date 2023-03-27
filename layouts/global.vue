@@ -1,26 +1,26 @@
 <template>
-  <v-app>
-    <page-header/>
-    <main-menu/>
-    <v-main>
-      <v-container>
+    <v-app>
+        <page-header/>
+        <main-menu/>
+        <v-main>
+      <v-container fluid>
         <Nuxt />
       </v-container>
     </v-main>
-  </v-app>
+    </v-app>
 </template>
-
 <script lang="ts">
-import PageHeader from '~/components/pages/mainMenu/pageHeader.vue'
 import MainMenu from '~/components/pages/global/globalMenu/MainMenu.vue'
+import PageHeader from '~/components/pages/mainMenu/pageHeader.vue'
 export default {
   components: {
-    PageHeader,MainMenu,
+    PageHeader,
+    MainMenu
   },
   name: 'DefaultLayout',
   data() {
     return {
-       PageHeader,MainMenu,
+       PageHeader,MainMenu
     }
   },
   
