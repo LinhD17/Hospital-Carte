@@ -5,7 +5,7 @@
   </template>
   
   <script lang="ts">
-  import  ScreenContent from '~/components/global/scheduleContact/wellKnownAndTask/screenContent.vue';
+  import  ScreenContent from '~/components/pages/global/home/wellKnownAndTask/screenContent.vue';
   export default {
      components: { 
         ScreenContent,

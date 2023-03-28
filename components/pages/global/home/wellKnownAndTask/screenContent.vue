@@ -16,17 +16,17 @@
 
 <script lang="ts">
 import { defineComponent, } from '@nuxtjs/composition-api'
-import globalBaseLayout from '../../general/globalBaseLayout.vue'
+import GlobalBaseLayout from '../../general/globalBaseLayout.vue'
 import TaskContent from './TaskContents/TaskContent.vue'
 import ThreadContent from './Thread/ThreadContent.vue'
-import ImportantReport from '~/components/global/scheduleContact/wellKnownAndTask/ImportantReport/ImportantReport.vue'
+import ImportantReport from './ImportantReport/ImportantReport.vue'
 
 export default defineComponent({
   components: { 
-    globalBaseLayout, 
+    GlobalBaseLayout,
     ImportantReport,
     TaskContent,
-    ThreadContent 
+    ThreadContent,
   },
   setup() {
     // const store = useStore()

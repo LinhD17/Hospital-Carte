@@ -71,7 +71,6 @@ setup() {
     })
     return {
         formData,
-
     }
 }
 

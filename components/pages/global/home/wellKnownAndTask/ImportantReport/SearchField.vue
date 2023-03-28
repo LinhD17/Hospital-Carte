@@ -28,7 +28,7 @@
 
 <script>
 import { defineComponent, } from '@nuxtjs/composition-api'
-import SelectorVoucher1 from '~/components/global/general/selector/SelectorVoucher1.vue'
+import SelectorVoucher1 from '~/components/general/selector/SelectorVoucher1.vue'
 export default defineComponent({
   components: { SelectorVoucher1 },
     setup() {
