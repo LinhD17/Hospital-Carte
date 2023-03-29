@@ -32,6 +32,7 @@ export default defineComponent({
 <style lang="scss" scoped>
 .screen-contents-card {
   margin: 10px;
+  padding-bottom: 0 !important;
   background-color: #ffffff;
   border-radius: 10px;
   height: 100%;
