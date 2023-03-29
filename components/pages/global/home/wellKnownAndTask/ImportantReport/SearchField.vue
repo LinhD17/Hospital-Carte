@@ -42,7 +42,8 @@ export default defineComponent({
     height: 50px;
     display: flex;
     flex-wrap: nowrap;
-    padding: 0;
+    padding: 0 !important;
+    margin: 0 !important;
     justify-content: space-between;
 }
 .form-field {

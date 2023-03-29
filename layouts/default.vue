@@ -1,6 +1,7 @@
 <template>
   <v-app>
     <page-header/>
+    <main-menu />
     <v-main>
       <v-container>
         <Nuxt />
@@ -22,6 +23,5 @@ export default {
        PageHeader,MainMenu,
     }
   },
-  
 }
 </script>

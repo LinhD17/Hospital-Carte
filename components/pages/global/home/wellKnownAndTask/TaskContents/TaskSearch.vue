@@ -2,17 +2,15 @@
     <div class="task-search-row">
         <!-- calender -->
         <div class="d-flex align-center calendar">
-            <div class="d-flex align-center" style="width: 140px">
-                <date-picker 
-                    place-holder=""
-                />
-            </div>
+            <date-picker 
+                :width="100"
+                place-holder=""
+            />
             <span class="mt-3">~</span>
-            <div class="d-flex align-center" style="width: 140px">
-                <date-picker
-                    placeholder=""
-                />
-            </div>
+            <date-picker 
+                :width="100"
+                placeholder=""
+            />
         </div>
         <!-- select-box  -->
         <div class="d-flex align-center">
