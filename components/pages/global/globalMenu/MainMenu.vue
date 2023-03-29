@@ -3,15 +3,15 @@
         <div class="nav">
             <v-list nav class="pa-0 navbar" style="background-color: #e6e6e6;">
                 <v-list-item v-for="(menu, index) in items"
-                :key="index"
-                class="pa-0 c-gnav"
-                dense>
+                    :key="index"
+                    class="pa-0 c-gnav"
+                    dens
+                >
                     <div class="menu-item">
-                        <div class="btn-icon-text">
+                        <div class="btn-icon-text" :style="{ backgroundImage: 'url(' + menu.icon + ')' }">
                             {{ menu.name }}
                         </div>
                     </div>
-
                 </v-list-item>
             </v-list>
         </div>
@@ -25,7 +25,7 @@ export default defineComponent(
         setup() {
             const Menu = {
             items: [
-                // 1
+                // 1 home 
                 {
                 name: 'ホーム',
                 name_en: 'g-nav1',
@@ -34,71 +34,104 @@ export default defineComponent(
                     name: '周知・業務タスク',
                     path: '/global/common/wellKnownAndTask',
                     },
-                    {
-                    name: '職員スケジュール',
-                    path: '/global/common/staffSchedule',
-                    },
                 ],
                 icon: require('@/assets/icons/globalMenu/common.svg'),
                 },
+                // 2 favorite
                 {
                 name: '気に入り',
                 name_en: 'g-nav1',
+                icon: require('@/assets/icons/globalMenu/favorite.svg'),
                 level2_menus: [
                     {
                     name: '周知・業務タスク',
                     path: '/global/common/wellKnownAndTask',
                     },
-                    {
-                    name: '職員スケジュール',
-                    path: '/global/common/staffSchedule',
-                    },
                 ],
-                icon: require('@/assets/icons/globalMenu/favorite.svg'),
                 },
+                // ３ outpatient 
                 {
                 name: '外来',
                 name_en: 'g-nav1',
+                icon: require('@/assets/icons/globalMenu/outpatient.svg'),
                 level2_menus: [
                     {
                     name: '周知・業務タスク',
                     path: '/global/common/wellKnownAndTask',
                     },
-                    {
-                    name: '職員スケジュール',
-                    path: '/global/common/staffSchedule',
-                    },
                 ],
-                icon: require('@/assets/icons/globalMenu/outpatient.svg'),
                 },
+                // ４ ward
                 {
                 name: '病棟',
                 name_en: 'g-nav1',
+                icon: require('@/assets/icons/globalMenu/ward.svg'),
                 level2_menus: [
                     {
                     name: '周知・業務タスク',
                     path: '/global/common/wellKnownAndTask',
                     },
+                ],
+                },
+                // ５ 訪問看護
+                {
+                name: '訪問看護',
+                name_en: 'g-nav1',
+                icon: require('@/assets/icons/globalMenu/house.svg'),
+                level2_menus: [
                     {
-                    name: '職員スケジュール',
-                    path: '/global/common/staffSchedule',
+                    name: '周知・業務タスク',
+                    path: '/global/common/wellKnownAndTask',
                     },
                 ],
-                icon: require('@/assets/icons/globalMenu/ward.svg'),
-                },{
+                },
+                // ６ リハビリ
+                {
+                name: 'リハビリ',
+                name_en: 'g-nav1',
+                icon: require('@/assets/icons/globalMenu/rehabilitation.svg'),
+                level2_menus: [
+                    {
+                    name: '周知・業務タスク',
+                    path: '/global/common/wellKnownAndTask',
+                    },
+                ],
+                },
+                // ７ 指導依頼
+                {
                 name: '指示確認',
                 name_en: 'g-nav1',
+                icon: require('@/assets/icons/globalMenu/tick.svg'),
                 level2_menus: [
                     {
                     name: '周知・業務タスク',
                     path: '/global/common/wellKnownAndTask',
                     },
+                ],
+                },
+                // ８ その他
+                {
+                name: 'その他',
+                name_en: 'g-nav1',
+                icon: require('@/assets/icons/globalMenu/other.svg'),
+                level2_menus: [
                     {
-                    name: '職員スケジュール',
-                    path: '/global/common/staffSchedule',
+                    name: '周知・業務タスク',
+                    path: '/global/common/wellKnownAndTask',
                     },
                 ],
-                icon: require('@/assets/icons/globalMenu/common.svg'),
+                },
+                // ９ マスター
+                {
+                name: 'マスター',
+                name_en: 'g-nav1',
+                icon: require('@/assets/icons/globalMenu/master.svg'),
+                level2_menus: [
+                    {
+                    name: '周知・業務タスク',
+                    path: '/global/common/wellKnownAndTask',
+                    },
+                ],
                 },
             ]
             }
@@ -106,7 +139,6 @@ export default defineComponent(
         }
     }
 )
-
 </script>
 
 <style lang="scss" scoped>
@@ -254,7 +286,89 @@ export default defineComponent(
 //       }
 //     }
 //   }
+// &.g-nav6 {
+//     > .menu-item {
+//       > .btn-icon-text {
+//         background-image: url('@/assets/icon/globalMenu/house.svg');
+//       }
+//       &:hover,
+//       &.active {
+//         > .btn-icon-text {
+//           background-image: url('@/assets/icon/globalMenu/house_ov.svg');
+//         }
+//       }
+//     }
+//   }
 
+//   &.g-nav7 {
+//     > .menu-item {
+//       > .btn-icon-text {
+//         background-image: url('@/assets/icon/globalMenu/rehabilitation.svg');
+//       }
+//       &:hover,
+//       &.active {
+//         > .btn-icon-text {
+//           background-image: url('@/assets/icon/globalMenu/rehabilitation_ov.svg');
+//         }
+//       }
+//     }
+//   }
+
+//   &.g-nav8 {
+//     > .menu-item {
+//       > .btn-icon-text {
+//         background-image: url('@/assets/icon/globalMenu/coaching.svg');
+//       }
+//       &:hover,
+//       &.active {
+//         > .btn-icon-text {
+//           background-image: url('@/assets/icon/globalMenu/coaching_ov.svg');
+//         }
+//       }
+//     }
+//   }
+
+//   &.g-nav9 {
+//     > .menu-item {
+//       > .btn-icon-text {
+//         background-image: url('@/assets/icon/globalMenu/other.svg');
+//       }
+//       &:hover,
+//       &.active {
+//         > .btn-icon-text {
+//           background-image: url('@/assets/icon/globalMenu/other_ov.svg');
+//         }
+//       }
+//     }
+//   }
+
+//   &.g-nav10 {
+//     > .menu-item {
+//       > .btn-icon-text {
+//         background-image: url('@/assets/icon/globalMenu/master.svg');
+//       }
+//       &:hover,
+//       &.active {
+//         > .btn-icon-text {
+//           background-image: url('@/assets/icon/globalMenu/master_ov.svg');
+//         }
+//       }
+//     }
+//   }
+
+//   &.g-nav11 {
+//     > .menu-item {
+//       > .btn-icon-text {
+//         background-image: url('@/assets/icon/globalMenu/management.svg');
+//       }
+//       &:hover,
+//       &.active {
+//         > .btn-icon-text {
+//           background-image: url('@/assets/icon/globalMenu/management_ov.svg');
+//         }
+//       }
+//     }
+//   }
 .btn-icon-text{
     font-size: 10px !important;
 }

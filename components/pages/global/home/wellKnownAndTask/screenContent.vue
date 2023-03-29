@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="well-known">
     <global-base-layout
       page-title="周知・業務タスク" 
       title-icon="schedule.svg"
@@ -36,6 +36,10 @@ export default defineComponent({
 </script>
 
 <style lang="scss" scoped>
+.well-known {
+  width: 98.6%;
+  height: 100%;
+}
 .contents {
   display: flex;
   height: calc(100vh - 150px);

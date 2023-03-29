@@ -27,7 +27,7 @@ export default defineComponent({
   display: flex;
   align-items: center;
   justify-content: space-between;
-  height: 45px;
+  height: 55px;
   padding: 20px;
   background-color: #e5f5f7; 
   border-bottom: 1px solid #009eac;
