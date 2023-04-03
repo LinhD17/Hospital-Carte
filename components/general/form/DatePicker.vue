@@ -9,6 +9,7 @@
   >
     <template v-slot:activator="{ on }">
       <v-text-field
+        background-color="white"
         v-model="computedDateFormatted"
         persistent-hint
         append-icon="mdi-calendar"

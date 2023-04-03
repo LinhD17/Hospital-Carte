@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="global-deader">
     <screen-header 
         :page-title="pageTitle"
         :title-icon="titleIcon"
@@ -14,10 +14,10 @@
 
 <script>
 import { defineComponent } from '@vue/composition-api'
-import screenHeader from '~/components/general/screenHeader.vue'
+import ScreenHeader from '~/components/general/screenHeader.vue'
 export default defineComponent({
   components: { 
-    screenHeader,
+    ScreenHeader,
   },
   props: {
     pageTitle: String,
@@ -30,11 +30,11 @@ export default defineComponent({
 </script>
 
 <style lang="scss" scoped>
+
 .screen-contents-card {
-  margin: 10px;
+  // margin: 10px;
   padding-bottom: 0 !important;
-  background-color: #ffffff;
   border-radius: 10px;
-  height: 100%;
+  height: calc(100vh - 135px);
 }
 </style>

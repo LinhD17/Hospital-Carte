@@ -96,23 +96,16 @@
 import { defineComponent, ref } from 'vue';
 import moment from 'moment'
 
-// type HeaderCell = {
-//     text: string
-//     value: string
-//     width?: string | number
-//     sortable: boolean
-// }
-
 export default defineComponent({
     setup() {
-        // const header: HeaderCell[] = [
-        //     { text: '期限', value: 'deadLine', sortable: false },//ok
-        //     { text: '患者情報', value: 'patientInfo', sortable: false }, //ok 
-        //     { text: 'タスク', value: 'task', sortable: false },//ok
-        //     { text: '分類', value: 'type', sortable: false }, //ok
-        //     { text: '内容', value: 'content', sortable: false }, //ok
-        //     { text: 'ステータス', value: 'status', sortable: false }, //ok
-        // ]
+        const header = [
+            { text: '期限', value: 'deadLine', sortable: false },
+            { text: '患者情報', value: 'patientInfo', sortable: false }, 
+            { text: 'タスク', value: 'task', sortable: false },
+            { text: '分類', value: 'type', sortable: false }, 
+            { text: '内容', value: 'content', sortable: false }, 
+            { text: 'ステータス', value: 'status', sortable: false },
+        ]
 
         const dummyItems = [
             {
@@ -154,10 +147,6 @@ export default defineComponent({
                 content: '患者への説明',
                 status: '未着手',
             },
-            {},
-            {}, 
-            {},
-            {}, 
         ]
         
 
@@ -178,7 +167,7 @@ export default defineComponent({
             totalCount,
             dummyItems,
             moment,
-            // header,
+            header,
             // clickRow,
         }
     }

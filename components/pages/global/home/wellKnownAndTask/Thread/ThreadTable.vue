@@ -92,14 +92,14 @@ import { defineComponent, ref } from '@nuxtjs/composition-api'
 
 export default defineComponent({
     setup() {
-        // const header: HeaderCell[] = [
-        //     { text: '更新日時', value: 'updated_at', sortable: false },
-        //     { text: '掲示先部署', value: 'to_departments', sortable: false },
-        //     { text: '投稿者', value: 'staff_name', sortable: false },
-        //     { text: '件名', value: 'title', sortable: false },
-        //     { text: '添付', value: 'has_attachments', sortable: false },
-        //     { text: 'メンション', value: 'has_mentions', sortable: false },
-        // ]
+        const header = [
+            { text: '更新日時', value: 'updated_at', sortable: false },
+            { text: '掲示先部署', value: 'to_departments', sortable: false },
+            { text: '投稿者', value: 'staff_name', sortable: false },
+            { text: '件名', value: 'title', sortable: false },
+            { text: '添付', value: 'has_attachments', sortable: false },
+            { text: 'メンション', value: 'has_mentions', sortable: false },
+        ]
     
         const dummyItems = [
             {
@@ -110,12 +110,30 @@ export default defineComponent({
                 has_attachments: '',
                 has_mentions: '',
             },
-            {},
-            {},
-            {},
-            {},
-            {},
-            {},
+            {
+                updated_at: '2023年03月22日 00時00分00秒',
+                to_departments: '看護部　診察技術部',
+                staff_name: '保険指定医テスト１０',
+                title: '医療安全委員からのお知らせ',
+                has_attachments: '',
+                has_mentions: '',
+            },
+            {
+                updated_at: '2023年03月22日 00時00分00秒',
+                to_departments: '看護部　診察技術部',
+                staff_name: '保険指定医テスト１０',
+                title: '医療安全委員からのお知らせ',
+                has_attachments: '',
+                has_mentions: '',
+            },
+            {
+                updated_at: '2023年03月22日 00時00分00秒',
+                to_departments: '看護部　診察技術部',
+                staff_name: '保険指定医テスト１０',
+                title: '医療安全委員からのお知らせ',
+                has_attachments: '',
+                has_mentions: '',
+            },
         ]
 
         const page = ref(1)
@@ -128,7 +146,7 @@ export default defineComponent({
             pageCount,
             totalCount,
             dummyItems,
-            // header,
+            header,
 
         }
     }

@@ -1,13 +1,14 @@
 <template>
     <v-select 
-    dense
-    hide-details
-    background-color="white"
-    :height="height"
-    :style="`width: ${width}px`"
-    :items="['Foo', 'Bar', 'Fizz', 'Buzz']"
-    :placeholder="placeholder"
-    :clearable="clearable"
+        outlined
+        dense
+        hide-details
+        background-color="white"
+        :height="height"
+        :style="`width: ${width}px`"
+        :items="['Foo', 'Bar', 'Fizz', 'Buzz']"
+        :placeholder="placeholder"
+        :clearable="clearable"
     />
 </template>
 

@@ -13,9 +13,10 @@
             />
         </div>
         <!-- select-box  -->
-        <div class="d-flex align-center">
+        <div class="d-flex align-center mt-3">
             <v-select 
             placeholder="病棟"
+            outlined
             dense
             hide-details
             height="28"
@@ -23,9 +24,10 @@
             :items="['Foo', 'Bar', 'Fizz', 'Buzz']"
             />
         </div>
-        <div class="d-flex align-center">
+        <div class="d-flex align-center mt-3">
             <v-select 
                 placeholder="分類"
+                outlined
                 dense
                 hide-details
                 height="28"

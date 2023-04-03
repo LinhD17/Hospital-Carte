@@ -4,6 +4,7 @@
         <div class="form-field">
             <!-- o lua chon  -->
             <selector-voucher-1 
+                outline
                 placeholder="全て"
                 class="mr-3 ml-3"
                 :width="130"
@@ -30,7 +31,9 @@
 import { defineComponent, } from '@nuxtjs/composition-api'
 import SelectorVoucher1 from '~/components/general/selector/SelectorVoucher1.vue'
 export default defineComponent({
-  components: { SelectorVoucher1 },
+  components: { 
+    SelectorVoucher1 
+},
     setup() {
 
     }

@@ -31,6 +31,7 @@ export default defineComponent({
   padding: 20px;
   background-color: #e5f5f7; 
   border-bottom: 1px solid #009eac;
+  width: 100%;
   .global-title-heading {
     display: flex;
     font-size: 29px;

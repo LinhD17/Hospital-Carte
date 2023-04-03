@@ -27,10 +27,15 @@ export default defineComponent({
   },
 })
 </script>
-<style lang="scss" scoped>
+<style lang="scss">
+.v-application--wrap {
+  z-index: 0 !important;
+}
+
 .container {
   margin-left: 42px;
   height: 100% !important; 
   padding-top: 0 !important;
+  width: 100%;
 }
 </style>

@@ -1,8 +1,11 @@
 <template>
     <div class="search">
         <!-- 部署 -->
-        <div style="width: 114px">
+        <div style="width: 114px;">
             <v-select
+            dense
+            outlined
+            height="30"
             placeholder="部署を選択"
             :items="['Foo', 'Bar', 'Fizz', 'Buzz']"
             >
@@ -10,8 +13,11 @@
             </v-select>
         </div>
         <!-- 投橋者 -->
-        <div style="width: 154px">
+        <div style="width: 154px;">
             <v-select
+            dense
+            outlined
+            height="30"
             placeholder="投橋者を選択"
             :items="['Foo', 'Bar', 'Fizz', 'Buzz']"
             >
@@ -21,6 +27,9 @@
         <!-- タイトル -->
         <div style="width: 164px">
             <v-select
+            dense
+            outlined
+            height="30"
             placeholder="タイトル検索"
             :items="['Foo', 'Bar', 'Fizz', 'Buzz']"
             >
@@ -28,14 +37,14 @@
             </v-select>
         </div>
         <!-- 掲載終了も表示 -->
-        <div class="checkbox">
+        <div class="checkbox mb-7">
             <v-checkbox
                 dense
                 label="掲載終了も表示"
             />
         </div>
         <!-- 添付ファイル -->
-        <div class="checkbox">
+        <div class="checkbox mb-7">
             <v-checkbox 
             dense
             label="添付ファイル"
@@ -44,7 +53,7 @@
         <!-- button -->
         <v-btn
             color="primary"
-            class="bt-basic h-middle ml-2"
+            class="bt-basic h-middle ml-2 mb-7"
         >
         検索
         </v-btn>
@@ -67,6 +76,9 @@ export default defineComponent({
     display: flex;
     align-items: center;
     gap: 5px;
+}
+.select-box {
+    height: 30px !important;
 }
 .checkbox {
     display: flex;

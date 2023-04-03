@@ -82,9 +82,9 @@
         <div class="table-footer text-center pt-2">
             <span>全 {{totalCount}} 件</span>
             <v-pagination 
+            v-model="page"
             class="ml-4"
             color="primary"
-            v-model="page"
             circle
             :length="pageCount"
             :total-visible="pageCount"
@@ -105,14 +105,14 @@ import moment from 'moment'
 // }
 export default defineComponent({
     setup() {
-        // const header: HeaderCell[] = [
-        //     { text: '記事種類', value: 'articleType', sortable: false },//ok
-        //     { text: '更新日時', value: 'updateDateTime', sortable: false },//ok
-        //     { text: '患者情報', value: 'patientInfo', sortable: false }, //ok 
-        //     { text: '報告内容', value: 'contentsReport', sortable: false }, //ok
-        //     { text: '報告者', value: 'reporter', sortable: false }, //ok
-        //     { text: '確認', value: 'confirmation', sortable: false }, //ok
-        // ]
+        const header = [
+            { text: '記事種類', value: 'articleType', sortable: false },
+            { text: '更新日時', value: 'updateDateTime', sortable: false },
+            { text: '患者情報', value: 'patientInfo', sortable: false }, 
+            { text: '報告内容', value: 'contentsReport', sortable: false }, 
+            { text: '報告者', value: 'reporter', sortable: false }, 
+            { text: '確認', value: 'confirmation', sortable: false }, 
+        ]
 
         const dummyItems = [
             {
@@ -224,7 +224,7 @@ export default defineComponent({
             pageCount,
             totalCount, 
             dummyItems,
-            // header,
+            header,
             // clickPatient,
             moment,
         }

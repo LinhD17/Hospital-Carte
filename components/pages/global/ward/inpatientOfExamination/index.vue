@@ -5,37 +5,39 @@
             title-icon="ward.svg"
         >
             <template #header>
-                <v-btn color="teal darken-2" class="bt-basic h-middle w-auto">
+                <v-btn 
+                    color="teal darken-2" 
+                    class="bt-basic h-middle w-auto"
+                >
                     病棟マップ
                 </v-btn>
             </template>
-            <div class="contents">
-                <h1>nguyen thi dieu linh</h1>
-            </div>
+            <search-field/>
+            <inpatient-table />
         </global-base-layout>
     </div>
-  </template>
+</template>
   
-  <script lang="ts">
-  import { defineComponent, } from '@nuxtjs/composition-api'
-  import GlobalBaseLayout from '../../general/globalBaseLayout.vue'
-  
-  export default defineComponent({
+<script lang="ts">
+import { defineComponent } from '@nuxtjs/composition-api'
+import SearchField from './SearchField.vue'
+import InpatientTable from './InpatientTable.vue'
+import GlobalBaseLayout from '~/components/pages/global/general/globalBaseLayout.vue'
+
+export default defineComponent({
     components: { 
-      GlobalBaseLayout,
+        GlobalBaseLayout,
+        SearchField,
+        InpatientTable,
     },
     setup() {
     },
-  })
-  </script>
+})
+</script>
   
-  <style lang="scss" scoped>
-  .well-known {
+<style lang="scss" scoped>
+.well-known {
     width: 98.6%;
     height: 100%;
-  }
-  .contents {
-    display: flex;
-    height: calc(100vh - 150px);
-  }
-  </style>
+}
+</style>
