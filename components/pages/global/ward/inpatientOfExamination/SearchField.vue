@@ -376,7 +376,6 @@ export default defineComponent({
   },
 })
 </script>
-
 <style lang="scss" scoped>
 .search-fields {
     margin: 0 14px;
