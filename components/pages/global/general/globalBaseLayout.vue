@@ -12,7 +12,7 @@
   </div>
 </template>
 
-<script>
+<script lang="ts">
 import { defineComponent } from '@vue/composition-api'
 import ScreenHeader from '~/components/general/screenHeader.vue'
 export default defineComponent({

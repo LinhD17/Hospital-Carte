@@ -18,10 +18,14 @@ $primary: (
     )
 );
 $primary2 : (('base' : map-get($primary , 'color2')));
+$primary4 : (('base' : map-get($primary , 'color4')));
+$primary6 : (('base' : map-get($primary , 'color6')));
 //削除ボタンなどの色
 $danger: (
     (
         'base': #c83232
+        'color1': #f7e0e0,//15%
+        'color2': #e39898//50%
     )
 );
 //黒いボタンの色
@@ -39,6 +43,10 @@ $waroku-pink :(
         'color3': #fec5db //カレンダー 30%
     )
 );
+$waroku-pink1 : (('base' : map-get($waroku-pink , 'color1')));
+$waroku-pink2 : (('base' : map-get($waroku-pink , 'color2')));
+$waroku-pink3 : (('base' : map-get($waroku-pink , 'color3')));
+$waroku-pink4 : (('base' : map-get($waroku-pink , 'color4')));
 //waroku-pink(システム内での紫)
 $waroku-purple:(
     (
@@ -53,9 +61,14 @@ $waroku-green:(
         'color2':  #ecf8de,//外来来患者ヘッダー
         'color3':  #e6f4d9,//一覧系（オンマウス） 15%
         'color4':  #eef8e5//一覧系 10%
+        'color5':  #acdb7f//50%
     )
 );
 $waroku-green1 : (('base' : map-get($waroku-green , 'color1')));
+$waroku-green2 : (('base' : map-get($waroku-green , 'color2')));
+$waroku-green3 : (('base' : map-get($waroku-green , 'color3')));
+$waroku-green4 : (('base' : map-get($waroku-green , 'color4')));
+$waroku-green5 : (('base' : map-get($waroku-green , 'color5')));
 //waroku-orange(システム内でのオレンジ)
 $waroku-orange:(
     (
@@ -75,6 +88,7 @@ $waroku-yellow:(
         'color4': #faefcc  //付箋エリアの背景 20%
     )
 );
+$waroku-yellow2 : (('base' : map-get($waroku-yellow , 'color2')));
 $waroku-yellow3 : (('base' : map-get($waroku-yellow , 'color3')));
 //waroku-gray(システム内でのグレー)
 $waroku-gray:(
@@ -85,6 +99,7 @@ $waroku-gray:(
         'color3': #d3d3d3,
         'color4': #f5f5f5,
         'color5': #f0f0f0  //テーブル偶数行の背景色数行の背景色
+        'color6': #e6e6e6
     )
 );
 $waroku-gray1 : (('base' : map-get($waroku-gray , 'color1')));
@@ -92,6 +107,7 @@ $waroku-gray2 : (('base' : map-get($waroku-gray , 'color2')));
 $waroku-gray3 : (('base' : map-get($waroku-gray , 'color3')));
 $waroku-gray4 : (('base' : map-get($waroku-gray , 'color4')));
 $waroku-gray5 : (('base' : map-get($waroku-gray , 'color5')));
+$waroku-gray6 : (('base' : map-get($waroku-gray , 'color6')));
 //ベースフォントカラー（黒）
 $font-color : (
     (
@@ -117,6 +133,7 @@ $colors : (
         'template' : $template,
         'primary' : $primary,
         'primary2' : $primary2,
+        'primary4' : $primary4,
         'danger': $danger,
         'info' : $info,
         'success' : $success,
@@ -127,6 +144,7 @@ $colors : (
         'waroku-green1': $waroku-green1,
         'waroku-orange': $waroku-orange,
         'waroku-yellow': $waroku-yellow,
+        'waroku-yellow2': $waroku-yellow2,
         'waroku-yellow3': $waroku-yellow3,
         'waroku-gray': $waroku-gray,
         'waroku-gray1': $waroku-gray1,
@@ -139,3 +157,4 @@ $colors : (
         'font-color2': $font-color2
     )
 );
+$colorWhite: #ffffff;

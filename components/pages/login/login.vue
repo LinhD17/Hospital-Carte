@@ -9,9 +9,9 @@
           <div class="login-name">
             <p class="login-label">ユーザー名</p>
             <v-text-field
+              v-model="username"
               name="username"
               placeholder="テキストを入力"
-              v-model="username"
               type="text"
               outlined
               class="input-field"
@@ -21,19 +21,17 @@
           <div class="login-password">
             <p class="login-label">パスワード</p>
             <v-text-field
+              v-model="password"
               name="password"
               :type="show ? 'text' : 'password'"
               :append-icon="show ? 'mdi-eye' : 'mdi-eye-off'"
-              @click:append="show = !show"
-              placeholder="テキストを入力"
-              v-model="password"
               outlined
               class="input-field"
               :rules="[v => !!v || 'Password is required']"
+              placeholder="テキストを入力"
+              @click:append="show = !show"
             ></v-text-field>
           </div>
-          <!-- <div class="login-error">
-          </div> -->
           <v-card-actions class="justify-center">
             <v-btn class="loginbutton rounded-pill light-blue darken-1" @click="login">ログイン</v-btn>
           </v-card-actions>
@@ -49,9 +47,9 @@
 </template>
 
 <script lang="ts">
-import { ref } from 'vue';
+import { defineComponent, ref } from 'vue';
 
-export default {
+export default defineComponent({
   name: 'LoginPage',
   setup() {
     const valid = ref(false);
@@ -75,7 +73,8 @@ export default {
       show,
     };
   },
-};
+})
+
 </script>
 <style lang="scss" scoped>
 .login-wrap{

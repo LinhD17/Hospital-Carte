@@ -2,7 +2,12 @@
   <v-app style="background-color: #e8f5fb">
     <Nuxt />
     <no-ssr>
-        <v-snackbar absolute top right v-model="state.token" color="#C83232">
+        <v-snackbar 
+            v-model="state.token" 
+            absolute 
+            top 
+            right 
+            color="#C83232">
             ログインの有効期限が切れました。
         </v-snackbar>
     </no-ssr>

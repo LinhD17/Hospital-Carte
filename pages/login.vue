@@ -5,13 +5,14 @@
 </template>
 
 <script lang="ts">
-import Login from '~/components/pages/login/login.vue';
+import { defineComponent } from '@nuxtjs/composition-api'
+import Login from '~/components/pages/login/login.vue'
 
-export default {
+export default defineComponent({
    components: { 
     Login 
   }
-}
+})
 </script>
 
 <style lang="scss" scoped>

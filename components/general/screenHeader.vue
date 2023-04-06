@@ -6,6 +6,7 @@
         </i>
         <h2 class="title">{{ pageTitle }}</h2>
     </div>
+    <slot />
   </div>
 </template>
 

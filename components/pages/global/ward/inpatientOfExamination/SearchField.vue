@@ -54,8 +54,8 @@
                 {{ searchActive ? 'ー閉じる' : '詳細検索' }} 
                 </v-btn>
             </div>
-            <v-expand-transition class="sub-condition">
-                <v-form v-if="searchActive">
+            <v-expand-transition>
+                <v-form v-if="searchActive" class="sub-condition">
                     <!-- row 2 -->
                     <div v-show="rowsExpanded" class="patient-basic-info d-flex mt-2">
                         <!-- patient_no -->
@@ -384,13 +384,12 @@ export default defineComponent({
     .search-condition {
     display: flex;
     justify-content: space-between;
-    height: fit-content !important;
+    //height: fit-content !important;
     // background-color: pink;
     }  
     .sub-condition {
-        // margin-bottom: 50px;
+        min-height: 172px;
     }
-
 }
 p.txt-label{
         color: #333333;
