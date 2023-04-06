@@ -376,7 +376,6 @@ export default defineComponent({
   },
 })
 </script>
-
 <style lang="scss" scoped>
 .search-fields {
     margin: 0 14px;
@@ -390,7 +389,6 @@ export default defineComponent({
     .sub-condition {
         // margin-bottom: 50px;
     }
-
 }
 p.txt-label{
         color: #333333;
