@@ -88,12 +88,11 @@
                             <img src="@/assets/icons/important_triangle.svg" />
                             <span>同姓</span>
                         </div>
+                        <span style="margin: 0">
+                            {{ item.patient_info.birthday }}
+                            ({{ moment().diff(item.patient_info.birthday, 'years', false) }}) 
+                        </span>
                     </div>
-                    <span style="margin: 0">
-                        {{ item.patient_info.patient_birthday }}
-                        ({{ moment().diff(item.patient_info.patient_birthday, 'years', false) }}) 
-                    </span>
-                    
                 </div>
             </template>
             <!-- mainDoctor -->
@@ -190,7 +189,7 @@ setup() {
                 patient_name: "患者 太郎",
                 patient_name_katakana: "カンジャ タロウ",
                 patient_gender: 1,
-                patient_birthday: "1996年07月17日",
+                birthday: "1996/07/17",
                 is_name_duplicated: true,
             },
             mainDoctor: '医師　太郎',
@@ -200,7 +199,7 @@ setup() {
             patient_info: {
                 patient_name: "患者 太郎",
                 patient_name_katakana: "カンジャ タロウ",
-                patient_birthday: "1996年07月17日",
+                birthday: "1996/07/17",
                 is_name_duplicated: true,
             },
             mainDoctor: '医師　太郎',
@@ -211,7 +210,7 @@ setup() {
                 patient_name: "患者 太郎",
                 patient_name_katakana: "カンジャ タロウ",
                 patient_gender: 1,
-                patient_birthday: "1996年07月17日",
+                birthday: "1996/07/17",
                 is_name_duplicated: true,
             },
             mainDoctor: '医師　太郎',
@@ -221,7 +220,7 @@ setup() {
             patient_info: {
                 patient_name: "患者 太郎",
                 patient_name_katakana: "カンジャ タロウ",
-                patient_birthday: "1996年07月17日",
+                birthday: "1996/07/17",
                 is_name_duplicated: true,
             },
             mainDoctor: '医師　太郎',

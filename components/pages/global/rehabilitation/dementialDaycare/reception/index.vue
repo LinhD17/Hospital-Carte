@@ -13,7 +13,7 @@ import ReceptionTable from '@/components/pages/global/rehabilitation/dementialDa
 export default defineComponent({
     components: {
         ReceptionSearch,
-        ReceptionTable
+        ReceptionTable,
     }, 
     setup() {
         return {}
@@ -24,6 +24,5 @@ export default defineComponent({
 <style lang="scss" scoped>
 .reception-style {
     margin: 10px;
-    background-color: white;
 }
 </style>

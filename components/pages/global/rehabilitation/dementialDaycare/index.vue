@@ -48,7 +48,8 @@ export default defineComponent({
         Description,
     },
     setup() {
-        const appTab = ref('description')
+        // const appTab = ref('description')
+        const appTab = ref('reception')
         // const appTabClick = (appType: string) => {
         //     appTab.value = appType
         // }
