@@ -5,12 +5,15 @@
   </template>
   
   <script lang="ts">
-  import  ScreenContent from '~/components/pages/global/home/wellKnownTask/index.vue';
-  export default {
-     components: { 
+  import { defineComponent } from '@nuxtjs/composition-api'
+import  ScreenContent from '~/components/pages/global/home/wellKnownTask/index.vue';
+  export default defineComponent({
+    // layout: 'global',
+    // middleware: ['guard/auth'], // y nghia la gi?? tao sao can them o day 
+    components: { 
         ScreenContent,
     }
-  }
+  })
   </script>
   
   <style lang="scss" scoped>

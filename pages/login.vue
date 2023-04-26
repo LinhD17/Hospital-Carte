@@ -10,6 +10,8 @@ import { defineComponent } from '@nuxtjs/composition-api'
 import Login from '~/components/pages/login/Login.vue'
 
 export default defineComponent({
+    //mặc định khi bắt đầu vào page sẽ luôn luôn là login
+    layout: 'login',
     components: {
         Login
     }

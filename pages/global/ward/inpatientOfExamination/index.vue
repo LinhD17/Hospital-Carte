@@ -5,11 +5,12 @@
   </template>
   
   <script lang="ts">
-import { defineComponent } from "vue";
+import { defineComponent } from '@nuxtjs/composition-api'
 import InpatientOfExamination from '~/components/pages/global/ward/inpatientOfExamination/index.vue'
 
   export default defineComponent({
-     components: { 
+    // layout: 'global',
+    components: { 
         InpatientOfExamination,
     }
   })

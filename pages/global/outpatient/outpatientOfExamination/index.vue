@@ -5,12 +5,14 @@
 </template>
 
 <script lang="ts">
+import { defineComponent } from '@nuxtjs/composition-api'
 import OutpatientOfExaminationIndex from '~/components/pages/global/outpatientOfExamination/outpatientOfExaminationIndex.vue'
-export default {
-   components: { 
+export default defineComponent({
+  // layout: 'global',
+  components: { 
     OutpatientOfExaminationIndex 
   }
-}
+})
 </script>
 
 <style lang="scss" scoped>

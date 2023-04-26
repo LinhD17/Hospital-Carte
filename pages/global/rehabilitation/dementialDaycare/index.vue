@@ -8,8 +8,9 @@
 import { defineComponent } from '@nuxtjs/composition-api'
 import DementialDaycare from '@/components/pages/global/rehabilitation/dementialDaycare/index.vue'
   export default defineComponent({
-     components: { 
-        DementialDaycare,
+    // layout: 'global',
+    components: { 
+      DementialDaycare,
     }
   })
   </script>
