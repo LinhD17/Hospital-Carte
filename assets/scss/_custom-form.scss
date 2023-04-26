@@ -1,0 +1,178 @@
+// ラジオボタン
+.v-radio {
+  &.is-danger {
+    .v-label,
+    .v-icon {
+      color: map-get($danger, 'base') !important;
+    }
+  }
+  .v-label {
+    color: #333333;
+  }
+  &--is-disabled {
+    .v-label {
+      color: #aaa !important;
+    }
+  }
+
+  ::v-deep {
+    .v-input--selection-controls__input {
+      margin-right: 3px;
+    }
+    .v-input--selection-controls__ripple {
+      width: 20px;
+      height: 19px;
+      left: 2px;
+      top: calc(50% - 10px) !important;
+      margin: 0;
+    }
+  }
+}
+// チェックボックス
+.v-input--checkbox {
+  &.is-danger {
+    .v-label,
+    .v-icon {
+      color: map-get($danger, 'base') !important;
+    }
+  }
+  .v-label {
+    color: #333333;
+    &--is-disabled {
+      color: #aaa !important;
+    }
+  }
+
+  ::v-deep {
+    .v-input--selection-controls__input {
+      margin-right: 1px !important;
+    }
+    .mdi-checkbox-blank-outline {
+      color: #c8c8c8;
+    }
+    .v-input--selection-controls__ripple {
+      width: 16px !important;
+      height: 16px !important;
+      top: -3px !important;
+      left: -3px !important;
+    }
+  }
+
+}
+
+
+// インプット
+.v-text-field {
+  margin-top: 0;
+  padding-top: 0;
+
+  // FOCUS 打消し
+  &.v-input--is-focused {
+    .v-input__slot {
+      &::after {
+        border: none !important;
+        transform: scale(0) !important;
+      }
+    }
+  }
+
+  .v-input__slot {
+    padding: 0 10px;
+    background-color: $colorWhite;
+    border: 1px solid #c7ccce !important;
+    border-radius: 4px;
+    &::before {
+      border: none !important;
+    }
+  }
+}
+//date-picker
+::v-deep .v-date-picker-table {
+  //サイズ変更
+  height: auto;
+
+  //
+  .accent {
+    background-color: #1ea0dc !important;
+    border-color: #1ea0dc !important;
+  }
+  //
+  .accent--text {
+    color: #1ea0dc !important;
+    caret-color: #1ea0dc !important;
+  }
+}
+
+.checkbox {
+  position: relative;
+  margin-bottom: 0;
+  font-weight: normal !important;
+  cursor: pointer;
+  user-select: none;
+  color: #333333;
+
+  &:last-child {
+    margin-right: 0;
+  }
+
+  .check {
+    position: absolute;
+    width: 16px;
+    height: 16px;
+    border: 1px solid #b9bbbd;
+    left: 0;
+    top: 0;
+    z-index: 1;
+    background-color: #ffffff;
+
+    &::before {
+      content: '';
+      position: absolute;
+      width: 12px;
+      height: 8px;
+      top: 20%;
+      left: 0;
+      border-left: 2px solid #1EA0DC;
+      border-bottom: 2px solid #1EA0DC;
+      transform: translateY(-50%) rotate(-45deg);
+      opacity: 0;
+      background-color: transparent;
+    }
+  }
+
+  input[type=checkbox] {
+    position: static;
+    z-index: 2;
+    opacity: 0;
+    width: 16px;
+    height: 16px;
+    display: none;
+
+    &:checked ~ .check {
+      border: none;
+      background-color: transparent;
+
+      &::before {
+        opacity: 1;
+      }
+    }
+  }
+}
+
+//
+.mdi-calendar {
+  margin-top: 4px;
+  &::before {
+    color: #1EA0DC;
+  }
+}
+
+.c-textarea {
+  .v-input__slot {
+    padding: 0;
+
+    textarea {
+      padding: 4px 7px;
+    }
+  }
+}

@@ -1,0 +1,35 @@
+<template>
+    <v-sheet class="root task-root">
+      <div class="root-header mb-2">
+          <h1 class="title">業務タスク</h1>
+          <task-search  class="mt-2"/>
+      </div>
+      <task-table /> 
+    </v-sheet>
+  </template>
+  
+  <script lang="ts">
+  import { defineComponent } from '@nuxtjs/composition-api';
+  import TaskTable from './TaskTable.vue';
+  import TaskSearch from './TaskSearch.vue';
+
+  export default defineComponent({
+    components: {
+      TaskSearch,
+      TaskTable 
+    },
+    setup() {
+    }
+
+  })
+  </script>
+  
+  <style lang="scss" scoped>
+  .root {
+      padding: 5px 10px;
+  }
+  .title {
+    font-size: 20px !important;
+    font-weight: bold;
+  }
+  </style>

@@ -1,0 +1,35 @@
+export enum MOMENT_FORMAT {
+    FORMAT_DATE = 'YYYY-MM-DD',
+    FORMAT_DATE_2 = 'YYYY/MM/DD',
+    FORMAT_DATE_3 = 'YYYYMMDD',
+    FORMAT_DATE_HOUR = 'YYYY-MM-DD HH:mm',
+    FORMAT_DATE_HOUR_2 = 'YYYY/MM/DD HH:mm',
+    FORMAT_DATE_TIME = 'YYYY-MM-DD HH:mm:ss',
+    FORMAT_DATE_TIME_2 = 'YYYY/MM/DD HH:mm:ss',
+    FORMAT_MONTH_DAY = 'MM/DD',
+    FORMAT_DATE_HOUR_3 = 'YYYY/MM/DD (ddd) HH:mm',
+    FORMAT_DATE_JP = 'YYYY年MM月DD日',
+    FORMAT_YEAR = 'YYYY',
+    FORMAT_YEAR_JP = 'YYYY年',
+    FORMAT_MONTH_JP = 'MM月',
+    FORMAT_DAY_JP = 'DD日',
+    FORMAT_DATE_TIME_JP = 'YYYY年MM月DD日 HH:mm',
+    FORMAT_DATE_TIME_JP2 = 'YYYY年MM月DD日 HH:mm:ss',
+    FORMAT_DATE_TIME_WEEK_JP = 'YYYY年MM月DD日(ddd)',
+    FORMAT_MONTH = 'YYYYMM',
+    FORMAT_MONTH_2 = 'YYYY-MM',
+    FORMAT_YEAR_MONTH_JP = 'YYYY年MM月',
+    FORMAT_HOUR_MINUTE = 'HH:mm',
+}
+export enum MEAL_KIND {
+
+}
+export enum MOVEMENT_KIND {
+
+}
+export enum SUBSET_CLASS_TYPE {
+
+}
+export enum ARTICLE_TYPE {
+
+}
