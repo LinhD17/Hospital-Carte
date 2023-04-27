@@ -13,20 +13,19 @@
 </template>
 
 <script lang = "ts">
-import { defineComponent } from '@nuxtjs/composition-api'
+import { defineComponent, provide } from '@nuxtjs/composition-api'
 import MainHeader from '~/components/pages/header/MainHeader.vue'
 import MainMenu from '~/components/pages/global/globalMenu/MainMenu.vue'
+import { useAccountsHeader, UserAccountsHeadersStateKey } from '~/hooks/header/useAccountsHeader'
 
 export default defineComponent({
   components: {
     MainHeader,
     MainMenu
   },
-  name: 
-    'DefaultLayout',
-  data () {
-    return {
-    }
+  setup () {
+    provide(UserAccountsHeadersStateKey, useAccountsHeader())
+    return {}
   }
 })
 </script>

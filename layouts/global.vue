@@ -33,9 +33,9 @@
 
       //quan sat
       watch(
-        //nếu đã login thì đến các trang global 
+        //lấy giá trị của isLoggedIn và đưa vào ()
         () => isLoggedIn.value,
-        //nếu chưa được login thì đưa lại về trang login 
+        //nếu ko có gía trị nào (!isLoggedIn.value) => chưa được login =>  đưa lại về trang login cho người dùng đăng nhập vào 
         () => {
           if (!isLoggedIn.value) {
             router.push('/login')

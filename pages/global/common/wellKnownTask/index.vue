@@ -1,17 +1,17 @@
 <template>
     <div class="screen">
-      <ScreenContent />
+      <well-known-task />
     </div>
   </template>
   
   <script lang="ts">
   import { defineComponent } from '@nuxtjs/composition-api'
-import  ScreenContent from '~/components/pages/global/home/wellKnownTask/index.vue';
+import  WellKnownTask from '~/components/pages/global/home/wellKnownTask/index.vue';
   export default defineComponent({
     // layout: 'global',
     // middleware: ['guard/auth'], // y nghia la gi?? tao sao can them o day 
     components: { 
-        ScreenContent,
+        WellKnownTask,
     }
   })
   </script>

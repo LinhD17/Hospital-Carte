@@ -29,7 +29,7 @@
           if (route.value.query.code === '401') {
               state.token = true
           }
-          return {state}
+          return { state }
       }
   })
   </script>
