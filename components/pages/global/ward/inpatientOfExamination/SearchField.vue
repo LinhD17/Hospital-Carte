@@ -1,3 +1,6 @@
+<script setup lang="ts">
+
+</script>
 
 <template>
     <v-form ref="form">
@@ -6,7 +9,7 @@
                 <!-- nếu không nhấn vào nút ー閉じる sẽ hiện lên full search field  -->
             <div 
                 class="search-condition d-flex"
-                style="justify-content: space-between; height: 37px;"
+                style="justify-content: space-between; height: 70px;"
             >
                 <div class="mt-1" style="width:210">
                     <v-select
@@ -212,9 +215,10 @@
                             <p class="txt-label">表示日</p>
                             <div class="d-flex">
                                 <div style="width: 150px">
-                                    <date-picker 
+                                    <datepicker
                                         placeholder="表示日"
-                                    />
+                                    >
+                                    </datepicker>
                                 </div>
                                 <v-checkbox 
                                     dense
@@ -349,33 +353,6 @@
     </v-form>
 </template>
 
-<script>
-import { defineComponent} from '@nuxtjs/composition-api'
-import DatePicker from '~/components/general/form/DatePicker.vue'
-
-export default defineComponent({
-  components: {
-    DatePicker,
-  },
-  data() {
-    return {
-      searchActive: false,
-      rowsExpanded: false,
-    }
-  },
-  methods: {
-    toggleSearchActive() {
-      this.searchActive = !this.searchActive
-      if (!this.searchActive) {
-        this.rowsExpanded = false
-      }
-    },
-    expandRows() {
-      this.rowsExpanded = true
-    },
-  },
-})
-</script>
 <style lang="scss" scoped>
 .search-fields {
     margin: 0 14px;

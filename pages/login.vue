@@ -1,24 +1,19 @@
+<script setup lang="ts">
+  definePageMeta({
+    layout: "login"
+  })
+</script>
+
 <template>
-    <div class="page-login">
-        <login/>
-    </div>
+  <div class="page-login">
+      <PagesLogin />
+  </div>
 </template>
 
-<script lang="ts">
-import { defineComponent } from '@nuxtjs/composition-api'
-import Login from '~/components/pages/login/Login.vue'
-
-export default defineComponent({
-    layout: 'login',
-    components: {
-        Login
-    }
-})
-</script>
 <style lang="scss" scoped>
 .page-login {
-  padding-bottom: 184px;
-  text-align: center !important;
+  // padding-bottom: 184px;
+  // text-align: center !important;
   background-color: #e8f5fb;
 }
 </style>

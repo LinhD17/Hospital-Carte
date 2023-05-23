@@ -1,11 +1,10 @@
-import { reactive, ref, useStore, useRouter } from '@nuxtjs/composition-api'
 import { apiBase } from '~/plugins/apiBase'
 
 //error message's file import 
-import { ErrorMessages  } from '~/hooks/errorResorce/errorMessages'
+import { ErrorMessages } from '../ErrorResorce/errorMessage'
 import { HK_VAR } from '~/enum/hkVariable.enum'
-import { AgentItem } from '@/types/global.type'
-import moment from "moment"
+import { AgentItem } from '~/types/global.type'
+import moment from 'moment'
 
 export type AccountInfo = {
     account_uuid: string
@@ -56,74 +55,66 @@ export type ErrorInfo = {
     errors: any
 }
 
-export const useLogin = () => {
-    const router = useRouter() 
-    const store = useStore() 
-    const loginResponse = ref<Login>()
-    const errorInfo = reactive<string[]>([''])
-    const loading = ref<boolean>(false)
+// export const useLogin = () => {
+//     const router = useRouter()
+//     const store = useStore() // tai sao van bao loi o day
+//     const loginResponse = ref<Login>()
+//     const errorInfo = reactive<string[]>([''])
+//     const loading = ref<boolean>(false)
 
-    const fetchLogin  = async (loginInfo: LoginInfo) => {
-        //エラー情報リセット
-        errorInfo.splice(0)
-        
-        const url = '/login'
-        const request = {
-            login_id: loginInfo.login_id,
-            login_password: loginInfo.login_password,
-        }
+//     const fetchLogin =async (loginInfo: LoginInfo) => {
+//         //エラー情報リセット
+//         errorInfo.splice(0)
 
-        const now = moment().unix()
+//         const url = '/login'
+//         const request = {
+//             login_id: loginInfo.login_id,
+//             login_password: loginInfo.login_password,
+//         }
+//         const now = moment().unix()
 
-        //use apiBase
-        try {
-            loading.value = true
-            const response = await apiBase.post<Login>(url, request)
-            //success
-            if (response.status === 200){
-                loginResponse.value = response.data
-                localStorage.setItem('accessToken', loginResponse.value.access_token)
+//         //use apiBase 
+//         try {
+//             loading.value = true 
+//             const response = await apiBase.post<Login>(url, request)
+//             //success
+//             if (response.status === 200){
+//                 loginResponse.value = response.data
+//                 localStorage.setItem('accessToken', loginResponse.value.access_token)
 
-                store.commit('auth/setLoginState', true)
-                store.commit('auth/setPasswordState', true)
-                store.commit('auth/setAgentDoctorInfoState', {
-                    account_uuid: '',
-                    staff_name: '',
-                    hospital_department_name: '',
-                    department_name: '',
-                    agent_authority: 0
-                }) 
+//                 store.commit('auth/setLoginState', true)
+//                 store.commit('auth/setPasswordState', true)
+//                 store.commit('auth/setAgentDoctorInfoState', {
+//                     account_uuid: '',
+//                     staff_name: '',
+//                     hospital_department_name: '',
+//                     department_name: '',
+//                     agent_authority: 0
+//                 }) 
 
-                if ( loginResponse.value.password_expired_at &&  loginResponse.value.password_expired_at < now ) {
-                    // password expired (パスワード有効期限切れ)
-                    store.commit('auth/setPasswordState', false)
-                    router.push('/passwordUpdate')
+//                 if ( loginResponse.value.password_expired_at &&  loginResponse.value.password_expired_at < now ) {
+//                     // password expired (パスワード有効期限切れ)
+//                     store.commit('auth/setPasswordState', false)
+//                     router.push('/passwordUpdate')
 
-                } else if (loginResponse.value.is_password_warning) {
-                    // password expiration warning (パスワード有効期限警告)
-                    router.push('/passwordUpdate')
-                } else if (loginResponse.value.is_initial_password) {
-                    // initial passwor (初期パスワード)
-                    router.push('/passwordUpdate')
-                } else {
-                    router.push('/global/common/wellKnownAndTask')
-                }
-            } else if (response?.data) {
-                if ( Object(response.data).filter(
-                    (error: any) => error.code === 'E1001' || error.code === 'E2001'
-                ).length >= 1) {
-                    errorInfo.push(ErrorMessages.idOrPasswordIncorrectErrorMessage)
-                }
-            }
-        } finally {
-            loading.value = false
-        }
-    }
-
-    return {
-        loginResponse,
-        errorInfo,
-        loading,
-        fetchLogin,
-    }
-}
+//                 } else if (loginResponse.value.is_password_warning) {
+//                     // password expiration warning (パスワード有効期限警告)
+//                     router.push('/passwordUpdate')
+//                 } else if (loginResponse.value.is_initial_password) {
+//                     // initial passwor (初期パスワード)
+//                     router.push('/passwordUpdate')
+//                 } else {
+//                     router.push('/global/common/wellKnownAndTask')
+//                 }
+//             } else if (response?.data) {
+//                 if ( Object(response.data).filter(
+//                     (error: any) => error.code === 'E1001' || error.code === 'E2001'
+//                 ).length >= 1) {
+//                     errorInfo.push(ErrorMessages.idOrPasswordIncorrectErrorMessage)
+//                 }
+//             }
+//         }finally {
+//             loading.value = false
+//         }
+//     }
+// }

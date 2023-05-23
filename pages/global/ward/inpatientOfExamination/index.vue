@@ -1,25 +1,21 @@
-<template>
-    <div class="screen">
-        <InpatientOfExamination />
-    </div>
-  </template>
-  
-  <script lang="ts">
-import { defineComponent } from '@nuxtjs/composition-api'
-import InpatientOfExamination from '~/components/pages/global/ward/inpatientOfExamination/index.vue'
+<script setup lang="ts">
+// definePageMeta({
+//     layout: 'global',
+// });
+</script>
 
-  export default defineComponent({
-    // layout: 'global',
-    components: { 
-        InpatientOfExamination,
-    }
-  })
-  </script>
+<template>
+    <NuxtLayout name="global">
+        <div class="screen">
+            <PagesGlobalWardInpatientOfExamination /> 
+        </div>
+    </NuxtLayout>
+</template>
   
-  <style lang="scss" scoped>
+<style lang="scss" scoped>
   .screen {
     width: 100%;
     height: 100%;
     background-color: #f0f0f0;
   }
-  </style>
+</style>

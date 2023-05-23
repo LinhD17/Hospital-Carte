@@ -1,0 +1,101 @@
+//デフォルトのフォントサイズ
+$font-size-root: 12px;
+$snackbar-absolute-z-index: 999;
+
+$body-font-family: 'メイリオ', Lucida Grande, Arial, Helvetica, Verdana,
+  'ヒラギノ角ゴ Pro W3', 'MS Pゴシック', sans-serif;
+$headings: (
+  (
+    'h1': (
+      'size': 2.2rem,
+    ),
+    'h2': (
+      'size': 1.4rem,
+    ),
+  )
+);
+$line-height-root: 1.4;
+//背景色
+$material-light: (
+  (
+    'background': #f0f3f4,
+  )
+);
+
+body {
+  overflow: hidden;
+}
+
+// //スクロールバー
+//::-webkit-scrollbar {
+//  display: none;
+//}
+::-webkit-scrollbar {
+  width: 12px;
+}
+::-webkit-scrollbar-thumb {
+  background-color: #ccc;
+  border-radius: 12px;
+}
+::-webkit-scrollbar-track {
+  background-color: #ddd;
+}
+
+// タブ切り替えでsticky が効かなくなるので対処
+.v-window {
+  overflow: visible;
+}
+
+// エラー文言
+.error-text {
+  margin-top: 0.5em;
+  color: #c83232;
+}
+.v-application a {
+  color: #1ea0dc;
+}
+::-webkit-scrollbar-track {
+    background: inherit;
+}
+::-webkit-scrollbar-thumb {
+    background: rgba(0,0,0,.15);
+    border-radius: 10px;
+}
+.mdi-menu-down {
+  caret-color: #1ea0dc !important;
+  color: #1ea0dc !important;
+}
+.v-input__append-inner {
+  margin-right: -10px;
+  padding-left: 0 !important;
+}
+.view-table .v-data-table > .v-data-table__wrapper > table > tbody > tr {
+  text-align: center !important;
+}
+.v-tab {
+  min-width: 45px !important;
+  padding: 0 4px !important;
+  font-size: 12.5px;
+  border-bottom: none;
+  background-color: #f0f0f0;
+  &--active {
+//    background-color: #fff !important;
+    color: #000000 !important;
+  }
+}
+.v-tabs-bar {
+  position: sticky;
+  top: 0;
+  z-index: 3;
+  .v-tab {
+    border-right: solid 1px #c7ccce;
+  }
+}
+.v-tabs-slider-wrapper {
+  display: none;
+}
+
+.v-list-item--dense,
+.v-list--dense .v-list-item {
+  min-height: 20px !important;
+}

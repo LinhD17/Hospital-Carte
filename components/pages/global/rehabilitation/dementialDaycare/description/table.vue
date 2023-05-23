@@ -1,3 +1,80 @@
+<script setup lang="ts">
+    const checkVerifiedAllFlg = ref(false)
+
+    type HeaderCell = {
+        text: string
+        value: string
+        width?: string| number 
+        sortable: boolean
+    };
+    const header: HeaderCell[] = [
+        { text: '患者選択', value: 'patient_select', sortable: true, width: 80},
+        { text: '患者番号', value: 'patient_no', sortable: true, width: 80 },
+        { text: '患者情報', value: 'patient_info', sortable: true, width: 250 },
+        { text: '主病医', value: 'mainDoctor', sortable: true, width: 80 },
+        { text: '評価', value: 'evaluation', sortable: true, width: 150 },
+        { text: '所見', value: 'findings', sortable: true, width: 250},
+        { text: '評価２', value: 'evaluationInfo', sortable: true, width: 250 },
+        { text: '連携', value: 'alignment', sortable: true, width:150 },
+    ]
+
+    const dummyItems = [
+        {
+            patient_no: "12345",
+            patient_info: {
+                patient_name: "患者 太郎",
+                patient_name_katakana: "カンジャ タロウ",
+                patient_gender: 1,
+                birthday: "1996/07/17",
+                is_name_duplicated: true,
+            },
+            mainDoctor: '医師　太郎',
+        },
+        {
+            patient_no: "12345",
+            patient_info: {
+                patient_name: "患者 太郎",
+                patient_name_katakana: "カンジャ タロウ",
+                birthday: "1996/07/17",
+                is_name_duplicated: true,
+            },
+            mainDoctor: '医師　太郎',
+        },
+        {
+            patient_no: "12345",
+            patient_info: {
+                patient_name: "患者 太郎",
+                patient_name_katakana: "カンジャ タロウ",
+                patient_gender: 1,
+                birthday: "1996/07/17",
+                is_name_duplicated: true,
+            },
+            mainDoctor: '医師　太郎',
+        },
+        {
+            patient_no: "12345",
+            patient_info: {
+                patient_name: "患者 太郎",
+                patient_name_katakana: "カンジャ タロウ",
+                birthday: "1996/07/17",
+                is_name_duplicated: true,
+            },
+            mainDoctor: '医師　太郎',
+        },
+        
+    ]
+
+    const page = ref(1)
+
+    const pageCount = ref(0)
+
+    const totalCount = dummyItems.length
+
+    const checkVerifiedAll = () => {
+        checkVerifiedAllFlg.value = !checkVerifiedAllFlg.value
+    }
+</script>
+
 <template>
     <div class="table-parent">
         <v-data-table
@@ -163,94 +240,7 @@
     </div>
   </template>
   
-<script lang="ts">
-import { defineComponent, ref } from '@nuxtjs/composition-api'
-import moment from 'moment'
-export default defineComponent({
-components: { },
-setup() {
-    const checkVerifiedAllFlg = ref(false)
 
-    const header = [
-        { text: '患者選択', value: 'patient_select', sortable: true, width: 80},
-        { text: '患者番号', value: 'patient_no', sortable: true, width: 80 },
-        { text: '患者情報', value: 'patient_info', sortable: true, width: 250 },
-        { text: '主病医', value: 'mainDoctor', sortable: true, width: 80 },
-        { text: '評価', value: 'evaluation', sortable: true, width: 150 },
-        { text: '所見', value: 'findings', sortable: true, width: 250},
-        { text: '評価２', value: 'evaluationInfo', sortable: true, width: 250 },
-        { text: '連携', value: 'alignment', sortable: true, width:150 },
-    ]
-
-    const dummyItems = [
-        {
-            patient_no: "12345",
-            patient_info: {
-                patient_name: "患者 太郎",
-                patient_name_katakana: "カンジャ タロウ",
-                patient_gender: 1,
-                birthday: "1996/07/17",
-                is_name_duplicated: true,
-            },
-            mainDoctor: '医師　太郎',
-        },
-        {
-            patient_no: "12345",
-            patient_info: {
-                patient_name: "患者 太郎",
-                patient_name_katakana: "カンジャ タロウ",
-                birthday: "1996/07/17",
-                is_name_duplicated: true,
-            },
-            mainDoctor: '医師　太郎',
-        },
-        {
-            patient_no: "12345",
-            patient_info: {
-                patient_name: "患者 太郎",
-                patient_name_katakana: "カンジャ タロウ",
-                patient_gender: 1,
-                birthday: "1996/07/17",
-                is_name_duplicated: true,
-            },
-            mainDoctor: '医師　太郎',
-        },
-        {
-            patient_no: "12345",
-            patient_info: {
-                patient_name: "患者 太郎",
-                patient_name_katakana: "カンジャ タロウ",
-                birthday: "1996/07/17",
-                is_name_duplicated: true,
-            },
-            mainDoctor: '医師　太郎',
-        },
-        
-    ]
-
-    const page = ref(1)
-
-    const pageCount = ref(0)
-
-    const totalCount = dummyItems.length
-
-    const checkVerifiedAll = () => {
-        checkVerifiedAllFlg.value = !checkVerifiedAllFlg.value
-    }
-
-    return { 
-        header, 
-        dummyItems,
-        moment,
-        page, 
-        pageCount, 
-        totalCount,
-        checkVerifiedAllFlg,
-        checkVerifiedAll,
-    }
-},
-})
-</script>
 
 <style lang="scss" scoped>
 .table-parent {

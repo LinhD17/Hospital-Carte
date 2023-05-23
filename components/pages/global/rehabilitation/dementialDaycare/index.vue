@@ -1,9 +1,20 @@
+<script setup lang="ts">
+    import imageUrl from '@/assets/icon/schedule.svg'
+    //const appTab = ref('description')
+    const appTab = ref('reception')
+    // const appTabClick = (appType: string) => {
+    //     appTab.value = appType
+    // }
+</script>
+
 <template>
-    <global-base-layout
+    <PagesGlobalBaseLayout
         page-title="デイケア所見一覧" 
-        title-icon="rehabilitation.svg"
         class="rehabiliation-content"
     >
+        <template #iconImg>
+            <img :src="imageUrl"/> 
+        </template>
         <template #header>
             <div class="switch-select">
                 <v-btn          
@@ -29,38 +40,13 @@
             </div>
         </template>
         <template v-if="appTab === 'reception'">
-            <reception />
+            <PagesGlobalRehabilitationDementialDaycareReception />
         </template>
         <template v-if="appTab === 'description'">
-            <description />
+            <PagesGlobalRehabilitationDementialDaycareDescription />
         </template>
-    </global-base-layout>
+    </PagesGlobalBaseLayout>
 </template>
-
-<script lang="ts">
-import { defineComponent, ref } from '@nuxtjs/composition-api'
-import globalBaseLayout from '~/components/pages/global/general/globalBaseLayout.vue'
-import Reception from '~/components/pages/global/rehabilitation/dementialDaycare/reception/index.vue'
-import Description from '~/components/pages/global/rehabilitation/dementialDaycare/description/index.vue'
-export default defineComponent({
-    components: { 
-        globalBaseLayout,
-        Reception,
-        Description,
-    },
-    setup() {
-        // const appTab = ref('description')
-        const appTab = ref('reception')
-        // const appTabClick = (appType: string) => {
-        //     appTab.value = appType
-        // }
-        return {
-            appTab,
-            // appTabClick,
-        }
-    },
-})
-</script>
 
 <style lang="scss" scoped>
 .rehabiliation-content {

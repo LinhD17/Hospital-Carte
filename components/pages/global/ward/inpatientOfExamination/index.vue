@@ -1,9 +1,17 @@
+  
+<script setup lang="ts">
+import imageUrl from '@/assets/icon/ward.svg'
+</script>
+
 <template>
     <div class="well-known">
-        <global-base-layout
+        <PagesGlobalBaseLayout 
             page-title="入院患者一覧" 
-            title-icon="ward.svg"
         >
+            <template #iconImg>
+                <img :src="imageUrl"/> 
+            </template>
+            
             <template #header>
                 <v-btn 
                     color="teal darken-2" 
@@ -12,28 +20,12 @@
                     病棟マップ
                 </v-btn>
             </template>
-            <search-field/>
-            <inpatient-table />
-        </global-base-layout>
+            <PagesGlobalWardInpatientOfExaminationSearchField /> 
+            <PagesGlobalWardInpatientOfExaminationTableABC />
+            <!-- <PagesGlobalWardInpatientOfExaminationTable /> -->
+        </PagesGlobalBaseLayout>
     </div>
 </template>
-  
-<script lang="ts">
-import { defineComponent } from '@nuxtjs/composition-api'
-import SearchField from './SearchField.vue'
-import InpatientTable from './InpatientTable.vue'
-import GlobalBaseLayout from '~/components/pages/global/general/globalBaseLayout.vue'
-
-export default defineComponent({
-    components: { 
-        GlobalBaseLayout,
-        SearchField,
-        InpatientTable,
-    },
-    setup() {
-    },
-})
-</script>
   
 <style lang="scss" scoped>
 .well-known {

@@ -1,33 +1,34 @@
+<script setup>
+  const props = defineProps({
+    // titleIcon: {type : String},
+    pageTitle: {type : String},
+  })
+    // interface Props {
+    //     pageTitle: string,
+    //     titleIcon: string,
+    // }
+
+    // const Props = withDefaults(defineProps<Props>(), {
+    //     pageTitle: "",
+    //     titleIcon: "",
+    // });
+</script>
+
 <template>
     <div class="global-deader">
-      <screen-header 
-          :page-title="pageTitle"
-          :title-icon="titleIcon"
+      <GeneralGlobalHeader 
+        :page-title="pageTitle"
       >
+        <template #icon >
+          <slot name="iconImg" />
+        </template>
           <slot name="header"></slot>
-      </screen-header>
+      </GeneralGlobalHeader>
       <div class="screen-contents-card">
           <slot></slot>
       </div>
     </div>
-  </template>
-  
-  <script lang="ts">
-  import { defineComponent } from '@nuxtjs/composition-api'
-  import ScreenHeader from '~/components/general/globalHeader.vue'
-  export default defineComponent({
-    components: { 
-      ScreenHeader,
-    },
-    props: {
-      pageTitle: String,
-      titleIcon: String,
-    },
-    setup() {
-      return {}
-    },
-  })
-  </script>
+</template>
   
   <style lang="scss" scoped>
   

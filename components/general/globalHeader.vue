@@ -1,53 +1,55 @@
+<script setup>
+//import { ref, watchEffect } from 'vue'
+const props = defineProps({
+  // titleIcon: {type : String},
+  pageTitle: {type : String},
+})
+</script> 
+
 <template>
     <div class="global-title">
       <div class="global-title-heading" style="display:flex">
-          <i class="icon">
-              <img :src="require(`@/assets/icons/${titleIcon}`)" alt="" />
-          </i>
-          <h2 class="title">{{ pageTitle }}</h2>
+
+        <!--Vite/Vue3 "rewuire is not defined" when using image source as props -->
+        <!-- <i class="icon">
+          <img :src="require(`@/assets/icons/${titleIcon}`)" alt="" /> 
+        </i> -->
+
+        <i class="icon">
+          <slot name="icon"/>
+        </i>
+
+        <h2 class="title">{{ pageTitle }}</h2>
       </div>
       <slot />
     </div>
-  </template>
-  
-  <script>
-  import { defineComponent } from '@nuxtjs/composition-api'
-  export default defineComponent({
-    props: {
-      pageTitle: String,
-      titleIcon: String,
-    },
-    setup() {
-      return {}
-    },
-  })
-  </script>
-  
-  <style lang="scss" scoped>
+</template>
+
+<style lang="scss" scoped>
   .global-title {
     display: flex;
     align-items: center;
     justify-content: space-between;
     height: 55px;
-    padding: 20px;
+    padding: 24px;
     background-color: #e5f5f7; 
     border-bottom: 1px solid #009eac;
     width: 100%;
     .global-title-heading {
       display: flex;
-      font-size: 29px;
-      font-weight: normal;
       color: #009eac;
       margin-top: 15px;
+      align-items: center;
   
       .icon {
         width: 30px;
-        margin-right: 2px;
+        margin-bottom: 5px;
       }
       .title {
-        font-size: 21px;
+        font-size: 20px !important;
         font-weight: normal;
         color: #009eac;
+        margin-bottom: 5px;
       }
     }
   }

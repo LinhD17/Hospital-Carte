@@ -1,6 +1,4 @@
-import { readonly, ref } from '@nuxtjs/composition-api'
-import { apiBase } from '~/plugins/apiBase'
-
+import { apiBase } from "~/plugins/apiBase";
 
 
 export type Organization = {

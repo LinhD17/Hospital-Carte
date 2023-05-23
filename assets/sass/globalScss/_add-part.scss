@@ -1,0 +1,52 @@
+// 同名チェック
+.same-name-check {
+  color: map-get($danger, 'base');
+  .same-name-check-icon {
+    position: relative;
+    &::before {
+      content: '';
+      width: 11px;
+      height: 11px;
+      position: absolute;
+      bottom: 0;
+      left: -1.25em;
+      background-image: url('~assets/icon/important_triangle.svg');
+      background-repeat: no-repeat;
+      background-size: contain;
+      transform: translate(0, -50%);
+    }
+  }
+  .same-name-check-icon-quick-search {
+    position: relative;
+    &::before {
+      bottom: -3px;
+    }
+  }
+}
+
+// overdrive
+.v-radio {
+  margin-bottom: 0 !important;
+}
+
+.v-input,
+.v-label {
+  font-size: 12px !important;
+}
+.v-list-item--dense .v-list-item__title,
+.v-list-item--dense .v-list-item__subtitle,
+.v-list--dense .v-list-item .v-list-item__title,
+.v-list--dense .v-list-item .v-list-item__subtitle {
+  font-size: 12px !important;
+}
+
+// カレンダーのFOCUS不要のため削除
+.v-date-picker-table {
+  .v-btn {
+    &:focus {
+      &::before {
+        opacity: 0;
+      }
+    }
+  }
+}

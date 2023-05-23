@@ -1,35 +1,27 @@
 <template>
     <v-app style="background-color: #e8f5fb">
-      <Nuxt />
-      <no-ssr>
-          <v-snackbar 
-              v-model="state.token" 
-              absolute 
-              top 
-              right 
-              color="#C83232">
-              ログインの有効期限が切れました。
-          </v-snackbar>
-      </no-ssr>
+        <Nuxt />
+        <no-ssr>
+            <v-snackbar 
+                v-model="state.token" 
+                absolute 
+                top 
+                right 
+                color="#C83232"
+            >
+                ログインの有効期限が切れました。
+            </v-snackbar>
+        </no-ssr>
     </v-app>
-  </template>
-  
-  <script lang="ts">
-  import { defineComponent, reactive, useRoute } from '@nuxtjs/composition-api'
-  
-  export default defineComponent({
-      components: {},
-      setup() {
-          const state = reactive({
-              token: false,
-          })
-  
-          // assces token kill 
-          const route = useRoute() 
-          if (route.value.query.code === '401') {
-              state.token = true
-          }
-          return { state }
-      }
-  })
-  </script>
+</template>
+
+<script setup lang="ts">
+    const state = reactive({
+        token: false,
+    })
+    // アクセストークン切れ
+    const route = useRoute()
+    if (route.value.query.code === '401') {
+        state.token = true
+    }
+</script>
