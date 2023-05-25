@@ -13,21 +13,21 @@ $btn-font-sizes: (
 //primary
 .v-btn {
   &.primary {
-    border: 1px solid map-get($primary, 'base');
+    border: 1px solid var(--primary, 'base');
   }
   &:hover {
     opacity: 1;
     &.primary {
       background: #fff !important;
-      color: map-get($primary, 'base');
+      color: var(--primary, 'base');
     }
   }
 }
 //teal
 .v-btn {
   &.teal {
-    border: 1px solid map-get($template, 'base') !important;
-    background-color: map-get($template, 'base') !important;
+    border: 1px solid var(--template, 'base') !important;
+    background-color: var(--template, 'base') !important;
     color: #fff;
   }
   &:hover {
@@ -35,7 +35,7 @@ $btn-font-sizes: (
 
     &.teal {
       background: #fff !important;
-      color: map-get($template, 'base');
+      color: var(--template, 'base');
     }
   }
 }
@@ -43,15 +43,15 @@ $btn-font-sizes: (
   &.v-btn--outlined {
     background: #fff;
     &.primary--text {
-      border: 1px solid map-get($primary, 'base');
-      color: map-get($primary, 'base');
+      border: 1px solid var(--primary, 'base');
+      color: var(--primary, 'base');
 //      font-weight: 700 !important;
     }
   }
   &:hover {
     &.v-btn--outlined {
       &.primary--text {
-        background: map-get($primary, 'base') !important;
+        background: var(--primary, 'base') !important;
         color: #fff !important;
       }
     }
@@ -69,26 +69,26 @@ $btn-font-sizes: (
 //dark
 .v-btn {
   &.dark {
-    border: 1px solid map-get($dark, 'base');
+    border: 1px solid var(--dark, 'base');
     color: #fff;
   }
   &:hover {
     &.dark {
       background: #fff !important;
-      color: map-get($dark, 'base');
+      color: var(--dark, 'base');
     }
   }
   &.v-btn--outlined {
     background: #fff;
     &.dark--text {
-      border: 1px solid map-get($dark, 'base');
-      color: map-get($dark, 'base');
+      border: 1px solid var(--dark, 'base');
+      color: var(--dark, 'base');
     }
   }
   &:hover {
     &.v-btn--outlined {
       &.dark--text {
-        background: map-get($dark, 'base') !important;
+        background: var(--dark, 'base') !important;
         color: #fff !important;
       }
     }
@@ -97,26 +97,26 @@ $btn-font-sizes: (
 //danger
 .v-btn {
   &.danger {
-    border: 1px solid map-get($danger, 'base');
+    border: 1px solid var(--danger, 'base');
     color: #fff;
   }
   &:hover {
     &.danger {
       background: #fff !important;
-      color: map-get($danger, 'base');
+      color: var(--danger, 'base');
     }
   }
   &.v-btn--outlined {
     background: #fff;
     &.danger--text {
-      border: 1px solid map-get($danger, 'base');
-      color: map-get($danger, 'base');
+      border: 1px solid var(--danger, 'base');
+      color: var(--danger, 'base');
     }
   }
   &:hover {
     &.v-btn--outlined {
       &.danger--text {
-        background: map-get($danger, 'base') !important;
+        background: var(--danger, 'base') !important;
         color: #fff !important;
       }
     }
@@ -162,7 +162,7 @@ $btn-font-sizes: (
   }
   &.c-gray {
     background-color: #51565B;
-    color: $colorWhite;
+    color: var(--colorWhite);
   }
 }
 

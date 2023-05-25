@@ -18,9 +18,9 @@ $primary: (
         'color6': #8ecfed//50%
     )
 );
-$primary2 : (('base' : map-get($primary , 'color2')));
-$primary4 : (('base' : map-get($primary , 'color4')));
-$primary6 : (('base' : map-get($primary , 'color6')));
+$primary2 : (('base' : var(--primary , 'color2')));
+$primary4 : (('base' : var(--primary , 'color4')));
+$primary6 : (('base' : var(--primary , 'color6')));
 //削除ボタンなどの色
 $danger: (
     (
@@ -45,10 +45,10 @@ $waroku-pink :(
         'color4': #f7e0e0, //薬剤追加モーダル内など 15%
     )
 );
-$waroku-pink1 : (('base' : map-get($waroku-pink , 'color1')));
-$waroku-pink2 : (('base' : map-get($waroku-pink , 'color2')));
-$waroku-pink3 : (('base' : map-get($waroku-pink , 'color3')));
-$waroku-pink4 : (('base' : map-get($waroku-pink , 'color4')));
+$waroku-pink1 : (('base' : var(--waroku-pink , 'color1')));
+$waroku-pink2 : (('base' : var(--waroku-pink , 'color2')));
+$waroku-pink3 : (('base' : var(--waroku-pink , 'color3')));
+$waroku-pink4 : (('base' : var(--waroku-pink , 'color4')));
 //waroku-pink(システム内での紫)
 $waroku-purple:(
     (
@@ -66,11 +66,11 @@ $waroku-green:(
         'color5':  #acdb7f//50%
     )
 );
-$waroku-green1 : (('base' : map-get($waroku-green , 'color1')));
-$waroku-green2 : (('base' : map-get($waroku-green , 'color2')));
-$waroku-green3 : (('base' : map-get($waroku-green , 'color3')));
-$waroku-green4 : (('base' : map-get($waroku-green , 'color4')));
-$waroku-green5 : (('base' : map-get($waroku-green , 'color5')));
+$waroku-green1 : (('base' : var(--waroku-green , 'color1')));
+$waroku-green2 : (('base' : var(--waroku-green , 'color2')));
+$waroku-green3 : (('base' : var(--waroku-green , 'color3')));
+$waroku-green4 : (('base' : var(--waroku-green , 'color4')));
+$waroku-green5 : (('base' : var(--waroku-green , 'color5')));
 //waroku-orange(システム内でのオレンジ)
 $waroku-orange:(
     (
@@ -90,8 +90,8 @@ $waroku-yellow:(
         'color4': #faefcc  //付箋エリアの背景 20%
     )
 );
-$waroku-yellow2 : (('base' : map-get($waroku-yellow , 'color2')));
-$waroku-yellow3 : (('base' : map-get($waroku-yellow , 'color3')));
+$waroku-yellow2 : (('base' : var(--waroku-yellow , 'color2')));
+$waroku-yellow3 : (('base' : var(--waroku-yellow , 'color3')));
 //waroku-gray(システム内でのグレー)
 $waroku-gray:(
     (
@@ -104,12 +104,12 @@ $waroku-gray:(
         'color6': #e6e6e6
     )
 );
-$waroku-gray1 : (('base' : map-get($waroku-gray , 'color1')));
-$waroku-gray2 : (('base' : map-get($waroku-gray , 'color2')));
-$waroku-gray3 : (('base' : map-get($waroku-gray , 'color3')));
-$waroku-gray4 : (('base' : map-get($waroku-gray , 'color4')));
-$waroku-gray5 : (('base' : map-get($waroku-gray , 'color5')));
-$waroku-gray6 : (('base' : map-get($waroku-gray , 'color6')));
+$waroku-gray1 : (('base' : var(--waroku-gray , 'color1')));
+$waroku-gray2 : (('base' : var(--waroku-gray , 'color2')));
+$waroku-gray3 : (('base' : var(--waroku-gray , 'color3')));
+$waroku-gray4 : (('base' : var(--waroku-gray , 'color4')));
+$waroku-gray5 : (('base' : var(--waroku-gray , 'color5')));
+$waroku-gray6 : (('base' : var(--waroku-gray , 'color6')));
 //ベースフォントカラー（黒）
 $font-color : (
     (
@@ -118,45 +118,45 @@ $font-color : (
         'color2': #adadad
     )
 );
-$font-color1 : (('base' : map-get($font-color , 'color1')));
-$font-color2 : (('base' : map-get($font-color , 'color2')));
+$font-color1 : (('base' : var(--font-color , 'color1')));
+$font-color2 : (('base' : var(--font-color , 'color2')));
 $info:(
     (
-    'base' : map-get($template , 'base')
+    'base' : var(--template , 'base')
     )
 );
 $success:(
     (
-    'base' : map-get($waroku-green , 'base')
+    'base' : var(--waroku-green , 'base')
     )
 );
 $colors : (
     (
-        'template' : $template,
-        'primary' : $primary,
-        'primary2' : $primary2,
-        'primary4' : $primary4,
-        'danger': $danger,
-        'info' : $info,
-        'success' : $success,
-        'dark' : $dark,
-        'waroku-pink': $waroku-pink,
-        'waroku-purple': $waroku-purple,
-        'waroku-green': $waroku-green,
-        'waroku-green1': $waroku-green1,
-        'waroku-orange': $waroku-orange,
-        'waroku-yellow': $waroku-yellow,
-        'waroku-yellow2': $waroku-yellow2,
-        'waroku-yellow3': $waroku-yellow3,
-        'waroku-gray': $waroku-gray,
-        'waroku-gray1': $waroku-gray1,
-        'waroku-gray2': $waroku-gray2,
-        'waroku-gray3': $waroku-gray3,
-        'waroku-gray4': $waroku-gray4,
-        'waroku-gray5': $waroku-gray5,
-        'font-color': $font-color,
-        'font-color1': $font-color1,
-        'font-color2': $font-color2
+        'template' : var(--template),
+        'primary' : var(--primary),
+        'primary2' : var(--primary2),
+        'primary4' : var(--primary4),
+        'danger': var(--danger),
+        'info' : var(--info),
+        'success' : var(--success),
+        'dark' : var(--dark),
+        'waroku-pink': var(--waroku-pink),
+        'waroku-purple': var(--waroku-purple),
+        'waroku-green': var(--waroku-green),
+        'waroku-green1': var(--waroku-green1),
+        'waroku-orange': var(--waroku-orange),
+        'waroku-yellow': var(--waroku-yellow),
+        'waroku-yellow2': var(--waroku-yellow2),
+        'waroku-yellow3': var(--waroku-yellow3),
+        'waroku-gray': var(--waroku-gray),
+        'waroku-gray1': var(--waroku-gray1),
+        'waroku-gray2': var(--waroku-gray2),
+        'waroku-gray3': var(--waroku-gray3),
+        'waroku-gray4': var(--waroku-gray4),
+        'waroku-gray5': var(--waroku-gray5),
+        'font-color': var(--font-color),
+        'font-color1': var(--font-color1),
+        'font-color2': var(--font-color2)
     )
 );
 $colorWhite: #ffffff;

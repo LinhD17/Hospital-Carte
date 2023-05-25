@@ -150,7 +150,7 @@
             <div class="info-cell">
               <img
                 v-if="item.patient_info.gender === 1"
-                src="@/assets/icons/man.svg"
+                src="@/assets//man.svg"
                 style="width: 27px; height: 27px"
               />
               <img

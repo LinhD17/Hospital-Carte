@@ -1,7 +1,3 @@
-<script setup lang="ts">
-
-</script>
-
 <template>
     <v-form ref="form">
         <div class="search-fields">
@@ -57,7 +53,7 @@
                 {{ searchActive ? 'ー閉じる' : '詳細検索' }} 
                 </v-btn>
             </div>
-            <v-expand-transition>
+            <transition>
                 <v-form v-if="searchActive" class="sub-condition">
                     <!-- row 2 -->
                     <div v-show="rowsExpanded" class="patient-basic-info d-flex mt-2">
@@ -121,7 +117,7 @@
                                     dense 
                                     outlined
                                     placeholder="一歳"
-                                    style="width: 90px"
+                                    style="width: 90px" 
                                     background-color="white"
                                 >
                                 </v-select>
@@ -348,10 +344,32 @@
                         </div>
                     </div>
                 </v-form>
-            </v-expand-transition>
+            </transition>
         </div>
     </v-form>
 </template>
+
+<script>
+    export default {
+        data() {
+            return {
+            searchActive: false,
+            rowsExpanded: false,
+            }
+        },
+        methods: {
+            toggleSearchActive() {
+            this.searchActive = !this.searchActive
+            if (!this.searchActive) {
+                this.rowsExpanded = false
+            }
+            },
+            expandRows() {
+            this.rowsExpanded = true
+            },
+        },
+    }
+</script>
 
 <style lang="scss" scoped>
 .search-fields {

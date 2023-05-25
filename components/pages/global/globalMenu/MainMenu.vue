@@ -20,13 +20,13 @@
             path: '/global/common/wellKnownAndTask',
             },
         ],
-        //icon: require('@/assets/icons/globalMenu/common.svg'),
+        //icon: require('@/assets/icon/globalMenu/common.svg'),
         },
         // 2 favorite
         {
         name: '気に入り',
         name_en: 'g-nav2',
-        //icon: require('@/assets/icons/globalMenu/favorite.svg'),
+        //icon: require('@/assets/icon/globalMenu/favorite.svg'),
         level2_menus: [
         ],
         },
@@ -34,7 +34,7 @@
         {
         name: '外来',
         name_en: 'g-nav3',
-        //icon: require('@/assets/icons/globalMenu/outpatient.svg'),
+        //icon: require('@/assets/icon/globalMenu/outpatient.svg'),
         level2_menus: [
             {
             name: '外来患者一覧（診察）',
@@ -46,7 +46,7 @@
         {
         name: '病棟',
         name_en: 'g-nav4',
-        //icon: require('@/assets/icons/globalMenu/ward.svg'),
+        //icon: require('@/assets/icon/globalMenu/ward.svg'),
         level2_menus: [
             {
             name: '病棟マップ',
@@ -58,7 +58,7 @@
         {
         name: '指示確認',
         name_en: 'g-nav5',
-        //icon: require('@/assets/icons/globalMenu/tick.svg'),
+        //icon: require('@/assets/icon/globalMenu/tick.svg'),
         level2_menus: [
             {
             name: '指示受け一覧',
@@ -70,7 +70,7 @@
         {
         name: '訪問看護',
         name_en: 'g-nav6',
-        //icon: require('@/assets/icons/globalMenu/house.svg'),
+        //icon: require('@/assets/icon/globalMenu/house.svg'),
         level2_menus: [
             {
             name: '精神科訪問看護',
@@ -82,7 +82,7 @@
         {
         name: 'リハビリ',
         name_en: 'g-nav7',
-        //icon: require('@/assets/icons/globalMenu/rehabilitation.svg'),
+        //icon: require('@/assets/icon/globalMenu/rehabilitation.svg'),
         level2_menus: [
             {
             name: '精神科デイケア',
@@ -94,7 +94,7 @@
         {
         name: '指示確認',
         name_en: 'g-nav8',
-        //icon: require('@/assets/icons/globalMenu/coaching.svg'),
+        //icon: require('@/assets/icon/globalMenu/coaching.svg'),
         level2_menus: [
             {
             name: '精神科退院前訪問',
@@ -106,7 +106,7 @@
         {
         name: 'その他',
         name_en: 'g-nav9',
-        //icon: require('@/assets/icons/globalMenu/other.svg'),
+        //icon: require('@/assets/icon/globalMenu/other.svg'),
         level2_menus: [
             {
             name: 'レベル管理患者一覧',
@@ -118,7 +118,7 @@
         {
         name: 'マスター',
         name_en: 'g-nav10',
-        //icon: require('@/assets/icons/globalMenu/master.svg'),
+        //icon: require('@/assets/icon/globalMenu/master.svg'),
         level2_menus: [
         ],
         },
@@ -126,7 +126,7 @@
         {
         name: '管理',
         name_en: 'g-nav11',
-        //icon: require('@/assets/icons/globalMenu/management.svg'),
+        //icon: require('@/assets/icon/globalMenu/management.svg'),
         level2_menus: [
             {
             name: 'MHSW日報',
@@ -170,11 +170,9 @@
   z-index: 5;
   margin-top: -3px;
   
-  &::v-deep {
-      .v-list--nav .v-list-item:not(:last-child):not(:only-child) {
+    :deep(.v-list--nav .v-list-item:not(:last-child):not(:only-child)) {
       margin-bottom: 0;
-      }
-  }
+    }
 }
 .navbar {
   height: 100%;
@@ -235,7 +233,7 @@
       height: 50px;
       padding-top: 30px;
       padding-bottom: 2px;
-      background-image: url('@/assets/icons/globalMenu/common.svg');
+      background-image: url('@/assets/icon/globalMenu/common.svg');
       background-repeat: no-repeat;
       background-position: 50% 4px;
       background-size: 26px auto;
@@ -246,7 +244,7 @@
       &:hover,
       &.active {
       > .btn-icon-text{
-          background-image: url('@/assets/icons/globalMenu/common.svg');
+          background-image: url('@/assets/icon/globalMenu/common.svg');
       }
       }
   }
@@ -254,12 +252,12 @@
   &.g-nav2 {
       > .menu-item {
       > .btn-icon-text {
-          background-image: url('@/assets/icons/globalMenu/favorite.svg');
+          background-image: url('@/assets/icon/globalMenu/favorite.svg');
       }
       &:hover,
       &.active {
           > .btn-icon-text {
-          background-image: url('@/assets/icons/globalMenu/favorite.svg');
+          background-image: url('@/assets/icon/globalMenu/favorite.svg');
           }
       }
       }
@@ -267,12 +265,12 @@
   &.g-nav3 {
       > .menu-item {
       > .btn-icon-text {
-          background-image: url('@/assets/icons/globalMenu/outpatient.svg');
+          background-image: url('@/assets/icon/globalMenu/outpatient.svg');
       }
       &:hover,
       &.active {
           > .btn-icon-text {
-          background-image: url('@/assets/icons/globalMenu/outpatient_ov.svg');
+          background-image: url('@/assets/icon/globalMenu/outpatient_ov.svg');
           }
       }
       }
@@ -281,12 +279,12 @@
   &.g-nav4 {
       > .menu-item {
       > .btn-icon-text {
-          background-image: url('@/assets/icons/globalMenu/ward.svg');
+          background-image: url('@/assets/icon/globalMenu/ward.svg');
       }
       &:hover,
       &.active {
           > .btn-icon-text {
-          background-image: url('@/assets/icons/globalMenu/ward_ov.svg');
+          background-image: url('@/assets/icon/globalMenu/ward_ov.svg');
           }
       }
       }
@@ -295,12 +293,12 @@
   &.g-nav5 {
       > .menu-item {
       > .btn-icon-text {
-          background-image: url('@/assets/icons/globalMenu/tick.svg');
+          background-image: url('@/assets/icon/globalMenu/tick.svg');
       }
       &:hover,
       &.active {
           > .btn-icon-text {
-          background-image: url('@/assets/icons/globalMenu/tick_ov.svg');
+          background-image: url('@/assets/icon/globalMenu/tick_ov.svg');
           }
       }
       }
@@ -309,12 +307,12 @@
   &.g-nav6 {
       > .menu-item {
       > .btn-icon-text {
-          background-image: url('@/assets/icons/globalMenu/house.svg');
+          background-image: url('@/assets/icon/globalMenu/house.svg');
       }
       &:hover,
       &.active {
           > .btn-icon-text {
-          background-image: url('@/assets/icons/globalMenu/house_ov.svg');
+          background-image: url('@/assets/icon/globalMenu/house_ov.svg');
           }
       }
       }
@@ -323,12 +321,12 @@
   &.g-nav7 {
       > .menu-item {
       > .btn-icon-text {
-          background-image: url('@/assets/icons/globalMenu/rehabilitation.svg');
+          background-image: url('@/assets/icon/globalMenu/rehabilitation.svg');
       }
       &:hover,
       &.active {
           > .btn-icon-text {
-          background-image: url('@/assets/icons/globalMenu/rehabilitation_ov.svg');
+          background-image: url('@/assets/icon/globalMenu/rehabilitation_ov.svg');
           }
       }
       }
@@ -337,12 +335,12 @@
   &.g-nav8 {
       > .menu-item {
       > .btn-icon-text {
-          background-image: url('@/assets/icons/globalMenu/coaching.svg');
+          background-image: url('@/assets/icon/globalMenu/coaching.svg');
       }
       &:hover,
       &.active {
           > .btn-icon-text {
-          background-image: url('@/assets/icons/globalMenu/coaching_ov.svg');
+          background-image: url('@/assets/icon/globalMenu/coaching_ov.svg');
           }
       }
       }
@@ -351,12 +349,12 @@
   &.g-nav9 {
       > .menu-item {
       > .btn-icon-text {
-          background-image: url('@/assets/icons/globalMenu/other.svg');
+          background-image: url('@/assets/icon/globalMenu/other.svg');
       }
       &:hover,
       &.active {
           > .btn-icon-text {
-          background-image: url('@/assets/icons/globalMenu/other_ov.svg');
+          background-image: url('@/assets/icon/globalMenu/other_ov.svg');
           }
       }
       }
@@ -365,12 +363,12 @@
   &.g-nav10 {
       > .menu-item {
       > .btn-icon-text {
-          background-image: url('@/assets/icons/globalMenu/master.svg');
+          background-image: url('@/assets/icon/globalMenu/master.svg');
       }
       &:hover,
       &.active {
           > .btn-icon-text {
-          background-image: url('@/assets/icons/globalMenu/master_ov.svg');
+          background-image: url('@/assets/icon/globalMenu/master_ov.svg');
           }
       }
       }
@@ -379,12 +377,12 @@
   &.g-nav11 {
       > .menu-item {
       > .btn-icon-text {
-          background-image: url('@/assets/icons/globalMenu/management.svg');
+          background-image: url('@/assets/icon/globalMenu/management.svg');
       }
       &:hover,
       &.active {
           > .btn-icon-text {
-          background-image: url('@/assets/icons/globalMenu/management_ov.svg');
+          background-image: url('@/assets/icon/globalMenu/management_ov.svg');
           }
       }
       }

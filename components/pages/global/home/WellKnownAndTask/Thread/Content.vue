@@ -27,7 +27,7 @@
             <PagesGlobalHomeWellKnownAndTaskThreadSearch /> 
         </div>
         <!-- table -->
-        <PagesGlobalHomeWellKnownAndTaskThreadTable /> 
+        <PagesGlobalHomeWellKnownAndTaskThreadTableC/> 
     </v-sheet>
 </template>
 

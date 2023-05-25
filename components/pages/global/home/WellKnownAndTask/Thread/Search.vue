@@ -4,7 +4,7 @@
 <template>
     <div class="search">
         <!-- 部署 -->
-        <div style="width: 114px;">
+        <div style="width: 132px;">
             <v-select
             dense
             outlined
@@ -40,14 +40,14 @@
             </v-select>
         </div>
         <!-- 掲載終了も表示 -->
-        <div class="checkbox mb-7">
+        <div class="checkbox mb-3">
             <v-checkbox
                 dense
                 label="掲載終了も表示"
             />
         </div>
         <!-- 添付ファイル -->
-        <div class="checkbox mb-7">
+        <div class="checkbox mb-3">
             <v-checkbox 
             dense
             label="添付ファイル"
@@ -65,10 +65,11 @@
 
 <style lang="scss" scoped>
 .search {
-    padding: 0 10px;
+    padding: 0 10px !important;
     display: flex;
     align-items: center;
-    gap: 5px;
+    height: 80px !important;
+    //gap: 5px;
 }
 .select-box {
     height: 30px !important;

@@ -206,7 +206,6 @@
                     </div>  
                 </div>
             </template>
-
         </v-data-table>
         <div class="table-footer text-center">
             <span>全 {{ totalCount }} 件</span>

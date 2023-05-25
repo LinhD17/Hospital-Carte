@@ -18,7 +18,7 @@ export const GLOBAL_MENU: MenuItems = {
                     path: '/global/common/wellKnownTask',
                 },
             ],
-            //icon: require('@/assets/icons/globalMenu/common.svg'),
+            //icon: require('@/assets/icon/globalMenu/common.svg'),
             //icon: () => import('@/assets/icon/globalMenu/common.svg') //khong chay ß
         },
         //2 favorite 
@@ -27,7 +27,7 @@ export const GLOBAL_MENU: MenuItems = {
             menu_level: 1,
             name: '気に入り',
             name_en: 'g-nav2',
-            //icon: require('@/assets/icons/globalMenu/favorite.svg'),
+            //icon: require('@/assets/icon/globalMenu/favorite.svg'),
             level2_menus: [
 
             ],
@@ -38,7 +38,7 @@ export const GLOBAL_MENU: MenuItems = {
             menu_level: 1,
             name: '外来',
             name_en: 'g-nav3',
-            //icon: require('@/assets/icons/globalMenu/outpatient.svg'),
+            //icon: require('@/assets/icon/globalMenu/outpatient.svg'),
             level2_menus: [
                 {
                     master_global_menu_id: uniqueId('__globalMenuId__'),
@@ -54,7 +54,7 @@ export const GLOBAL_MENU: MenuItems = {
             menu_level: 1,
             name: '病棟',
             name_en: 'g-nav4',
-            //icon: require('@/assets/icons/globalMenu/ward.svg'),
+            //icon: require('@/assets/icon/globalMenu/ward.svg'),
             level2_menus: [
                 {
                     master_global_menu_id: uniqueId('__globalMenuId__'),
@@ -70,7 +70,7 @@ export const GLOBAL_MENU: MenuItems = {
             menu_level: 1,
             name: '指示確認',
             name_en: 'g-nav5',
-            //icon: require('@/assets/icons/globalMenu/tick.svg'),
+            //icon: require('@/assets/icon/globalMenu/tick.svg'),
             level2_menus: [
                 {
                     master_global_menu_id: uniqueId('__globalMenuId__'),
@@ -87,7 +87,7 @@ export const GLOBAL_MENU: MenuItems = {
             menu_level: 1,
             name: '訪問看護',
             name_en: 'g-nav6',
-            //icon: require('@/assets/icons/globalMenu/house.svg'),
+            //icon: require('@/assets/icon/globalMenu/house.svg'),
             level2_menus: [
               {
                 master_global_menu_id: uniqueId('__globalMenuId__'),
@@ -104,7 +104,7 @@ export const GLOBAL_MENU: MenuItems = {
             menu_level: 1,
             name: 'リハビリ',
             name_en: 'g-nav7',
-            //icon: require('@/assets/icons/globalMenu/rehabilitation.svg'),
+            //icon: require('@/assets/icon/globalMenu/rehabilitation.svg'),
             level2_menus: [
                 {
                     master_global_menu_id: uniqueId('__globalMenuId__'),
@@ -120,7 +120,7 @@ export const GLOBAL_MENU: MenuItems = {
             menu_level: 1,
             name: '指導依頼',
             name_en: 'g-nav8',
-            //icon: require('@/assets/icons/globalMenu/coaching.svg'),
+            //icon: require('@/assets/icon/globalMenu/coaching.svg'),
             level2_menus: [
                 {
                     master_global_menu_id: uniqueId('__globalMenuId__'),
@@ -136,7 +136,7 @@ export const GLOBAL_MENU: MenuItems = {
             menu_level: 1,
             name: 'その他',
             name_en: 'g-nav9',
-            //icon: require('@/assets/icons/globalMenu/other.svg'),
+            //icon: require('@/assets/icon/globalMenu/other.svg'),
             level2_menus: [
                 {
                     master_global_menu_id: uniqueId('__globalMenuId__'),
@@ -152,7 +152,7 @@ export const GLOBAL_MENU: MenuItems = {
             menu_level: 1,
             name: 'マスター',
             name_en: 'g-nav10',
-            //icon: require('@/assets/icons/globalMenu/master.svg'),
+            //icon: require('@/assets/icon/globalMenu/master.svg'),
             level2_menus: [
                 {
                     master_global_menu_id: uniqueId('__globalMenuId__'),
@@ -168,7 +168,7 @@ export const GLOBAL_MENU: MenuItems = {
             menu_level: 1,
             name: '管理',
             name_en: 'g-nav10',
-            //icon: require('@/assets/icons/globalMenu/management.svg'),
+            //icon: require('@/assets/icon/globalMenu/management.svg'),
             level2_menus: [
               {
                 master_global_menu_id: uniqueId('__globalMenuId__'),

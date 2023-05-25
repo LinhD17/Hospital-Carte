@@ -1,9 +1,10 @@
+@import './custom-color';
 // ラジオボタン
 .v-radio {
   &.is-danger {
     .v-label,
     .v-icon {
-      color: map-get($danger, 'base') !important;
+      color: var(--danger, 'base') !important;
     }
   }
   .v-label {
@@ -33,7 +34,7 @@
   &.is-danger {
     .v-label,
     .v-icon {
-      color: map-get($danger, 'base') !important;
+      color: var(--danger, 'base') !important;
     }
   }
   .v-label {
@@ -76,7 +77,7 @@
 
   .v-input__slot {
     padding: 0 10px;
-    background-color: $colorWhite;
+    background-color: var(--colorWhite);
     border: 1px solid #c7ccce !important;
     border-radius: 4px;
     &::before {

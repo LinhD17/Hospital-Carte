@@ -6,8 +6,8 @@ export default defineNuxtConfig({
   //css
   css: [
     '~/assets/main.scss',
-    'vuetify/lib/styles/main.sass',
-    'mdi/css/materialdesignicons.min.css'
+    //'vuetify/lib/styles/main.sass',
+    //'mdi/css/materialdesignicons.min.css'
   ],
 
   //build
@@ -22,6 +22,13 @@ export default defineNuxtConfig({
     },
     define: {
       'process.env.DEBUG': false,
+    }, 
+    css: {
+      preprocessorOptions: {
+        scss: {
+          additionalData: '@use "@/assets/variables.scss" as *;'
+        }
+      }
     }
   },
   hooks: {
@@ -46,30 +53,21 @@ export default defineNuxtConfig({
       '~/plugins/vuetify.js',
       '~/plugins/apiBase.ts',
     ],
-
     // Modules: https://go.nuxtjs.dev/config-modules
     modules: [],
 
-    // Vuetify module configuration: https://go.nuxtjs.dev/config-vuetify
+    //other nuxt configuration...
+    buildModules: ['@nuxtjs/vuetify'],
+
     vuetify: {
       customVariables: ['~/assets/variables.scss'],
-      treeShake: true,
       theme: {
-        dark: false,
         themes: {
           light: {
-            primary: '#1ea0dc',
-            //     accent: colors.grey.darken3,
-            //     secondary: colors.amber.darken3,
-            //     info: colors.teal.lighten1,
-            //     warning: colors.amber.base,
-            //     error: colors.deepOrange.accent4,
-            //     success: colors.green.accent3,
-            //     background: '#f5f5f5',
+            primary: '#1ea0dc', // Replace with your desired primary color
           },
         },
       },
-    }
-
-  }
+    },
+  },
 })

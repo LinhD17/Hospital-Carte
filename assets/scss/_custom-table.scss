@@ -1,3 +1,5 @@
+@import './custom-color';
+
 $data-table-regular-row-font-size: 12px;
 $data-table-regular-header-font-size: 12px;
 
@@ -21,9 +23,9 @@ $data-table-regular-header-font-size: 12px;
         th {
           height: 30px !important;
           padding-top: 3px !important;
-          background-color: map-get($waroku-gray, 'color6') !important;
+          background-color: var(--waroku-gray, 'color6') !important;
           font-weight: bold !important;
-          color: map-get($font-color, 'base') !important;
+          color: var(--font-color, 'base') !important;
           line-height: 1.1;
           text-align: center;
           white-space: nowrap;
@@ -40,10 +42,10 @@ $data-table-regular-header-font-size: 12px;
       }
     }
     tr:nth-child(2n) {
-      background-color: map-get($waroku-gray, 'color5');
+      background-color: var(--waroku-gray, 'color5');
     }
     tr:hover {
-      background-color: map-get($primary, 'color5') !important;
+      background-color: var(--primary, 'color5') !important;
     }
   }
 }

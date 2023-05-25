@@ -1,18 +1,18 @@
 <script setup lang="ts">
     type HeaderCell = {
         text: string
-        value: string
+        key: string
         width?: string| number 
         sortable: boolean
     };
 
     const header: HeaderCell[] = [
-        { text: '更新日時', value: 'updated_at', sortable: false },
-        { text: '掲示先部署', value: 'to_departments', sortable: false },
-        { text: '投稿者', value: 'staff_name', sortable: false },
-        { text: '件名', value: 'title', sortable: false },
-        { text: '添付', value: 'has_attachments', sortable: false },
-        { text: 'メンション', value: 'has_mentions', sortable: false },
+        { text: '更新日時', key: 'updated_at', sortable: false },
+        { text: '掲示先部署', key: 'to_departments', sortable: false },
+        { text: '投稿者', key: 'staff_name', sortable: false },
+        { text: '件名', key: 'title', sortable: false },
+        { text: '添付', key: 'has_attachments', sortable: false },
+        { text: 'メンション', key: 'has_mentions', sortable: false },
     ]
     
     const dummyItems = [

@@ -23,6 +23,6 @@
     "vite-plugin-require": "^1.1.10",
     "vite-plugin-vuetify": "^1.0.2",
     "vue3-datepicker": "^0.3.4",
-    "vuetify": "^3.2.1"
+    "vuetify": "^3.3.1"
   }
 }

@@ -14,13 +14,10 @@ import imageUrl from '@/assets/icon/schedule.svg'
         </PagesGlobalBaseLayout>
     </div>
 </template>
-
-  
-  <style scoped>
-  .outpatient-card-width {
+<style scoped>
+.outpatient-card-width {
     width: 100%;
-      margin-left: 2%;
-      margin-top: -12px;
-  }
-  </style>
-  
+    margin-left: 2%;
+    margin-top: -12px;
+}
+</style>

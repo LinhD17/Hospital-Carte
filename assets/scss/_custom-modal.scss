@@ -24,8 +24,8 @@
     }
 
     &--active {
-      background-color: $colorWhite;
-      border-bottom: solid 1px $colorWhite;
+      background-color: var(--colorWhite);
+      border-bottom: solid 1px var(--colorWhite);
       &::after {
         bottom: 0px;
       }

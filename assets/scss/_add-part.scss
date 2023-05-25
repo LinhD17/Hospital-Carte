@@ -1,6 +1,6 @@
 // 同名チェック
 .same-name-check {
-  color: map-get($danger, 'base');
+  color: var(--danger, 'base');
   .same-name-check-icon {
     position: relative;
     &::before {

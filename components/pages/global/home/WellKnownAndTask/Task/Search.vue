@@ -1,11 +1,25 @@
-<script setup lang="ts">
+<script>
+import DatePicker from '@/components/General/Form/DatePicker.vue'
 
+export default {
+  components: {
+    DatePicker
+  }
+};
 </script>
 <template>
     <div class="task-search-row">
         <!-- calender -->
         <div class="d-flex align-center calendar">
-            <datepicker
+          <!-- lấy date picker từ Genẻal-> Form -> DatePicker ra cũng không hiẻn thị, tại sao??? -->
+          <date-picker>
+          </date-picker>
+          <span class="mt-3">~</span>
+          <date-picker>
+          </date-picker>
+
+
+            <!-- <datepicker
             :width="100"
             outlined
             place-holder="選択してください"
@@ -15,7 +29,9 @@
             :width="100"
             outlined
             place-holder="選択してください"
-            />
+            /> -->
+
+
         </div>
         <!-- select-box  -->
         <div class="d-flex align-center mt-3">
