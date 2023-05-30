@@ -8,7 +8,8 @@
         :items="['Vue.js', 'React', 'Angular', 'Buzz']"
         :placeholder="placeholder"
         :clearable="clearable"
-    />
+    >
+    </v-select>
 </template>
 
 <script setup lang="ts">

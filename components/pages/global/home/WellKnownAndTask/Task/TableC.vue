@@ -57,12 +57,13 @@
 </script>
 <template>
     <div class="task-table">
-        <v-data-table
+        <v-data-table-virtual
         :headers="headers"
         :items="dummyItems"
         class="elevation-1"
         :page.sync="page"
         @page-count="pageCount = $event"
+        height="684"
         >
             <!-- patient-info-患者情報 -->
             <template v-slot:item.patientInfo="{ item }">
@@ -85,7 +86,7 @@
                     </div>
                 </a>
             </template>
-        </v-data-table>
+        </v-data-table-virtual>
         <div class="table-footer text-center">
             <span>全 {{ totalCount }} 件</span>
             <v-pagination

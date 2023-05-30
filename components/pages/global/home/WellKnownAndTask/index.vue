@@ -14,9 +14,9 @@ import imageUrl from '@/assets/icon/schedule.svg'
         <div class="contents">
             <div class="contents-left">
                 <PagesGlobalHomeWellKnownAndTaskImportantReport class="reports"/>
-                <PagesGlobalHomeWellKnownAndTaskThreadContent class="threads"/> 
+                <PagesGlobalHomeWellKnownAndTaskThread class="threads"/> 
             </div>
-            <PagesGlobalHomeWellKnownAndTaskTaskContent class="tasks" /> 
+            <PagesGlobalHomeWellKnownAndTaskTask class="tasks" /> 
 
         </div>
     </div>

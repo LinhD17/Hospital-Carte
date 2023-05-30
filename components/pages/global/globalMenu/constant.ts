@@ -1,6 +1,10 @@
 import { uniqueId } from 'lodash'
 import { MenuItems } from '~/hooks/global/globalMenu/useMenu'
 import vitePluginRequire from "vite-plugin-require"
+import { getImage } from '@nuxt/image'
+import { url } from 'inspector'
+
+//const icon = getImage('assets/icon/globalMenu/common.svg')
 
 export const GLOBAL_MENU: MenuItems = {
     items: [
@@ -18,8 +22,10 @@ export const GLOBAL_MENU: MenuItems = {
                     path: '/global/common/wellKnownTask',
                 },
             ],
-            //icon: require('@/assets/icon/globalMenu/common.svg'),
-            //icon: () => import('@/assets/icon/globalMenu/common.svg') //khong chay ß
+            icon: '@/assets/icon/globalMenu/common.svg',
+            //icon: url('@/assets/icon/globalMenu/common.svg'),
+            //icon: () => import('@/assets/icon/globalMenu/common.svg') //khong chay 
+            //icon: getImage('assets/icon/globalMenu/common.svg'), //.getImage is not a function
         },
         //2 favorite 
         {

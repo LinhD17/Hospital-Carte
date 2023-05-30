@@ -27,6 +27,22 @@
                         has_attachments: '',
                         has_mentions: '',
                     },
+                    {
+                        updated_at: '2023年03月22日 00時00分00秒',
+                        to_departments: '看護部　診察技術部',
+                        staff_name: '保険指定医テスト１０',
+                        title: '医療安全委員からのお知らせ',
+                        has_attachments: '',
+                        has_mentions: '',
+                    },
+                    {
+                        updated_at: '2023年03月22日 00時00分00秒',
+                        to_departments: '看護部　診察技術部',
+                        staff_name: '保険指定医テスト１０',
+                        title: '医療安全委員からのお知らせ',
+                        has_attachments: '',
+                        has_mentions: '',
+                    },
                 ],
             }
         },
@@ -34,12 +50,13 @@
 </script>
 <template>
     <div class="task-table">
-        <v-data-table
+        <v-data-table-virtual
         :headers="headers"
         :items="dummyItems"
         class="elevation-1"
+        height="200"
         >
-        </v-data-table>
+        </v-data-table-virtual>
         <div class="table-footer text-center">
             <span>全 {{ totalCount }} 件</span>
             <v-pagination

@@ -1,8 +1,3 @@
-  
-<script setup lang="ts">
-import imageUrl from '@/assets/icon/ward.svg'
-</script>
-
 <template>
     <div class="well-known">
         <PagesGlobalBaseLayout 
@@ -20,12 +15,16 @@ import imageUrl from '@/assets/icon/ward.svg'
                     病棟マップ
                 </v-btn>
             </template>
+
             <PagesGlobalWardInpatientOfExaminationSearchField /> 
-            <PagesGlobalWardInpatientOfExaminationTableABC />
-            <!-- <PagesGlobalWardInpatientOfExaminationTable /> -->
+            <PagesGlobalWardInpatientOfExaminationTable/>
         </PagesGlobalBaseLayout>
     </div>
 </template>
+  
+<script setup lang="ts">
+import imageUrl from '@/assets/icon/ward.svg'
+</script>
   
 <style lang="scss" scoped>
 .well-known {

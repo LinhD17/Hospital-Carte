@@ -25,10 +25,9 @@
                 <v-btn
                     ref="submitButtonRef"
                     rounded
-                    color="primary"
                     small
                     width="78"
-                    class="btn-style ml-4"
+                    class="btn-style bg-blue text-white ml-4"
                 >検索
                 </v-btn>
                 <v-btn
@@ -373,7 +372,7 @@
 
 <style lang="scss" scoped>
 .search-fields {
-    margin: 0 14px;
+    margin: 0;
     color: #333;
     .search-condition {
     display: flex;

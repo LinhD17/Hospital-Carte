@@ -6,7 +6,7 @@
 <template>
     <div class="reception-style">
         <PagesGlobalRehabilitationDementialDaycareReceptionSearch /> 
-        <PagesGlobalRehabilitationDementialDaycareReceptionTableC/> 
+        <PagesGlobalRehabilitationDementialDaycareReceptionTable/> 
     </div>
 </template>
 

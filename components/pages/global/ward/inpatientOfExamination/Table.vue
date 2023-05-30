@@ -1,549 +1,770 @@
-<script setup lang="ts">
-    type HeaderCell = {
-        text: string
-        value: string
-        width?: string| number 
-        sortable: boolean
-    };
-
-    const header: HeaderCell[] = [
-        { text: '患者番号', value: 'patient_no', sortable: true },
-        { text: '患者情報', value: 'patient_info', sortable: true},
-        { text: '病棟/病室/病床', value: 'ward_uuid', sortable: true },
-        { text: '入院日', value: 'started_hospitalization_date', sortable: true },
-        { text: '入院日数', value: 'number_of_days_spent_in_hospital', sortable: true},
-        { text: '入院形態', value: 'hospitalization_form', sortable: true },
-        { text: '退院日', value: 'discharge_from_hospital_date', sortable: true },
-        { text: '主病名', value: 'primary_disease_name', sortable: true },
-        { text: '責任レベル', value: 'responsibility_level_name', sortable: true, },
-        { text: '主治医', value: 'primary_doctor_name', sortable: true },
-        { text: '診察医１', value: 'examination_doctor_1_name', sortable: true },
-        { text: '診察医２', value: 'examination_doctor_2_name', sortable: true },
-        { text: '担当看護師', value: 'nurse_name', sortable: true },
-        { text: '重症度', value: 'serious_illness_level', sortable: true },
-
-        { text: '救護区分', value: 'aid_classification', sortable: false, },
-        // { text: '褥瘡・転倒・自殺リスク', value: 'risk', sortable: false, },
-        // { text: '今日のオーダー有無', value: 'has_unimplemented_order', sortable: false, },
-        // { text: '隔・拘', value: 'isolation_restraint', sortable: false, width: '5%', },
-        // { text: '感染症', value: 'has_infectious_disease', sortable: false },
-    ]
-
-    const dummyItems = [
-        {
-            patient_no: "12345",
-            patient_info: {
-                patient_uuid: "123",
-                patient_name: "患者 太郎",
-                patient_name_katakana: "カンジャ タロウ",
-                patient_gender: 1,
-                patient_birthday: "1996年07月17日",
-                is_name_duplicated: true,
-            },
-            ward_uuid: {
-                ward_name: "1病棟",
-                sick_room_name: "A病室",
-                sick_bed_name: "301",
-            },
-            started_hospitalization_date: "2021年04月01日",
-            discharge_from_hospital_date: "2021年04月06日",
-            hospitalization_type_name: "一般科",
-            primary_disease_name: "器質性の妄想状態および幻覚妄想状態",
-            responsibility_level_name: "病棟内",
-            primary_doctor_name: "医師太郎",
-            examination_doctor_1_name: "医師太郎",
-            examination_doctor_2_name:"医師太郎",
-            nurse_name: "看護花子",
-            serious_illness_level: 2,
-            aid_classification: 1,
-            // has_unimplemented_order: "",
-            // has_isolation_restraint:"",
-            // has_infectious_disease: "",
-        },
-        {
-            patient_no: "12345",
-            patient_info: {
-                patient_uuid: "123",
-                patient_name: "患者 太郎",
-                patient_name_katakana: "カンジャ タロウ",
-                patient_birthday: "1996年07月17日",
-                is_name_duplicated: true,
-            },
-            ward_uuid: {
-                ward_name: "1病棟",
-                sick_room_name: "A病室",
-                sick_bed_name: "301",
-            },
-            started_hospitalization_date: "2021年04月01日",
-            discharge_from_hospital_date: "2021年05月03日",
-            hospitalization_type_name: "任意入院",
-            primary_disease_name: "うつ病",
-            responsibility_level_name: "外出 (職員同伴)",
-            primary_doctor_name: "医師 太郎",
-            examination_doctor_1_name: "医師太郎",
-            examination_doctor_2_name:"医師太郎",
-            nurse_name: "看護花子",
-            serious_illness_level: 3,
-            aid_classification: 2,
-            has_unimplemented_order: "",
-            has_isolation_restraint:"",
-        },
-        {
-            patient_no: "12345",
-            patient_info: {
-                patient_uuid: "123",
-                patient_name: "患者 太郎",
-                patient_name_katakana: "カンジャ タロウ",
-                patient_gender: 1,
-                patient_birthday: "1996年07月17日",
-                is_name_duplicated: true,
-            },
-            ward_uuid: {
-                ward_name: "1病棟",
-                sick_room_name: "A病室",
-                sick_bed_name: "301",
-            },
-            started_hospitalization_date: "2021年04月01日",
-            discharge_from_hospital_date: "2021年04月10日",
-            hospitalization_type_name: "医療保護",
-            primary_disease_name: "アルコール依存症",
-            responsibility_level_name: "外出 (職員同士)",
-            primary_doctor_name: "医師太郎",
-            examination_doctor_1_name: "医師太郎",
-            examination_doctor_2_name:"医師太郎",
-            nurse_name: "看護花子",
-            serious_illness_level: 2,
-            aid_classification: 3,
-        },
-    ]
-
-    const handleRowClick = () => {
-        window.open(
-            '/karte?patient_uuid=16e3d8eb-d4d7-11ec-8902-0a7e192b49f1',
-            '_blank'
-        )
-    }
-
-    const page = ref(1)
-
-    const pageCount = ref(0)
-
-    const totalCount = dummyItems.length
-</script>
 <template>
-    <div class="table-parent">
-        <v-data-table
-            :headers="header"
+    <div class="table-content">
+        <v-data-table-virtual
+            :headers="headers"
             :items="dummyItems"
-            item-value="name"
-            hide-default-header
-            hide-default-footer
-            fixed-header
-            multi-sort
-            @page-count="pageCount = $event"
-            @click:row="handleRowClick"
+            class="elevation-1"
         >
-            <!-- table-header -->
-            <!-- <template v-slot:column.name="{ column }">
-                {{ column.text }}
-            </template> -->
-
-
-            <!-- <template #[`header`] = "{  props: { headers } }">
-                <thead>
-                    <tr>
-                        <th v-for="(item, id) in headers" :key="id">
-                            <div class="sort-cell">
-                                {{ item.text }}
-                                <div  v-if="item.sortable" class="sort-control">
-                                    <span
-                                    >▲</span>
-                                    <span
-                                    >▼</span>
-                                </div>
-                            </div>
-                        </th>
-                    </tr>
-                </thead>
-            </template> -->
-
-            <!-- tabele-items  -->
-            <template #[`item.patient_no`] = "{ item }">
-                <div class="centered-cell">
-                    {{ item.patient_no }}
-                </div>
-            </template>
             <!-- patient-info -->
-            <template #[`item.patient_info`] = "{ item }">
+            <template v-slot:item.patient_info = "{ item }">
                 <div class="d-flex" style="justify-content: space-between">
                     <div class="info-cell">
                         <img
-                        v-if="item.patient_info.patient_gender === 1"
-                        src="@/assets/icons/man.svg"
-                        style="width: 25px; height: 25px"
+                            v-if="item.raw.patient_info.patient_gender === 1"
+                            src="@/assets/icon/man.svg"
+                            style="width: 25px; height: 25px"
                         />
                         <img
-                        v-else
-                        style="width: 25px; height: 25px"
-                        src="@/assets/icons/female.svg"
+                            v-else
+                            style="width: 25px; height: 25px"
+                            src="@/assets/icon/female.svg"
                         />
                         <a>
-                            <ruby class="info-cell__content ml-2" style="min-width: 80px;">
+                            <ruby class="info-cell__content ml-2" style="min-width: 80px">
                                 <rt class="text-no-wrap" style="font-size: 10px">
-                                    {{ item.patient_info.patient_name_katakana }}
+                                    {{ item.raw.patient_info.patient_name_katakana }}
                                 </rt>
-                                <!-- khi click chuot vao 1 hang se mo ra trang karte cua tung benh nhan -->
                                 <!-- <nuxt-link
-                                    :to="`/karte?patient_uuid=${item.patient_name.patient_uuid}`"
+                                    :to="`/karte?patient_uuid=${item.raw.patient_name.patient_uuid}`"
                                     target="_blank"
                                 >
-                                    {{ item.patient_info.patient_name }}
+                                    {{ item.raw.patient_info.patient_name }}
                                 </nuxt-link> -->
-                                {{ item.patient_info.patient_name }}
+                                {{ item.raw.patient_info.patient_name }}
                             </ruby>
                         </a>
                         <div
-                            v-if="item.patient_info.is_name_duplicated === true"
+                            v-if="item.raw.patient_info.is_name_duplicated === true"
                             class="same-name-field"
                         >
-                            <img src="@/assets/icons/important_triangle.svg" />
+                            <img src="@/assets/icon/important_triangle.svg" />
                             <span>同姓</span>
                         </div>
                     </div>
                     <span>
-                        {{ item.patient_info.patient_birthday }}({{ moment().diff(item.patient_info.patient_birthday, 'years', false) }}) 
-                    </span>
+                        {{ item.raw.patient_info.patient_birthday }}
+                        ({{ moment().diff(item.raw.patient_info.patient_birthday, 'years', false) }})
+                    </span> 
                 </div>
             </template>
 
             <!-- patient-ward/room/bed -->
-            <template #[`item.ward_uuid`] = "{ item }">
+            <template v-slot:item.ward_uuid = "{ item }">
                 <div class="centered-cell">
                     <p class="mb-0" style="min-width: 120px">
-                        {{ `${item.ward_uuid.ward_name}/${item.ward_uuid.sick_room_name}/${item.ward_uuid.sick_bed_name}` }}
+                        {{ `${item.raw.ward_uuid.ward_name}/${item.raw.ward_uuid.sick_room_name}/${item.raw.ward_uuid.sick_bed_name}` }}
                     </p>
                 </div>
             </template>
 
-            <!-- 入院日 -->
-            <template #[`item.started_hospitalization_date`]="{ item }">
-                <div class="centered-cell" style="min-width: 120px">
-                    {{ item.started_hospitalization_date }}
-                </div>
-            </template>
-                <!-- 入院日数 -->
-            <template #[`item.number_of_days_spent_in_hospital`]="{ item }">
+            <!-- 入院日数 -->
+            <template  v-slot:item.number_of_days_spent_in_hospital="{ item }">
                 <div class="centered-cell">
                     {{  
-                        moment(item.discharge_from_hospital_date).diff(item.started_hospitalization_date, 'days', false)
+                        moment(item.raw.discharge_from_hospital_date).diff(item.raw.started_hospitalization_date, 'days', false)
                     }}
                 </div>
             </template>
+
             <!-- 入院形態 -->
-            <template #[`item.hospitalization_form`]="{ item }">
+            <template v-slot:item.hospitalization_form="{ item }">
                 <div class="centered-cell">
-                    <div style="min-width: 120px; display: block;">
-                        <div style="text-align: center">
+                    <div style="min-width: 120px; display: flex;">
+                        <div style="text-align: center" class="mr-2">
+                            <!-- <v-chip 
+                                small
+                                text-color="white"
+                                style="min-width: 180px; justify-content: center"
+                                :color="getColor(item.raw.hospitalization_type_name)"
+                            >
+                                {{ item.raw.hospitalization_type_name }}
+                            </v-chip> -->
+
                             <v-chip
-                            v-if="item.hospitalization_type_name === '一般科'"
-                            color="#009eac"
-                            text-color="white"
-                            small
-                            style="min-width: 80px; justify-content: center"
-                        >{{ item.hospitalization_type_name  }}</v-chip>
-                        <v-chip
-                            v-if="item.hospitalization_type_name === '任意入院'"
-                            color="#5ab800"
-                            text-color="white"
-                            small
-                            style="min-width: 80px; justify-content: center"
-                        >{{ item.hospitalization_type_name  }}</v-chip>
-                        <v-chip
-                            v-if="item.hospitalization_type_name === '医療保護'"
-                            color="#e5b000"
-                            text-color="white"
-                            small
-                            style="max-width: 80px; justify-content: center"
-                        >{{ item.hospitalization_type_name  }}</v-chip>
-                        <v-chip
-                            v-if="item.hospitalization_type_name === '措置入院'"
-                            color="#f55a0c"
-                            text-color="white"
-                            small
-                            style="min-width: 80px; justify-content: center"
-                        >{{ item.hospitalization_type_name  }}</v-chip>
-                        <v-chip
-                            v-if="item.hospitalization_type_name === '応急入院'"
-                            color="#1ea0dc"
-                            text-color="white"
-                            small
-                            style="min-width: 80px; justify-content: center"
-                        >{{ item.hospitalization_type_name  }}</v-chip>
-                        <v-chip
-                            v-if="item.hospitalization_type_name === '検察による鑑定入院'"
-                            color="#fc3e87"
-                            text-color="white"
-                            small
-                            style="min-width: 80px; justify-content: center"
-                        >{{ item.hospitalization_type_name  }}</v-chip>
-                        <v-chip
-                            v-if="item.hospitalization_type_name === '介護医療院'"
-                            color="#red"
-                            text-color="white"
-                            small
-                            style="min-width: 80px; justify-content: center"
-                        >{{ item.hospitalization_type_name  }}</v-chip>
-                        <v-chip
-                            v-if="item.hospitalization_type_name === '旧法に基づく入院形態'"
-                            color="#853ecf"
-                            text-color="white"
-                            small
-                            style="min-width: 80px; justify-content: center"
-                        >{{ item.hospitalization_type_name  }}</v-chip>
-
+                                v-if="item.raw.hospitalization_type_name === '一般科'"
+                                color="#009eac"
+                                text-color="white"
+                                small
+                                style="min-width: 180px; justify-content: center"
+                            >{{ item.raw.hospitalization_type_name  }}</v-chip> 
+                            <v-chip
+                                v-if="item.raw.hospitalization_type_name === '任意入院'"
+                                color="#5ab800"
+                                text-color="white"
+                                small
+                                style="min-width: 180px; justify-content: center"
+                            >{{ item.raw.hospitalization_type_name  }}</v-chip>
+                            <v-chip
+                                v-if="item.raw.hospitalization_type_name === '医療保護'"
+                                color="#e5b000"
+                                text-color="white"
+                                small
+                                style="min-width: 180px; justify-content: center"
+                            >{{ item.raw.hospitalization_type_name  }}</v-chip>
+                            <v-chip
+                                v-if="item.raw.hospitalization_type_name === '措置入院'"
+                                color="#f55a0c"
+                                text-color="white"
+                                small
+                                style="min-width: 180px; justify-content: center"
+                            >{{ item.raw.hospitalization_type_name  }}</v-chip>
+                            <v-chip
+                                v-if="item.raw.hospitalization_type_name === '応急入院'"
+                                color="#1ea0dc"
+                                text-color="white"
+                                small
+                                style="min-width: 180px; justify-content: center"
+                            >{{ item.raw.hospitalization_type_name  }}</v-chip>
+                            <v-chip
+                                v-if="item.raw.hospitalization_type_name === '検察による鑑定入院'"
+                                color="#fc3e87"
+                                text-color="white"
+                                small
+                                style="min-width: 180px; justify-content: center"
+                            >{{ item.raw.hospitalization_type_name  }}</v-chip>
+                            <v-chip
+                                v-if="item.raw.hospitalization_type_name === '介護医療院'"
+                                color="red"
+                                text-color="white"
+                                small
+                                style="min-width: 180px; justify-content: center"
+                            >{{ item.raw.hospitalization_type_name  }}</v-chip>
+                            <v-chip
+                                v-if="item.raw.hospitalization_type_name === '旧法に基づく入院形態'"
+                                color="#853ecf"
+                                text-color="white"
+                                small
+                                style="min-width: 180px; justify-content: center"
+                            >{{ item.raw.hospitalization_type_name  }}</v-chip> 
                         </div>
-                        <div>
-                            {{ `${item.started_hospitalization_date}〜` }}
+                        <div class="mt-1">
+                            {{ `${item.raw.started_hospitalization_date} ~` }}
                         </div>
-                        
-
                     </div>
                 </div>
             </template>
-            <!-- 退院日 -->
-            <template #[`item.discharge_from_hospital_date`]="{ item }">
-                <div class="centered-cell" style="min-width: 120px">
-                    {{ item.discharge_from_hospital_date }}
-                </div>
-            </template>
-            <!-- 主病名 -->
-            <template #[`item.primary_disease_name`]="{ item }">
-                <div class="centered-cell" style="min-width: 130px; text-align: center;">
-                    {{ item.primary_disease_name }}
-                </div>
-            </template>
-            <!-- 責任レベル -->
-            <template #[`item.responsibility_level_name`]="{ item }">
-                <div class="centered-cell" style="min-width: 100px">
-                    {{ item.responsibility_level_name }}
-                </div>
-            </template>
-            <!-- 主治医 -->
-            <template #[`item.primary_doctor_name`]="{ item }">
-                <div class="centered-cell" style="min-width: 80px">
-                    {{ item.primary_doctor_name }}
-                </div>
-            </template>
-                <!-- 診察医１ -->
-                <template #[`item.examination_doctor_1_name`]="{ item }">
-                <div class="centered-cell" style="min-width: 80px">
-                    {{ item.examination_doctor_1_name }}
-                </div>
-            </template>
-                <!-- 診察医２ -->
-                <template #[`item.examination_doctor_2_name`]="{ item }">
-                <div class="centered-cell" style="min-width: 80px">
-                    {{ item.examination_doctor_2_name }}
-                </div>
-            </template>
-                <!-- 担当看護師 -->
-                <template #[`item.nurse_name`]="{ item }">
-                <div class="centered-cell">
-                    {{ item.nurse_name}}
-                </div>
-            </template>
+
             <!-- 重病度 muc do nghiem trong-->
-            <template #[`item.serious_illness_level`]="{ item }">
+            <template v-slot:item.serious_illness_level="{ item }">
                 <div class="centered-cell">
-                    <div v-if="item.serious_illness_level === 3">
+                    <div v-if="item.raw.serious_illness_level === 3">
                         <v-chip
                             color="purple"
                             text-color="white"
                             small
-                            outlined
+                            variant="outlined"
+                            style="min-width: 100px; justify-content: center"
                         >
                             要観察
                         </v-chip>
                     </div>
-                    <div v-else-if="item.serious_illness_level === 2">
+                    <div v-else-if="item.raw.serious_illness_level === 2">
                         <v-chip
                             color="purple"
                             text-color="white"
                             small
+                            style="min-width: 100px; justify-content: center"
                         >
                             診療待ち
                         </v-chip>
                     </div>
                 </div>
             </template>
-            <!-- 救護区分：phan loai cuu tro -->
-            <template #[`item.aid_classification`] = "{ item }">
+            <!-- 救護区分-->
+            <template v-slot:item.aid_classification = "{ item }">
                 <div class="centered-cell">
-                    <div v-if="item.aid_classification === 1">
-                        <v-chip color="#009eac" text-color="white" small>担送</v-chip>
+                    <div v-if="item.raw.aid_classification === 1">
+                        <v-chip 
+                            color="#009eac" 
+                            text-color="white" 
+                            small
+                            style="min-width: 60px; justify-content: center"
+                        >
+                            担送
+                        </v-chip>
                     </div> 
-                    <div v-else-if="item.aid_classification === 2">
-                        <v-chip color="#009eac" text-color="#009eac" small outlined>独歩</v-chip>
+                    <div v-else-if="item.raw.aid_classification === 2">
+                        <v-chip 
+                            color="#009eac"
+                            text-color="#009eac"
+                            small
+                            variant="outlined"
+                            style="min-width: 60px; justify-content: center"
+                        >
+                            独歩
+                        </v-chip>
                     </div> 
-                    <div v-else-if="item.aid_classification === 3">
-                        <v-chip color="#009eac" text-color="#009eac" small outlined>護送</v-chip>
+                    <div v-else-if="item.raw.aid_classification === 3">
+                        <v-chip 
+                            color="#009eac"
+                            text-color="#009eac" 
+                            small 
+                            variant="outlined"
+                            style="min-width: 60px; justify-content: center"
+                        >
+                            護送
+                        </v-chip>
                     </div>  
                 </div>
             </template>
-            <!-- hom nay co oder nao hay khong  -->
-            <!-- <template #[`item.has_unimplemented_order`]="{ item }">
+            <!-- 今日のオーダー有無 -->
+            <template v-slot:item.has_unimplemented_order="{ item }">
+                <div class="centered-cell icon-style">
+                    <v-chip
+                        v-if="item.raw.has_unimplemented_order"
+                        color="#1EA0DC"
+                        x-small
+                        text-color="white"
+                        label
+                    >有
+                    </v-chip>
+                    <v-chip v-else color="#707070" small text-color="white" label>無</v-chip>
+                </div>
+            </template>
+            <!-- 隔・拘 -->
+            <template v-slot:item.isolation_restraint="{ item }">
                 <div class="centered-cell icon-style">
                 <v-chip
-                    v-if="item.has_unimplemented_order"
+                    v-if="item.raw.has_isolation_restraint"
                     color="#1EA0DC"
                     x-small
                     text-color="white"
                     label
                     >有</v-chip
                 >
-                <v-chip v-else color="#707070" small text-color="white" label
-                    >無</v-chip
-                >
+                    <v-chip v-else color="#707070" small text-color="white" label>無</v-chip>
                 </div>
-            </template> -->
-            <!-- 隔.抱-->
-            <!-- <template  #[`item.isolation_restraint`]="{ item }">
-                <div class="centered-cell icon-style">
-                    <v-chip
-                        v-if="item.has_isolation_restraint"
-                        color="#1EA0DC"
-                        x-small
-                        text-color="white"
-                        label
-                    >有</v-chip>
-                    <v-chip 
-                        v-else 
-                        color="#707070" 
-                        small 
-                        text-color="white" 
-                        label
-                    >無</v-chip>
-                </div>
-            </template> -->
-
-            <!-- <template #[`item.risk`] = "{ item }">
-                <div class="centered-cell">
-                    {{ item.risk }}
-                </div>
-            </template> -->
-
-            <!-- 感染病-->
-            <!-- <template  #[`item.has_infectious_disease`]="{ item }">
+            </template>
+            <!-- 感染症 -->
+            <template v-slot:item.has_infectious_disease="{ item }">
                 <div
-                v-if="
-                    item.has_infectious_disease &&
-                    (item.infectious_disease_name === '' ||
-                    !item.infectious_disease_name)
-                "
-                class="centered-cell icon-style"
+                    v-if="
+                        item.raw.has_infectious_disease &&
+                        (item.raw.infectious_disease_name === '' ||
+                        !item.raw.infectious_disease_name)
+                    "
+                    class="centered-cell icon-style"
                 >
-                <v-chip color="#1EA0DC" x-small text-color="white" label>有</v-chip>
+                    <v-chip color="#1EA0DC" x-small text-color="white" label>有</v-chip>
                 </div>
                 <div
-                v-if="item.has_infectious_disease && item.infectious_disease_name"
-                class="centered-cell icon-style"
+                    v-if="item.raw.has_infectious_disease && item.raw.infectious_disease_name"
+                    class="centered-cell icon-style"
                 >
                 <v-tooltip bottom>
                     <template #activator="{ on, attrs }">
-                    <v-chip
-                        color="#1EA0DC"
-                        x-small
-                        text-color="white"
-                        label
-                        v-bind="attrs"
-                        v-on="on"
-                        >有</v-chip
-                    >
+                        <v-chip color="#1EA0DC"  text-color="white" label  v-bind="attrs" v-on="on">有</v-chip>
                     </template>
-
-                    <span>{{ item.infectious_disease_name }}</span>
+                    <span>{{ item.raw.infectious_disease_name }}</span>
                 </v-tooltip>
                 </div>
                 <div
-                v-if="!item.has_infectious_disease"
-                class="centered-cell icon-style"
+                    v-if="!item.raw.has_infectious_disease"
+                    class="centered-cell icon-style"
                 >
-                <v-chip color="#707070" small text-color="white" label>無</v-chip>
+                    <v-chip color="#707070" small text-color="white" label>無</v-chip>
                 </div>
-            </template> -->
-        </v-data-table>
-        <div class="table-footer text-center pt-2">
+            </template>
+        </v-data-table-virtual>
+        <div class="table-footer text-center">
             <span>全 {{ totalCount }} 件</span>
             <v-pagination
                 v-model="page"
-                class="ml-4"
                 circle
                 :length="pageCount"
                 :total-visible="pageCount"
             ></v-pagination>
         </div>
     </div>
-  </template>
+</template>
+
+<script>
+    import moment from 'moment'
+    export default {
+        data () {
+            return {
+                headers: [
+                    { title: '患者番号', key: 'patient_no', align: 'center', sortable: true },
+                    { title: '患者情報', key: 'patient_info', align: 'center', sortable: true},
+                    { title: '病棟/病室/病床', key: 'ward_uuid', align: 'center', sortable: true },
+                    { title: '入院日', key: 'started_hospitalization_date', align: 'center', sortable: true },
+                    { title: '入院日数', key: 'number_of_days_spent_in_hospital', align: 'center', sortable: true},
+                    { title: '入院形態', key: 'hospitalization_form', align: 'center', sortable: true },
+                    { title: '退院日', key: 'discharge_from_hospital_date', align: 'center', sortable: true },
+                    { title: '主病名', key: 'primary_disease_name', align: 'center', sortable: true },
+                    { title: '責任レベル', key: 'responsibility_level_name', align: 'center', sortable: true, },
+                    { title: '主治医', key: 'primary_doctor_name', align: 'center', sortable: true },
+                    { title: '診察医１', key: 'examination_doctor_1_name', align: 'center', sortable: true },
+                    { title: '診察医２', key: 'examination_doctor_2_name', align: 'center', sortable: true },
+                    { title: '担当看護師', key: 'nurse_name', align: 'center', sortable: true },
+                    { title: '重症度', key: 'serious_illness_level', align: 'center', sortable: true },
+
+                    { title: '救護区分', key: 'aid_classification', align: 'center', sortable: false, },
+                    { title: '褥瘡・転倒・自殺リスク', key: 'risk', align: 'center', ortable: false }, 
+                    { title: '今日のオーダー有無', key: 'has_unimplemented_order', align: 'center', sortable: false},
+                    { title: '隔・拘', key: 'isolation_restraint', align: 'center', sortable: false,},
+                    { title: '感染症', key: 'has_infectious_disease', sortable: false }
+                ],
+                dummyItems: [
+                    {
+                        patient_no: "12345",
+                        patient_info: {
+                            patient_uuid: "123",
+                            patient_name: "患者 太郎",
+                            patient_name_katakana: "カンジャ タロウ",
+                            patient_gender: 1,
+                            patient_birthday: "1996年07月17日",
+                            is_name_duplicated: true,
+                        },
+                        ward_uuid: {
+                            ward_name: "1病棟",
+                            sick_room_name: "A病室",
+                            sick_bed_name: "301",
+                        },
+                        started_hospitalization_date: "2021年04月01日",
+                        discharge_from_hospital_date: "2021年04月06日",
+                        hospitalization_type_name: "一般科",
+                        primary_disease_name: "器質性の妄想状態および幻覚妄想状態",
+                        responsibility_level_name: "病棟内",
+                        primary_doctor_name: "医師太郎",
+                        examination_doctor_1_name: "医師太郎",
+                        examination_doctor_2_name:"医師太郎",
+                        nurse_name: "看護花子",
+                        
+                        aid_classification: 1,
+                        risk: 'サンプルテキスト',
+                        has_unimplemented_order: "dummy",
+                        has_isolation_restraint:"dummy",
+                        has_infectious_disease: "dummy",
+                    },
+                    {
+                        patient_no: "12345",
+                        patient_info: {
+                            patient_uuid: "123",
+                            patient_name: "患者 太郎",
+                            patient_name_katakana: "カンジャ タロウ",
+                            patient_birthday: "1996年07月17日",
+                            is_name_duplicated: true,
+                        },
+                        ward_uuid: {
+                            ward_name: "1病棟",
+                            sick_room_name: "A病室",
+                            sick_bed_name: "301",
+                        },
+                        started_hospitalization_date: "2021年04月01日",
+                        discharge_from_hospital_date: "2021年05月03日",
+                        hospitalization_type_name: "任意入院",
+                        primary_disease_name: "うつ病",
+                        responsibility_level_name: "外出 (職員同伴)",
+                        primary_doctor_name: "医師 太郎",
+                        examination_doctor_1_name: "医師太郎",
+                        examination_doctor_2_name:"医師太郎",
+                        nurse_name: "看護花子",
+                        serious_illness_level: 3,
+                        aid_classification: 1,
+                        has_unimplemented_order: "",
+                        has_isolation_restraint:"",
+                        risk: 'サンプルテキスト',
+                        has_isolation_restraint: "dummy",
+                    },
+                    {
+                        patient_no: "12345",
+                        patient_info: {
+                            patient_uuid: "123",
+                            patient_name: "患者 太郎",
+                            patient_name_katakana: "カンジャ タロウ",
+                            patient_gender: 1,
+                            patient_birthday: "1996年07月17日",
+                            is_name_duplicated: true,
+                        },
+                        ward_uuid: {
+                            ward_name: "1病棟",
+                            sick_room_name: "A病室",
+                            sick_bed_name: "301",
+                        },
+                        started_hospitalization_date: "2021年04月01日",
+                        discharge_from_hospital_date: "2021年04月10日",
+                        hospitalization_type_name: "医療保護",
+                        primary_disease_name: "アルコール依存症",
+                        responsibility_level_name: "外出 (職員同士)",
+                        primary_doctor_name: "医師太郎",
+                        examination_doctor_1_name: "医師太郎",
+                        examination_doctor_2_name:"医師太郎",
+                        nurse_name: "看護花子",
+                        serious_illness_level: 2,
+                        aid_classification: 3,
+                        risk: 'サンプルテキスト',
+                        has_unimplemented_order: "dummy",
+                    },
+                    {
+                        patient_no: "12345",
+                        patient_info: {
+                            patient_uuid: "123",
+                            patient_name: "患者 太郎",
+                            patient_name_katakana: "カンジャ タロウ",
+                            patient_gender: 1,
+                            patient_birthday: "1996年07月17日",
+                            is_name_duplicated: true,
+                        },
+                        ward_uuid: {
+                            ward_name: "1病棟",
+                            sick_room_name: "A病室",
+                            sick_bed_name: "301",
+                        },
+                        started_hospitalization_date: "2021年04月01日",
+                        discharge_from_hospital_date: "2021年04月10日",
+                        hospitalization_type_name: "検察による鑑定入院",
+                        primary_disease_name: "アルコール依存症",
+                        responsibility_level_name: "外出 (職員同士)",
+                        primary_doctor_name: "医師太郎",
+                        examination_doctor_1_name: "医師太郎",
+                        examination_doctor_2_name:"医師太郎",
+                        nurse_name: "看護花子",
+                        serious_illness_level: 2,
+                        aid_classification: 3,
+                        risk: 'サンプルテキスト',
+                        has_infectious_disease: "dummy",
+                    },
+                    {
+                        patient_no: "12345",
+                        patient_info: {
+                            patient_uuid: "123",
+                            patient_name: "患者 太郎",
+                            patient_name_katakana: "カンジャ タロウ",
+                            patient_birthday: "1996年07月17日",
+                            is_name_duplicated: true,
+                        },
+                        ward_uuid: {
+                            ward_name: "1病棟",
+                            sick_room_name: "A病室",
+                            sick_bed_name: "301",
+                        },
+                        started_hospitalization_date: "2021年04月01日",
+                        discharge_from_hospital_date: "2021年05月03日",
+                        hospitalization_type_name: "任意入院",
+                        primary_disease_name: "うつ病",
+                        responsibility_level_name: "外出 (職員同伴)",
+                        primary_doctor_name: "医師 太郎",
+                        examination_doctor_1_name: "医師太郎",
+                        examination_doctor_2_name:"医師太郎",
+                        nurse_name: "看護花子",
+                        serious_illness_level: 3,
+                        aid_classification: 1,
+                        has_unimplemented_order: "",
+                        has_isolation_restraint:"",
+                        risk: 'サンプルテキスト',
+                        has_isolation_restraint: "dummy",
+                    },
+                    {
+                        patient_no: "12345",
+                        patient_info: {
+                            patient_uuid: "123",
+                            patient_name: "患者 太郎",
+                            patient_name_katakana: "カンジャ タロウ",
+                            patient_gender: 1,
+                            patient_birthday: "1996年07月17日",
+                            is_name_duplicated: true,
+                        },
+                        ward_uuid: {
+                            ward_name: "1病棟",
+                            sick_room_name: "A病室",
+                            sick_bed_name: "301",
+                        },
+                        started_hospitalization_date: "2021年04月01日",
+                        discharge_from_hospital_date: "2021年04月10日",
+                        hospitalization_type_name: "旧法に基づく入院形態",
+                        primary_disease_name: "アルコール依存症",
+                        responsibility_level_name: "外出 (職員同士)",
+                        primary_doctor_name: "医師太郎",
+                        examination_doctor_1_name: "医師太郎",
+                        examination_doctor_2_name:"医師太郎",
+                        nurse_name: "看護花子",
+                        serious_illness_level: 2,
+                        aid_classification: 1,
+                        risk: 'サンプルテキスト',
+                        has_unimplemented_order: "dummy",
+                    },
+                    {
+                        patient_no: "12345",
+                        patient_info: {
+                            patient_uuid: "123",
+                            patient_name: "患者 太郎",
+                            patient_name_katakana: "カンジャ タロウ",
+                            patient_gender: 1,
+                            patient_birthday: "1996年07月17日",
+                            is_name_duplicated: true,
+                        },
+                        ward_uuid: {
+                            ward_name: "1病棟",
+                            sick_room_name: "A病室",
+                            sick_bed_name: "301",
+                        },
+                        started_hospitalization_date: "2021年04月01日",
+                        discharge_from_hospital_date: "2021年04月10日",
+                        hospitalization_type_name: "医療保護",
+                        primary_disease_name: "アルコール依存症",
+                        responsibility_level_name: "外出 (職員同士)",
+                        primary_doctor_name: "医師太郎",
+                        examination_doctor_1_name: "医師太郎",
+                        examination_doctor_2_name:"医師太郎",
+                        nurse_name: "看護花子",
+                        serious_illness_level: 2,
+                        aid_classification: 3,
+                        risk: 'サンプルテキスト',
+                        has_unimplemented_order: "dummy",
+                    },
+                    {
+                        patient_no: "12345",
+                        patient_info: {
+                            patient_uuid: "123",
+                            patient_name: "患者 太郎",
+                            patient_name_katakana: "カンジャ タロウ",
+                            patient_gender: 1,
+                            patient_birthday: "1996年07月17日",
+                            is_name_duplicated: true,
+                        },
+                        ward_uuid: {
+                            ward_name: "1病棟",
+                            sick_room_name: "A病室",
+                            sick_bed_name: "301",
+                        },
+                        started_hospitalization_date: "2021年04月01日",
+                        discharge_from_hospital_date: "2021年04月10日",
+                        hospitalization_type_name: "医療保護",
+                        primary_disease_name: "アルコール依存症",
+                        responsibility_level_name: "外出 (職員同士)",
+                        primary_doctor_name: "医師太郎",
+                        examination_doctor_1_name: "医師太郎",
+                        examination_doctor_2_name:"医師太郎",
+                        nurse_name: "看護花子",
+                        serious_illness_level: 2,
+                        aid_classification: 3,
+                        risk: 'サンプルテキスト',
+                        has_unimplemented_order: "dummy",
+                    },
+                    {
+                        patient_no: "12345",
+                        patient_info: {
+                            patient_uuid: "123",
+                            patient_name: "患者 太郎",
+                            patient_name_katakana: "カンジャ タロウ",
+                            patient_gender: 1,
+                            patient_birthday: "1996年07月17日",
+                            is_name_duplicated: true,
+                        },
+                        ward_uuid: {
+                            ward_name: "1病棟",
+                            sick_room_name: "A病室",
+                            sick_bed_name: "301",
+                        },
+                        started_hospitalization_date: "2021年04月01日",
+                        discharge_from_hospital_date: "2021年04月10日",
+                        hospitalization_type_name: "医療保護",
+                        primary_disease_name: "アルコール依存症",
+                        responsibility_level_name: "外出 (職員同士)",
+                        primary_doctor_name: "医師太郎",
+                        examination_doctor_1_name: "医師太郎",
+                        examination_doctor_2_name:"医師太郎",
+                        nurse_name: "看護花子",
+                        serious_illness_level: 2,
+                        aid_classification: 3,
+                        risk: 'サンプルテキスト',
+                        has_unimplemented_order: "dummy",
+                    },
+                    {
+                        patient_no: "12345",
+                        patient_info: {
+                            patient_uuid: "123",
+                            patient_name: "患者 太郎",
+                            patient_name_katakana: "カンジャ タロウ",
+                            patient_gender: 1,
+                            patient_birthday: "1996年07月17日",
+                            is_name_duplicated: true,
+                        },
+                        ward_uuid: {
+                            ward_name: "1病棟",
+                            sick_room_name: "A病室",
+                            sick_bed_name: "301",
+                        },
+                        started_hospitalization_date: "2021年04月01日",
+                        discharge_from_hospital_date: "2021年04月10日",
+                        hospitalization_type_name: "旧法に基づく入院形態",
+                        primary_disease_name: "アルコール依存症",
+                        responsibility_level_name: "外出 (職員同士)",
+                        primary_doctor_name: "医師太郎",
+                        examination_doctor_1_name: "医師太郎",
+                        examination_doctor_2_name:"医師太郎",
+                        nurse_name: "看護花子",
+                        serious_illness_level: 2,
+                        aid_classification: 3,
+                        risk: 'サンプルテキスト',
+                        has_unimplemented_order: "dummy",
+                    },
+                    {
+                        patient_no: "12345",
+                        patient_info: {
+                            patient_uuid: "123",
+                            patient_name: "患者 太郎",
+                            patient_name_katakana: "カンジャ タロウ",
+                            patient_gender: 1,
+                            patient_birthday: "1996年07月17日",
+                            is_name_duplicated: true,
+                        },
+                        ward_uuid: {
+                            ward_name: "1病棟",
+                            sick_room_name: "A病室",
+                            sick_bed_name: "301",
+                        },
+                        started_hospitalization_date: "2021年04月01日",
+                        discharge_from_hospital_date: "2021年04月06日",
+                        hospitalization_type_name: "一般科",
+                        primary_disease_name: "器質性の妄想状態および幻覚妄想状態",
+                        responsibility_level_name: "病棟内",
+                        primary_doctor_name: "医師太郎",
+                        examination_doctor_1_name: "医師太郎",
+                        examination_doctor_2_name:"医師太郎",
+                        nurse_name: "看護花子",
+                        serious_illness_level: 2,
+                        aid_classification: 1,
+                        risk: 'サンプルテキスト',
+                        has_unimplemented_order: "dummy",
+                        has_isolation_restraint:"dummy",
+                        has_infectious_disease: "dummy",
+                    },
+                    {
+                        patient_no: "12345",
+                        patient_info: {
+                            patient_uuid: "123",
+                            patient_name: "患者 太郎",
+                            patient_name_katakana: "カンジャ タロウ",
+                            patient_birthday: "1996年07月17日",
+                            is_name_duplicated: true,
+                        },
+                        ward_uuid: {
+                            ward_name: "1病棟",
+                            sick_room_name: "A病室",
+                            sick_bed_name: "301",
+                        },
+                        started_hospitalization_date: "2021年04月01日",
+                        discharge_from_hospital_date: "2021年05月03日",
+                        hospitalization_type_name: "任意入院",
+                        primary_disease_name: "うつ病",
+                        responsibility_level_name: "外出 (職員同伴)",
+                        primary_doctor_name: "医師 太郎",
+                        examination_doctor_1_name: "医師太郎",
+                        examination_doctor_2_name:"医師太郎",
+                        nurse_name: "看護花子",
+                        serious_illness_level: 3,
+                        aid_classification: 1,
+                        has_unimplemented_order: "",
+                        has_isolation_restraint:"",
+                        risk: 'サンプルテキスト',
+                        has_isolation_restraint: "dummy",
+                    },
+                    {
+                        patient_no: "12345",
+                        patient_info: {
+                            patient_uuid: "123",
+                            patient_name: "患者 太郎",
+                            patient_name_katakana: "カンジャ タロウ",
+                            patient_gender: 1,
+                            patient_birthday: "1996年07月17日",
+                            is_name_duplicated: true,
+                        },
+                        ward_uuid: {
+                            ward_name: "1病棟",
+                            sick_room_name: "A病室",
+                            sick_bed_name: "301",
+                        },
+                        started_hospitalization_date: "2021年04月01日",
+                        discharge_from_hospital_date: "2021年04月10日",
+                        hospitalization_type_name: "医療保護",
+                        primary_disease_name: "アルコール依存症",
+                        responsibility_level_name: "外出 (職員同士)",
+                        primary_doctor_name: "医師太郎",
+                        examination_doctor_1_name: "医師太郎",
+                        examination_doctor_2_name:"医師太郎",
+                        nurse_name: "看護花子",
+                        serious_illness_level: 2,
+                        aid_classification: 3,
+                        risk: 'サンプルテキスト',
+                        has_unimplemented_order: "dummy",
+                    },
+                    
+                ],
+            }
+        },
+        methods: {
+            // getColor (hospitalization_type_name) {
+            //     if (hospitalization_type_name === "一般科") return '#009eac'
+            //     else if (hospitalization_type_name === "任意入院") return '#5ab800'
+            //     else if (hospitalization_type_name === "医療保護") return '#e5b000'
+            //     else if (hospitalization_type_name === "措置入院") return '#f55a0c'
+            //     else if (hospitalization_type_name === "応急入院") return '#1ea0dc'
+            //     else if (hospitalization_type_name === "検察による鑑定入院") return '#fc3e87'
+            //     else if (hospitalization_type_name === "介護医療院") return '#5ab800'
+            //     else if (hospitalization_type_name === "旧法に基づく入院形態") return '#853ecf'
+            // },
+            moment(arg) {
+            return moment(arg);
+         }  
+        }
+    }
+</script>
   
-
-
-<style lang="scss" scoped>
-.table-parent {
-    margin: 14px;
-}
-.sort-cell {
-    display: flex;
-    align-items: center;
-    justify-content: center;
+<style lang="scss" scoped> 
+  .table-content {
+    border: 0 !important;
     white-space: nowrap;
-    font-weight: bold;
-    color: #333;
-}
-.sort-control {
-    display: flex;
-    flex-direction: column;
-    font-size: 10px;
-    margin-left:  3px;
-    margin-right: -15px;
-}
 
-.info-cell {
     a {
-        text-decoration: none;
-        font-size: 12px;
+    margin-top: 0;
+    text-decoration: none;
+    color: #1ea0dc;
+    }
+  
+    //   :deep(.td) {
+      //     height: 36px !important;
+      //     font-size: 12px !important;
+      //     padding: 0 6px !important;
+      //     text-align: center !important;
+      //     cursor: pointer !important;
+      //   }
+  
+  }
+  .table-footer {
+      display: flex;
+      position: sticky;
+      bottom: 0;
+      padding: 5px 0;
+      justify-content: center;
+      align-items: center;
+      z-index: 100;
+  }
+  .info-cell {
+    a {
+    text-decoration: none;
+    font-size: 12px;
     }
     display: flex;
-    align-items: center;
-
+    * {
+    margin-right: 2px;
+    }
+    &__content {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        a:hover {
+            text-decoration: underline;
+        }
+    }
     .same-name-field {
-        color: red;
-        font-size: 80%;
-        display: inline-block;
-        width: 80%;
-        text-align: left;
+    color: red;
+    font-size: 80%;
+    display: inline-block;
     }
-}
-.centered-cell {
+  }
+  .centered-cell {
     text-align: center;
-}
-.icon-style  {
-    :deep(.v-chip.v-chip--label, .v-chip__content ) {
-        display: inline-block;
-        width: 16px;
-        height: 16px;
-        line-height: 16px;
-        padding: 0;
-        font-size: 10px;
-    }
-}
-.table-footer {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  position: sticky;
-  top: 0;
-  padding: 10px 0;
-  background-color: #ffffff;
-  filter: drop-shadow(0 -3px 3px #e6e6e6);
 }
 </style>

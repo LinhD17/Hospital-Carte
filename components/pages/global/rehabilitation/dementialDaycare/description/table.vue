@@ -142,13 +142,13 @@
                     <div class="info-cell">
                         <img
                             v-if="item.patient_info.patient_gender === 1"
-                            src="@/assets/icons/man.svg"
+                            src="@/assets/icon/man.svg"
                             style="width: 25px; height: 25px"
                         />
                         <img
                             v-else
                             style="width: 25px; height: 25px"
-                            src="@/assets/icons/female.svg"
+                            src="@/assets/icon/female.svg"
                         />
                         <a>
                             <ruby class="info-cell__content ml-2">
@@ -162,7 +162,7 @@
                             v-if="item.patient_info.is_name_duplicated === true"
                             class="same-name-field"
                         >
-                            <img src="@/assets/icons/important_triangle.svg" />
+                            <img src="@/assets/icon/important_triangle.svg" />
                             <span>同姓</span>
                         </div>
                         <span style="margin: 0">

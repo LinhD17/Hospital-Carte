@@ -1,80 +1,14 @@
-<script>
-    export default {
-        data () {
-            return {
-                headers: [
-                    { title: '記事種類', align: 'center', key: 'articleType', sortable: true },
-                    { title: '更新日時', align: 'center', key: 'updateDateTime', sortable: true },
-                    { title: '患者情報', align: 'center', key: 'patientInfo', sortable: true },
-                    { title: '報告内容', align: 'center', key: 'contentsReport', sortable: true },
-                    { title: '報告者', align: 'center', key: 'reporter', sortable: true },
-                    { title: '確認', align: 'center', key: 'confirmation', sortable: true },
-                ],
-                desserts: [
-                    {
-                        articleType: 'abcde',
-                        updateDateTime: '2023年03月22日 13:24',
-                        patientInfo: {
-                            patient_no: '1005',
-                            patient_name: 'テスト患者',
-                            patient_name_katakana: 'テストカンジャ',
-                            patient_gender: 2,
-                        },
-                        contentResport: 'aaaaaa',
-                        reporter: '保険指定医テスト１０',
-
-                    },
-                    {
-                        articleType: 'abcde',
-                        updateDateTime: '2023年03月22日 13:24',
-                        patientInfo: {
-                            patient_no: '1005',
-                            patient_name: 'テスト患者',
-                            patient_name_katakana: 'テストカンジャ',
-                            patient_gender: 1,
-                        },
-                        contentResport: 'aaaaaa',
-                        reporter: '保険指定医テスト１０',
-
-                    },
-                    {
-                        articleType: 'abcde',
-                        updateDateTime: '2023年03月22日 13:24',
-                        patientInfo: {
-                            patient_no: '1005',
-                            patient_name: 'テスト患者',
-                            patient_name_katakana: 'テストカンジャ',
-                            patient_gender: 2,
-                        },
-                        contentResport: 'aaaaaa',
-                        reporter: '保険指定医テスト１０',
-
-                    },
-                    {
-                        articleType: 'abcde',
-                        updateDateTime: '2023年03月22日 13:24',
-                        patientInfo: {
-                            patient_no: '1005',
-                            patient_name: 'テスト患者',
-                            patient_name_katakana: 'テストカンジャ',
-                            patient_gender: 1,
-                        },
-                        contentResport: 'aaaaaa',
-                        reporter: '保険指定医テスト１０',
-
-                    },
-                ],
-            }
-        },
-    }
-</script>
 <template>
-    <div class="task-table">
-        <v-data-table
+    <div>
+        <v-data-table-virtual
+        fixed-header
+        fixed-footer
         :headers="headers"
-        :items="desserts"
-        class="elevation-1"
+        :items="dummyDatas"
+        class="report-table"
+        height="300"
         >
+
             <!-- patient-info -->
             <template v-slot:item.patientInfo = "{ item }">
                 <div class="d-flex" style="justify-content: space-between">
@@ -107,9 +41,7 @@
                     </div>
                 </div>
             </template>
-
-
-        </v-data-table>
+        </v-data-table-virtual>
         <div class="table-footer text-center">
             <span>全 {{ totalCount }} 件</span>
             <v-pagination
@@ -121,12 +53,103 @@
         </div>
     </div>
 </template>
-  
+
+<script>
+    export default {
+        data () {
+            return {
+                headers: [
+                    { title: '記事種類', align: 'center', key: 'articleType', sortable: true },
+                    { title: '更新日時', align: 'center', key: 'updateDateTime', sortable: true },
+                    { title: '患者情報', align: 'center', key: 'patientInfo', sortable: true },
+                    { title: '報告内容', align: 'center', key: 'contentsReport', sortable: true },
+                    { title: '報告者', align: 'center', key: 'reporter', sortable: true },
+                    { title: '確認', align: 'center', key: 'confirmation', sortable: true },
+                ],
+                dummyDatas: [
+                    {
+                        articleType: 'abcde',
+                        updateDateTime: '2023年03月22日 13:24',
+                        patientInfo: {
+                            patient_no: '1005',
+                            patient_name: 'テスト患者',
+                            patient_name_katakana: 'テストカンジャ',
+                            patient_gender: 2,
+                        },
+                        contentResport: 'aaaaaa',
+                        reporter: '保険指定医テスト１０',
+                    },
+                    {
+                        articleType: 'abcde',
+                        updateDateTime: '2023年03月22日 13:24',
+                        patientInfo: {
+                            patient_no: '1005',
+                            patient_name: 'テスト患者',
+                            patient_name_katakana: 'テストカンジャ',
+                            patient_gender: 1,
+                        },
+                        contentResport: 'aaaaaa',
+                        reporter: '保険指定医テスト１０',
+                    },
+                    {
+                        articleType: 'abcde',
+                        updateDateTime: '2023年03月22日 13:24',
+                        patientInfo: {
+                            patient_no: '1005',
+                            patient_name: 'テスト患者',
+                            patient_name_katakana: 'テストカンジャ',
+                            patient_gender: 2,
+                        },
+                        contentResport: 'aaaaaa',
+                        reporter: '保険指定医テスト１０',
+                    },
+                    {
+                        articleType: 'abcde',
+                        updateDateTime: '2023年03月22日 13:24',
+                        patientInfo: {
+                            patient_no: '1005',
+                            patient_name: 'テスト患者',
+                            patient_name_katakana: 'テストカンジャ',
+                            patient_gender: 1,
+                        },
+                        contentResport: 'aaaaaa',
+                        reporter: '保険指定医テスト１０',
+                    },
+                    {
+                        articleType: 'abcde',
+                        updateDateTime: '2023年03月22日 13:24',
+                        patientInfo: {
+                            patient_no: '1005',
+                            patient_name: 'テスト患者',
+                            patient_name_katakana: 'テストカンジャ',
+                            patient_gender: 1,
+                        },
+                        contentResport: 'aaaaaa',
+                        reporter: '保険指定医テスト１０',
+                    },
+                    {
+                        articleType: 'abcde',
+                        updateDateTime: '2023年03月22日 13:24',
+                        patientInfo: {
+                            patient_no: '1005',
+                            patient_name: 'テスト患者',
+                            patient_name_katakana: 'テストカンジャ',
+                            patient_gender: 1,
+                        },
+                        contentResport: 'aaaaaa',
+                        reporter: '保険指定医テスト１０',
+                    },
+                ],
+            }
+        },
+    }
+</script>
 
 <style lang="scss" scoped> 
-  .task-table {
+  .report-table {
       border: 0 !important;
       white-space: nowrap;
+
   
       a {
       margin-top: 0;
@@ -134,13 +157,9 @@
       color: #333333;
     }
   
-    //   :deep(.td) {
-      //     height: 36px !important;
-      //     font-size: 12px !important;
-      //     padding: 0 6px !important;
-      //     text-align: center !important;
-      //     cursor: pointer !important;
-      //   }
+    :deep(td) {
+      text-align: center !important;
+    }
   
   }
   .table-footer {

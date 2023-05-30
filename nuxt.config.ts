@@ -1,13 +1,14 @@
 import { defineNuxtConfig } from 'nuxt/config'
 import vuetify from 'vite-plugin-vuetify'
+import path from 'path'
 
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
   //css
   css: [
     '~/assets/main.scss',
-    //'vuetify/lib/styles/main.sass',
-    //'mdi/css/materialdesignicons.min.css'
+    'vuetify/lib/styles/main.sass',
+    'mdi/css/materialdesignicons.min.css'
   ],
 
   //build
@@ -23,13 +24,13 @@ export default defineNuxtConfig({
     define: {
       'process.env.DEBUG': false,
     }, 
-    css: {
-      preprocessorOptions: {
-        scss: {
-          additionalData: '@use "@/assets/variables.scss" as *;'
-        }
-      }
-    }
+    // css: {
+    //   preprocessorOptions: {
+    //     scss: {
+    //       additionalData: '@use "@/assets/variables.scss" as *;'
+    //     }
+    //   }
+    // }
   },
   hooks: {
     'vite:extendConfig': (config) => {
@@ -54,14 +55,18 @@ export default defineNuxtConfig({
       '~/plugins/apiBase.ts',
     ],
     // Modules: https://go.nuxtjs.dev/config-modules
-    modules: [],
+    modules: [
+      '@/nuxt/image',
+    ],
 
     //other nuxt configuration...
-    buildModules: ['@nuxtjs/vuetify'],
+
 
     vuetify: {
       customVariables: ['~/assets/variables.scss'],
+      treeShake: true,
       theme: {
+        dark: true,
         themes: {
           light: {
             primary: '#1ea0dc', // Replace with your desired primary color
@@ -70,4 +75,13 @@ export default defineNuxtConfig({
       },
     },
   },
+
+  buildModules: [
+    '@nuxtjs/vuetify',
+  ],
+
+  alias: {
+    '@': path.resolve(__dirname, '.'),
+    '~': path.resolve(__dirname, '.')
+  }
 })

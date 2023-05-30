@@ -110,10 +110,10 @@
                         <a class="info-cell" href="#">
                             <img
                                 v-if="item.patient_gender == 1"
-                                src="@/assets/icons/man.svg"
+                                src="@/assets/icon/man.svg"
                                 alt="icon person"
                             />
-                            <img v-else src="@/assets/icons/woman.svg" alt="icon person" />
+                            <img v-else src="@/assets/icon/woman.svg" alt="icon person" />
                             <ruby>
                             {{ item.patient_name }}
                             <rt>{{ item.patient_name_katakana }}</rt>

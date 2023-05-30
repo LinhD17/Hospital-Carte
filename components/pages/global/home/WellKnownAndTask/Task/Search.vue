@@ -4,7 +4,12 @@ import DatePicker from '@/components/General/Form/DatePicker.vue'
 export default {
   components: {
     DatePicker
-  }
+  },
+  // data() {
+  //   return {
+  //     selectedDate: null
+  //   }
+  // }
 };
 </script>
 <template>
@@ -17,6 +22,10 @@ export default {
           <span class="mt-3">~</span>
           <date-picker>
           </date-picker>
+
+          <!-- <v-date-picker v-model="selectedDate"></v-date-picker>
+          <span class="mt-3">~</span>
+          <v-date-picker v-model="selectedDate"></v-date-picker> -->
 
 
             <!-- <datepicker

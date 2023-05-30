@@ -4,13 +4,13 @@
             return {
                 selected: [],
                 headers: [
-                    { title: '患者番号', value: 'patient_no', align: 'center', sortable: false },
-                    { title: '患者情報', value: 'patient_info', align: 'center', sortable: false },
-                    { title: '主病医', value: 'mainDoctor', align: 'center', sortable: false },
-                    { title: '評価', value: 'evaluation', align: 'center', sortable: false },
-                    { title: '所見', value: 'findings', align: 'center', sortable: false },
-                    { title: '評価２', value: 'evaluationInfo', align: 'center', sortable: false },
-                    { title: '連携', value: 'alignment', align: 'center', sortable: false },
+                    { title: '患者番号', key: 'patient_no', align: 'center', sortable: false },
+                    { title: '患者情報', key: 'patient_info', align: 'center', sortable: false },
+                    { title: '主病医', key: 'mainDoctor', align: 'center', sortable: false },
+                    { title: '評価', key: 'evaluation', align: 'center', sortable: false },
+                    { title: '所見', key: 'findings', align: 'center', sortable: false },
+                    { title: '評価２', key: 'evaluationInfo', align: 'center', sortable: false },
+                    { title: '連携', key: 'alignment', align: 'center', sortable: false },
                 ],
                 dummyItems: [
                     {
@@ -62,7 +62,7 @@
 </script>
 <template>
     <div class="task-table">
-        <v-data-table
+        <v-data-table-virtual
             v-model="selected"
             :headers="headers"
             :items="dummyItems"
@@ -71,44 +71,44 @@
             @page-count="pageCount = $event"
         >
             <!-- patient-info -->
-            <template #[`item.patient_info`] = "{ item }">
+            <template v-slot:item.patient_info= "{ item }">
                 <div class="d-flex" style="justify-content: space-between">
                     <div class="info-cell">
                         <img
-                            v-if="item.patient_info.patient_gender === 1"
-                            src="@/assets/icons/man.svg"
+                            v-if="item.raw.patient_info.patient_gender === 1"
+                            src="@/assets/icon/man.svg"
                             style="width: 25px; height: 25px"
                         />
                         <img
                             v-else
                             style="width: 25px; height: 25px"
-                            src="@/assets/icons/female.svg"
+                            src="@/assets/icon/female.svg"
                         />
                         <a>
-                            <ruby class="info-cell__content ml-2">
+                            <ruby class="info-cell__content">
                                 <rt class="text-no-wrap" style="font-size: 10px">
-                                    {{ item.patient_info.patient_name_katakana }}
+                                    {{ item.raw.patient_info.patient_name_katakana }}
                                 </rt>
-                                {{ item.patient_info.patient_name }}
+                                {{ item.raw.patient_info.patient_name }}
                             </ruby>
                         </a>
                         <div
-                            v-if="item.patient_info.is_name_duplicated === true"
+                            v-if="item.raw.patient_info.is_name_duplicated === true"
                             class="same-name-field"
                         >
-                            <img src="@/assets/icons/important_triangle.svg" />
+                            <img src="@/assets/icon/important_triangle.svg" />
                             <span>同姓</span>
                         </div>
                         <span style="margin: 0">
-                            {{ item.patient_info.birthday }}
-                            ({{ moment().diff(item.patient_info.birthday, 'years', false) }}) 
+                            {{ item.raw.patient_info.birthday }}
+                            <!-- ({{ moment().diff(item.raw.patient_info.birthday, 'years', false) }})  -->
                         </span>
                     </div>
                 </div>
             </template>
 
             <!-- evaluation -->
-            <template #[`item.evaluation`] = " {} ">
+            <template v-slot:item.evaluation = " {} ">
                 <div class="centered-cell">
                     <v-select
                         dense
@@ -121,7 +121,7 @@
             </template>
 
             <!-- findings -->
-            <template #[`item.findings`] = "{ } ">
+            <template v-slot:item.findings = "{ } ">
                 <v-textarea 
                 :rows="3"
                 hide-details
@@ -133,7 +133,7 @@
             </template>
 
             <!-- evaluationInfo -->
-            <template #[`item.evaluationInfo`] = "{ }">
+            <template v-slot:item.evaluationInfo = "{ }">
                 <div class="mt-1" style="display: flex">
                     <v-btn dense outlined small rounded color="primary">文例</v-btn>
                     <v-btn class="ml-2" dense outlined small rounded color="primary">テンプレート</v-btn>
@@ -150,7 +150,7 @@
                     </v-select>
                 </div>
             </template>
-        </v-data-table>
+        </v-data-table-virtual>
         <div class="table-footer text-center pt-2">
             <span>全 {{ totalCount }} 件</span>
             <v-pagination
