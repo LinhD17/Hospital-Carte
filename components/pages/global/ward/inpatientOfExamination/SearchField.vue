@@ -7,20 +7,17 @@
                 class="search-condition d-flex"
                 style="justify-content: space-between; height: 70px;"
             >
-                <div class="mt-1" style="width:210">
-                    <v-select
-                        background-color="white"
-                        height="32"
-                        class="select-box"
-                        dense
-                        outlined
-                        placeholder="保存したフィルタを選択"
+                <div style="width:210">
+                    <v-select 
+                        dense 
+                        clearable 
+                        variant="solo" 
                         hide-details
-                    >
-                        <!-- <template></template>
-                        <template></template>
-                        <template></template> -->
-                    </v-select>
+                        style="background-color: white" 
+                        class="select-box"
+                        placeholder="保存したフィルタを選択" 
+                        :items="['Vue.js', 'React', 'Angular', 'Buzz']"
+                    />
                 </div>
                 <v-btn
                     ref="submitButtonRef"
@@ -63,8 +60,9 @@
                                 <v-text-field 
                                     dense
                                     outlined
+                                    variant="solo" 
                                     placeholder="患者番号を入力"
-                                    background-color="white"
+                                    style="background-color: white" 
                                 /> 
                             </div>
                         </div>
@@ -75,9 +73,10 @@
                                 <v-select
                                     dense
                                     outlined
+                                    variant="solo" 
                                     placeholder="全病棟"
                                     :multiple="true"
-                                    background-color="white"
+                                    style="background-color: white" 
                                 >
                                     <!-- <template></template>
                                     <template></template> -->
@@ -92,17 +91,19 @@
                                     <v-text-field
                                         outlined
                                         dense
+                                        variant="solo" 
                                         placeholder="患者名を入力"
-                                        background-color="white"
+                                        style="background-color: white" 
                                     />
                                 </div>
                                 <div class="ml-2" style="width: 130px">
                                     <v-select
                                         dense
-                                        outlined
+                                        outlined 
+                                        variant="solo" 
                                         item-text="text"
                                         item-value="value"
-                                        background-color="white"
+                                        style="background-color: white" 
                                     >
                                     </v-select>
                                 </div>
@@ -115,18 +116,18 @@
                                 <v-select
                                     dense 
                                     outlined
+                                    variant="solo" 
                                     placeholder="一歳"
-                                    style="width: 90px" 
-                                    background-color="white"
+                                    style="background-color: white; width: 90px" 
                                 >
                                 </v-select>
                                 <span class="ml-1 mr-1 mt-2">~</span>
                                 <v-select
                                     dense
                                     outlined
+                                    variant="solo" 
                                     placeholder="一歳"
-                                    style="width: 90px"
-                                    background-color="white"
+                                    style="background-color: white; width: 90px"
                                 >
                                 </v-select>
                             </div>
@@ -138,10 +139,10 @@
                                 <v-select
                                     dense
                                     outlined
+                                    variant="solo"
                                     placeholder="性別"
-                                    style="width: 90px"
                                     :items="['男', '女']"
-                                    background-color="white"
+                                    style="background-color: white; width: 90px"
                                 >
 
                                 </v-select>

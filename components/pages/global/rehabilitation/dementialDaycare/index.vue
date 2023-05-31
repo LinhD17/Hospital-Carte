@@ -1,15 +1,6 @@
-<script setup lang="ts">
-    import imageUrl from '@/assets/icon/schedule.svg'
-    //const appTab = ref('description')
-    const appTab = ref('reception')
-    // const appTabClick = (appType: string) => {
-    //     appTab.value = appType
-    // }
-</script>
-
 <template>
     <PagesGlobalBaseLayout
-        page-title="デイケア所見一覧" 
+        page-title="認知症デイケア" 
         class="rehabiliation-content"
     >
         <template #iconImg>
@@ -30,10 +21,14 @@
                     @click="appTabClick('description')"
                 >一括記載</v-btn>
                 <v-btn
+                    @click="appTabClick('instruction')"
+                    :class="appTab === 'instruction' ? 'is-active' : ''"
                     color="#459caa"
                     outlined
                 >指示患者一覧</v-btn>
                 <v-btn
+                    @click="appTabClick('dailyReport')"
+                    :class="appTab === 'dailyReport' ? 'is-active' : ''"
                     color="#459caa"
                     outlined
                 >認知DC日報</v-btn>
@@ -45,8 +40,23 @@
         <template v-if="appTab === 'description'">
             <PagesGlobalRehabilitationDementialDaycareDescription />
         </template>
+        <template v-if="appTab === 'instruction'">
+            <PagesGlobalRehabilitationDementialDaycareDescription />
+        </template>
+        <template v-if="appTab === 'dailyReport'">
+            <PagesGlobalRehabilitationDementialDaycareDescription />
+        </template>
     </PagesGlobalBaseLayout>
 </template>
+
+<script setup lang="ts">
+    import imageUrl from '@/assets/icon/schedule.svg'
+    //const appTab = ref('description')
+    const appTab = ref('reception')
+    const appTabClick = (appType: string) => {
+        appTab.value=appType
+    }
+</script>
 
 <style lang="scss" scoped>
 .rehabiliation-content {
@@ -56,7 +66,7 @@
 .switch-select {
     display: flex;
     align-items: center;
-    margin: 10px;
+    margin-right: 10px;
     .v-btn {
         width: 125px;
         border-radius: 0;
@@ -79,5 +89,4 @@
         }
     }
 }
-
 </style>

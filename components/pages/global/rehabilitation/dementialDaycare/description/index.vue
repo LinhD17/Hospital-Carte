@@ -5,7 +5,7 @@
 <template>
     <div class="description-style">
         <PagesGlobalRehabilitationDementialDaycareDescriptionSearch /> 
-        <PagesGlobalRehabilitationDementialDaycareDescriptionTableC /> 
+        <PagesGlobalRehabilitationDementialDaycareDescriptionTable /> 
     </div>
 </template>
   

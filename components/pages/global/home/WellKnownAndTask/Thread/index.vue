@@ -20,7 +20,7 @@
             <PagesGlobalHomeWellKnownAndTaskThreadSearch /> 
         </div>
         <!-- table -->
-        <PagesGlobalHomeWellKnownAndTaskThreadTableC/> 
+        <PagesGlobalHomeWellKnownAndTaskThreadTable/> 
     </v-sheet>
 </template>
 
@@ -33,12 +33,13 @@
 
 // const dialogAddNewState = useDiaLog()
 // provide(searchUseThreadsStateKey, useThreads())
-
 </script>
 
 <style lang="scss" scoped>
+.root-header {
+    margin: 10px 10px 0;
+}
 .thread-title {
-    padding: 10px;
     display: flex;
     align-items: center;
     justify-content: space-between;

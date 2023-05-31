@@ -4,7 +4,7 @@
 <template>
     <NuxtLayout name="global">
         <div class="page-outpatientOfExaminationIndex">
-            <PagesGlobalOutpatientOfExamination />
+            <PagesGlobalOutpatientOutpatientOfExamination />
         </div>
     </NuxtLayout>
 </template>

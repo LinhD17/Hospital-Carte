@@ -82,59 +82,44 @@
 
                             <v-chip
                                 v-if="item.raw.hospitalization_type_name === '一般科'"
-                                color="#009eac"
-                                text-color="white"
                                 small
-                                style="min-width: 180px; justify-content: center"
+                                style="min-width: 180px; justify-content: center; background-color: #009eac; color: white"
                             >{{ item.raw.hospitalization_type_name  }}</v-chip> 
                             <v-chip
                                 v-if="item.raw.hospitalization_type_name === '任意入院'"
-                                color="#5ab800"
-                                text-color="white"
                                 small
-                                style="min-width: 180px; justify-content: center"
+                                style="min-width: 180px; justify-content: center; background-color: #5ab800; color: white"
                             >{{ item.raw.hospitalization_type_name  }}</v-chip>
                             <v-chip
                                 v-if="item.raw.hospitalization_type_name === '医療保護'"
-                                color="#e5b000"
-                                text-color="white"
                                 small
-                                style="min-width: 180px; justify-content: center"
+                                style="min-width: 180px; justify-content: center; background-color: #e5b000; color: white"
                             >{{ item.raw.hospitalization_type_name  }}</v-chip>
+
                             <v-chip
                                 v-if="item.raw.hospitalization_type_name === '措置入院'"
-                                color="#f55a0c"
-                                text-color="white"
                                 small
-                                style="min-width: 180px; justify-content: center"
+                                style="min-width: 180px; justify-content: center; background-color: #f55a0c; color: white"
                             >{{ item.raw.hospitalization_type_name  }}</v-chip>
                             <v-chip
                                 v-if="item.raw.hospitalization_type_name === '応急入院'"
-                                color="#1ea0dc"
-                                text-color="white"
                                 small
-                                style="min-width: 180px; justify-content: center"
+                                style="min-width: 180px; justify-content: center; background-color: #1ea0dc; color: white"
                             >{{ item.raw.hospitalization_type_name  }}</v-chip>
                             <v-chip
                                 v-if="item.raw.hospitalization_type_name === '検察による鑑定入院'"
-                                color="#fc3e87"
-                                text-color="white"
                                 small
-                                style="min-width: 180px; justify-content: center"
+                                style="min-width: 180px; justify-content: center; background-color: #fc3e87; color: white"
                             >{{ item.raw.hospitalization_type_name  }}</v-chip>
                             <v-chip
                                 v-if="item.raw.hospitalization_type_name === '介護医療院'"
-                                color="red"
-                                text-color="white"
                                 small
-                                style="min-width: 180px; justify-content: center"
+                                style="min-width: 180px; justify-content: center; background-color: red; color: white"
                             >{{ item.raw.hospitalization_type_name  }}</v-chip>
                             <v-chip
                                 v-if="item.raw.hospitalization_type_name === '旧法に基づく入院形態'"
-                                color="#853ecf"
-                                text-color="white"
                                 small
-                                style="min-width: 180px; justify-content: center"
+                                style="min-width: 180px; justify-content: center; background-color: #853ecf; color: white"
                             >{{ item.raw.hospitalization_type_name  }}</v-chip> 
                         </div>
                         <div class="mt-1">
@@ -151,8 +136,8 @@
                         <v-chip
                             color="purple"
                             text-color="white"
-                            small
                             variant="outlined"
+                            small
                             style="min-width: 100px; justify-content: center"
                         >
                             要観察
@@ -160,10 +145,8 @@
                     </div>
                     <div v-else-if="item.raw.serious_illness_level === 2">
                         <v-chip
-                            color="purple"
-                            text-color="white"
                             small
-                            style="min-width: 100px; justify-content: center"
+                            style="min-width: 100px; justify-content: center; background-color: purple; color: white"
                         >
                             診療待ち
                         </v-chip>
@@ -175,10 +158,8 @@
                 <div class="centered-cell">
                     <div v-if="item.raw.aid_classification === 1">
                         <v-chip 
-                            color="#009eac" 
-                            text-color="white" 
                             small
-                            style="min-width: 60px; justify-content: center"
+                            style="min-width: 60px; justify-content: center; background-color: #009eac; color: white"
                         >
                             担送
                         </v-chip>
@@ -212,13 +193,12 @@
                 <div class="centered-cell icon-style">
                     <v-chip
                         v-if="item.raw.has_unimplemented_order"
-                        color="#1EA0DC"
                         x-small
-                        text-color="white"
                         label
+                        style="background-color: #1EA0DC; color: white"
                     >有
                     </v-chip>
-                    <v-chip v-else color="#707070" small text-color="white" label>無</v-chip>
+                    <v-chip v-else small  style="background-color: #707070; color: white" label>無</v-chip>
                 </div>
             </template>
             <!-- 隔・拘 -->
@@ -226,13 +206,12 @@
                 <div class="centered-cell icon-style">
                 <v-chip
                     v-if="item.raw.has_isolation_restraint"
-                    color="#1EA0DC"
                     x-small
-                    text-color="white"
                     label
+                    style="background-color: #1EA0DC; color: white"
                     >有</v-chip
                 >
-                    <v-chip v-else color="#707070" small text-color="white" label>無</v-chip>
+                    <v-chip v-else small  style="background-color: #707070; color: white" label>無</v-chip>
                 </div>
             </template>
             <!-- 感染症 -->
@@ -245,7 +224,7 @@
                     "
                     class="centered-cell icon-style"
                 >
-                    <v-chip color="#1EA0DC" x-small text-color="white" label>有</v-chip>
+                    <v-chip x-small style="background-color: #1EA0DC; color: white" label>有</v-chip>
                 </div>
                 <div
                     v-if="item.raw.has_infectious_disease && item.raw.infectious_disease_name"
@@ -253,7 +232,7 @@
                 >
                 <v-tooltip bottom>
                     <template #activator="{ on, attrs }">
-                        <v-chip color="#1EA0DC"  text-color="white" label  v-bind="attrs" v-on="on">有</v-chip>
+                        <v-chip style="background-color: #1EA0DC; color: white" label  v-bind="attrs" v-on="on">有</v-chip>
                     </template>
                     <span>{{ item.raw.infectious_disease_name }}</span>
                 </v-tooltip>
@@ -262,7 +241,7 @@
                     v-if="!item.raw.has_infectious_disease"
                     class="centered-cell icon-style"
                 >
-                    <v-chip color="#707070" small text-color="white" label>無</v-chip>
+                    <v-chip small  style="background-color: #707070; color: white" label>無</v-chip>
                 </div>
             </template>
         </v-data-table-virtual>
@@ -690,7 +669,6 @@
                         risk: 'サンプルテキスト',
                         has_unimplemented_order: "dummy",
                     },
-                    
                 ],
             }
         },

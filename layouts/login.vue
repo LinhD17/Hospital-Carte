@@ -7,7 +7,7 @@
                 absolute 
                 top 
                 right 
-                color="#C83232"
+                style="color: #C83232"
             >
                 ログインの有効期限が切れました。
             </v-snackbar>

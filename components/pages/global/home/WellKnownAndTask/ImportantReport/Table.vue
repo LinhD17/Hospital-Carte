@@ -1,263 +1,210 @@
-<script setup lang="ts">
-    type HeaderCell = {
-        text: string
-        value: string
-        width?: string | number
-        sortable: boolean
-    }
-    const header: HeaderCell[] = [
-        { text: '記事種類', value: 'articleType', sortable: false },
-        { text: '更新日時', value: 'updateDateTime', sortable: false },
-        { text: '患者情報', value: 'patientInfo', sortable: false }, 
-        { text: '報告内容', value: 'contentsReport', sortable: false }, 
-        { text: '報告者', value: 'reporter', sortable: false }, 
-        { text: '確認', value: 'confirmation', sortable: false }, 
-    ]
-
-    const dummyItems = [
-        {
-            articleType: 'abcde',
-            updateDateTime: '2023年03月22日 13:24',
-            patientInfo: {
-                patient_no: '111111',
-                patient_name: 'テスト患者',
-                patient_name_katakana: 'テストカンジャ',
-                patient_gender: 1,
-            },
-            contentResport: 'aaaaaa',
-            reporter: '保険指定医テスト１０',
-
-        },
-        {
-            articleType: 'abcde',
-            updateDateTime: '2023年03月22日 13:24',
-            patientInfo: {
-                patient_no: '111111',
-                patient_name: 'テスト患者',
-                patient_name_katakana: 'テストカンジャ',
-                patient_gender: 1,
-            },
-            contentResport: 'aaaaaa',
-            reporter: '保険指定医テスト１０',
-
-        },
-        {
-            articleType: 'abcde',
-            updateDateTime: '2023年03月22日 13:24',
-            patientInfo: {
-                patient_no: '111111',
-                patient_name: 'テスト患者',
-                patient_name_katakana: 'テストカンジャ',
-                patient_gender: 1,
-            },
-            contentResport: 'aaaaaa',
-            reporter: '保険指定医テスト１０',
-
-        },
-        {
-            articleType: 'abcde',
-            updateDateTime: '2023年03月22日 13:24',
-            patientInfo: {
-                patient_no: '111111',
-                patient_name: 'テスト患者',
-                patient_name_katakana: 'テストカンジャ',
-                patient_gender: 1,
-            },
-            contentResport: 'aaaaaa',
-            reporter: '保険指定医テスト１０',
-
-        },
-        {
-            articleType: 'abcde',
-            updateDateTime: '2023年03月22日 13:24',
-            patientInfo: {
-                patient_no: '111111',
-                patient_name: 'テスト患者',
-                patient_name_katakana: 'テストカンジャ',
-                patient_gender: 1,
-            },
-            contentResport: 'aaaaaa',
-            reporter: '保険指定医テスト１０',
-
-        },
-        {
-            articleType: 'abcde',
-            updateDateTime: '2023年03月22日 13:24',
-            patientInfo: {
-                patient_no: '111111',
-                patient_name: 'テスト患者',
-                patient_name_katakana: 'テストカンジャ',
-                patient_gender: 1,
-            },
-            contentResport: 'aaaaaa',
-            reporter: '保険指定医テスト１０',
-
-        },
-        {
-            articleType: 'abcde',
-            updateDateTime: '2023年03月22日 13:24',
-            patientInfo: {
-                patient_no: '111111',
-                patient_name: 'テスト患者',
-                patient_name_katakana: 'テストカンジャ',
-                patient_gender: 1,
-            },
-            contentResport: 'aaaaaa',
-            reporter: '保険指定医テスト１０',
-
-        },
-    ]
-
-    const page = ref(1)
-
-    const pageCount = ref(0)
-
-    const totalCount = dummyItems.length
-
-    // const clickPatient = (item: any) => {
-    //             const url = '/karte?patient_uuid=' + item.patient_uuid
-    //             window.open(url)
-    //         }
-</script>
-
 <template>
-    <div class="report-table ml-3 mr-3">
-        <v-data-table
-            dense
-            :headers="header"
-            :items="dummyItems"
-            hide-default-footer
-            :page.sync="page"
-            @page-count="pageCount = $event"
+    <div>
+        <v-data-table-virtual
+        fixed-header
+        fixed-footer
+        :headers="headers"
+        :items="dummyDatas"
+        class="report-table"
+        height="300"
         >
-            <!--table-header  -->
-            <template #[`header`] = "{ props: { headers } }">
-                <thead class="custom-header">
-                    <tr class="custom-header">
-                        <th v-for="(item, id) in headers" :key="id" class="custom-header">
-                            <div class="sort-cell">
-                                {{ item.text }}
-                            </div>
-                        </th>
-                    </tr>
-                </thead>
-            </template>
 
-            <!-- table-items -->
-             <!--記事種類-->
-             <template #[`item.articleType`]="{ item }">
-                <div class="centered-cell">
-                    {{ item.articleType }}
-                </div>
-            </template>
-            <!-- 更新日時 -->
-            <template #[`item.updateDateTime`]="{ item }">
-                <div class="centered-cell">
-                    {{ item.updateDateTime }}
-                </div>
-            </template>
-             <!-- 患者情報 -->
-             <template #[`item.patientInfo`]="{ item }">
-                <div class="patient-info">
-                    <p class="patient-no">{{ item.patient_no }}</p>
-
-                    <!-- <a
-                        class="info-cell"
-                        href="#"
-                        @click.prevent.stop="clickPatient(item)"
-                    >
+            <!-- patient-info -->
+            <template v-slot:item.patientInfo = "{ item }">
+                <div class="d-flex" style="justify-content: space-between">
+                    <div class="info-cell">
+                        <span class="mr-2">{{ item.raw.patientInfo.patient_no }}</span>
                         <img
-                        v-if="item.patient_gender == 1"
-                        src="@/assets/icon/man.svg"
-                        alt="icon person"
+                            v-if="item.raw.patientInfo.patient_gender === 1"
+                            src="@/assets/icon/man.svg"
+                            style="width: 25px; height: 25px"
                         />
-                        <img v-else src="@/assets/icon/woman.svg" alt="icon person" />
-                        <ruby>
-                        {{ item.patient_name }}
-                        <rt>{{ item.patient_name_katakana }}</rt>
-                        </ruby>
-                    </a> -->
+                        <img
+                            v-else
+                            style="width: 25px; height: 25px"
+                            src="@/assets/icon/female.svg"
+                        />
+                        <a>
+                            <ruby class="info-cell__content ml-2" style="min-width: 80px">
+                                <rt class="text-no-wrap" style="font-size: 10px">
+                                    {{ item.raw.patientInfo.patient_name_katakana }}
+                                </rt>
+                                <!-- <nuxt-link
+                                    :to="`/karte?patient_uuid=${item.raw.patient_name.patient_uuid}`"
+                                    target="_blank"
+                                >
+                                    {{ item.raw.patient_info.patient_name }}
+                                </nuxt-link> -->
+                                {{ item.raw.patientInfo.patient_name }}
+                            </ruby>
+                        </a>
+                    </div>
                 </div>
             </template>
-            <!-- 報告内容 -->
-            <template #[`item.contentsReport`]="{ item }">
-                <div class="centered-cell">
-                    {{ item.updateDateTime }}
-                </div>
-            </template>
-            <!-- 報告者 -->
-            <template #[`item.reporter`]="{ item }">
-                <div class="centered-cell">
-                    {{ item.reporter }}
-                </div>
-
-            </template>
-            <!-- 確認 -->
-            <template #[`item.confirmation`]="{ item }">
-                <div class="centered-cell">
-                    {{ item.confirmation }}
-                </div>
-            </template>
-        </v-data-table>
-        <!-- dem stt trang o cuoi bang -->
-        <div class="table-footer text-center pt-2">
-            <span>全 {{totalCount}} 件</span>
-            <v-pagination 
-            v-model="page"
-            class="ml-4"
-            color="primary"
-            circle
-            :length="pageCount"
-            :total-visible="pageCount"
+        </v-data-table-virtual>
+        <div class="table-footer text-center">
+            <span>全 {{ totalCount }} 件</span>
+            <v-pagination
+                v-model="page"
+                circle
+                :length="pageCount"
+                :total-visible="pageCount"
             ></v-pagination>
         </div>
     </div>
 </template>
 
+<script>
+    export default {
+        data () {
+            return {
+                headers: [
+                    { title: '記事種類', align: 'center', key: 'articleType', sortable: true },
+                    { title: '更新日時', align: 'center', key: 'updateDateTime', sortable: true },
+                    { title: '患者情報', align: 'center', key: 'patientInfo', sortable: true },
+                    { title: '報告内容', align: 'center', key: 'contentsReport', sortable: true },
+                    { title: '報告者', align: 'center', key: 'reporter', sortable: true },
+                    { title: '確認', align: 'center', key: 'confirmation', sortable: true },
+                ],
+                dummyDatas: [
+                    {
+                        articleType: 'abcde',
+                        updateDateTime: '2023年03月22日 13:24',
+                        patientInfo: {
+                            patient_no: '1005',
+                            patient_name: 'テスト患者',
+                            patient_name_katakana: 'テストカンジャ',
+                            patient_gender: 2,
+                        },
+                        contentResport: 'aaaaaa',
+                        reporter: '保険指定医テスト１０',
+                    },
+                    {
+                        articleType: 'abcde',
+                        updateDateTime: '2023年03月22日 13:24',
+                        patientInfo: {
+                            patient_no: '1005',
+                            patient_name: 'テスト患者',
+                            patient_name_katakana: 'テストカンジャ',
+                            patient_gender: 1,
+                        },
+                        contentResport: 'aaaaaa',
+                        reporter: '保険指定医テスト１０',
+                    },
+                    {
+                        articleType: 'abcde',
+                        updateDateTime: '2023年03月22日 13:24',
+                        patientInfo: {
+                            patient_no: '1005',
+                            patient_name: 'テスト患者',
+                            patient_name_katakana: 'テストカンジャ',
+                            patient_gender: 2,
+                        },
+                        contentResport: 'aaaaaa',
+                        reporter: '保険指定医テスト１０',
+                    },
+                    {
+                        articleType: 'abcde',
+                        updateDateTime: '2023年03月22日 13:24',
+                        patientInfo: {
+                            patient_no: '1005',
+                            patient_name: 'テスト患者',
+                            patient_name_katakana: 'テストカンジャ',
+                            patient_gender: 1,
+                        },
+                        contentResport: 'aaaaaa',
+                        reporter: '保険指定医テスト１０',
+                    },
+                    {
+                        articleType: 'abcde',
+                        updateDateTime: '2023年03月22日 13:24',
+                        patientInfo: {
+                            patient_no: '1005',
+                            patient_name: 'テスト患者',
+                            patient_name_katakana: 'テストカンジャ',
+                            patient_gender: 1,
+                        },
+                        contentResport: 'aaaaaa',
+                        reporter: '保険指定医テスト１０',
+                    },
+                    {
+                        articleType: 'abcde',
+                        updateDateTime: '2023年03月22日 13:24',
+                        patientInfo: {
+                            patient_no: '1005',
+                            patient_name: 'テスト患者',
+                            patient_name_katakana: 'テストカンジャ',
+                            patient_gender: 1,
+                        },
+                        contentResport: 'aaaaaa',
+                        reporter: '保険指定医テスト１０',
+                    },
+                ],
+            }
+        },
+    }
+</script>
 
+<style lang="scss" scoped> 
+  .report-table {
+      border: 0 !important;
+      white-space: nowrap;
 
-<style lang="scss" scoped>
-.report-table {
-    height: 100%;
-    border: 0 !important;
-    white-space: nowrap;
-
-    a {
-    margin-top: 0;
-    text-decoration: none;
-    color: #333333;
+  
+      a {
+      margin-top: 0;
+      text-decoration: none;
+      color: #333333;
+    }
+  
+    :deep(td) {
+      text-align: center !important;
+    }
+  
+  }
+  .table-footer {
+      display: flex;
+      position: sticky;
+      bottom: 0;
+      padding: 5px 0;
+      justify-content: center;
+      align-items: center;
+      z-index: 100;
   }
 
-//   :deep(.td) {
-//     height: 36px !important;
-//     font-size: 12px !important;
-//     padding: 0 6px !important;
-//     text-align: center !important;
-//     cursor: pointer !important;
-//   }
-}
-.custom-header {
-    background-color: #e4e4e4 !important;
-    font-size: 100% !important;
-    text-align: center !important;
-}
-.sort-cell {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  white-space: nowrap;
-}
-.centered-cell {
-    text-align: center;
-}
-.table-footer {
+  .table-footer {
+      display: flex;
+      position: sticky;
+      bottom: 0;
+      padding: 5px 0;
+      justify-content: center;
+      align-items: center;
+      z-index: 100;
+  }
+  .info-cell {
+    a {
+    text-decoration: none;
+    font-size: 12px;
+    }
     display: flex;
-    position: sticky;
-    bottom: 0;
-    padding: 5px 0;
-    justify-content: center;
-    align-items: center;
-    z-index: 100;
-    height: 50px;
+    * {
+    margin-right: 2px;
+    }
+    &__content {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        a:hover {
+            text-decoration: underline;
+        }
+    }
+    .same-name-field {
+    color: red;
+    font-size: 80%;
+    display: inline-block;
+    }
+  }
+  .centered-cell {
+    text-align: center;
 }
 </style>

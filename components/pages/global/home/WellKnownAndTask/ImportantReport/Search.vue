@@ -1,21 +1,22 @@
 <template>
-    <div class="container">
-        <div class="form-field">
-            <!-- v-select: not run  -->
-            <div class="mb-3" style="width: 130px">
-                <v-select
-                    dense
-                    clearable
-                    hide-details
-                    placeholder="全て"
-                    :items="['Vue.js', 'React', 'Angular', 'Buzz']"
+    <div class="container ">
+        <div class="form-field mb-3">
+            <div style="width: 160px">
+                <v-select 
+                dense 
+                clearable 
+                variant="solo" 
+                hide-details
+                style="background-color: white" 
+                placeholder="グループを選択" 
+                :items="['Vue.js', 'React', 'Angular', 'Buzz']"
                 />
             </div>
             <v-checkbox 
                 dense
                 label="確認済み表示"
                 hide-details
-                class="mb-3"
+                class="mb-2"
             />
         </div>
         <!-- button -->
@@ -23,6 +24,7 @@
             color="primary"
             dense
             class="bt-basic h-middle"
+            rounded
         >報告一覧
         </v-btn>
     </div>

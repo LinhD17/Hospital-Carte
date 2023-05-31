@@ -6,7 +6,7 @@ export type Organization = {
     organization_name: string
 }
 
-export const useSearchOrganization = () {
+export const useSearchOrganization = () => {
     const organization = ref<Organization>({
         organization_uuid: '',
         organization_name: '',

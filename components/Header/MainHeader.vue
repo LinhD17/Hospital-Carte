@@ -9,23 +9,24 @@
             <img src="@/assets/img/waroku_white.svg" alt="Waroku" />
           </v-toolbar-title>
           <v-toolbar-items class="toolbar-items">
-            <div class="d-flex  align-center" style="min-width: max-content">
+            <div class="d-flex  align-center">
               <v-text-field
                 solo
-                placeholder="患者名or患者番号でカルテ呼び出し"
-                background-color="white"
-                hide-details
-                height="20"
+                dense 
+                hide-details="auto"
+                variant="solo"
+                label="患者名か患者番号で検索"
+                style="background-color: #f0f0f0; min-width: 230px;"
               ></v-text-field>
               <div>
                 <v-btn icon>
                   <img
                     src="@/assets/icon/pageHeaderIcons/search.svg"
-                    alt="search karute by patient name or patient number"
+                    alt="検索ボタン"
                   />
                 </v-btn>
               </div>
-              <v-divider class="divider" vertical></v-divider>
+               <v-divider class="header-driver" vertical></v-divider>
               <div class="group-name">
                 <span>Waroku-HK開発グループ</span>
                 <span>ワロク (HK) VN病院X</span>
@@ -38,7 +39,7 @@
                   />
                 </v-btn>
               </div>
-              <v-divider class="divider" vertical></v-divider>
+               <v-divider class="header-driver" vertical></v-divider>
               <div>
                 <v-btn icon>
                   <img
@@ -55,16 +56,16 @@
                   />
                 </v-btn>
               </div>
-              <v-divider class="divider" vertical></v-divider>
+               <v-divider class="header-driver" vertical></v-divider>
               <div class="group-name">
                 <span>保険指定医テスト10</span>
                 <span>精神保健指定医</span>
               </div>
-              <v-divider class="divider-small" vertical></v-divider>
+              <v-divider class="header-driver" vertical></v-divider>
               <div class="group-name">
                 <span>診療科:神経内科</span>
               </div>
-              <v-divider class="divider" vertical></v-divider>
+               <v-divider class="header-driver" vertical></v-divider>
               <div>
                 <v-btn icon>
                   <img
@@ -92,13 +93,9 @@
     background-color: #009eac !important;
     height: 58px !important; 
   }
-  .divider {
-    height: 58px !important;
-    background-color: white;
-  }
-  .divider-small {
-    height: 54px !important;
-    background-color: white;
+  .header-driver {
+    height: 58px;
+    border-color: #ffffff !important;
   }
   .group-name {
     display: flex;

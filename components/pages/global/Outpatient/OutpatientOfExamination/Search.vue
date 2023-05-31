@@ -7,15 +7,19 @@
       <v-row class="ma-4 pa-2 search-area">
         <div class="d-flex">
           <v-select
-            height="37"
             class="select-box"
             dense
-            outlined
+            variant="solo"
             placeholder="検索条件呼び出し"
             hide-details
+            style="background-color:#1ea0dc "
           >
           </v-select>
-          <v-btn rounded color="primary" dark class="btn-style"> 検索 </v-btn>
+          <v-btn 
+            rounded
+            color="#1ea0dc" 
+            class="btn-style"
+          >検索 </v-btn>
           <v-btn
             v-if="searchActive"
             rounded

@@ -43,44 +43,45 @@ export default {
 
         </div>
         <!-- select-box  -->
-        <div class="d-flex align-center mt-3">
-            <v-select 
-            placeholder="病棟"
-            outlined
-            dense
+        <div class="d-flex align-center mt-3" style="width: 120px">
+          <v-select 
+            dense 
+            clearable 
+            variant="solo" 
             hide-details
-            height="28"
-            style="width: 100px"
-            :items="['Foo', 'Bar', 'Fizz', 'Buzz']"
-            />
-        </div>
-        <div class="d-flex align-center mt-3">
-            <v-select 
-                placeholder="分類"
-                outlined
-                dense
-                hide-details
-                height="28"
-                style="width: 100px"
-                :items="['Foo', 'Bar', 'Fizz', 'Buzz']"
-            />
+            style="background-color: white" 
+            placeholder="病棟" 
+            :items="['Vue.js', 'React', 'Angular', 'Buzz']"
+          />
+          </div>
+        <div class="d-flex align-center mt-3" style="width: 120px">
+          <v-select 
+            dense 
+            clearable 
+            variant="solo" 
+            hide-details
+            style="background-color: white" 
+            placeholder="分類" 
+            :items="['Vue.js', 'React', 'Angular', 'Buzz']"
+          />
         </div>
         <!-- check-box -->
         <div class="check-box">
-            <v-checkbox 
-                dense
-                hide-details
-                label="完了済表示"
-                class="mt-2"
-            />
+          <v-checkbox 
+            dense
+            hide-details
+            label="完了済表示"
+            class="mt-2"
+          />
         </div>
         <!-- button -->
         <v-btn 
-            color="primary" 
-            class="bt-basic h-middle" 
-            style="width: 90px"
+          color="primary" 
+          class="bt-basic h-middle" 
+          style="width: 70px"
+          rounded
         >
-            検索
+          検索
         </v-btn>
     </div>
 

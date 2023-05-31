@@ -9,14 +9,13 @@ import imageUrl from '@/assets/icon/schedule.svg'
             <template #iconImg>
                 <img :src="imageUrl"/> 
             </template>
-            <PagesGlobalOutpatientOfExaminationSearch />
-            <PagesGlobalOutpatientOfExaminationTable /> 
+            <PagesGlobalOutpatientOutpatientOfExaminationSearch />
+            <PagesGlobalOutpatientOutpatientOfExaminationTable />
         </PagesGlobalBaseLayout>
     </div>
 </template>
 <style scoped>
 .outpatient-card-width {
-    width: 100%;
     margin-left: 2%;
     margin-top: -12px;
 }

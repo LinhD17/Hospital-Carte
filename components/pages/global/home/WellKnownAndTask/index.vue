@@ -39,7 +39,7 @@ import imageUrl from '@/assets/icon/schedule.svg'
 }
 .reports {
   height: 49%;
-  margin: 10px 5px 5px ;
+  margin: 10px 0px 0px ;
   border: 1px solid white;
   border-radius: 8px;
   overflow: auto hidden;
@@ -49,7 +49,7 @@ import imageUrl from '@/assets/icon/schedule.svg'
   margin: 7px 5px 0;
   height: 49%;
   border: 1px solid white;
-  border-radius: 5px;
+  border-radius: 8px;
   overflow: auto hidden;
 }
 .tasks {

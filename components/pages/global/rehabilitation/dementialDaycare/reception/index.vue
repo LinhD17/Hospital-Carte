@@ -1,8 +1,4 @@
 <!-- 受付一覧 -->
-<script setup lang="ts">
-
-</script>
-
 <template>
     <div class="reception-style">
         <PagesGlobalRehabilitationDementialDaycareReceptionSearch /> 
@@ -10,8 +6,12 @@
     </div>
 </template>
 
+<script setup lang="ts">
+
+</script>
+
 <style lang="scss" scoped>
 .reception-style {
-    margin: 10px;
+
 }
 </style>

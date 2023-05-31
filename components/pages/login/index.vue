@@ -1,3 +1,78 @@
+<template>
+  <div class="login-wrap">
+    <h1 class="login-heading">
+      <img src="@/assets/img/waroku_hk.svg" alt="Waroku ホスピタルカルテ" />
+    </h1>
+    <div class="login-main">
+      <div class="login-content">
+        <p class="login-hospital-name">ワロク（HK）VN病院X</p>
+        <v-form class="login-form">
+          <!-- user name  -->
+          <div class="login-name mb-3">
+            <p class="login-label">ユーザー名</p>
+            <v-text-field
+              v-model="state.name"
+              name="username"
+              placeholder="テキストを入力"
+              tabindex="0"
+              variant="solo"
+              dense
+              @keyup.enter="moveFouces"
+              style="border: 1px solid #c7ccce; height: 58px;"
+            ></v-text-field>
+          </div>
+          <!-- password -->
+          <div class="login-password mb-3">
+            <p class="login-label">パスワード</p>
+            <v-text-field
+              v-model="state.pass.password"
+              :type="show ? 'text' : 'password'"
+              :append-icon="show ? 'mdi-eye' : 'mdi-eye-off'"
+              placeholder="テキストを入力"
+              tabindex="1"
+              dense
+              variant="solo"
+              @click:append="show = !show"
+              @keyup.enter="login"
+              style="border: 1px solid #c7ccce; height: 58px;"
+            ></v-text-field>
+          </div>
+
+            <!-- error -->
+              <!-- chưa xử lý được ẩn-hiện password -->
+            <div v-if="state.errorText.lenght" class="login-error mb-3">
+              <p v-for="item in state.errorText" :key="item">
+                <v-icon x-small color="danger" class="mr-2">
+                  mdi-alert-circle-outline
+                </v-icon>
+                {{ item  }}
+              </p>
+            </div>
+
+            <!-- login button -->
+            <!-- disabled- vô hiệu hoá, nút sẽ bị vô hiệu hoá khi giá trị của 1 trong 2 ô bị trống -->
+            <v-btn
+              :disabled="state.name === '' || state.pass.password ===''"
+              class="login-button"
+              :loading="loadingLogin"
+              tabindex="2"
+              color="primary"
+              rounded
+              style="background-color: #1ea0dc"
+            >
+              ログイン
+            </v-btn>
+          </v-form>
+
+          <div class="login-desc">
+            <p>Waroku ホスピタルカルテ 1.0.1</p>
+            <p>Copyright RESCHO Inc. All Rights Reserved.</p>
+          </div>
+      </div>
+    </div>
+  </div>
+</template>
+
 <script setup lang="ts">
   import { usePassword } from '~/hooks/General/usePassword';
   // import { useLogin, LoginInfo } from '~/hooks/Login/useLogin'
@@ -54,73 +129,6 @@
   })
 </script>
 
-<template>
-  <div class="login-wrap">
-    <h1 class="login-heading">
-      <img src="@/assets/img/waroku_hk.svg" alt="Waroku ホスピタルカルテ" />
-    </h1>
-    <div class="login-main">
-      <div class="login-content">
-        <p class="login-hospital-name">Rescho Hospital</p>
-        <v-form class="login-form">
-          <!-- user name  -->
-          <div class="login-name">
-            <p class="login-label">ユーザー名</p>
-            <v-text-field
-              v-model="state.name"
-              name="username"
-              placeholder="テキストを入力"
-              tabindex="0"
-              @keyup.enter="moveFouces"
-            ></v-text-field>
-            </div>
-            <!-- password -->
-            <div class="login-password">
-              <p class="login-label">パスワード</p>
-              <v-text-field
-                v-model="state.pass.password"
-                :type="show ? 'text' : 'password'"
-                :append-icon="show ? 'mdi-eye' : 'mdi-eye-off'"
-                placeholder="テキストを入力"
-                tabindex="1"
-                height="32px"
-                @click:append="show = !show"
-                @keyup.enter="login"
-              ></v-text-field>
-            </div>
-
-            <!-- error -->
-              <!-- chưa xử lý được ẩn-hiện password -->
-            <div class="login-error">
-              <p>
-                <v-icon x-small color="danger" class="mr-2">
-                  mdi-alert-circle-outline
-                </v-icon>
-              </p>
-            </div> 
-
-            <!-- login button -->
-            <!-- disabled- vô hiệu hoá, nút sẽ bị vô hiệu hoá khi giá trị của 1 trong 2 ô bị trống -->
-            <v-btn
-              :disabled="state.name === '' || state.pass.password ===''"
-              class="login-button"
-              :loading="loadingLogin"
-              tabindex="2"
-              color="primary"
-            >
-              ログイン
-            </v-btn>
-          </v-form>
-
-          <div class="login-desc">
-            <p>Waroku ホスピタルカルテ 1.0.1</p>
-            <p>Copyright RESCHO Inc. All Rights Reserved.</p>
-          </div>
-      </div>
-    </div>
-  </div>
-</template>
-
 <style lang="scss" scoped>
 .login-wrap{
     text-align: center !important;
@@ -152,6 +160,9 @@
     background-color: #ffffff;
     padding: 50px;
   }
+  .login-hospital-name {
+    font-size: large;
+  }
   .login-form {
     margin-top: 14px;
   }
@@ -170,13 +181,13 @@
     }
   }
   .login-button {
-    width: 80%;
+    width: 100%;
     font-size: 14px;
-    height: 42px !important;
+    height: 38px !important;
     color: white;
-    background-color: #07a1c0 !important;
+    background-color: #1ea0dc!important;
   }
-  .loginbutton:hover {
+  .login-button:hover {
     background-color: white !important;
     color: #07a1c0 !important;
     outline: 1px solid #07a1c0;

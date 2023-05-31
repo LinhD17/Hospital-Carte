@@ -1,156 +1,92 @@
-<script setup lang="ts">
-    type HeaderCell = {
-        text: string
-        value: string
-        width?: string | number
-        sortable: boolean
+<script>
+    export default {
+        data () {
+            return {
+                headers: [
+                    { title: '期限', align: 'center', sortable: false, key: 'deadLine' },
+                    { title: '患者情報', align: 'center', sortable: false, key: 'patientInfo' },
+                    { title: 'タスク', align: 'center', sortable: false, key: 'task' },
+                    { title: '分類', align: 'center', sortable: false, key: 'type' },
+                    { title: '内容', align: 'center', sortable: false, key: 'content' },
+                    { title: 'ステータス', align: 'center', sortable: false, key: 'status' },
+                ],
+                dummyItems: [
+                    {
+                        deadLine: '2022年06月29日 00時00分00秒',
+                        patientInfo: {
+                            patient_age: '42',
+                            patient_name: '患者　花子',
+                            patient_name_katakana: 'カンジャ　ハナコ',
+                            patient_gender: 1,
+                        },
+                        task: 'ETCセット',
+                        type: 'タスク',
+                        content: '患者への説明',
+                        status: '未着手',
+                    },
+                    {
+                        deadLine: '2022年06月29日 00時00分00秒',
+                        patientInfo: {
+                            patient_age: '42',
+                            patient_name: '患者　花子',
+                            patient_name_katakana: 'カンジャ　ハナコ',
+                            patient_gender: 2,
+                        },
+                        task: 'ETCセット',
+                        type: 'タスク',
+                        content: '患者への説明',
+                        status: '未着手',
+                    },
+                    {
+                        deadLine: '2022年06月29日 00時00分00秒',
+                        patientInfo: {
+                            patient_age: '42',
+                            patient_name: '患者　花子',
+                            patient_name_katakana: 'カンジャ　ハナコ',
+                            patient_gender: 1,
+                        },
+                        task: 'ETCセット',
+                        type: 'タスク',
+                        content: '患者への説明',
+                        status: '未着手',
+                    },
+                ],
+            }
+        },
     }
-
-    const header: HeaderCell[] = [
-        { text: '期限', value: 'deadLine', sortable: false },
-        { text: '患者情報', value: 'patientInfo', sortable: false }, 
-        { text: 'タスク', value: 'task', sortable: false },
-        { text: '分類', value: 'type', sortable: false }, 
-        { text: '内容', value: 'content', sortable: false }, 
-        { text: 'ステータス', value: 'status', sortable: false },
-    ]
-  
-    const dummyItems = [
-        {
-            deadLine: '2022年06月29日 00時00分00秒',
-            patientInfo: {
-                patient_age: '42',
-                patient_name: '患者　花子',
-                patient_name_katakana: 'カンジャ　ハナコ',
-                patient_gender: 1,
-            },
-            task: 'ETCセット',
-            type: 'タスク',
-            content: '患者への説明',
-            status: '未着手',
-        },
-        {
-            deadLine: '2022年06月29日 00時00分00秒',
-            patientInfo: {
-                patient_age: '42',
-                patient_name: '患者　花子',
-                patient_name_katakana: 'カンジャ　ハナコ',
-                patient_gender: 1,
-            },
-            task: 'ETCセット',
-            type: 'タスク',
-            content: '患者への説明',
-            status: '未着手',
-        },
-        {
-            deadLine: '2022年06月29日 00時00分00秒',
-            patientInfo: {
-                patient_age: '42',
-                patient_name: '患者　花子',
-                patient_name_katakana: 'カンジャ　ハナコ',
-                patient_gender: 1,
-            },
-            task: 'ETCセット',
-            type: 'タスク',
-            content: '患者への説明',
-            status: '未着手',
-        },
-    ]
-          
-
-    const page = ref(1)
-    const pageCount = ref(0)
-    const totalCount = dummyItems.length
-
-    // const clickRow = () => {
-    // const url = '/karte?patient_uuid=16e3d8eb-d4d7-11ec-8902-0a7e192b49f1'
-    // // window.open(url)
-    // modalBlockingKarte.handle.show()
-    // }
 </script>
-  
 <template>
     <div class="task-table">
-      <!--bloking-karte  -->
-        <v-data-table
-            dense
-            :headers="header"
-            :items="dummyItems"
-            hide-default-header
-            hide-default-footer
-            :page.sync="page"
-            @page-count="pageCount = $event"
+        <v-data-table-virtual
+        :headers="headers"
+        :items="dummyItems"
+        class="elevation-1"
+        :page.sync="page"
+        @page-count="pageCount = $event"
+        height="684"
         >
-            <!-- header -->
-            <template #[`header`] = "{ props: {headers} }">
-                <thead class="custom-header">
-                    <tr class="custom-header">
-                        <th v-for="(item, id) in headers" :key="id" class="custom-header">
-                            <div class="sort-cell">
-                                {{ item.text }}
-                            </div>
-                        </th>
-                    </tr>
-                </thead>
-            </template>
-            <!-- items -->
-                <!-- deadLine-期限 -->
-            <template #[`item.deadLine`]="{ item }">
-                <div class="centered-cell">
-                    {{ item.deadLine }}
-                </div>
-            </template>
-    
             <!-- patient-info-患者情報 -->
-            <template #[`item.patientInfo`]="{ item }">
+            <template v-slot:item.patientInfo="{ item }">
                 <!-- trong the a ta can viet nhu sau de co the click vao bang va hien ra popup moi <a href="#" @click.prevent.stop="clickRow"> -->
                 <a href="#">
                     <div class="patient-info">
-                        <p class="patient-age">{{ item.patient_age }}</p>
-                        <a class="info-cell" href="#">
+                        <p class="patient-age mt-1">{{ item.raw.patientInfo.patient_age }}</p>
+                        <a class="info-cell ml-1" href="#">
                             <img
-                                v-if="item.patient_gender == 1"
+                                v-if="item.raw.patientInfo.patient_gender == 1"
                                 src="@/assets/icon/man.svg"
                                 alt="icon person"
                             />
                             <img v-else src="@/assets/icon/woman.svg" alt="icon person" />
                             <ruby>
-                            {{ item.patient_name }}
-                            <rt>{{ item.patient_name_katakana }}</rt>
+                            {{ item.raw.patientInfo.patient_name }}
+                            <rt>{{ item.raw.patientInfo.patient_name_katakana }}</rt>
                             </ruby>
                         </a>
                     </div>
                 </a>
             </template>
-          
-            <!-- task-タスク -->
-            <template #[`item.task`]="{ item }">
-                <div class="centered-cell"> 
-                    {{ item.task }}
-                </div>
-            </template>
-    
-            <!-- type-分類 -->
-            <template #[`item.type`]="{ item }">
-                <div class="centered-cell"> 
-                    {{ item.type }}
-                </div>
-            </template>
-    
-            <!-- content-内容 -->
-            <template #[`item.content`]="{ item }">
-                <div class="centered-cell"> 
-                    {{ item.content }}
-                </div>
-            </template>
-    
-            <!-- status-ステータス -->
-            <template #[`item.status`]="{ item}">
-                <div class="centered-cell"> 
-                    {{ item.status }}
-                </div>
-            </template>
-        </v-data-table>
+        </v-data-table-virtual>
         <div class="table-footer text-center">
             <span>全 {{ totalCount }} 件</span>
             <v-pagination
@@ -161,9 +97,10 @@
             ></v-pagination>
         </div>
     </div>
-  </template>
+</template>
+  
 
-  <style lang="scss" scoped>
+<style lang="scss" scoped> 
   .task-table {
       border: 0 !important;
       white-space: nowrap;
@@ -183,15 +120,6 @@
       //   }
   
   }
-  .sort-cell {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    white-space: nowrap;
-  }
-  .centered-cell {
-      text-align: center;
-  }
   .table-footer {
       display: flex;
       position: sticky;
@@ -201,9 +129,33 @@
       align-items: center;
       z-index: 100;
   }
-  .patient-info {
-      display: flex;
-      align-items: center;
-      justify-content: center;
+  .patient-info{
+    display: flex;
   }
-  </style>
+  .info-cell {
+    a {
+    text-decoration: none;
+    font-size: 12px;
+    }
+    display: flex;
+    * {
+    margin-right: 2px;
+    }
+    &__content {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        a:hover {
+            text-decoration: underline;
+        }
+    }
+    .same-name-field {
+    color: red;
+    font-size: 80%;
+    display: inline-block;
+    }
+  }
+  .centered-cell {
+    text-align: center;
+}
+</style>

@@ -4,50 +4,49 @@
 <template>
     <div class="search">
         <!-- 部署 -->
-        <div style="width: 132px;">
-            <v-select
-            dense
-            outlined
-            height="30"
-            placeholder="部署を選択"
-            :items="['Foo', 'Bar', 'Fizz', 'Buzz']"
-            >
-
-            </v-select>
+        <div class="mr-2" style="width: 132px;">
+            <v-select 
+                dense 
+                clearable 
+                variant="solo" 
+                hide-details
+                style="background-color: white" 
+                placeholder="部署を選択" 
+                :items="['Vue.js', 'React', 'Angular', 'Buzz']"
+            />
         </div>
         <!-- 投橋者 -->
-        <div style="width: 154px;">
-            <v-select
-            dense
-            outlined
-            height="30"
-            placeholder="投橋者を選択"
-            :items="['Foo', 'Bar', 'Fizz', 'Buzz']"
-            >
-                
-            </v-select>
+        <div class="mr-2 " style="width: 150px;">
+            <v-select 
+                dense 
+                clearable 
+                variant="solo" 
+                hide-details
+                style="background-color: white" 
+                placeholder="投橋者を選択" 
+                :items="['Vue.js', 'React', 'Angular', 'Buzz']"
+            />
         </div>
         <!-- タイトル -->
-        <div style="width: 164px">
-            <v-select
-            dense
-            outlined
-            height="30"
-            placeholder="タイトル検索"
-            :items="['Foo', 'Bar', 'Fizz', 'Buzz']"
-            >
-                
-            </v-select>
+        <div class="mr-2" style="width: 150px">
+            <v-text-field 
+                dense 
+                clearable 
+                variant="solo" 
+                hide-details
+                style="background-color: white" 
+                placeholder="タイトル検索" 
+            />
         </div>
         <!-- 掲載終了も表示 -->
-        <div class="checkbox mb-3">
+        <div class="checkbox">
             <v-checkbox
                 dense
                 label="掲載終了も表示"
             />
         </div>
         <!-- 添付ファイル -->
-        <div class="checkbox mb-3">
+        <div class="checkbox">
             <v-checkbox 
             dense
             label="添付ファイル"
@@ -56,7 +55,8 @@
         <!-- button -->
         <v-btn
             color="primary"
-            class="bt-basic h-middle ml-2 mb-7"
+            class="bt-basic h-middle ml-2 mb-2"
+            rounded
         >
         検索
         </v-btn>
@@ -65,18 +65,14 @@
 
 <style lang="scss" scoped>
 .search {
-    padding: 0 10px !important;
     display: flex;
     align-items: center;
-    height: 80px !important;
+    height: 50px !important;
     //gap: 5px;
-}
-.select-box {
-    height: 30px !important;
 }
 .checkbox {
     display: flex;
     align-items: center;
-    margin-top: 10px;
+    margin-top: 18px;
 }
 </style>

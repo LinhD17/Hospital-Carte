@@ -15,7 +15,6 @@
                     病棟マップ
                 </v-btn>
             </template>
-
             <PagesGlobalWardInpatientOfExaminationSearchField /> 
             <PagesGlobalWardInpatientOfExaminationTable/>
         </PagesGlobalBaseLayout>
