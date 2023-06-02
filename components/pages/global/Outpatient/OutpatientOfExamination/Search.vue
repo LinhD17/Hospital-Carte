@@ -1,233 +1,192 @@
 <script setup lang="ts">
-//   import OnlyTimePicker from '~/components/general/form/OnlyTimePicker.vue'
 </script>
-
 <template>
-    <div>
-      <v-row class="ma-4 pa-2 search-area">
+  <v-container fluid>
+    <div class="search-fields">
+      <div class="justify-space-between d-flex">
         <div class="d-flex">
-          <v-select
-            class="select-box"
-            dense
-            variant="solo"
-            placeholder="検索条件呼び出し"
-            hide-details
-            style="background-color:#1ea0dc "
-          >
-          </v-select>
-          <v-btn 
-            rounded
-            color="#1ea0dc" 
-            class="btn-style"
-          >検索 </v-btn>
-          <v-btn
-            v-if="searchActive"
-            rounded
-            color="primary"
-            outlined
-            class="btn-style"
-          >
-            条件保存
-          </v-btn>
-          <v-btn rounded dark class="btn-style" @click="toggleSearchActive">
-            {{ searchActive ? '閉じる' : '詳細検索' }}
-          </v-btn>
+          <div class="ml-5">
+            <p class="text-left">外来受付</p>
+            <!-- need to fix datepicker -->
+            <div class="mt-3" style="width: 120px;">
+              <datepicker placeholder="年/月/日" />
+            </div>
+          </div>
+          <div class="ml-5">
+            <p class="text-left">診察担当医</p>
+            <div class="mt-3" style="width: 170px">
+              <v-select
+                dense
+                clearable
+                variant="solo"
+                hide-details
+                style="background-color: white"
+              ></v-select>
+            </div>
+          </div>
+          <div class="ml-5" style="width: 400px">
+            <p class="text-left">診察予定時刻</p>
+            <div class="d-flex align-center">
+              <datepicker
+
+                        placeholder="時/分"
+
+                        timePicker
+
+                    />
+              <span v-text="'～'" class="mx-2" />
+              <datepicker
+
+                        placeholder="時/分"
+
+                        timePicker
+
+                    />
+            </div>
+          </div>
+          <div class="ml-5 mr-5">
+            <p class="text-left">患者番号</p>
+            <div class="mt-3" style="width: 140px">
+              <v-text-field
+                variant="solo"
+                dense
+                hide-details
+                style="background-color: #ffffff; width: 170px"
+              />
+            </div>
+          </div>
+          <div class="ml-5">
+            <p class="ml-5 text-left">患者氏名</p>
+            <div class="d-flex mt-3 ml-5">
+              <v-text-field
+                variant="solo"
+                dense
+                hide-details
+                style="background-color: #ffffff; width: 170px"
+              />
+              <v-select
+                class="ml-5"
+                dense
+                clearable
+                variant="solo"
+                hide-details
+                style="background-color: #ffffff; width: 80px"
+                :items="['前方一致', '部分一致']"
+              />
+            </div>
+          </div>
+          <div class="ml-5 mt-10">
+            <v-btn
+              small
+              outlined
+              rounded
+              width="100"
+              style="background-color: #ffffff; color: #a9a9a9"
+              >項目リセット</v-btn
+            >
+          </div>
+          <div class="ml-5 mt-10">
+            <v-btn
+              small
+              rounded
+              style="background-color: #1ea0dc; color: #ffffff"
+              >検索</v-btn
+            >
+          </div>
         </div>
-      </v-row>
-      <v-expand-transition>
-        <v-form v-if="searchActive">
-          <v-row v-show="searchActive" dense class="basic-info">
-            <div class="d-flex">
-              <div class="flex-column">
-                <p class="mr-2 txt-label">患者番号</p>
-                <div style="width: 210px">
-                  <v-text-field
-                    dense
-                    outlined
-                    placeholder="患者番号を入力"
-                    height="34"
-                  >
-                  </v-text-field>
-                </div>
-              </div>
-              <div class="flex-column ml-5">
-                <p class="mr-2 txt-label">氏名</p>
-                <div class="d-flex">
-                  <div style="width: 210px">
-                    <v-text-field
-                      dense
-                      outlined
-                      placeholder="患者名を入力"
-                      height="34"
-                    >
-                    </v-text-field>
-                  </div>
-                </div>
-              </div>
-              <!-- age -->
-              <div class="flex-column ml-5">
-                <p class="mr-2 txt-label">年齢</p>
-                <div class="age d-flex">
-                  <v-select
-                    dense
-                    outlined
-                    placeholder="––歳"
-                    style="width: 90px"
-                  />
-                  <span class="ml-2 mr-2 mt-2">〜</span>
-                  <v-select
-                    dense
-                    outlined
-                    placeholder="––歳"
-                    style="width: 90px"
-                  />
-                </div>
-              </div>
-              <div class="gender flex-column ml-5">
-                <p class="mr-2 txt-label">性別</p>
-                <v-select
-                  dense
-                  outlined
-                  placeholder="性別"
-                  hide-details
-                  style="width: 90px"
-                />
-              </div>
-              <!-- scheduled-date of examination -->
-              <div class="flex-column ml-5">
-                <p class="mr-2 txt-label">診察予定日時</p>
-                <div class="d-flex">
-                  <div class="d-flex">
-                    <div style="width: 214px">
-                        <datepicker  :width="100" placeholder="予定日"  />
-                    </div>
-                    <div class="ml-3">
-                      <!-- <only-time-picker :width="50" /> -->
-                    </div>
-                    <span style="line-height: 37px" class="ml-2">時</span>
-                  </div>
-                  <div class="ml-3 mr-3 mt-2">
-                    <p>〜</p>
-                  </div>
-                  <div class="d-flex">
-                    <div class="d-flex">
-                      <div style="width: 214px">
-                        <datepicker :width="100" placeholder="予定日" /> 
-                      </div>
-                      <div class="ml-3">
-                        <!-- <only-time-picker :width="50" /> -->
-                      </div>
-                      <span style="line-height: 37px" class="ml-2">時</span>
-                    </div>
-                  </div>
-                </div>
-              </div>
+      </div>
+
+      <div class="justify-space-between d-flex">
+        <div class="d-flex">
+          <div class="ml-5 mt-5">
+            <p class="text-left">外来進行状況</p>
+            <div class="mt-3" style="width: 170px">
+              <v-select
+                dense
+                clearable
+                variant="solo"
+                hide-details
+                style="background-color: white"
+                :items="['未来院', '診察待ち', '会計待ち', '会計終了']"
+              />
             </div>
-          </v-row>
-          <v-row v-show="searchActive" dense class="basic-info">
-            <div class="d-flex">
-              <div class="flex-column">
-                <p class="mr-2 txt-label">診療内容</p>
-                <v-select
-                  dense
-                  height="34"
-                  class="select-box"
-                  outlined
-                  placeholder="選択してください"
-                >
-                </v-select>
-              </div>
-              <div class="flex-column ml-5">
-                <p class="mr-2 txt-label">伝票</p>
-                <v-select
-                  dense
-                  height="34"
-                  outlined
-                  placeholder="伝票を選択"
-                  class="select-box"
-                >
-                </v-select>
-              </div>
-              <div class="flex-column ml-5" style="align-items: center">
-                <p class="txt-label">併科有無</p>
-                <div class="d-flex">
-                  <v-icon class="mb-1">mdi-crop-square</v-icon>
-                  <p class="mt-3">有</p>
-                  <v-icon class="mb-1">mdi-crop-square</v-icon>
-                  <p class="mt-3 mr-1">無</p>
-                </div>
-              </div>
-              <div class="flex-column ml-5">
-                <p class="mr-2 txt-label">外来患者状態</p>
-                <v-select
-                  dense
-                  height="34"
-                  class="select-box"
-                  outlined
-                  placeholder="選択してください"
-                >
-                </v-select>
-              </div>
-              <div class="flex-column ml-5">
-                <p class="txt-label">診察医</p>
-                <div>
-                  <v-select
-                    dense
-                    height="34"
-                    outlined
-                    class="select-box"
-                    placeholder="選択してください"
-                  >
-                  </v-select>
-                </div>
-              </div>
-              <v-btn
-                class="btn-style ml-5 mt-8"
-                width="150"
-                rounded
-                dark
-                color="primary"
-                >項目をリセット</v-btn
-              >
+          </div>
+          <div class="ml-5 mt-5">
+            <p class="text-left">診療内容</p>
+            <div class="mt-3" style="width: 170px">
+              <v-select
+                dense
+                clearable
+                variant="solo"
+                hide-details
+                style="background-color: white"
+                :items="['診察', '処方', '注射']"
+              />
             </div>
-          </v-row>
-        </v-form>
-      </v-expand-transition>
+          </div>
+          <div class="ml-5 mt-5">
+            <p class="text-left">診察科</p>
+            <div class="mt-3" style="width: 170px">
+              <v-select
+                dense
+                clearable
+                variant="solo"
+                hide-details
+                style="background-color: white"
+                :items="['精神科', '内科']"
+              />
+            </div>
+          </div>
+          <div class="ml-5 mt-5">
+            <p class="text-left">併科受診</p>
+            <div class="mt-3" style="width: 170px">
+              <v-select
+                dense
+                clearable
+                variant="solo"
+                hide-details
+                style="background-color: white"
+                :items="['有', '無']"
+              />
+            </div>
+          </div>
+          <div class="ml-5 mt-5">
+            <p class="text-left">初/再</p>
+            <div class="mt-3" style="width: 170px">
+              <v-select
+                dense
+                clearable
+                variant="solo"
+                hide-details
+                style="background-color: white"
+                :items="['初診', '初診']"
+              />
+            </div>
+          </div>
+          <div class="ml-5 mt-5">
+            <p class="text-left">診察形態特殊</p>
+            <div class="mt-3" style="width: 170px">
+              <v-select
+                dense
+                clearable
+                variant="solo"
+                hide-details
+                style="background-color: white"
+                :items="['データはありません']"
+              />
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
-  </template>
-  
+  </v-container>
+</template>
+
   <style lang="scss" scoped>
-  .search-area {
-    height: 56px;
-  }
-  .select-box {
-    width: 210px !important;
-    height: 30px !important;
-  }
-  .btn-style {
-    font-family: Meiryo;
+.search-fields {
+  p {
+    font-size: 14px;
     font-weight: bold;
-    font-size: 12px;
-    width: 78px;
-    top: 4px !important;
-    height: 30px !important;
-    margin-left: 20px;
   }
-  .basic-info {
-    height: 78px !important;
-    padding-left: 30px;
-    margin-top: 4px;
-  }
-  p.txt-label {
-    color: #333333;
-    font-size: 12px;
-    font-weight: 700;
-    margin-bottom: 0;
-    text-align: left !important;
-    padding-bottom: 10px !important;
-  }
-  .search-form__btn.v-btn--disabled {
-    color: #b2b2b2 !important;
-  }
-  </style>
-  
+}
+</style>
