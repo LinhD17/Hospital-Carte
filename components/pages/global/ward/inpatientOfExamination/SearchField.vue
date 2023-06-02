@@ -2,9 +2,8 @@
     <v-form ref="form">
         <div class="search-fields">
             <!-- row １ -->
-                <!-- nếu không nhấn vào nút ー閉じる sẽ hiện lên full search field  -->
             <div 
-                class="search-condition d-flex"
+                class="search-condition d-flex "
                 style="justify-content: space-between; height: 70px;"
             >
                 <div style="width:210">
@@ -378,6 +377,7 @@
     .search-condition {
     display: flex;
     justify-content: space-between;
+    padding: 10px 10px 0;
     //height: fit-content !important;
     // background-color: pink;
     }  

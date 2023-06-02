@@ -245,15 +245,6 @@
                 </div>
             </template>
         </v-data-table-virtual>
-        <div class="table-footer text-center">
-            <span>全 {{ totalCount }} 件</span>
-            <v-pagination
-                v-model="page"
-                circle
-                :length="pageCount"
-                :total-visible="pageCount"
-            ></v-pagination>
-        </div>
     </div>
 </template>
 

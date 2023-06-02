@@ -1,13 +1,12 @@
 <template>
     <div class="search-fields">
-        <div class="search-condition d-flex">
+        <div class="search-condition mt-4 d-flex">
             <div class="d-flex">
                 <div class="ml-5">
                     <p class="mb-0 text-left">確定日期間(開始)</p>
                     <div style="width: 150px">
                         <datepicker
-                            placeholder="受付日"
-                            :value.sync="date"
+                            placeholder="年/月/日"
                         />
                     </div>
                 </div>
@@ -15,15 +14,14 @@
                     <p class="mb-0 text-left">確定日期間(終了)</p>
                     <div style="width: 150px">
                         <datepicker
-                            placeholder="受付日"
-                            :value.sync="date"
+                            placeholder="年/月/日"
                         />
                     </div>
                 </div>
                 <div class="ml-3">
                     <p class="mb-0 text-left">患者番号</p>
                     <v-text-field 
-                    dense 
+                        dense 
                         clearable 
                         variant="solo" 
                         hide-details
@@ -41,6 +39,28 @@
                         style="width: 150px; background-color: white" 
                         placeholder="患者氏名を入力"
                     />
+                </div>
+                <div class="ml-3" style="width: 350px">
+                    <p class="mb-0 text-left">TIME</p>
+                    <!-- time -->
+                    <!-- <div style="width: 106px">
+                        <datepicker
+                            placeholder="時/分"
+                            timePicker
+                        />
+                    </div> -->
+                    <div class="d-flex">
+                        <time-picker
+                            clearable
+                            :height-date-picker="'15px'"
+                        />
+                        <span  v-text="'～'" class="mt-8" />
+                        <time-picker
+                            clearable
+                            :height-date-picker="'28px'"
+                        />
+                    </div>
+
                 </div>
                 <div class="ml-3">
                     <p class="mb-0 text-left">患者性別</p>
@@ -67,6 +87,13 @@
 </template>
 
 <script setup lang="ts">
+    import DatePicker  from '@/components/General/Form/DatePicker.vue'
+    import TimePicker from '~/components/General/Form/TimePicker.vue';
+
+    const props = defineProps({
+
+    })
+
 </script>
 
   <style lang="scss" scoped>

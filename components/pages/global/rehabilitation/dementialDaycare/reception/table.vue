@@ -144,8 +144,8 @@
           :total-visible="pageCount"
       ></v-pagination>
       <div style="position: absolute; right: 0">
-        <v-btn color="primary" class="mr-3">参加者一覧印刷</v-btn>
-        <v-btn color="primary" class="mr-5">食事一覧印刷</v-btn>
+        <v-btn rounded class="mr-3" style="background-color: #1ea0dc; color: #ffffff">参加者一覧印刷</v-btn>
+        <v-btn rounded class="mr-5" style="background-color: #1ea0dc; color: #ffffff">食事一覧印刷</v-btn>
       </div>
     </div>
   </div>
@@ -405,13 +405,13 @@
   }
   .table-footer {
       display: flex;
-      justify-content: center;
-      align-items: center;
       position: sticky;
       top: 0;
-      padding: 10px 0;
-      background-color: #ffffff;
+      padding: 5px 0 !important;
+      justify-content: center;
+      align-items: center;
       filter: drop-shadow(0 -3px 3px #e6e6e6);
+      background-color: #ffffff;
   }
   .info-cell {
     a {

@@ -50,10 +50,10 @@
             <!-- 状態 -->
             <template v-slot:item.patient_registry_status="{ item }">
                 <div v-if="item.raw.patient_registry_status == 0">
-                <v-chip 
-                    style="justify-content: center; background-color: #1ea0dc; color: white"
-                    small
-                > 確定待ち</v-chip>
+                    <v-chip 
+                        style="justify-content: center; background-color: #1ea0dc; color: white"
+                        small
+                    > 確定待ち</v-chip>
                 </div>
             </template>
 
@@ -135,7 +135,7 @@
                 ],
                 dummyItems: [
                     {
-                        patient_no: "12345",
+                        patient_no: "0000023067",
                         patient_info: {
                             patient_uuid: "123",
                             patient_name: "患者 太郎",
@@ -143,8 +143,88 @@
                             patient_gender: 1,
                             patient_birthday: "1996年07月17日",
                             is_name_duplicated: true,
-                            tel_no: "070 2673 9506",
+                            tel_no: "070-2673-9506",
                             address:"福岡県福岡市博多区博多駅南住所詳細２−２−２ー２",
+                            ward_name:"西病棟",
+                        },
+                        patient_registry_status: "0",
+                        patient_registry_created_at: "1996年07月17日",
+                    },
+                    {
+                        patient_no: "000123",
+                        patient_info: {
+                            patient_uuid: "123",
+                            patient_name: "患者 太郎",
+                            patient_name_katakana: "カンジャ タロウ",
+                            patient_gender: 1,
+                            patient_birthday: "1996年07月17日",
+                            is_name_duplicated: true,
+                            tel_no: "070-2673-9506",
+                            address:"福岡県久留米市",
+                            ward_name:"西病棟",
+                        },
+                        patient_registry_status: "0",
+                        patient_registry_created_at: "1996年07月17日",
+                    },
+                    {
+                        patient_no: "000124",
+                        patient_info: {
+                            patient_uuid: "123",
+                            patient_name: "患者 太郎",
+                            patient_name_katakana: "カンジャ タロウ",
+                            patient_gender: 1,
+                            patient_birthday: "1996年07月17日",
+                            is_name_duplicated: true,
+                            tel_no: "070-2673-9506",
+                            address:"博多区",
+                            ward_name:"西病棟",
+                        },
+                        patient_registry_status: "1",
+                        patient_registry_created_at: "1996年07月17日",
+                    },
+                    {
+                        patient_no: "000125",
+                        patient_info: {
+                            patient_uuid: "123",
+                            patient_name: "患者 太郎",
+                            patient_name_katakana: "カンジャ タロウ",
+                            patient_gender: 1,
+                            patient_birthday: "1996年07月17日",
+                            is_name_duplicated: true,
+                            tel_no: "070-2673-9506",
+                            address:"福岡県福岡市博多区博多駅前３丁目２２−８−3F 朝日生命博多駅前ビル",
+                            ward_name:"西病棟",
+                        },
+                        patient_registry_status: "0",
+                        patient_registry_created_at: "1996年07月17日",
+                    },
+                    {
+                        patient_no: "000125",
+                        patient_info: {
+                            patient_uuid: "123",
+                            patient_name: "患者 太郎",
+                            patient_name_katakana: "カンジャ タロウ",
+                            patient_gender: 1,
+                            patient_birthday: "1996年07月17日",
+                            is_name_duplicated: true,
+                            tel_no: "070-2673-9506",
+                            address:"北海道札幌市中央区南四条西９−９−８−１００２",
+                            ward_name:"西病棟",
+                        },
+                        patient_registry_status: "0",
+                        patient_registry_created_at: "1996年07月17日",
+                    },
+                    {
+                        patient_no: "000125",
+                        patient_info: {
+                            patient_uuid: "123",
+                            patient_name: "患者 太郎",
+                            patient_name_katakana: "カンジャ タロウ",
+                            patient_gender: 1,
+                            patient_birthday: "1996年07月17日",
+                            is_name_duplicated: true,
+                            tel_no: "070-2673-9506",
+                            address:"★ＯＲＣＡ会計連携テスト専用です★",
                             ward_name:"西病棟",
                         },
                         patient_registry_status: "0",
@@ -185,11 +265,12 @@
   .table-footer {
       display: flex;
       position: sticky;
-      bottom: 0;
-      padding: 5px 0;
+      top: 0;
+      padding: 5px 0 !important;
       justify-content: center;
       align-items: center;
-      z-index: 100;
+      filter: drop-shadow(0 -3px 3px #e6e6e6);
+      background-color: #ffffff;
   }
   .info-cell {
     a {

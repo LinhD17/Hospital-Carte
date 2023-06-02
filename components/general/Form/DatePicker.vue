@@ -1,20 +1,182 @@
 <template>
-    <div>
-      <datepicker v-model="selectedDate"></datepicker>
-    </div>
-  </template>
+  <v-menu
+    v-model="state.menu"
+    :close-on-content-click="false"
+    transition="scale-transition"
+    offset-y
+  >
+    <template v-slot:activator="{ on, attrs }"> 
+      <v-text-field 
+        v-model="dateShow"
+        v-on="on"
+        v-bind="attrs"
+        dense
+        readonly
+        append-icon="mdi-calendar"
+        clear-icon="mdi-close-circle"
+        :class="['date-picker', state.date && 'has-date']"
+        :placeholder="placeholder"
+        :rules="rules"
+        :hide-details="rules.length === 0 || hideDetails"
+        :disabled="disabled"
+        :clearable="clearable"
+        :height="height"
+        @click:clear="clearMessage"
+      />
+    </template>
+    <Datepicker 
+      v-model="state.date"
+      no-title
+      scrollable
+      :disabled="disabled"
+      :min="min"
+      :max="max"
+      :day-format="dayFormat"
+      :first-day-of-week="0"
+      @input="state.menu = false"
+
+    />
+  </v-menu>
+    <!-- <div>
+      <v-row justify="center" style="height: 500px">
+        <v-card width="400" height="60" class="mt-16 pa-5">
+          <Datepicker 
+            v-model="date"
+            :format="format"
+          />
+        </v-card>
+      </v-row>
+    </div> -->
+</template>
   
-  <script>
-  import { Datepicker } from 'vue3-datepicker';
-  
-  export default {
-    components: {
-      Datepicker
+<script setup>
+  import { ref } from 'vue';
+  const date = ref();
+  const dayFormat = args => {
+  return `${args.getFullYear()}年${args.getMonth() + 1}月${args.getDate()}日`
+  }
+  const props = defineProps({
+    min: {
+      type: String,
+      default: null,
     },
-    data() {
-      return {
-        selectedDate: null
-      };
+    max: {
+      type: String,
+      default: null,
+    },
+    placeholder: {
+      type: String,
+      default: '年/月/日',
+    },
+    value: {
+      type: String,
+      required: false,
+      default: null,
+    },
+    disabled: {
+      type: Boolean,
+      default: false,
+    },
+    rules: {
+      type: Array,
+      default: () => [],
+    },
+    hideDetails: {
+      type: Boolean,
+      default: false,
+    },
+    height: {
+      type: String,
+      default: 'auto',
+    },
+    clearable: {
+      type: Boolean,
+      default: true,
+    },
+  })
+  const state = ref({
+    date: '',
+    menu: false,
+  })
+
+  const dateShow = computed(() =>
+    state.value.date
+      ? momentFormat(state.value.date, FORMAT.FORMAT_DATE_JP)
+      : null
+  )
+
+  // const dayFormat = (date: string) => {
+  //   return new Date(date).getDate()
+  // }
+
+  const clearMessage = () => {
+    state.value.date = ''
+  }
+
+  watch(
+    () => state.value.date,
+    (val) => {
+      emit('update:value', val)
     }
-  };
-  </script>
+  )
+
+  watch(
+    () => props.value,
+    (val) => {
+      state.value.date = val
+    },
+    { immediate: true }
+  )
+</script>
+
+<style lang="scss" scoped>
+.Datepicker {
+  width: 250px;
+  background-color: #fff;
+  border-radius: 6px;
+
+  &::v-deep {
+    &.has-date:hover {
+      .v-input__icon--clear {
+        display: block;
+      }
+
+      .v-input__icon--append {
+        display: none;
+      }
+    }
+
+    .mdi-calendar::before {
+      color: #1ea0dc;
+    }
+
+    .v-input__icon--clear {
+      display: none;
+      margin-right: 10px;
+    }
+
+    .v-input__append-inner {
+      display: flex;
+      height: 100%;
+      align-items: center;
+    }
+  }
+
+  &.error--text {
+    ::v-deep .v-input__slot {
+      border-color: #ff5252 !important;
+    }
+  }
+}
+
+.v-picker {
+  &::v-deep {
+    td:nth-child(6) .v-btn__content {
+      color: blue;
+    }
+    td:nth-child(7) .v-btn__content {
+      color: red;
+    }
+  }
+}
+</style>

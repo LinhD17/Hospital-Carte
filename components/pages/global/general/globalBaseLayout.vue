@@ -36,6 +36,7 @@
   margin: 15px;
   padding-bottom: 0 !important;
   border-radius: 15px;
+  background-color: #ffffff;
   //height: calc(100vh - 135px);
 
 }
