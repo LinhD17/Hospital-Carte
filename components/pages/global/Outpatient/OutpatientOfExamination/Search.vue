@@ -12,7 +12,7 @@
             variant="solo"
             placeholder="検索条件呼び出し"
             hide-details
-            style="background-color:#1ea0dc "
+            style="background-color:#1ea0dc"
           >
           </v-select>
           <v-btn 

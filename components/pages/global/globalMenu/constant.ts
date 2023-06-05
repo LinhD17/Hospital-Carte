@@ -148,7 +148,7 @@ export const GLOBAL_MENU: MenuItems = {
                     master_global_menu_id: uniqueId('__globalMenuId__'),
                     menu_level: 2,
                     name: 'レベル管理患者一覧',
-                    path: '/',
+                    path: '/global/others/labelManagement',
                 },
             ],
         },

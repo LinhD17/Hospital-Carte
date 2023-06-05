@@ -14,7 +14,7 @@
                         hide-details
                         style="background-color: white" 
                         class="select-box"
-                        placeholder="保存したフィルタを選択" 
+                        placeholder="検査条件呼び出し" 
                         :items="['Vue.js', 'React', 'Angular', 'Buzz']"
                     />
                 </div>
@@ -29,7 +29,6 @@
                 <v-btn
                     v-if="searchActive"
                     outlined
-                    color="primary"
                     rounded
                     small
                     width="78"
@@ -42,6 +41,7 @@
                     dark
                     small
                     width="78"
+                    style="color: white !important; background-color: black !important;"
                     class="ml-auto outlined  btn-style"
                     @click="toggleSearchActive"
                 >

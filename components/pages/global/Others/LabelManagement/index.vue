@@ -1,13 +1,14 @@
 <template>
     <div class="labelmanagement">
         <PagesGlobalBaseLayout 
-            page-title="入院患者一覧" 
+            page-title="ラベル管理患者一覧" 
         >
             <template #iconImg>
                 <img :src="imageUrl"/> 
             </template>
             
             <PagesGlobalOthersLabelManagementSearchField /> 
+            <PagesGlobalOthersLabelManagementTable />
         </PagesGlobalBaseLayout>
     </div>
 </template>
