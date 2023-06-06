@@ -3,44 +3,35 @@
     <v-data-table :headers="headers" :items="dummyItems" class="elevation-1">
       <!-- label -->
       <template v-slot:item.treatments="{ item }">
-        <div
-          v-for="(treatment, index) in item.treatments"
-          :key="index"
-          style="display: inline-flex; margin-right: 5px"
-        >
+        <div style="display: inline-flex; margin-right: 5px">
           <v-chip
-            v-if="treatment.name === '診察'"
-            color="#FFB53E"
+            v-if="item.raw.treatments === '診察'"
+            style="background-color: #ffb53e; color: white"
             small
-            text-color="white"
             >診察</v-chip
           >
           <v-chip
-            v-if="treatment.name === '検査'"
-            color="#86E31A"
+            v-if="item.raw.treatments === '検査'"
+            style="background-color: #86e31a; color: white"
             small
-            text-color="white"
             >検査</v-chip
           >
           <v-chip
-            v-if="treatment.name === '栄養'"
-            color="#F87F7F"
+            v-if="item.raw.treatments === '栄養'"
+            style="background-color: #f87f7f; color: white"
             small
-            text-color="white"
             >栄養</v-chip
           >
           <v-chip
-            v-if="treatment.name === '処方'"
-            color="#79D2FF"
+            v-if="item.raw.treatments === '処方'"
+            style="background-color: #79d2ff; color: white"
             small
-            text-color="white"
             >処方</v-chip
           >
           <v-chip
-            v-if="treatment.name === '画像'"
-            color="#ADADAD"
+            v-if="item.raw.treatments === '画像'"
+            style="background-color: #79d2ff; color: white"
             small
-            text-color="white"
             >画像</v-chip
           >
         </div>
@@ -88,7 +79,18 @@
           </span>
         </div>
       </template>
+
+      <!-- registeredperson -->
+      <template #[`item.registeredperson`]="{ item }">
+        <div class="d-flex centered-cell">
+          <p class="mr-2">{{ item.raw.registeredperson }}</p>
+          <a href="http://" style="color: #2196f3; text-decoration: underline"
+            >選択する</a
+          >
+        </div>
+      </template>
     </v-data-table>
+   
     <div class="table-footer text-center">
       <span>全 {{ totalCount }} 件</span>
       <v-pagination
@@ -97,6 +99,9 @@
         :length="pageCount"
         :total-visible="pageCount"
       ></v-pagination>
+      <div style="position: absolute; right: 0">
+        <v-btn rounded class="mr-5" style="background-color: #1ea0dc; color: #ffffff">検索</v-btn>
+      </div>
     </div>
   </div>
 </template>
@@ -108,7 +113,7 @@ export default {
       headers: [
         {
           title: 'レベル',
-          value: 'treatments',
+          key: 'treatments',
           align: 'center',
           sortable: true,
         },
@@ -151,12 +156,7 @@ export default {
       ],
       dummyItems: [
         {
-          treatments: [
-            {
-              name: '検査',
-              progress: '',
-            },
-          ],
+          treatments: '診察',
           patient_no: '1001',
           patient_info: {
             patient_uuid: '123',
@@ -172,7 +172,8 @@ export default {
           scheduleddateofexamination: '2023年06月05日 09時00分',
         },
         {
-          patient_no: '1002',
+          treatments: '検査',
+          patient_no: '1001',
           patient_info: {
             patient_uuid: '123',
             patient_name: '患者 太郎',
@@ -182,7 +183,55 @@ export default {
             is_name_duplicated: true,
           },
           hospitaloroutpatient: 'デモ東病東',
-          descriptioncontent: '褥瘡Ⅰ度（発赤のみ）',
+          descriptioncontent: '発症リスク低',
+          registeredperson: '医師 次郎',
+          scheduleddateofexamination: '2023年06月05日 09時00分',
+        },
+        {
+          treatments: '処方',
+          patient_no: '1001',
+          patient_info: {
+            patient_uuid: '123',
+            patient_name: '患者 太郎',
+            patient_name_katakana: 'カンジャ タロウ',
+            patient_gender: 1,
+            patient_birthday: '1996年07月17日',
+            is_name_duplicated: true,
+          },
+          hospitaloroutpatient: 'デモ東病東',
+          descriptioncontent: '発症リスク低',
+          registeredperson: '医師 次郎',
+          scheduleddateofexamination: '2023年06月05日 09時00分',
+        },
+        {
+          treatments: '栄養',
+          patient_no: '1001',
+          patient_info: {
+            patient_uuid: '123',
+            patient_name: '患者 太郎',
+            patient_name_katakana: 'カンジャ タロウ',
+            patient_gender: 1,
+            patient_birthday: '1996年07月17日',
+            is_name_duplicated: true,
+          },
+          hospitaloroutpatient: 'デモ東病東',
+          descriptioncontent: '発症リスク低',
+          registeredperson: '医師 次郎',
+          scheduleddateofexamination: '2023年06月05日 09時00分',
+        },
+        {
+          treatments: '画像',
+          patient_no: '1001',
+          patient_info: {
+            patient_uuid: '123',
+            patient_name: '患者 太郎',
+            patient_name_katakana: 'カンジャ タロウ',
+            patient_gender: 1,
+            patient_birthday: '1996年07月17日',
+            is_name_duplicated: true,
+          },
+          hospitaloroutpatient: 'デモ東病東',
+          descriptioncontent: '発症リスク低',
           registeredperson: '医師 次郎',
           scheduleddateofexamination: '2023年06月05日 09時00分',
         },
@@ -202,7 +251,6 @@ export default {
     text-decoration: none;
     color: #333333;
   }
-
 }
 .table-footer {
   display: flex;
