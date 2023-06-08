@@ -51,8 +51,8 @@
   const isFreeItemMasterBtnClicked = ref(true);
   const isPatternMasterBtnClicked = ref(false);
   //   If PatternMasterBtnClick
-//   const isFreeItemMasterBtnClicked = ref(false);
-//   const isPatternMasterBtnClicked = ref(true); 
+  // const isFreeItemMasterBtnClicked = ref(false);
+  // const isPatternMasterBtnClicked = ref(true); 
   </script>
   
   <style lang="scss" scoped>
