@@ -1,5 +1,5 @@
 <script setup lang="ts"> 
-import imageUrl from '@/assets/icon/ward.svg'
+import imageUrl from '@/assets/icon/schedule.svg'
 </script>
 <template>
     <div class="observationpattern-card-width">
@@ -10,7 +10,7 @@ import imageUrl from '@/assets/icon/ward.svg'
                 <img :src="imageUrl"/> 
             </template>
             <PagesGlobalMasterDocumentMasterSetSearchField />
-            <PagesGlobalMasterDocumentMasterSetTable />
+            <PagesGlobalMasterDocumentMasterSetTable1 />
         </PagesGlobalBaseLayout>
     </div>
 </template>

@@ -58,29 +58,40 @@
     </v-dialog>
 </template>
 
-<script setup lang="ts">
-    type VariableButton = {
-        title: String,
-        color: String,
-        methods: String, 
-        outlined?: boolean, 
-    }
-    const props = defineProps({
-        modalActive: String,
-        modalWidth: String, 
-        modalColor: String, 
-        className: String,
-        modalHeight: String,
-        modalTitle: String, 
-        modalLoading: String,
-        modalPosition: String,
-        modalButton: Array as PropType<VariableButton[]>,
-        modalDisabled: String,
-        modalKey: String,
-    }) 
+<script lang="ts">
+import { computed, defineComponent, PropType } from 'vue'
+
+type VariableButton = {
+  title: string
+  color: string
+  methods: string
+  outlined?: boolean
+}
+
+export default defineComponent({
+  props: {
+    modalWidth: String,
+    modalTitle: String,
+    modalKey: String,
+    modalActive: Boolean,
+    modalColor: String,
+    modalPosition: String,
+    modalButton: Array as PropType<VariableButton[]>,
+    modalHeight: String,
+    className: String,
+    modalLoading: Boolean,
+    modalDisabled: Boolean,
+  },
+  setup(props) {
     const styleHeight = computed(() => {
-        return `calc(${props.modalHeight}vh - 144px)`
+      return `calc(${props.modalHeight}vh - 144px)`
     })
+
+    return {
+      styleHeight,
+    }
+  },
+})
 </script>
 
 <style lang="scss" scoped>

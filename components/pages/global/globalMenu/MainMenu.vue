@@ -75,6 +75,7 @@
 </template>
 
 <script setup lang="ts">
+    import { ref} from 'vue'
     import { cloneDeep } from 'lodash'
     import { GLOBAL_MENU} from './constant'
     import { Level1, Level2, MenuItems } from '~/hooks/Global/GlobalMenu/UseMenu'

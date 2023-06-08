@@ -10,27 +10,27 @@
             <div class="switch-select">
                 <v-btn          
                     :class="appTab === 'reception' ? 'is-active' : ''"
-                    color="#459caa"
-                    outlined
+                    color="#459caa" 
+                    variant="outlined"
                     @click="appTabClick('reception')"
                 >受付一覧</v-btn>
                 <v-btn
                     :class="appTab === 'description' ? 'is-active' : ''"
                     color="#459caa"
-                    outlined
+                    variant="outlined"
                     @click="appTabClick('description')"
                 >一括記載</v-btn>
                 <v-btn
                     @click="appTabClick('instruction')"
                     :class="appTab === 'instruction' ? 'is-active' : ''"
                     color="#459caa"
-                    outlined
+                    variant="outlined"
                 >指示患者一覧</v-btn>
                 <v-btn
                     @click="appTabClick('dailyReport')"
                     :class="appTab === 'dailyReport' ? 'is-active' : ''"
                     color="#459caa"
-                    outlined
+                    variant="outlined"
                 >認知DC日報</v-btn>
             </div>
         </template>
@@ -50,9 +50,12 @@
 </template>
 
 <script setup lang="ts">
+    import { ref } from 'vue'
     import imageUrl from '@/assets/icon/schedule.svg'
-    //const appTab = ref('description')
+
+    
     const appTab = ref('reception')
+    //const appTab = ref('description')
     const appTabClick = (appType: string) => {
         appTab.value=appType
     }

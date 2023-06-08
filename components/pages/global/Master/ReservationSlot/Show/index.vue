@@ -9,8 +9,20 @@ import imageUrl from '@/assets/icon/ward.svg'
             <template #iconImg>
                 <img :src="imageUrl"/> 
             </template>
-            <PagesGlobalMasterReservationSlotShowSearchField />
-            <PagesGlobalMasterReservationSlotShowTable />
+            <PagesGlobalMasterReservationSlotShowSearchField 
+            />
+            <PagesGlobalMasterReservationSlotShowTable 
+            />
+            <!-- bulk-register-modal -->
+            <template>
+                <!-- <PagesGlobalMasterReservationSlotRegisterBulkRegisterModal /> -->
+            </template>
+            <!-- register-modal -->
+            <template>
+                <!-- <PagesGlobalMasterReservationSlotRegisterRegisterModal /> -->
+            </template>
+            <!-- delete modal -->
+            <!-- <GeneralModalDeleteModal/> -->
         </PagesGlobalBaseLayout>
     </div>
 </template>

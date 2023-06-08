@@ -1,13 +1,10 @@
-<script setup lang="ts">
-</script>
-
 <template>
     <div class="search-fields">
         <div class="search-fields_button">
             <div class="ml-5 mt-3" style="display:flex">
                 <p class="mt-2">記載日</p>
                 <div class="ml-3" style="width: 140px">
-                    <!-- <DatePicker :value.sync="date"/> -->
+                    <Datepicker :value.sync="date"/>
                 </div>
             </div>
             <div class="mt-3 mr-7">
@@ -30,6 +27,10 @@
         </div>
     </div>
 </template>
+
+<script setup lang="ts">
+    import Datepicker from '~/components/General/Form/DatePicker.vue';
+</script>
 
 <style lang="scss" scoped>
 .search-fields {

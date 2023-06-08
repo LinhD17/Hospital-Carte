@@ -10,11 +10,15 @@ import * as labs from 'vuetify/labs/components'
 import  Datepicker  from '@vuepic/vue-datepicker'
 import '@vuepic/vue-datepicker/dist/main.css'
 
+import 'vuetify/styles'
+
 
 
 export default defineNuxtPlugin((nuxtApp) => {
   const vuetify = createVuetify({
-    srr: true, 
+    //chỗ nỳ là srr hay ssr đây???
+    //srr: true, 
+    ssr: true,
     components: {
       ...labs,
       //...appAll,

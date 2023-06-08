@@ -28,8 +28,7 @@
                 </v-btn>
                 <v-btn
                     v-if="searchActive"
-                    outlined
-                    rounded
+                    variant="outlined"
                     small
                     width="78"
                     class="btn-style ml-2"

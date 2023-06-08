@@ -185,71 +185,103 @@
     </modal>
 </template>
 
-<script setup lang="ts">
-    import Modal from '@/components/General/Modal.vue'
-    //props
-    const props = defineProps({
-        dayOfWeek: {
+<script lang="ts">
+  import  { defineComponent, ref, PropType, watch } from 'vue'
+  import Modal from '@/components/General/Modal.vue'
+  import { CommonObject } from '~/@types/global.type'
+  import { 
+    ReservationSlotEditModel,
+    initialReservationSlotEditModel
+     
+   } from '~/@types/master/reservationSlot/model/reservationSlotEditModel.type'
+
+  export default defineComponent({
+    components: {
+        Modal,
+    },
+    props: {
+      dayOfWeek: {
         type: Array as PropType<CommonObject[]>,
         required: true,
         default: [] as CommonObject[],
-        },
-        hours: {
+      },
+      hours: {
         type: Array as PropType<CommonObject[]>,
         required: true,
         default: [] as CommonObject[],
-        },
-        minutes: {
+      },
+      minutes: {
         type: Array as PropType<CommonObject[]>,
         required: true,
         default: [] as CommonObject[],
-        },
-        isModalOpen: {
+      },
+      isModalOpen: {
         type: Boolean,
         required: true,
-        },
-        modalModel: {
+      },
+      modalModel: {
         type: Object as PropType<ReservationSlotEditModel>,
         required: true,
-        },
-        errorMessages: {
+      },
+      errorMessages: {
         type: Object as PropType<ReservationSlotErrorView>,
         required: true,
+      },
+    },
+    emits: {
+      onModalCloseButtonClick: (): void => {},
+      onSubmitReservationSlot: (_model: ReservationSlotEditModel): void => {},
+      setBulkMode: (_isBulkMode: boolean): void => {},
+    }, 
+    setup(props, { emit }) {
+      const reservationSlotModel = ref<ReservationSlotEditModel>(
+        initialReservationSlotEditModel()
+      )
+      watch(
+        () => props.modalModel,
+        () => {
+          reservationSlotModel.value = structuredClone(props.modalModel)
         },
-    })
+        { immediate: true }
+      )
 
-    //emits
-    const emits = defineEmits([
-        onModalCloseButtonClick: (): void => {},
-        onSubmitReservationSlot: (_model: ReservationSlotEditModel): void => {},
-        setBulkMode: (_isBulkMode: boolean): void => {},
-    ])
-
-    const modalButton = [
+      const modalButton = [
         {
-            title: '閉じる',
-            color: '#B2B2B2',
-            outlined: true,
-            methods: 'closeModal',
+          title: '閉じる',
+          color: '#B2B2B2',
+          outlined: true,
+          methods: 'closeModal',
         },
         {
-            title: '保存',
-            color: 'primary',
-            methods: 'submit',
+          title: '保存',
+          color: 'primary',
+          methods: 'submit',
         },
-    ]
+      ]
 
-    const unSetBulkMode = () => {
-      emit('setBulkMode', false)
-    }
+      const unSetBulkMode = () => {
+        emit('setBulkMode', false)
+      }
 
-    const closeModal = () => {
-      unSetBulkMode()
-      emit('onModalCloseButtonClick')
-    }
-    const submit = () => {
-      emit('onSubmitReservationSlot', reservationSlotModel.value)
-    }
+      const closeModal = () => {
+        unSetBulkMode()
+        emit('onModalCloseButtonClick')
+      }
+      const submit = () => {
+        emit('onSubmitReservationSlot', reservationSlotModel.value)
+      }
+
+      return {
+        modalButton,
+        closeModal,
+        submit,
+        startMenu: false,
+        endMenu: false,
+        reservationSlotModel,
+      }
+    },
+  })
+  
 
 </script> 
 

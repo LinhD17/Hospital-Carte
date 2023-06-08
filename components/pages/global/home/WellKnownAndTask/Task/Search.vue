@@ -1,44 +1,19 @@
-<script>
-import DatePicker from '@/components/General/Form/DatePicker.vue'
-
-export default {
-  components: {
-    DatePicker
-  },
-  // data() {
-  //   return {
-  //     selectedDate: null
-  //   }
-  // }
-};
-</script>
 <template>
     <div class="task-search-row">
         <!-- calender -->
         <div class="d-flex align-center calendar">
-          <!-- lấy date picker từ Genẻal-> Form -> DatePicker ra cũng không hiẻn thị, tại sao??? -->
-          <date-picker>
-          </date-picker>
-          <span class="mt-3">~</span>
-          <date-picker>
-          </date-picker>
-
-          <!-- <v-date-picker v-model="selectedDate"></v-date-picker>
-          <span class="mt-3">~</span>
-          <v-date-picker v-model="selectedDate"></v-date-picker> -->
-
-
-            <!-- <datepicker
-            :width="100"
-            outlined
-            place-holder="選択してください"
-            />
-            <span class="mt-3">~</span>
+          <!-- lấy date picker từ General-> Form -> DatePicker ra cũng không hiẻn thị, tại sao??? -->
+          <div style="width: 150px">
             <datepicker
-            :width="100"
-            outlined
-            place-holder="選択してください"
-            /> -->
+              placeholder="年/月/日"
+            />
+          </div>
+          <span class="mt-3">~</span>
+          <div style="width: 150px">
+              <datepicker
+                  placeholder="年/月/日"
+              />
+          </div>
 
 
         </div>
@@ -84,8 +59,11 @@ export default {
           検索
         </v-btn>
     </div>
-
 </template>
+
+<script setup lang="ts">
+  import Datepicker from '@/components/General/Form/DatePicker.vue';
+</script>
 
 <style lang="scss" scoped>
 .calendar {

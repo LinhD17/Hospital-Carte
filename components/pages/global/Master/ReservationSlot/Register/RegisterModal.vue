@@ -182,65 +182,96 @@
         </div>
     </modal>
 </template>
-<script setup lang="ts">
+<script lang="ts">
+    import { defineComponent, ref, PropType, watch } from 'vue';
     import Modal from '@/components/General/Modal.vue'
-    //props
-    const props = defineProps({
-        dayOfWeek: {
-            type: Array as PropType<CommonObject[]>, 
-            required: true,
-            default: [] as CommonObject[],
+    import { CommonObject } from '~/@types/global.type'
+    import {
+        initialReservationSlotEditModel,
+        ReservationSlotEditModel,
+    } from '~/@types/master/reservationSlot/model/reservationSlotEditModel.type'
+    import { ReservationSlotErrorView } from '~/@types/master/reservationSlot/view/reservationSlotErrorView'
+
+    export default defineComponent({
+        componets: {
+            Modal,
         },
-        hours: {
-            type: Array as PropType<CommonObject[]>,
-            required: true,
-            default: [] as CommonObject[],
+        props: {
+            dayOfWeek: {
+                type: Array as PropType<CommonObject[]>,
+                required: true,
+                default: [] as CommonObject[],
+            },
+            hours: {
+                type: Array as PropType<CommonObject[]>,
+                required: true,
+                default: [] as CommonObject[],
+            },
+            minutes: {
+                type: Array as PropType<CommonObject[]>,
+                required: true,
+                default: [] as CommonObject[],
+            },
+            isModalOpen: {
+                type: Boolean,
+                required: true,
+            },
+            modalModel: {
+                type: Object as PropType<ReservationSlotEditModel>,
+                required: true,
+            },
+            errorMessages: {
+                type: Object as PropType<ReservationSlotErrorView>,
+                required: true,
+            },
+        }, 
+        emits: {
+            onModalCloseButtonClick: (): void => {},
+            onSubmitReservationSlot: (_model: ReservationSlotEditModel): void => {},
         },
-        minutes: {
-            type: Array as PropType<CommonObject[]>,
-            required: true,
-            default: [] as CommonObject[],
-        },
-        isModalOpen: {
-            type: Boolean,
-            required: true,
-        },
-        modalModel: {
-            type: Object as PropType<ReservationSlotEditModel>,
-            required: true,
-        },
-        errorMessages: {
-            type: Object as PropType<ReservationSlotErrorView>,
-            required: true,
+        setup(props, { emit }) {
+            const reservationSlotModel = ref<ReservationSlotEditModel>(
+            initialReservationSlotEditModel()
+            )
+            watch(
+            () => props.modalModel,
+            () => {
+                reservationSlotModel.value = structuredClone(props.modalModel)
+            },
+            { immediate: true }
+            )
+
+            const modalButton = [
+            {
+                title: '閉じる',
+                color: '#B2B2B2',
+                outlined: true,
+                methods: 'closeModal',
+            },
+            {
+                title: '保存',
+                color: 'primary',
+                methods: 'submit',
+            },
+            ]
+
+            const closeModal = () => {
+            emit('onModalCloseButtonClick')
+            }
+            const submit = () => {
+            emit('onSubmitReservationSlot', reservationSlotModel.value)
+            }
+
+            return {
+            modalButton,
+            closeModal,
+            submit,
+            startMenu: false,
+            endMenu: false,
+            reservationSlotModel,
+            }
         },
     })
-
-    //emits//emits
-    const emits = defineEmits([
-        onModalCloseButtonClick: (): void => {},
-        onSubmitReservationSlot: (_model: ReservationSlotEditModel): void => {},
-    ])
-
-    const modalButton = [
-        {
-            title: '閉じる',
-            color: '#B2B2B2',
-            outlined: true,
-            methods: 'closeModal',
-        },
-        {
-            title: '保存',
-            color: 'primary',
-            methods: 'submit',
-        },
-    ]
-
-    const closeModal = () => {
-      emit('onModalCloseButtonClick')
-    }
-    const submit = () => {
-      emit('onSubmitReservationSlot', reservationSlotModel.value)
-    }
 </script>
 
 <style lang="scss" scoped>

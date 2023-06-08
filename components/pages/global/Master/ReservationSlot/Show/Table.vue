@@ -9,7 +9,11 @@
             <template v-slot:item.editAction="{ item }">
                 <div class="d-flex justify-space-between">
                     <div>
-                        <v-icon small class="ml-1">mdi-pencil </v-icon>
+                        <v-icon 
+                            small 
+                            class="ml-1"
+                            @click="() => {onModalEditButtonClick(item)}"
+                        >mdi-pencil </v-icon>
                     </div>
                 </div> 
             </template>
@@ -17,7 +21,11 @@
             <template v-slot:item.deleteAction="{ item }">
                 <div class="d-flex justify-space-between">
                     <div>
-                        <v-icon small class="ml-1">mdi-delete </v-icon>
+                        <v-icon 
+                            small 
+                            class="ml-1"
+                            @click="() => {onModalDeleteButtonClick(item)}"
+                        >mdi-delete </v-icon>
                     </div>
                 </div> 
             </template>
@@ -42,26 +50,6 @@
                 </v-btn>
             </div>
         </div>
-        <modal
-            modal-width="500"
-            :modal-active="modalState"
-            modal-key="modal"
-            modal-color="#ffffff"
-            :modal-title="'精神疾患レジストリCSV出力'"
-            :modal-button="modalButtons"
-            @closeModal="closeModal"
-            @confirm="onExporatCSV"
-        >
-            <div class="content-modal_wrapper">
-                <div class="content-modal_title">
-                </div>
-                <div class="content-modal_content">
-                    <div class="py-4 px-5">
-                        <p class="my-2">精神疾患レジストリの確定データをCSV出力します。よろしいですか？</p>
-                    </div>
-                </div>
-            </div>
-        </modal>
     </div>
 </template>
 

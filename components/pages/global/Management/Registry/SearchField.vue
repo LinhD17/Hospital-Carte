@@ -42,25 +42,17 @@
                 </div>
                 <div class="ml-3" style="width: 350px">
                     <p class="mb-0 text-left">TIME</p>
-                    <!-- time -->
-                    <!-- <div style="width: 106px">
-                        <datepicker
-                            placeholder="時/分"
-                            timePicker
-                        />
-                    </div> -->
                     <div class="d-flex">
-                        <time-picker
+                        <timepicker
                             clearable
                             :height-date-picker="'15px'"
                         />
                         <span  v-text="'～'" class="mt-8" />
-                        <time-picker
+                        <timepicker
                             clearable
                             :height-date-picker="'28px'"
                         />
                     </div>
-
                 </div>
                 <div class="ml-3">
                     <p class="mb-0 text-left">患者性別</p>
@@ -87,8 +79,8 @@
 </template>
 
 <script setup lang="ts">
-    import DatePicker  from '@/components/General/Form/DatePicker.vue'
-    import TimePicker from '~/components/General/Form/TimePicker.vue';
+    import Datepicker  from '@/components/General/Form/DatePicker.vue'; 
+    import Timepicker from '~/components/General/Form/TimePicker.vue';
 
     const props = defineProps({
 

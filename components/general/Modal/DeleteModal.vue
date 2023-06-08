@@ -1,5 +1,5 @@
 <template>
-    <modal
+    <modal-form
         modal-width="500"
         :modal-active="isModelOpen"
         modal-key="modal_delete"
@@ -18,12 +18,12 @@
                 <slot></slot>
             </div>
         </div>
-    </modal>
+    </modal-form>
 </template>
 
-<script setup lang="ts">
-import Modal from '~/components/General/Modal.vue'
-import { defineEmits } from 'vue';
+<script lang="ts">
+import ModalForm from '~/components/General/Modal.vue'
+import { defineComponent } from 'vue'
 
 type ModalButtonType = {
     title: string
@@ -31,39 +31,49 @@ type ModalButtonType = {
     outlined?: Boolean
     methods: string
 }
-const props = defineProps({
-    isModelOpen: {
-        type: Boolean,
-        required: true,
+export default defineComponent({
+    components: {
+        ModalForm,
     },
+    props: {
+        isModelOpen: {
+            type: Boolean,
+            required: true,
+        },
+    },
+    emits: {
+        onModalCloseButtonClick: (): void => {},
+        onDeleteButtonClick: (): void => {},
+    },
+    setup(_, { emit }) {
+        const modalButtons: ModalButtonType[] = [
+            {
+                title: '削除',
+                color: 'primary',
+                methods: 'confirm',
+            },
+            {
+                title: 'キャンセル',
+                color: 'primary',
+                methods: 'closeModal',
+                outlined: true,
+            },
+        ]
+        const closeModal = () => {
+            emit('onModalCloseButtonClick')
+        }
+
+        const onDeleteButtonClick = () => {
+            emit('onDeleteButtonClick')
+        }
+
+        return {
+            modalButtons,
+            closeModal,
+            onDeleteButtonClick,
+        }
+    }
 })
-
-const modalButtons: ModalButtonType[] = [
-    {
-    title: '削除',
-    color: 'primary',
-    methods: 'confirm',
-    },
-    {
-    title: 'キャンセル',
-    color: 'primary',
-    methods: 'closeModal',
-    outlined: true,
-    },
-]
-//cần xem xét laị cách viết emit trong Vue3 
-const emits = defineEmits([
-    onModalCloseButtonClick: (): void => {},
-    onDeleteButtonClick: (): void => {},
-])
-
-const closeModal = () => {
-    emit('onModalCloseButtonClick')
-}
-
-const onDeleteButtonClick = () => {
-    emit('onDeleteButtonClick')
-}
 </script>
 
 

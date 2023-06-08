@@ -8,7 +8,7 @@
                         <datepicker
                             placeholder="年/月/日"
                         />
-                        <div class="ml-2 mr-2">
+                        <div class="ml-2 mr-2 mt-2">
                             <p>〜</p>
                         </div>
                         <datepicker
@@ -24,7 +24,7 @@
                         variant="solo" 
                         hide-details
                         style="width: 150px; background-color: white" 
-                        placeholder="患者番号を入力"
+                        placeholder="内容を入力"
                     />
                 </div>
                 <div class="ml-3">
@@ -38,6 +38,25 @@
                         placeholder="全て" 
                         :items="['医師　太郎', '医師　次郎', '医師　花子']"
                     />
+                </div>
+                <div class="ml-3 mt-2 d-flex align-center">
+                    <!-- xu ly hien list cac o mau ra de chon: ở đây sẽ ko gọi qua API để lấy màu nữa mà làm 1 list maù mặc định (dummy color) để gọi lên xử lý -->
+                    <div class="d-flex align-center">
+                        <v-checkbox
+                            v-for="item in OTHER_LIST_COLOR"
+                            dense
+                            hide-details
+                            :value="item.value"
+                            class="pa-0 ma-0"
+                        >
+                            <template #label>
+                            <div
+                                :style="`background-color:${item.text}`"
+                                class="status-list--box"
+                            />
+                            </template>
+                        </v-checkbox>
+                    </div>
                 </div>
                 <div class="ml-3 mt-5">
                     <v-checkbox 
@@ -60,12 +79,17 @@
 </template>
 
 <script setup lang="ts">
-    import DatePicker  from '@/components/General/Form/DatePicker.vue'
+    import { onBeforeMount, ref, inject } from 'vue'
+    import Datepicker  from '@/components/General/Form/DatePicker.vue'
+    import { OTHER_LIST_COLOR } from '~/constains/global/other/listColor'
 
-    const props = defineProps({
-
-    })
-
+    // const colorList = {
+    //     color_1: '#a4dcf4',
+    //     color_2: '#fcc4dc',
+    //     color_3: '#fbdd9c',
+    //     color_4: '#bce49c',
+    //     color_5: '#fcbc9c',
+    // }
 </script>
 
   <style lang="scss" scoped>
@@ -91,5 +115,10 @@
   font-size: 12px !important;
   height: 30px !important;
   }
-  
+  .status-list--box {
+    height: 23px !important; 
+    width: 23px !important;
+    //background-color: #009eac !important; //khong can dinh san mau nhu the nay
+  }
+
   </style>

@@ -32,7 +32,6 @@
   
 <script setup>
     import { cloneDeep } from 'lodash'
-    //props
     const props = defineProps({
         hour: {
             type: Number,
@@ -60,12 +59,6 @@
         },
     })
 
-    //emits
-
-    // const hours = [...Array(24).keys()].map((e) => ({
-    //     text: e < 10 ? `0${e}` : `${e}`,
-    //     value: e,
-    // }))
     const hours = [
       '01:',
       '02:',
@@ -92,10 +85,6 @@
       '23:',
       '24:',
     ]
-    // const minutes = [...Array(60).keys()].map((e) => ({
-    //     text: e < 10 ? `0${e}` : `${e}`,
-    //     value: e,
-    // }))
 
     const minutes = [
       '01:',
@@ -185,22 +174,98 @@
         state.value.min = cloneDeep(props.min)
         }
     )
-  </script>
+</script>
   
-  <style lang="scss" scoped>
-  .calendar {
-    display: flex;
-    align-items: baseline;
-  
-    .hour {
-      display: flex;
-      align-items: baseline;
-  
-      p {
-        margin: 0 0.25rem;
-        font-weight: bold;
-      }
+<!-- <script lang="ts ">
+import { defineComponent, ref, watch } from 'vue'
+import { clobeDeep } from 'lodash'
+
+export default defineComponent({
+    props: {
+        hour: {
+            type: Number as () => number | null,
+            default: 0,
+        },
+        min: {
+            type: Number as () => number | null,
+            default: 0,
+        },
+        heightDatePicker: {
+            type: String,
+            default: '22px',
+        },
+        backgroundColor: {
+            type: String,
+            default: 'white',
+        },
+        disabled: {
+            type: Boolean,
+            default: false,
+        },
+        clearable: {
+            type: Boolean,
+            default: false,
+        },
+    },
+    setup(props, { emit }) {
+        const hours = [...Array(24).keys()].map((e) => ({
+            text: e < 10 ? `0${e}` : `${e}`,
+            value: e,
+        }))
+        const minutes = [...Array(60).keys()].map((e) => ({
+            text: e < 10 ? `0${e}` : `${e}`,
+            value: e,
+        }))
+        const state = ref({
+            hour: cloneDeep(props.hour),
+            min: cloneDeep(props.min),
+        })
+
+        watch(
+            () => state.value.hour,
+            (val) => {
+                emit('update:hour', val)
+            }
+        )
+
+        watch(
+            () => state.value.min,
+            (val) => {
+                emit('update:min', val)
+            }
+        )
+
+        watch(
+            () => [props.hour, props.min],
+            () => {
+                state.value.hour = cloneDeep(props.hour)
+                state.value.min = cloneDeep(props.min)
+            }
+        )
+
+        return {
+            state,
+            hours,
+            minutes,
+        }
+    },
+})
+</script> -->
+
+<style lang="scss" scoped>
+    .calendar {
+        display: flex;
+        align-items: baseline;
+    
+        .hour {
+        display: flex;
+        align-items: baseline;
+    
+        p {
+            margin: 0 0.25rem;
+            font-weight: bold;
+        }
+        }
     }
-  }
-  </style>
+</style>
   

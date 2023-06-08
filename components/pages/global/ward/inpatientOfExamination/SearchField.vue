@@ -152,14 +152,14 @@
                             <p class="txt-label">入院日:</p>
                             <div class="d-flex align-baseline">
                                 <div style="width: 150px">
-                                    <date-picker
+                                    <datepicker
                                         style="width: 120px"
                                         placeholder="入院日"
                                     />
                                 </div>
                                 <span class="ml-2 mr-2">〜</span>
                                 <div style="width:150px">
-                                    <date-picker
+                                    <datepicker
                                         placeholder="入院日"
                                     />
                                 </div>
@@ -173,7 +173,7 @@
                             <p class="txt-label">入院日数:</p>
                             <div class="d-flex align-baseline">
                                 <div style="width: 150px">
-                                    <date-picker
+                                    <datepicker
                                         :min="0"
                                         placeholder="--日"
                                         style="width: 86px"
@@ -183,7 +183,7 @@
                                 </div>
                                 <span class="ml-3 mr-3">~</span>
                                 <div style="width: 150px">
-                                    <date-picker 
+                                    <datepicker 
                                         :min="0"
                                         placeholder="--日"
                                         style="width: 90px"
@@ -348,7 +348,8 @@
     </v-form>
 </template>
 
-<script>
+<script lang="ts">
+    import Datepicker from '~/components/General/Form/DatePicker.vue';
     export default {
         data() {
             return {
@@ -367,6 +368,9 @@
             this.rowsExpanded = true
             },
         },
+        setup() {
+            Datepicker
+        }
     }
 </script>
 

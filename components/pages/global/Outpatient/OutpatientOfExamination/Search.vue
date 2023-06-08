@@ -1,7 +1,3 @@
-<script setup lang="ts">
-//   import OnlyTimePicker from '~/components/general/form/OnlyTimePicker.vue'
-</script>
-
 <template>
     <div>
       <v-row class="ma-4 pa-2 search-area">
@@ -195,6 +191,11 @@
       </v-expand-transition>
     </div>
   </template>
+
+<script setup lang="ts">
+//   import OnlyTimePicker from '~/components/general/form/OnlyTimePicker.vue'
+  import Datepicker from '@/components/General/Form/DatePicker.vue' 
+</script>
   
   <style lang="scss" scoped>
   .search-area {

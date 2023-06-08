@@ -4,10 +4,10 @@
             <div class="d-flex">
                 <div class="ml-5 mt-5">
                     <p class="mb-0 text-left">受付日</p>
-                    <div style="width: 174px">
+                    <div style="width: 230px">
                         <datepicker
-                            placeholder="受付日"
                             :value.sync="date"
+                            placeholder="年・月・日"
                         />
                     </div>
                 </div>
@@ -93,7 +93,11 @@
     </div>
 </template>
 
-<script setup lang="ts">
+<script lang="ts">
+    import Datepicker from '@/components/General/Form/DatePicker.vue'
+    import moment from 'moment';
+    import { defineComponent, ref } from 'vue'
+
     type HeaderCell = {
             title: string
             key: string
@@ -120,6 +124,18 @@
             total: '10人',
         }
     ]
+    export default defineComponent ({
+        components: {
+            Datepicker,
+        },
+        setup() {
+            return {
+                date: ref(moment().format('YYYY-MM-DD')),
+                header,
+                dummyItems,
+            }
+        },
+    })
 </script>
 
   <style lang="scss" scoped>
