@@ -1,6 +1,6 @@
 <template>
     <div class="pa-2">
-      <div v-for="(list, index) in templateLists" :key="index" class="template-list">
+      <div v-for="(list, index) in documentTemplateList" :key="index" class="template-list">
         <div class="mr-2 mb-10">
           <v-data-table-virtual
             hide-default-footer
@@ -33,7 +33,7 @@
                   </div>
                 </template>
                 <template v-else>
-                    <div style="display: flex; justify-content: center; align-items: center; color: #9e9e9e">
+                    <div class="no-data">
                         データはありません。
                     </div>
                 </template>
@@ -60,7 +60,7 @@
   export default {
     data() {
       return {
-        templateLists: [
+        documentTemplateList: [
           {
             headers: [
               { title: '治療計画書', key: 'document_name', sortable: false, align: 'center' },
@@ -358,5 +358,11 @@
 
 .template-list {
   overflow-y: auto;
+}
+
+.no-data {
+    width: 100%;
+    text-align: center;
+    color: #9e9e9e;
 }
 </style>
