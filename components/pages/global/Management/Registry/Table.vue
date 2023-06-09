@@ -64,6 +64,7 @@
                 </div>
             </template> -->
         </v-data-table-virtual>
+
         <div class="table-footer text-center pt-2">
             <div style="margin: 0 0 0 auto;">
                 <v-btn
@@ -76,6 +77,7 @@
                 </v-btn>
             </div>
         </div>
+        
         <modal
             modal-width="500"
             :modal-active="modalState"
@@ -99,9 +101,7 @@
     </div>
 </template>
 
-<script>
-    // import Modal from '@/components/General/Modal.vue' 
-     import moment from 'moment'
+<script lang="ts">
     // import { inject } from 'vue'
     // const store = useStore()
     // const stateKey = inject(patientConfirmedRegistryListStateKey)
@@ -121,6 +121,8 @@
 
     // const modalState = ref<boolean>(false)
 
+    import Modal from '@/components/General/Modal.vue' 
+    import moment from 'moment'
     export default {
         data () {
             return {

@@ -74,7 +74,8 @@
 </template>
 
 <script setup lang="ts">
-  import { usePassword } from '~/hooks/General/usePassword';
+  import { usePassword } from '~/hooks/General/Form/usePassword';
+  import { ref, reactive } from 'vue'
   // import { useLogin, LoginInfo } from '~/hooks/Login/useLogin'
 
   const show = ref(false);
