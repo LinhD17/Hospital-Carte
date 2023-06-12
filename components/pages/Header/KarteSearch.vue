@@ -1,7 +1,3 @@
-<script setup lang="ts">
-//
-</script>
-
 <template>
     <div class="page-header">
       <v-app-bar class="my-app-bar">
@@ -79,6 +75,11 @@
       </v-app-bar>
     </div>
   </template>
+
+<script setup lang="ts">
+//
+</script>
+
   
   <style lang="scss" scoped>
   html,
@@ -118,3 +119,4 @@
   
   </style>
   
+ No newline at end of file

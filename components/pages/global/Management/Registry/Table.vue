@@ -102,7 +102,8 @@
 </template>
 
 <script lang="ts">
-    // import { inject } from 'vue'
+    // import type { inject } from 'vue'
+    // import { useStore } from 'vuex'
     // const store = useStore()
     // const stateKey = inject(patientConfirmedRegistryListStateKey)
     // if (!stateKey) {

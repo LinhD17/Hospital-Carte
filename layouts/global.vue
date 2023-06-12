@@ -1,6 +1,6 @@
 <template>
     <v-app>
-        <HeaderMainHeader />
+        <PagesHeaderMainHeader />
         <PagesGlobalGlobalMenuMainMenu />
         <v-main class="mt-14">
             <v-container fluid class="pl-4">
@@ -12,6 +12,7 @@
 </template>
 
 <script setup lang="ts">
+import { useRouter } from 'vue-router';
 const router = useRouter()
 </script>
 

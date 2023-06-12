@@ -1,4 +1,6 @@
 import { HK_VAR } from "~/enum/hkVariable.enum";
+import { ref } from 'vue'
+import { useStore } from 'vuex'
 
 export const useLoggedIn = () => {
     const store = useStore() // tai sao o day van bao loi

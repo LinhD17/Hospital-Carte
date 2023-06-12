@@ -12,12 +12,10 @@
             <p class="login-label">ユーザー名</p>
             <v-text-field
               v-model="state.name"
-              name="username"
               placeholder="テキストを入力"
               tabindex="0"
               variant="solo"
-              dense
-              @keyup.enter="moveFouces"
+              @keyup.enter="moveFocus"
               style="border: 1px solid #c7ccce; height: 58px;"
             ></v-text-field>
           </div>
@@ -25,39 +23,39 @@
           <div class="login-password mb-3">
             <p class="login-label">パスワード</p>
             <v-text-field
-              v-model="state.pass.password"
+              v-model="state.pass"
               :type="show ? 'text' : 'password'"
               :append-icon="show ? 'mdi-eye' : 'mdi-eye-off'"
               placeholder="テキストを入力"
               tabindex="1"
-              dense
               variant="solo"
+              style="border: 1px solid #c7ccce; height: 58px;"
               @click:append="show = !show"
               @keyup.enter="login"
-              style="border: 1px solid #c7ccce; height: 58px;"
             ></v-text-field>
           </div>
 
             <!-- error -->
               <!-- chưa xử lý được ẩn-hiện password -->
-            <div v-if="state.errorText.lenght" class="login-error mb-3">
+            <div  v-if="state.errorText.length" class="login-error mb-3">
               <p v-for="item in state.errorText" :key="item">
                 <v-icon x-small color="danger" class="mr-2">
                   mdi-alert-circle-outline
                 </v-icon>
-                {{ item  }}
+                {{ item }}
               </p>
             </div>
 
             <!-- login button -->
             <!-- disabled- vô hiệu hoá, nút sẽ bị vô hiệu hoá khi giá trị của 1 trong 2 ô bị trống -->
             <v-btn
-              :disabled="state.name === '' || state.pass.password ===''"
+              :disabled="state.name === '' || state.pass === ''"
+              data-test-id="login-button"
               class="login-button"
-              :loading="loadingLogin"
               tabindex="2"
-              color="primary"
+              :loading="loadingLogin"
               rounded
+              @click="login"
               style="background-color: #1ea0dc"
             >
               ログイン
@@ -65,7 +63,7 @@
           </v-form>
 
           <div class="login-desc">
-            <p>Waroku ホスピタルカルテ 1.0.1</p>
+            <p>Waroku ホスピタルカルテ 2.0.1</p>
             <p>Copyright RESCHO Inc. All Rights Reserved.</p>
           </div>
       </div>
@@ -73,61 +71,85 @@
   </div>
 </template>
 
-<script setup lang="ts">
-  import { usePassword } from '~/hooks/General/Form/usePassword';
-  import { ref, reactive } from 'vue'
-  // import { useLogin, LoginInfo } from '~/hooks/Login/useLogin'
+<script lang="ts">
+  import { defineComponent, reactive, onMounted } from 'vue';
+  //import { useSearchOrganization } from '~/hooks/login/useOrganization'
+  //import { usePassword } from '~/hooks/General/Form/usePassword';
+  import { useLogin, LoginInfo } from '~/hooks/Login/useLogin';
+  import PasswordForm from '~/components/General/Form/PasswordForm.vue';
 
-  const show = ref(false);
+  export default defineComponent({
+    components: {
+      PasswordForm,
+    }, 
+    setup() {
+      const state = reactive({
+        name: '', 
+        pass: '',
+        //pass: usePassword(),
+        errorText: [] as string[],
+      })
+      const loginInfo = reactive<LoginInfo>({
+          login_id: 'doctor_vn_test10',
+          login_password: 'waroku-dev-password',
+      })
 
-  const state = reactive({
-      name: '',
-      pass: usePassword(),
-      errorText: [] as string[],
-  })
-  // const loginInfo = reactive<LoginInfo>({
-  //     login_id: 'doctor_vn_test10',
-  //     login_password: 'waroku-dev-password',
-  // })
-  // const { errorInfo, fetchLogin, loading: loadingLogin} = useLogin()
+      //const { organization, fetchOrganizationData } = useSearchOrganization()
+      const { errorInfo, fetchLogin, loading: loadingLogin} = useLogin()
 
-  //handling login: ログイン時の処理 
-  //async được sử dụng để khai báo một hàm bất đồng bộ và hàm sẽ luôn trả về một giá trị. Nếu Promise không được thực thi, JavaScript sẽ tự động kết thúc quá trình.
-  // const login = async () => {
-  //     loginInfo.login_id = state.name
-  //     loginInfo.login_password = state.pass.password
-  //     //await: Await được sử dụng để chờ một Promises trong một khối Async, công dụng dễ hiểu của Await là “kêu” JavaScript phải chờ cho đến khi nào có một Promise trả kết quả. 
-  //     await fetchLogin(loginInfo)
-  //     insertErrorText(errorInfo)
-  // }
-  //set up error message: エラー文設定
-  const insertErrorText = (errorInfo: string[]) => {
-      state.errorText = []
-      if (!errorInfo || errorInfo.length === 0) {
-          return 
+      //handling login: ログイン時の処理 
+      //async được sử dụng để khai báo một hàm bất đồng bộ và hàm sẽ luôn trả về một giá trị. Nếu Promise không được thực thi, JavaScript sẽ tự động kết thúc quá trình.
+      const login = async () => {
+          loginInfo.login_id = state.name
+          loginInfo.login_password = state.pass
+          //await: Await được sử dụng để chờ một Promises trong một khối Async, công dụng dễ hiểu của Await là “kêu” JavaScript phải chờ cho đến khi nào có một Promise trả kết quả. 
+          await fetchLogin(loginInfo)
+          insertErrorText(errorInfo)
       }
-      state.errorText = errorInfo
-  }
-  //focus movment フォーカス移動
-  const moveFouces = (event: { target:  HTMLButtonElement }) => {
-      const tabindex = Number(event.target.getAttribute('tabindex'))
-      const nextTabindex = tabindex + 1 
-      const item = document.querySelector(
-          `[tabindex="${nextTabindex}"]`
-      ) as HTMLElement | null
-      if (item != null) {
-          item.focus()
+      //set up error message: エラー文設定
+      const insertErrorText = (errorInfo: string[]) => {
+        state.errorText = []
+        if (!errorInfo || errorInfo.length === 0) {
+          return
+        }
+        state.errorText = errorInfo
       }
-  }
-  //auto focus 
-  onMounted(() => {
-      const item = document.querySelector(
+      //focus movment フォーカス移動
+      const moveFocus = (event: { target:  HTMLButtonElement }) => {
+        const tabindex = Number(event.target.getAttribute('tabindex'))
+        const nextTabindex = tabindex + 1 
+        const item = document.querySelector(
+            `[tabindex="${nextTabindex}"]`
+        ) as HTMLElement | null
+        if (item != null) {
+            item.focus()
+        }
+      }
+
+      onMounted(() => {
+        const item = document.querySelector(
           `[tabindex="0"]`
-      ) as HTMLElement | null 
-      if (item != null) {
+        ) as HTMLElement | null
+        if (item != null) {
           item.focus()
+        }
+      })
+
+      // onBeforeMount(() => {
+      //   fetchOrganizationData()
+      // })
+
+      return {
+        //organization,
+        show: false, 
+        moveFocus,
+        login,
+        state, 
+        loadingLogin,
       }
+    }
   })
+
 </script>
 
 <style lang="scss" scoped>

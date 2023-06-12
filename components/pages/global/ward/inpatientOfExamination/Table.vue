@@ -4,6 +4,7 @@
             :headers="headers"
             :items="dummyItems"
             class="elevation-1"
+            @click:row="handleRowClick"
         >
             <!-- patient-info -->
             <template v-slot:item.patient_info = "{ item }">
@@ -29,7 +30,7 @@
                                     target="_blank"
                                 >
                                     {{ item.raw.patient_info.patient_name }}
-                                </nuxt-link> -->
+                                </nuxt-link>  -->
                                 {{ item.raw.patient_info.patient_name }}
                             </ruby>
                         </a>
@@ -248,8 +249,14 @@
     </div>
 </template>
 
-<script>
+<script lang="ts">
     import moment from 'moment'
+    // const handleRowClick = () => {
+    //         window.open{
+    //             '/karte?patient_uuid=16e3d8eb-d4d7-11ec-8902-0a7e192b49f1',
+    //             '_blank'
+    //         }
+    //     }
     export default {
         data () {
             return {
@@ -270,7 +277,7 @@
                     { title: '重症度', key: 'serious_illness_level', align: 'center', sortable: true },
 
                     { title: '救護区分', key: 'aid_classification', align: 'center', sortable: false, },
-                    { title: '褥瘡・転倒・自殺リスク', key: 'risk', align: 'center', ortable: false }, 
+                    { title: '褥瘡・転倒・自殺リスク', key: 'risk', align: 'center', sortable: false }, 
                     { title: '今日のオーダー有無', key: 'has_unimplemented_order', align: 'center', sortable: false},
                     { title: '隔・拘', key: 'isolation_restraint', align: 'center', sortable: false,},
                     { title: '感染症', key: 'has_infectious_disease', sortable: false }
@@ -421,7 +428,6 @@
                         serious_illness_level: 3,
                         aid_classification: 1,
                         has_unimplemented_order: "",
-                        has_isolation_restraint:"",
                         risk: 'サンプルテキスト',
                         has_isolation_restraint: "dummy",
                     },
@@ -451,122 +457,6 @@
                         nurse_name: "看護花子",
                         serious_illness_level: 2,
                         aid_classification: 1,
-                        risk: 'サンプルテキスト',
-                        has_unimplemented_order: "dummy",
-                    },
-                    {
-                        patient_no: "12345",
-                        patient_info: {
-                            patient_uuid: "123",
-                            patient_name: "患者 太郎",
-                            patient_name_katakana: "カンジャ タロウ",
-                            patient_gender: 1,
-                            patient_birthday: "1996年07月17日",
-                            is_name_duplicated: true,
-                        },
-                        ward_uuid: {
-                            ward_name: "1病棟",
-                            sick_room_name: "A病室",
-                            sick_bed_name: "301",
-                        },
-                        started_hospitalization_date: "2021年04月01日",
-                        discharge_from_hospital_date: "2021年04月10日",
-                        hospitalization_type_name: "医療保護",
-                        primary_disease_name: "アルコール依存症",
-                        responsibility_level_name: "外出 (職員同士)",
-                        primary_doctor_name: "医師太郎",
-                        examination_doctor_1_name: "医師太郎",
-                        examination_doctor_2_name:"医師太郎",
-                        nurse_name: "看護花子",
-                        serious_illness_level: 2,
-                        aid_classification: 3,
-                        risk: 'サンプルテキスト',
-                        has_unimplemented_order: "dummy",
-                    },
-                    {
-                        patient_no: "12345",
-                        patient_info: {
-                            patient_uuid: "123",
-                            patient_name: "患者 太郎",
-                            patient_name_katakana: "カンジャ タロウ",
-                            patient_gender: 1,
-                            patient_birthday: "1996年07月17日",
-                            is_name_duplicated: true,
-                        },
-                        ward_uuid: {
-                            ward_name: "1病棟",
-                            sick_room_name: "A病室",
-                            sick_bed_name: "301",
-                        },
-                        started_hospitalization_date: "2021年04月01日",
-                        discharge_from_hospital_date: "2021年04月10日",
-                        hospitalization_type_name: "医療保護",
-                        primary_disease_name: "アルコール依存症",
-                        responsibility_level_name: "外出 (職員同士)",
-                        primary_doctor_name: "医師太郎",
-                        examination_doctor_1_name: "医師太郎",
-                        examination_doctor_2_name:"医師太郎",
-                        nurse_name: "看護花子",
-                        serious_illness_level: 2,
-                        aid_classification: 3,
-                        risk: 'サンプルテキスト',
-                        has_unimplemented_order: "dummy",
-                    },
-                    {
-                        patient_no: "12345",
-                        patient_info: {
-                            patient_uuid: "123",
-                            patient_name: "患者 太郎",
-                            patient_name_katakana: "カンジャ タロウ",
-                            patient_gender: 1,
-                            patient_birthday: "1996年07月17日",
-                            is_name_duplicated: true,
-                        },
-                        ward_uuid: {
-                            ward_name: "1病棟",
-                            sick_room_name: "A病室",
-                            sick_bed_name: "301",
-                        },
-                        started_hospitalization_date: "2021年04月01日",
-                        discharge_from_hospital_date: "2021年04月10日",
-                        hospitalization_type_name: "医療保護",
-                        primary_disease_name: "アルコール依存症",
-                        responsibility_level_name: "外出 (職員同士)",
-                        primary_doctor_name: "医師太郎",
-                        examination_doctor_1_name: "医師太郎",
-                        examination_doctor_2_name:"医師太郎",
-                        nurse_name: "看護花子",
-                        serious_illness_level: 2,
-                        aid_classification: 3,
-                        risk: 'サンプルテキスト',
-                        has_unimplemented_order: "dummy",
-                    },
-                    {
-                        patient_no: "12345",
-                        patient_info: {
-                            patient_uuid: "123",
-                            patient_name: "患者 太郎",
-                            patient_name_katakana: "カンジャ タロウ",
-                            patient_gender: 1,
-                            patient_birthday: "1996年07月17日",
-                            is_name_duplicated: true,
-                        },
-                        ward_uuid: {
-                            ward_name: "1病棟",
-                            sick_room_name: "A病室",
-                            sick_bed_name: "301",
-                        },
-                        started_hospitalization_date: "2021年04月01日",
-                        discharge_from_hospital_date: "2021年04月10日",
-                        hospitalization_type_name: "旧法に基づく入院形態",
-                        primary_disease_name: "アルコール依存症",
-                        responsibility_level_name: "外出 (職員同士)",
-                        primary_doctor_name: "医師太郎",
-                        examination_doctor_1_name: "医師太郎",
-                        examination_doctor_2_name:"医師太郎",
-                        nurse_name: "看護花子",
-                        serious_illness_level: 2,
-                        aid_classification: 3,
                         risk: 'サンプルテキスト',
                         has_unimplemented_order: "dummy",
                     },
@@ -627,7 +517,6 @@
                         serious_illness_level: 3,
                         aid_classification: 1,
                         has_unimplemented_order: "",
-                        has_isolation_restraint:"",
                         risk: 'サンプルテキスト',
                         has_isolation_restraint: "dummy",
                     },

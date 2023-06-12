@@ -1,4 +1,5 @@
-import { ref, readonly, InjectionKey } from 'vue'
+import { ref, readonly } from 'vue'
+import type { InjectionKey } from 'vue'
 import { apiBase } from '~/plugins/apiBase'
 import { cloneDeep } from 'lodash'
 

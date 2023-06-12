@@ -16,7 +16,9 @@
 </template>
 
 <script setup lang="ts">
-    const state = reactive({
+import { reactive } from 'vue';
+import { useRoute } from 'vue-router';
+    const state = reactive({ 
         token: false,
     })
     // アクセストークン切れ

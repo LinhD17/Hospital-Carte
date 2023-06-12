@@ -1,6 +1,6 @@
 <template>
     <v-app>
-        <HeaderMainHeader />
+        <PagesHeaderMainHeader /> 
         <v-main >
             <v-container fluid>
                 <slot />
@@ -10,6 +10,7 @@
 </template>
 
 <script setup lang="ts">
+import { useRouter } from 'vue-router';
 const router = useRouter()
 </script>
 

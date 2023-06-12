@@ -1,3 +1,5 @@
+import type { InjectionKey } from 'vue'
+import { ref } from 'vue' 
 import { apiBase } from '~/plugins/apiBase'
 
 export type Level2 = {

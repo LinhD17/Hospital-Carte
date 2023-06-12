@@ -1,4 +1,8 @@
 import { apiBase } from '~/plugins/apiBase'
+import { ref, reactive } from 'vue'
+import { useRouter } from 'vue-router';
+import { useStore } from 'vuex';
+
 
 //error message's file import 
 import { ErrorMessages } from '../ErrorResorce/errorMessage'
