@@ -16,7 +16,7 @@
                 </v-btn>
             </template>
             <PagesGlobalWardInpatientOfExaminationSearchField /> 
-            <PagesGlobalWardInpatientOfExaminationTable/>
+            <PagesGlobalWardInpatientOfExaminationTable class="mt-10"/>
         </PagesGlobalBaseLayout>
     </div>
 </template>

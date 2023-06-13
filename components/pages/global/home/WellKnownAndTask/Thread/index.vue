@@ -6,11 +6,8 @@
             <div class="thread-title">
                 <h1 class="title">掲示板</h1>
                 <!-- button to open new modal -->
-                <v-btn 
-                    color="primary"
-                    class="rounded-circle d-inline-block"
-                >
-                   <v-icon >mdi-plus</v-icon>
+                <v-btn icon small color="#1ea0dc" class="btn-plus">
+                    <v-icon color="white">mdi-plus</v-icon>
                     <!-- <PagesGlobalHomeWellKnownAndTaskThreadModalBoardNew
                         :dialog-state="dialogAddNewState"
                    /> -->
@@ -48,4 +45,13 @@
     font-size: 20px !important;
     font-weight: bold;
 }
+.btn-plus {
+    display: block;
+    width: 26px;
+    height: 26px;
+    margin-left: 20px;
+    margin-bottom: 3px;
+    padding: 0;
+    background-color: var(--waroku-yellow, 'base');
+  }
 </style>

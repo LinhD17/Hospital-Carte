@@ -51,7 +51,7 @@
         </div>
         <!-- button -->
         <v-btn 
-          color="primary" 
+          color="#1ea0dc" 
           class="bt-basic h-middle" 
           style="width: 70px"
           rounded

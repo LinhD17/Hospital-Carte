@@ -11,36 +11,48 @@
                 </v-tabs>
                 <div class="past-articles-heading-aside">
                     <v-btn
-                        class="bt-basic h-middle w-auto t-toggle"
+                      class="bt-basic h-middle w-auto t-toggle"
+                      color="#51565a"
+                      rounded
                     >
-                        <v-icon color="white"> mdi-plus </v-icon>
-                        <span class="white--text">全開表示</span>
+                      <v-icon color="white"> mdi-plus </v-icon>
+                      <span class="white--text">全開表示</span>
                     </v-btn>
                     <v-btn
-                        class="bt-basic h-middle w-auto t-toggle"
+                      class="bt-basic h-middle w-auto t-toggle"
+                      color="#51565a"
+                      rounded
                     >
-                        <v-icon color="white">mdi-minus</v-icon>
-                        <span class="white--text">閉じる</span>
+                      <v-icon color="white">mdi-minus</v-icon>
+                      <span class="white--text">閉じる</span>
                     </v-btn>
                 </div>
             </div>
-            <v-tabs-items>
+            <v-tabs-items v-model="tab">
                 <!-- 過去記事 -->
                 <v-tab-item>
-
+                  <div class="past-article-body">
+                    
+                  </div>
                 </v-tab-item>
                 <!-- 過去記事 -->
                 <v-tab-item>
-
                 </v-tab-item>
             </v-tabs-items>
         </div>
     </div>
 </template>
 
-<script lang="ts">
+<script setup lang="ts">
 import { provide, inject, ref, computed } from 'vue'
 import { useStore } from 'vuex'
+
+const leftAreaMode = computed(() => store.getters['karte/leftAreaMode'])
+const tab = ref(null)
+
+const store = useStore()
+
+
 
 </script>
 
@@ -111,5 +123,8 @@ import { useStore } from 'vuex'
   background-color: #f0f3f4;
   border-right: solid 1px #c7ccce;
   padding: 12px 0;
+}
+.white--text { 
+  color: #ffffff;
 }
 </style>

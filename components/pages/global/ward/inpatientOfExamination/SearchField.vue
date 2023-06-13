@@ -18,44 +18,32 @@
                         :items="['Vue.js', 'React', 'Angular', 'Buzz']"
                     />
                 </div>
-                <v-btn
+                <button
                     ref="submitButtonRef"
-                    rounded
-                    small
-                    width="78"
-                    class="btn-style bg-blue text-white ml-4"
+                    class="btn-style bg-blue text-white ml-4 mt-3 rounded small"
                 >検索
-                </v-btn>
-                <v-btn
+                </button>
+                <button 
                     v-if="searchActive"
                     outlined
-                    color="primary"
-                    rounded
-                    small
-                    width="78"
-                    class="btn-style ml-2"
-                    @click="expandRows"
+                    class="btn-style ml-2 mt-3 rounded"
                 >条件保存
-                </v-btn>
-                <v-btn
-                    rounded
-                    dark
-                    small
-                    width="78"
-                    class="ml-auto outlined  btn-style"
-                    @click="toggleSearchActive"
+                </button>
+                <button
+                    class="ml-auto outlined  btn-style mt-3 bg-grey rounded dark small"
+                    @click="searchActive = !searchActive"
                 >
                 {{ searchActive ? 'ー閉じる' : '詳細検索' }} 
-                </v-btn>
+                </button>
             </div>
-            <transition>
-                <v-form v-if="searchActive" class="sub-condition">
+            <Transition>
+                <v-form v-show="searchActive" class="sub-condition">
                     <!-- row 2 -->
-                    <div v-show="rowsExpanded" class="patient-basic-info d-flex mt-2">
+                    <div class="patient-basic-info d-flex mt-1">
                         <!-- patient_no -->
                         <div class="col-flex">
                             <p class="txt-label">患者番号:</p>
-                            <div style="width: 200px">
+                            <div style="width: 150px">
                                 <v-text-field 
                                     dense
                                     outlined
@@ -68,7 +56,7 @@
                         <!-- wards -->
                         <div class="col-flex ml-5">
                             <p class="txt-label">病棟:</p>
-                            <div style="width: 200px">
+                            <div style="width: 150px">
                                 <v-select
                                     dense
                                     outlined
@@ -86,7 +74,7 @@
                         <div class="col-flex ml-5">
                             <p class="txt-label">氏名:</p>
                             <div class="d-flex">
-                                <div style="width: 230px">
+                                <div style="width: 150px">
                                     <v-text-field
                                         outlined
                                         dense
@@ -143,7 +131,6 @@
                                     :items="['男', '女']"
                                     style="background-color: white; width: 90px"
                                 >
-
                                 </v-select>
                             </div>
                         </div>
@@ -153,7 +140,6 @@
                             <div class="d-flex align-baseline">
                                 <div style="width: 150px">
                                     <datepicker
-                                        style="width: 120px"
                                         placeholder="入院日"
                                     />
                                 </div>
@@ -167,14 +153,13 @@
                         </div>
                     </div>
                     <!-- row 3 -->
-                    <div class="patient-basic-info d-flex mt-5">
+                    <div class="patient-basic-info d-flex mt-10">
                         <!-- hospitalization days number -->
                         <div class="mt-1 col-flex">
                             <p class="txt-label">入院日数:</p>
                             <div class="d-flex align-baseline">
                                 <div style="width: 150px">
                                     <datepicker
-                                        :min="0"
                                         placeholder="--日"
                                         style="width: 86px"
                                         type="number"
@@ -184,7 +169,6 @@
                                 <span class="ml-3 mr-3">~</span>
                                 <div style="width: 150px">
                                     <datepicker 
-                                        :min="0"
                                         placeholder="--日"
                                         style="width: 90px"
                                         type="number"
@@ -229,11 +213,12 @@
                             <v-select
                                 dense
                                 outlined
+                                variant="solo" 
                                 placeholder="選択してください"
-                                style="width: 210"
-                                background-color="white"
+                                style="background-color: white; width: 150px"
                             >
                                 <!-- <template></template>
+                                <template></template>
                                 <template></template>
                                 <template></template> -->
                             </v-select>
@@ -242,13 +227,14 @@
                         <div class="mt-1 ml-5 col-flex">
                             <p class="txt-label">責任レベル</p>
                             <v-select
-                                outlined
                                 dense
+                                outlined
+                                variant="solo" 
                                 placeholder="選択してください"
-                                style="width: 210"
-                                background-color="white"
+                                style="background-color: white; width: 150px"
                             >
                                 <!-- <template></template>
+                                <template></template>
                                 <template></template>
                                 <template></template> -->
                             </v-select>
@@ -256,7 +242,7 @@
                     </div>
                     <!-- row 4 -->
                     <div 
-                        class="patient-basic-info d-flex mt-6" 
+                        class="patient-basic-info d-flex mt-10" 
                         style="justify-content: space-between"
                     >
                         <div class="d-flex">
@@ -264,11 +250,11 @@
                             <div class="mt-1 col-flex">
                                 <p class="txt-label">主病名</p>
                                 <v-select
-                                    outlined
                                     dense
+                                    outlined
+                                    variant="solo" 
                                     placeholder="選択してください"
-                                    style="width: 210"
-                                    background-color="white"
+                                    style="background-color: white; width: 210px"
                                 >
                                     <!-- <template></template>
                                     <template></template>
@@ -281,17 +267,17 @@
                                 <p class="txt-label">主治医</p>
                                 <div class="d-flex">
                                     <v-select
-                                        outlined
                                         dense
+                                        outlined
+                                        variant="solo" 
                                         placeholder="選択してください"
-                                        style="width: 210"
-                                        background-color="white"
-                                    >
-                                        <!-- <template></template>
-                                        <template></template>
-                                        <template></template>
-                                        <template></template> -->
-                                    </v-select>
+                                        style="background-color: white; width: 210px"
+                                >
+                                    <!-- <template></template>
+                                    <template></template>
+                                    <template></template>
+                                    <template></template> -->
+                                </v-select>
                                     <v-checkbox 
                                         dense
                                         class="mt-1 ml-1"
@@ -306,11 +292,12 @@
                                 <v-select
                                     dense
                                     outlined
+                                    variant="solo" 
                                     placeholder="選択してください"
-                                    style="width: 210"
-                                    background-color="white"
+                                    style="background-color: white; width: 210px"
                                 >
                                     <!-- <template></template>
+                                    <template></template>
                                     <template></template>
                                     <template></template> -->
                                 </v-select>
@@ -319,13 +306,14 @@
                             <div class="mt-1 col-flex ml-5">
                                 <p class="txt-label">担当職員</p>
                                 <v-select
-                                    outlined
                                     dense
+                                    outlined
+                                    variant="solo" 
                                     placeholder="選択してください"
-                                    style="width: 210"
-                                    background-color="white"
+                                    style="background-color: white; width: 210px"
                                 >
                                     <!-- <template></template>
+                                    <template></template>
                                     <template></template>
                                     <template></template> -->
                                 </v-select>
@@ -343,35 +331,59 @@
                         </div>
                     </div>
                 </v-form>
-            </transition>
+            </Transition>
         </div>
     </v-form>
 </template>
 
 <script lang="ts">
+import { ref, defineComponent } from 'vue'
     import Datepicker from '~/components/General/Form/DatePicker.vue';
-    export default {
-        data() {
+
+    export default defineComponent({
+        components: {
+            Datepicker, 
+        },
+        setup(_, { emit }) {
+            const valid = ref<boolean>(false)
+            const searchActive = ref<Boolean>(false)
+            const form = ref<any>(null)
+            const submit = () => {
+                if(valid.value) {
+                    emit('on-submit', params)
+                }
+            }
+
             return {
-            searchActive: false,
-            rowsExpanded: false,
+                searchActive, 
+                valid, 
+                form, 
+
             }
-        },
-        methods: {
-            toggleSearchActive() {
-            this.searchActive = !this.searchActive
-            if (!this.searchActive) {
-                this.rowsExpanded = false
-            }
-            },
-            expandRows() {
-            this.rowsExpanded = true
-            },
-        },
-        setup() {
-            Datepicker
         }
-    }
+    })
+
+    // export default {
+    //     data() {
+    //         return {
+    //             searchActive: false,
+    //         }
+    //     },
+    //     methods: {
+    //         toggleSearchActive() {
+    //         this.searchActive = !this.searchActive
+    //         if (!this.searchActive) {
+    //             this.rowsExpanded = false
+    //         }
+    //         },
+    //         expandRows() {
+    //         this.rowsExpanded = true
+    //         },
+    //     },
+    //     setup() {
+    //         Datepicker
+    //     }
+    // }
 </script>
 
 <style lang="scss" scoped>

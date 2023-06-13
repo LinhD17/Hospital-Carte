@@ -1,7 +1,6 @@
 <template>
     <v-app>
-        <PagesHeaderMainHeader />
-        <PagesGlobalGlobalMenuMainMenu />
+        <PagesHeaderKarteSearch />
         <v-main class="mt-14">
             <v-container fluid class="pl-4">
                 <slot />

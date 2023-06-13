@@ -1,6 +1,6 @@
 <template>
     <div class="sticky-note-bar">
-        <v-btn icon small class="custom-btn-plus">
+        <v-btn icon small color="#e5b001" class="custom-btn-plus">
             <v-icon color="white">mdi-plus</v-icon>
         </v-btn>
         <span class="custom-btn-plus-text">新規</span>

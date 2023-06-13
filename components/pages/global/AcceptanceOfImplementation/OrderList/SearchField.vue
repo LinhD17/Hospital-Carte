@@ -18,29 +18,25 @@
                         :items="['Vue.js', 'React', 'Angular', 'Buzz']"
                     />
                 </div>
-                <v-btn
-                    rounded
-                    width="80"
-                    class="btn-style bg-blue text-white ml-4"
+                <button
+                    class="btn-style bg-blue text-white ml-4 mt-3 rounded"
                 >検索
-                </v-btn>
-                <v-btn
-                    rounded
+                </button>
+                <button
                     variant="outlined"
-                    width="85"
-                    class="ml-auto c-toggle bg-blue text-white  btn-style"
+                    class="ml-auto c-toggle bg-blue text-white mt-3  btn-style rounded outlined"
                     @click="searchActive = !searchActive"
                     :class="searchActive ? 'open' : ''"
                 > 
                     {{ searchActive ? 'ー閉じる' : '詳細検索' }} 
-                </v-btn>
+                </button>
             </div>
-             
-            <!-- transition not run  -->
-            <transition>
-                <v-form v-show="searchActive" class="sub-condition">
-                    <v-container fluid class="white mt-2">
-                        <!-- row 1 -->
+
+            <!-- transition don't run  -->
+            <Transition>
+                <v-form v-show="searchActive">
+                    <v-container fluid class="white">
+                        <!-- row 2 -->
                         <v-row dense>
                             <v-col md="auto">
                                 <p class="txt-label">指示日</p>
@@ -120,7 +116,7 @@
                             </v-col>
                         </v-row>
 
-                        <!-- row 2 -->
+                        <!-- row 3 -->
                         <v-row dense>
                             <v-col md="auto">
                                 <p class="txt-label">診察科</p>
@@ -223,7 +219,7 @@
                         </v-row>
                     </v-container>
                 </v-form>
-            </transition>
+            </Transition>
         </div>
     </v-form>
 </template>
@@ -232,8 +228,8 @@
     import { ref } from 'vue'
     import Datepicker from '~/components/General/Form/DatePicker.vue';
     
-    //検索エリア開閉状態
-    const searchActive = ref<Boolean>(false)
+    // 検索エリア開閉状態
+    const searchActive = ref<Boolean>(true)
 </script>
 
 <style lang="scss" scoped>
@@ -274,7 +270,7 @@ p.txt-label{
   font-family: Meiryo;
   font-weight: bold;
   font-size: 12px;
-  width: 78px;
+  width: 80px;
   top: 9px !important;
   height: 30px !important;
 }

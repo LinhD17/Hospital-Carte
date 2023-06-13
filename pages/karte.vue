@@ -1,28 +1,71 @@
 <template>
-    <div class="karte-wrap">
-        <!-- サイドバー -->
-        <PagesKarteKarteBarTreatmentHistoryBar />
-        <PagesKarteKarteBarStickyNote />
+    <NuxtLayout name="karte">
+        <div class="karte-wrap">
+            <!-- サイドバー -->
+            <PagesKarteKarteBarTreatmentHistoryBar />
+            <PagesKarteKarteBarStickyNote />
 
-        <!-- - 患者情報、過去記事  -->
-        <div class="karte-content karte-content--left">
-            <div
-                class="karte-content-in patientInformations-wrap"
-            >
-                <PagesKarteRegisterAboutPatient/>
+            <!-- - 患者情報、過去記事  -->
+            <div class="karte-content karte-content--left">
+                <!-- <div
+                    class="karte-content-in patientInformations-wrap"
+                    :class="leftAreaMode === 0 
+                        ? 'half-screen' : leftAreaMode === 2 
+                        ? 'minus-screen' : 'full-screen'
+                    " 
+                >
+                <PagesKartePatientInformations/>
+                </div>
+                <div
+                    class="karte-content-in pastArticles-wrap"
+                    :class="leftAreaMode === 0 
+                        ? 'half-screen' : leftAreaMode === 1 
+                        ? 'minus-screen' : 'full-screen'
+                    " 
+                >
+                    <PagesKartePastArticlesParent/>
+                </div> -->
+
+                <div
+                    class="karte-content-in patientInformations-wrap"
+                >
+                     <PagesKartePatientInformations/>
+                </div>
+                <div
+                    class="karte-content-in pastArticles-wrap"
+                >
+                    <PagesKartePastArticlesParent/>
+                </div>
             </div>
-            <div
-                class="karte-content-in pastArticles-wrap"
-            >
-                <PagesKartePastArticlesParent/>
-            </div>
+
+            <!-- オーダー、記事作成 -->
+            <div class="karte-content karte-content--right">
+                <div class="karte-content-in registerAboutPatient-wrap full-screen">
+                    <PagesKarteRegisterAboutPatient />
+                </div>
+            </div> 
         </div>
-
-        <!-- オーダー、記事作成 -->
-    </div>
+    </NuxtLayout>
 </template>
 
-<script lang="ts">
+<script setup>
+    import { computed } from 'vue'
+    import { useRouter } from 'vue-router';
+    import { useStore } from 'vuex'
+
+    definePageMeta({ 
+        //middleware: ['guard/auth'],
+    })
+    useHead({
+        title: 'WarokuHKカルテ_Replica',
+    })
+    const store = useStore()
+    const router = useRouter()
+    // const barAreaMode = computed(() => store.getters['karte/barAreaMode'])
+    // const leftAreaMode = computed(() => store.getters['karte/leftAreaMode'])
+    // const articleAreaMode = computed(() => store.getters['karte/articleAreaMode'])
+
+    //login 
 
 </script>
 
