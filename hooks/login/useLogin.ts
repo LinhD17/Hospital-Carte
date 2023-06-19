@@ -5,7 +5,7 @@ import { useStore } from 'vuex';
 
 
 //error message's file import 
-import { ErrorMessages } from '../ErrorResorce/errorMessage'
+///import { ErrorMessages } from '../ErrorResorce/errorMessage'
 import moment from 'moment'
 
 export type AccountInfo = {
@@ -112,7 +112,7 @@ export const useLogin = () => {
                 if ( Object(response.data).filter(
                     (error: any) => error.code === 'E1001' || error.code === 'E2001'
                 ).length >= 1) {
-                    errorInfo.push(ErrorMessages.idOrPasswordIncorrectErrorMessage)
+                    //errorInfo.push(ErrorMessages.idOrPasswordIncorrectErrorMessage)
                 }
             }
         }finally {
