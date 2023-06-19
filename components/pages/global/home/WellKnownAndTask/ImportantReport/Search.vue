@@ -21,7 +21,7 @@
         </div>
         <!-- button -->
         <v-btn
-            color="#1ea0dc"
+            color="primary"
             dense
             class="bt-basic h-middle"
             rounded

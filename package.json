@@ -9,26 +9,16 @@
     "postinstall": "nuxt prepare"
   },
   "devDependencies": {
-    "@nuxt/image": "^0.7.1",
+    "@nuxt/devtools": "latest",
     "@types/node": "^18",
-    "axios-mock-server": "^0.19.1",
-    "nuxt": "^3.4.3"
+    "nuxt": "^3.5.2",
+    "vite": "^4.3.9"
   },
   "dependencies": {
-    "@nuxt/types": "^2.16.3",
-    "@vuepic/vue-datepicker": "^5.1.2",
-    "axios": "^1.4.0",
-    "lodash": "^4.17.21",
-    "mdi": "^2.2.43",
-    "mitt": "^3.0.0",
+    "@mdi/font": "^7.2.96",
+    "@nuxtjs/vuetify": "^1.12.3",
     "moment": "^2.29.4",
-    "path": "^0.12.7",
-    "sass": "^1.62.1",
-    "vite-plugin-require": "^1.1.10",
-    "vite-plugin-vuetify": "^1.0.2",
-    "vue-router": "^4.0.13",
-    "vue3-datepicker": "^0.3.4",
-    "vuetify": "^3.3.3",
-    "vuex": "^4.0.2"
+    "sass": "^1.63.3",
+    "vuetify": "^3.3.4"
   }
 }

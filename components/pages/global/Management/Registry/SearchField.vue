@@ -79,8 +79,8 @@
 </template>
 
 <script setup lang="ts">
-    import Datepicker  from '@/components/General/Form/DatePicker.vue'; 
-    import Timepicker from '~/components/General/Form/TimePicker.vue';
+    import Datepicker  from '@/components/general/Form/DatePicker.vue'; 
+    import Timepicker from '~/components/general/Form/TimePicker.vue';
 
     const props = defineProps({
 

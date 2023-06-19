@@ -3,7 +3,7 @@ import imageUrl from '@/assets/icon/ward.svg'
 </script>
 <template>
     <div class="outpatient-card-width">
-        <PagesGlobalBaseLayout
+        <PagesGlobalGeneralGlobalBaseLayout 
             page-title="予約枠マスタ設定"
         >
             <template #iconImg>
@@ -23,7 +23,7 @@ import imageUrl from '@/assets/icon/ward.svg'
             </template>
             <!-- delete modal -->
             <!-- <GeneralModalDeleteModal/> -->
-        </PagesGlobalBaseLayout>
+        </PagesGlobalGeneralGlobalBaseLayout >
     </div>
 </template>
 <style scoped>

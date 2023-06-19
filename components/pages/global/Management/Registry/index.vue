@@ -1,6 +1,6 @@
 <template>
     <div class="well-known">
-        <PagesGlobalBaseLayout 
+        <PagesGlobalGeneralGlobalBaseLayout 
             page-title="精神疾患レジストリ" 
         >
             <template #iconImg>
@@ -8,7 +8,7 @@
             </template>
             <PagesGlobalManagementRegistrySearchField /> 
             <PagesGlobalManagementRegistryTable /> 
-        </PagesGlobalBaseLayout>
+        </PagesGlobalGeneralGlobalBaseLayout>
     </div>
 </template>
   

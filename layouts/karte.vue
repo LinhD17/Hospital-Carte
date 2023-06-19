@@ -1,7 +1,7 @@
 <template>
     <v-app>
         <PagesHeaderKarteSearch />
-        <v-main class="mt-14">
+        <v-main>
             <v-container fluid class="pl-4">
                 <slot />
             </v-container>

@@ -6,7 +6,11 @@
             <div class="thread-title">
                 <h1 class="title">掲示板</h1>
                 <!-- button to open new modal -->
-                <v-btn icon small color="#1ea0dc" class="btn-plus">
+                <v-btn 
+                    icon 
+                    small 
+                    color="primary" class="btn-plus"
+                >
                     <v-icon color="white">mdi-plus</v-icon>
                     <!-- <PagesGlobalHomeWellKnownAndTaskThreadModalBoardNew
                         :dialog-state="dialogAddNewState"

@@ -1,16 +1,18 @@
 
 <script setup lang="ts">
 //ghi đè bố cục mặc định (default) của app
-definePageMeta({ 
-    // layout: 'global',
-    // middleware: ['guard/auth'],
-})
+// definePageMeta({ 
+//     // layout: 'global',
+//     // middleware: ['guard/auth'],
+// })
 </script>
 
 <template>     
     <NuxtLayout name="global">
         <div class="screen">
             <PagesGlobalHomeWellKnownAndTask />
+            sfefdsf
+            
         </div>
     </NuxtLayout>
 </template>

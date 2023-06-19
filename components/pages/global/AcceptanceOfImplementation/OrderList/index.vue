@@ -1,6 +1,6 @@
 <template>
     <div class="screen-header">
-        <PagesGlobalBaseLayout 
+        <PagesGlobalGeneralGlobalBaseLayout 
             page-title="指示受け一覧" 
         >
             <template #iconImg>
@@ -9,7 +9,7 @@
 
             <PagesGlobalAcceptanceOfImplementationOrderListSearchField1 />
             <PagesGlobalAcceptanceOfImplementationOrderListTable/>
-        </PagesGlobalBaseLayout>
+        </PagesGlobalGeneralGlobalBaseLayout>
     </div>
 </template>
   

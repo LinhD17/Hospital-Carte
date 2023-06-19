@@ -1,5 +1,5 @@
 <template>
-    <PagesGlobalBaseLayout
+    <PagesGlobalGeneralGlobalBaseLayout
         page-title="認知症デイケア" 
         class="rehabiliation-content"
     >
@@ -46,7 +46,7 @@
         <template v-if="appTab === 'dailyReport'">
             <PagesGlobalRehabilitationDementialDaycareDescription />
         </template>
-    </PagesGlobalBaseLayout>
+    </PagesGlobalGeneralGlobalBaseLayout>
 </template>
 
 <script setup lang="ts">

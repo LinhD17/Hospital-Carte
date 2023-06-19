@@ -3,7 +3,7 @@ import imageUrl from '@/assets/icon/schedule.svg'
 </script>
 <template>
     <div class="outpatient-card-width">
-        <PagesGlobalBaseLayout
+        <PagesGlobalGeneralGlobalBaseLayout
             page-title="外来患者一覧（診察）"
         >
             <template #iconImg>
@@ -11,7 +11,7 @@ import imageUrl from '@/assets/icon/schedule.svg'
             </template>
             <PagesGlobalOutpatientOutpatientOfExaminationSearch />
             <PagesGlobalOutpatientOutpatientOfExaminationTable />
-        </PagesGlobalBaseLayout>
+        </PagesGlobalGeneralGlobalBaseLayout>
     </div>
 </template>
 <style scoped>

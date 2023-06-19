@@ -3,13 +3,13 @@
         <!-- calender -->
         <div class="d-flex align-center calendar">
           <!-- lấy date picker từ General-> Form -> DatePicker ra cũng không hiẻn thị, tại sao??? -->
-          <div style="width: 150px">
+          <div style="width: 200px">
             <datepicker
               placeholder="年/月/日"
             />
           </div>
           <span class="mt-3">~</span>
-          <div style="width: 150px">
+          <div style="width: 200px">
               <datepicker
                   placeholder="年/月/日"
               />
@@ -51,7 +51,7 @@
         </div>
         <!-- button -->
         <v-btn 
-          color="#1ea0dc" 
+          color="primary" 
           class="bt-basic h-middle" 
           style="width: 70px"
           rounded
@@ -62,7 +62,7 @@
 </template>
 
 <script setup lang="ts">
-  import Datepicker from '@/components/General/Form/DatePicker.vue';
+  import Datepicker from '@/components/General/Form/DatePicker1.vue';
 </script>
 
 <style lang="scss" scoped>

@@ -1,5 +1,5 @@
 <template>
-    <div class="karte-header ">
+    <div class="page-header">
       <v-app-bar class="my-app-bar">
           <v-toolbar-title class="toolbar-title">
             <img src="@/assets/img/waroku_white.svg" alt="Waroku" />
@@ -87,7 +87,7 @@
       width: 100%;
       overflow-x: hidden;
   }
-  .karte-header :deep(.v-toolbar__content) {
+  .page-header:deep(.v-toolbar__content) {
     padding: 0 !important;
   }
   .my-app-bar {

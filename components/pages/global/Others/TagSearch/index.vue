@@ -1,6 +1,6 @@
 <template>
     <div class="tagSearch">
-        <PagesGlobalBaseLayout 
+        <PagesGlobalGeneralGlobalBaseLayout 
             page-title="タグ検索" 
         >
             <template #iconImg>
@@ -9,7 +9,7 @@
             
             <PagesGlobalOthersTagSearchSField /> 
             <PagesGlobalOthersTagSearchTable />
-        </PagesGlobalBaseLayout>
+        </PagesGlobalGeneralGlobalBaseLayout>
     </div>
 </template>
   

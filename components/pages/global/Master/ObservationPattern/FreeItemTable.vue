@@ -1,6 +1,6 @@
 <template>
   <div class="table-content">
-    <v-data-table-virtual
+    <v-data-table
       :headers="headers"
       :items="dummyItems"
       class="elevation-1"
@@ -21,13 +21,13 @@
           </div>
         </div>
       </template>
-    </v-data-table-virtual>
+    </v-data-table>
     <div class="table-footer text-left pt-2">
       <div class="ml-3" style="margin: 0 0 0 auto">
         <v-btn
           class="mr-3"
           rounded
-          style="background-color: #1ea0dc; color: #ffffff"
+          style="background-color: #1ea0dc; color: #ffffff; padding: 10px;"
           @click="onModalOpenButtonClick"
         >
           新規作成

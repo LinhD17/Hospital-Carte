@@ -31,7 +31,7 @@ const show = ref(false)
   <v-row
     justify="center"
 
-    style="min-height: 160px;"
+    style="min-height: 60px;"
   >
     <v-col class="shrink">
       <v-btn
@@ -76,8 +76,6 @@ const show = ref(false)
 </template>
 
 <script setup>
-  import { ref } from 'vue'
-
   const expand = ref(false)
   const expand2 = ref(false)
 </script>

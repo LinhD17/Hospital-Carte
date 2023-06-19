@@ -15,10 +15,11 @@
                     <div class="info-cell">
                         <span class="mr-2">{{ item.raw.patientInfo.patient_no }}</span>
                         <img
-                            v-if="item.raw.patientInfo.patient_gender === 1"
-                            src="@/assets/icon/man.svg"
-                            style="width: 25px; height: 25px"
-                        />
+                                v-if="item.raw.patientInfo.patient_gender == 1"
+                                src="@/assets/icon/man.svg"
+                                style="width: 25px; height: 25px"
+                                alt="icon person"
+                            />
                         <img
                             v-else
                             style="width: 25px; height: 25px"

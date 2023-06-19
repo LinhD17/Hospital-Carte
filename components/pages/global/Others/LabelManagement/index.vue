@@ -1,6 +1,6 @@
 <template>
     <div class="labelmanagement">
-        <PagesGlobalBaseLayout 
+        <PagesGlobalGeneralGlobalBaseLayout  
             page-title="ラベル管理患者一覧" 
         >
             <template #iconImg>
@@ -9,7 +9,7 @@
             
             <PagesGlobalOthersLabelManagementSearchField /> 
             <PagesGlobalOthersLabelManagementTable />
-        </PagesGlobalBaseLayout>
+        </PagesGlobalGeneralGlobalBaseLayout >
     </div>
 </template>
   

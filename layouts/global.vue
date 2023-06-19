@@ -1,8 +1,8 @@
 <template>
     <v-app>
         <PagesHeaderMainHeader />
-        <PagesGlobalGlobalMenuMainMenu />
-        <v-main class="mt-14">
+        <PagesGlobalGloMenuMainMenu />
+        <v-main>
             <v-container fluid class="pl-4">
                 <slot />
             </v-container>
@@ -18,6 +18,7 @@
 //global
 .v-container {
     padding-right: 0 !important;
+    margin-top: -10px;
 }
 .container--fluid {
   height: calc(100vh - 44px) !important;

@@ -1,6 +1,6 @@
 <template>
   <div class="task-table">
-    <v-data-table 
+    <v-data-table-virtual
       :headers="headers" 
       :items="dummyItems" 
       class="elevation-1"
@@ -47,7 +47,7 @@
               </span> 
           </div>
       </template>
-    </v-data-table>
+    </v-data-table-virtual>
     <div class="table-footer text-center">
       <span>全 {{ totalCount }} 件</span>
       <v-pagination

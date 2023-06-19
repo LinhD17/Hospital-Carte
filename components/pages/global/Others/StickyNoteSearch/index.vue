@@ -1,6 +1,6 @@
 <template>
     <div class="sticky-search">
-        <PagesGlobalBaseLayout 
+        <PagesGlobalGeneralGlobalBaseLayout
             page-title="付箋一覧" 
         >
             <template #iconImg>
@@ -10,7 +10,7 @@
             <PagesGlobalOthersStickyNoteSearchTable />
             <!-- <PagesGlobalWardInpatientOfExaminationSearchField />  -->
             <!-- <PagesGlobalWardInpatientOfExaminationTable/> -->
-        </PagesGlobalBaseLayout>
+        </PagesGlobalGeneralGlobalBaseLayout >
     </div>
 </template>
   

@@ -1,5 +1,5 @@
 <template>
-    <PagesGlobalBaseLayout
+    <PagesGlobalGeneralGlobalBaseLayout
         page-title="心理面接" 
         class="psychologhical-interview"
     >
@@ -28,7 +28,7 @@
         <template v-if="appTab === 'instruction'">
             <PagesGlobalGuidanceRequestPsychologicalInterviewInstruction/>
         </template>
-    </PagesGlobalBaseLayout>
+    </PagesGlobalGeneralGlobalBaseLayout>
 </template>
 
 <script setup lang="ts">

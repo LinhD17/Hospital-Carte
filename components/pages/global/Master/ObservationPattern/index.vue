@@ -1,18 +1,13 @@
 <script setup lang="ts"> 
-import imageUrl from '@/assets/icon/ward.svg'
 </script>
 <template>
     <div class="observationpattern-card-width">
-        <PagesGlobalBaseLayout
+        <PagesGlobalGeneralGlobalBaseLayout 
             page-title="プローシートマスタ設定"
         >
-            <template #iconImg>
-                <img :src="imageUrl"/> 
-            </template>
             <PagesGlobalMasterObservationPatternSearchField />
             <PagesGlobalMasterObservationPatternFreeItemTable />
-            <!-- <PagesGlobalMasterObservationPatternPtrnMasterTable /> -->
-        </PagesGlobalBaseLayout>
+        </PagesGlobalGeneralGlobalBaseLayout >
     </div>
 </template>
 <style scoped>

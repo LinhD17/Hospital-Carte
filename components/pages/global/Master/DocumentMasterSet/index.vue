@@ -3,7 +3,7 @@ import imageUrl from '@/assets/icon/schedule.svg'
 </script>
 <template>
     <div class="observationpattern-card-width">
-        <PagesGlobalBaseLayout
+        <PagesGlobalGeneralGlobalBaseLayout
             page-title="文章マスタ設定"
         >
             <template #iconImg>
@@ -11,7 +11,7 @@ import imageUrl from '@/assets/icon/schedule.svg'
             </template>
             <PagesGlobalMasterDocumentMasterSetSearchField />
             <PagesGlobalMasterDocumentMasterSetTable1 />
-        </PagesGlobalBaseLayout>
+        </PagesGlobalGeneralGlobalBaseLayout>
     </div>
 </template>
 <style scoped>

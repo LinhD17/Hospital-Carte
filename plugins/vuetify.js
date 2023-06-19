@@ -1,31 +1,34 @@
 import { createVuetify } from 'vuetify'
-import { defineNuxtPlugin } from '#app'
 import * as components from 'vuetify/components'
-//import * as appAll from 'vuetify/components'
+import * as labs from 'vuetify/labs/components'
+import { VDataTable } from 'vuetify/labs/VDataTable'
+
 //Directivesはユーザーのアクションに反応してUIが変化するような機能です。
 import * as directives from 'vuetify/directives' // 追加
-//import { VDataTable } from 'vuetify/labs/VDataTable'
-import * as labs from 'vuetify/labs/components'
-//đăng ký toàn cầu
-import  Datepicker  from '@vuepic/vue-datepicker'
-import '@vuepic/vue-datepicker/dist/main.css'
-
+import '@mdi/font/css/materialdesignicons.css'
 import 'vuetify/styles'
-
-
 
 export default defineNuxtPlugin((nuxtApp) => {
   const vuetify = createVuetify({
-    //chỗ nỳ là srr hay ssr đây???
-    //srr: true, 
-    ssr: true,
     components: {
+      ...components,
       ...labs,
-      //...appAll,
+      VDataTable,
+      ...directives,
     }, 
+    theme: {
+      themes: {
+        light: {
+          colors: {
+            primary: '#1867C0',
+            secondary: '#5CBBF6',
+          },
+        },
+      },
+    },
     directives // 追加
 
   })
+
   nuxtApp.vueApp.use(vuetify)
-  nuxtApp.vueApp.component('Datepicker', Datepicker)
-});
+})
