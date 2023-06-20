@@ -9,7 +9,9 @@ import imageUrl from '@/assets/icon/schedule.svg'
             <template #iconImg>
                 <img :src="imageUrl"/> 
             </template>
-            <PagesGlobalOutpatientOutpatientOfExaminationSearch />
+            <PagesGlobalOutpatientOutpatientOfExaminationSearchField />
+            <v-divider class="my-2 mt-15 ml-9 mr-9" />
+            <PagesGlobalOutpatientOutpatientOfExaminationConsultationProgress />
             <PagesGlobalOutpatientOutpatientOfExaminationTable />
         </PagesGlobalGeneralGlobalBaseLayout>
     </div>
