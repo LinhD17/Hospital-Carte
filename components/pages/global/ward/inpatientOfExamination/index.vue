@@ -1,6 +1,6 @@
 <template>
     <div class="well-known">
-        <PagesGlobalBaseLayout 
+        <PagesGlobalGeneralGlobalBaseLayout 
             page-title="入院患者一覧" 
         >
             <template #iconImg>
@@ -16,8 +16,8 @@
                 </v-btn>
             </template>
             <PagesGlobalWardInpatientOfExaminationSearchField /> 
-            <PagesGlobalWardInpatientOfExaminationTable class="mt-10"/>
-        </PagesGlobalBaseLayout>
+            <PagesGlobalWardInpatientOfExaminationTable/>
+        </PagesGlobalGeneralGlobalBaseLayout>
     </div>
 </template>
   

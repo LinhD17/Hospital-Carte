@@ -4,7 +4,6 @@
             :headers="headers"
             :items="dummyItems"
             class="elevation-1"
-            @click:row="handleRowClick"
         >
             <!-- patient-info -->
             <template v-slot:item.patient_info = "{ item }">
@@ -574,6 +573,7 @@
   .table-content {
     border: 0 !important;
     white-space: nowrap;
+    margin-top: 30px;
 
     a {
     margin-top: 0;

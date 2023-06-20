@@ -12,8 +12,6 @@
         <template v-slot:activator="{ on, attrs }">
           <v-text-field
             v-model="dateFormatted"
-            label="Date"
-            hint="MM/DD/YYYY format"
             persistent-hint
             prepend-icon="mdi-calendar"
             v-bind="attrs"
@@ -72,3 +70,8 @@
     },
   };
   </script>
+<style lang="scss" scoped>
+.v-container {
+  padding: 0 !important;
+}
+</style>

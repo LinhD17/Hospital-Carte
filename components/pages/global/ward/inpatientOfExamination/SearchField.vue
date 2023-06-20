@@ -6,7 +6,7 @@
                 class="search-condition d-flex "
                 style="justify-content: space-between; height: 70px;"
             >
-                <div style="width:210">
+                <div style="width: 214px ">
                     <v-select 
                         dense 
                         clearable 
@@ -20,13 +20,13 @@
                 </div>
                 <button
                     ref="submitButtonRef"
-                    class="btn-style bg-blue text-white ml-4 mt-3 rounded small"
+                    class="btn-style bg-blue text-white ml-6 mt-3 rounded small"
                 >検索
                 </button>
                 <button 
                     v-if="searchActive"
                     outlined
-                    class="btn-style ml-2 mt-3 rounded"
+                    class="btn-style bg-grey ml-2 mt-3 rounded"
                 >条件保存
                 </button>
                 <button
@@ -42,7 +42,7 @@
                     <div class="patient-basic-info d-flex mt-1">
                         <!-- patient_no -->
                         <div class="col-flex">
-                            <p class="txt-label">患者番号:</p>
+                            <p class="txt-label">患者番号</p>
                             <div style="width: 150px">
                                 <v-text-field 
                                     dense
@@ -55,7 +55,7 @@
                         </div>
                         <!-- wards -->
                         <div class="col-flex ml-5">
-                            <p class="txt-label">病棟:</p>
+                            <p class="txt-label">病棟</p>
                             <div style="width: 150px">
                                 <v-select
                                     dense
@@ -72,7 +72,7 @@
                         </div>
                         <!-- patient_name -->
                         <div class="col-flex ml-5">
-                            <p class="txt-label">氏名:</p>
+                            <p class="txt-label">氏名</p>
                             <div class="d-flex">
                                 <div style="width: 150px">
                                     <v-text-field
@@ -98,7 +98,7 @@
                         </div>
                         <!-- age -->
                         <div class="col-flex ml-5">
-                            <p class="txt-label">年齢:</p>
+                            <p class="txt-label">年齢</p>
                             <div class="age">
                                 <v-select
                                     dense 
@@ -136,15 +136,15 @@
                         </div>
                         <!-- hospitalization date -->
                         <div class="col-flex ml-5">
-                            <p class="txt-label">入院日:</p>
+                            <p class="txt-label">入院日</p>
                             <div class="d-flex align-baseline">
-                                <div style="width: 150px">
+                                <div style="width: 154px">
                                     <datepicker
                                         placeholder="入院日"
                                     />
                                 </div>
                                 <span class="ml-2 mr-2">〜</span>
-                                <div style="width:150px">
+                                <div style="width:154px">
                                     <datepicker
                                         placeholder="入院日"
                                     />
@@ -156,21 +156,21 @@
                     <div class="patient-basic-info d-flex mt-10">
                         <!-- hospitalization days number -->
                         <div class="mt-1 col-flex">
-                            <p class="txt-label">入院日数:</p>
+                            <p class="txt-label">入院日数</p>
                             <div class="d-flex align-baseline">
-                                <div style="width: 150px">
+                                <div>
                                     <datepicker
                                         placeholder="--日"
-                                        style="width: 86px"
+                                        style="width: 154px"
                                         type="number"
                                         dense
                                     />
                                 </div>
                                 <span class="ml-3 mr-3">~</span>
-                                <div style="width: 150px">
+                                <div>
                                     <datepicker 
                                         placeholder="--日"
-                                        style="width: 90px"
+                                        style="width: 154px"
                                         type="number"
                                         dense
                                     />
@@ -180,20 +180,20 @@
                         <!-- isolation/restraint -->
                         <div class="mt-1 col-flex ml-5">
                             <p class="txt-label">隔離／拘束</p>
-                            <div class="d-flex">
+                            <div class="d-flex mt-4">
                                 <v-icon class="mb-1">mdi-crop-square</v-icon>
-                                <p class="mt-3 mr-1">隔離中</p>
+                                <p class="mr-1">隔離中</p>
                                 <v-icon class="mb-1">mdi-crop-square</v-icon>
-                                <p class="mt-3 mr-1">拘束中</p>
+                                <p class="mr-1">拘束中</p>
                                 <v-icon class="mb-1">mdi-crop-square</v-icon>
-                                <p class="mt-3 mr-1">隔離・拘束中</p>
+                                <p class="mr-1">隔離・拘束中</p>
                             </div>
                         </div>
                         <!-- display date -->
                         <div class="mt-1 ml-5 col-flex">
                             <p class="txt-label">表示日</p>
                             <div class="d-flex">
-                                <div style="width: 150px">
+                                <div style="width: 154px">
                                     <datepicker
                                         placeholder="表示日"
                                     >
@@ -202,7 +202,7 @@
                                 <v-checkbox 
                                     dense
                                     hide-details
-                                    class="mt-1 ml-1"
+                                    class="ml-1 mb-2"
                                     label="退院者も表示"
                                 />
                             </div>
@@ -215,7 +215,7 @@
                                 outlined
                                 variant="solo" 
                                 placeholder="選択してください"
-                                style="background-color: white; width: 150px"
+                                style="background-color: white; width: 174px"
                             >
                                 <!-- <template></template>
                                 <template></template>
@@ -231,7 +231,7 @@
                                 outlined
                                 variant="solo" 
                                 placeholder="選択してください"
-                                style="background-color: white; width: 150px"
+                                style="background-color: white; width: 174px"
                             >
                                 <!-- <template></template>
                                 <template></template>
@@ -254,7 +254,7 @@
                                     outlined
                                     variant="solo" 
                                     placeholder="選択してください"
-                                    style="background-color: white; width: 210px"
+                                    style="background-color: white; width: 180px"
                                 >
                                     <!-- <template></template>
                                     <template></template>
@@ -271,7 +271,7 @@
                                         outlined
                                         variant="solo" 
                                         placeholder="選択してください"
-                                        style="background-color: white; width: 210px"
+                                        style="background-color: white; width: 180px"
                                 >
                                     <!-- <template></template>
                                     <template></template>
@@ -294,7 +294,7 @@
                                     outlined
                                     variant="solo" 
                                     placeholder="選択してください"
-                                    style="background-color: white; width: 210px"
+                                    style="background-color: white; width: 180px"
                                 >
                                     <!-- <template></template>
                                     <template></template>
@@ -338,8 +338,7 @@
 
 <script lang="ts">
 import { ref, defineComponent } from 'vue'
-    import Datepicker from '~/components/General/Form/DatePicker.vue';
-
+    import Datepicker from '~/components/General/Form/DatePicker1.vue';
     export default defineComponent({
         components: {
             Datepicker, 
@@ -399,6 +398,7 @@ import { ref, defineComponent } from 'vue'
     }  
     .sub-condition {
         min-height: 172px;
+        margin-left: 10px;
     }
 }
 p.txt-label{
