@@ -78,7 +78,7 @@
     import { ref} from 'vue'
     import { cloneDeep } from 'lodash'
     import { GLOBAL_MENU} from './constant'
-    import { Level1, Level2, MenuItems } from '~/hooks/Global/GlobalMenu/UseMenu'
+    import { Level1, Level2, MenuItems } from '~/hooks/global/globalMenu/useMenu'
 
     import imageUrl from '@/assets/icon/ward.svg'
 

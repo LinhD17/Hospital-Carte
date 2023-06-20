@@ -6,7 +6,7 @@
             <template #iconImg>
                 <img :src="imageUrl"/> 
             </template>
-            <PagesGlobalManagementRegistrySearchField /> 
+            <PagesGlobalManagementRegistrySearchField />
             <PagesGlobalManagementRegistryTable /> 
         </PagesGlobalGeneralGlobalBaseLayout>
     </div>

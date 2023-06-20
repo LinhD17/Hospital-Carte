@@ -59,7 +59,7 @@
       gap: 5px;
       margin-top: 10px;
       display: flex;
-      justify-content: end;
+      justify-content: flex-end;
       span {
         font-size: 11px;
       }
