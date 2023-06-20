@@ -1,55 +1,52 @@
 <template>
     <v-sheet>
-        <!-- search -->
-        <div class="root-header">
-            <!-- title + plus buttom -->
-            <div class="thread-title">
-                <h1 class="title">掲示板</h1>
-                <!-- button to open new modal -->
-                <v-btn 
-                    icon 
-                    small 
-                    color="primary" class="btn-plus"
-                >
-                    <v-icon color="white">mdi-plus</v-icon>
-                    <!-- <PagesGlobalHomeWellKnownAndTaskThreadModalBoardNew
-                        :dialog-state="dialogAddNewState"
-                   /> -->
-                </v-btn>
-            </div>
-            <!-- search-field  -->
-            <PagesGlobalHomeWellKnownAndTaskThreadSearch /> 
+      <div class="root-header">
+        <div class="thread-title">
+          <h1 class="title">掲示板</h1>
+          <v-dialog v-model="dialog" width="800">
+            <template v-slot:activator="{ props }">
+              <v-btn icon color="primary" class="btn-plus" v-bind="props">
+                <v-icon color="white">mdi-plus</v-icon>
+              </v-btn>
+            </template>
+            <board-modal v-model="dialog" />
+          </v-dialog>
         </div>
-        <!-- table -->
-        <PagesGlobalHomeWellKnownAndTaskThreadTable/> 
+        <PagesGlobalHomeWellKnownAndTaskThreadSearch />
+      </div>
+      <PagesGlobalHomeWellKnownAndTaskThreadTable />
     </v-sheet>
-</template>
-
-<script setup lang="ts">
-// import { useDialog } from '@/hooks/General/useDialog';
-// import { 
-//     useThreads, 
-//     searchUseThreadsStateKey 
-// } from '@/hooks/Global/scheduleContact/wellKnownAndTask/useThread'
-
-// const dialogAddNewState = useDiaLog()
-// provide(searchUseThreadsStateKey, useThreads())
-</script>
-
-<style lang="scss" scoped>
-.root-header {
+  </template>
+  
+  <script>
+  import BoardModal from './Modal/BoardModal.vue'
+  
+  export default {
+    components: {
+      BoardModal
+    },
+    data() {
+      return {
+        dialog: false
+      }
+    }
+  }
+  </script>
+  
+  <style lang="scss" scoped>
+  .root-header {
     margin: 10px 10px 0;
-}
-.thread-title {
+  }
+  .thread-title {
     display: flex;
     align-items: center;
     justify-content: space-between;
-}
-.title {
+  }
+  .title {
     font-size: 20px !important;
     font-weight: bold;
-}
-.btn-plus {
+  }
+  .btn-plus {
     display: block;
     width: 26px;
     height: 26px;
@@ -58,4 +55,5 @@
     padding: 0;
     background-color: var(--waroku-yellow, 'base');
   }
-</style>
+  </style>
+  
