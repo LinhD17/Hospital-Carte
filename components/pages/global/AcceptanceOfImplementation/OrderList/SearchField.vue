@@ -18,29 +18,29 @@
                         :items="['Vue.js', 'React', 'Angular', 'Buzz']"
                     />
                 </div>
-                <button
-                    class="btn-style bg-blue text-white ml-4 mt-3 rounded"
+                <v-btn
+                    color="primary"
+                    class="btn-style  text-white ml-4 mt-3 rounded"
                 >検索
-                </button>
-                <button
-                    variant="outlined"
-                    class="ml-auto c-toggle bg-blue text-white mt-3  btn-style rounded outlined"
+                </v-btn>
+                <v-btn
+                    color="primary"
+                    class="ml-auto c-toggle text-white mt-3  btn-style rounded"
                     @click="searchActive = !searchActive"
                     :class="searchActive ? 'open' : ''"
                 > 
                     {{ searchActive ? 'ー閉じる' : '詳細検索' }} 
-                </button>
+                </v-btn>
             </div>
 
-            <!-- transition don't run  -->
-            <Transition>
-                <v-form v-show="searchActive">
+            <v-expand-transition>
+                <v-card v-show="searchActive">
                     <v-container fluid class="white">
                         <!-- row 2 -->
                         <v-row dense>
                             <v-col md="auto">
                                 <p class="txt-label">指示日</p>
-                                <div style="width: 150px">
+                                <div style="width: 154px">
                                     <datepicker
                                         placeholder="年/月/日"
                                     />
@@ -62,7 +62,7 @@
 
                             <v-col md="auto">
                                 <p class="txt-label">患者氏名</p>
-                                <div style="width: 150px">
+                                <div style="width: 15px">
                                     <v-text-field
                                         dense
                                         hide-details
@@ -93,7 +93,7 @@
                                     row
                                     dense
                                     hide-details
-                                    class="ma-0 pa-0"
+                                    class="ma-0 pa-0 d-flex"
                                 >
                                     <v-radio label="有" :value="2"></v-radio>
                                     <v-radio label="無" :value="1"></v-radio>
@@ -218,18 +218,18 @@
 
                         </v-row>
                     </v-container>
-                </v-form>
-            </Transition>
+                </v-card>
+            </v-expand-transition>
         </div>
     </v-form>
 </template>
 
 <script setup lang="ts">
     import { ref } from 'vue'
-    import Datepicker from '~/components/General/Form/DatePicker.vue';
+    import Datepicker from '~/components/General/Form/DatePicker1.vue';
     
     // 検索エリア開閉状態
-    const searchActive = ref<Boolean>(true)
+    const searchActive = ref<Boolean>(false)
 </script>
 
 <style lang="scss" scoped>

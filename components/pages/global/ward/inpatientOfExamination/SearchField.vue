@@ -18,26 +18,26 @@
                         :items="['Vue.js', 'React', 'Angular', 'Buzz']"
                     />
                 </div>
-                <button
+                <v-btn
                     ref="submitButtonRef"
                     class="btn-style bg-blue text-white ml-6 mt-3 rounded small"
                 >検索
-                </button>
-                <button 
+                </v-btn>
+                <v-btn 
                     v-if="searchActive"
                     outlined
                     class="btn-style bg-grey ml-2 mt-3 rounded"
                 >条件保存
-                </button>
-                <button
+                </v-btn>
+                <v-btn
                     class="ml-auto outlined  btn-style mt-3 bg-grey rounded dark small"
                     @click="searchActive = !searchActive"
                 >
                 {{ searchActive ? 'ー閉じる' : '詳細検索' }} 
-                </button>
+                </v-btn>
             </div>
-            <Transition>
-                <v-form v-show="searchActive" class="sub-condition">
+            <v-expand-transition>
+                <v-card v-show="searchActive" class="sub-condition">
                     <!-- row 2 -->
                     <div class="patient-basic-info d-flex mt-1">
                         <!-- patient_no -->
@@ -330,8 +330,8 @@
                             </v-btn>
                         </div>
                     </div>
-                </v-form>
-            </Transition>
+                </v-card>
+            </v-expand-transition>
         </div>
     </v-form>
 </template>
@@ -393,12 +393,12 @@ import { ref, defineComponent } from 'vue'
     display: flex;
     justify-content: space-between;
     padding: 10px 10px 0;
-    //height: fit-content !important;
-    // background-color: pink;
     }  
+    .v-card {
+        height: 240px !important;
+    }
     .sub-condition {
-        min-height: 172px;
-        margin-left: 10px;
+        padding-left: 10px !important;
     }
 }
 p.txt-label{

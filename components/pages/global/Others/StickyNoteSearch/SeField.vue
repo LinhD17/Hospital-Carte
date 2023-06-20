@@ -4,11 +4,11 @@
             <div class="d-flex">
                 <div class="ml-5">
                     <p class="mb-0 text-left">登録日</p>
-                    <div class="d-flex" style="width: 300px">
+                    <div class="d-flex" style="width: 350px">
                         <datepicker
                             placeholder="年/月/日"
                         />
-                        <div class="ml-2 mr-2 mt-2">
+                        <div class="ml-2 mr-2 mt-4">
                             <p>〜</p>
                         </div>
                         <datepicker
@@ -58,7 +58,7 @@
                         </v-checkbox>
                     </div>
                 </div>
-                <div class="ml-3 mt-5">
+                <div class="ml-3 mt-7">
                     <v-checkbox 
                         dense
                         label="非表示になった付箋を表示"
@@ -66,7 +66,7 @@
                         class="mb-2"
                     />
                 </div>
-                <div class="ml-5 mt-7" > 
+                <div class="ml-5 mt-9" > 
                     <v-btn 
                         rounded 
                         small 
@@ -80,16 +80,9 @@
 
 <script setup lang="ts">
     import { onBeforeMount, ref, inject } from 'vue'
-    import Datepicker  from '@/components/General/Form/DatePicker.vue'
+    import Datepicker  from '@/components/General/Form/DatePicker1.vue'
     import { OTHER_LIST_COLOR } from '~/constains/global/other/listColor'
 
-    // const colorList = {
-    //     color_1: '#a4dcf4',
-    //     color_2: '#fcc4dc',
-    //     color_3: '#fbdd9c',
-    //     color_4: '#bce49c',
-    //     color_5: '#fcbc9c',
-    // }
 </script>
 
   <style lang="scss" scoped>

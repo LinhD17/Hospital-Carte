@@ -82,7 +82,7 @@ export const GLOBAL_MENU: MenuItems = {
                     master_global_menu_id: uniqueId('__globalMenuId__'),
                     menu_level: 2,
                     name: '指示受け一覧',
-                    path: '/global/acceptanceOfImplementation/oderList',
+                    path: '/global/acceptanceOfImplementation/orderList',
                 },
             ]
         },

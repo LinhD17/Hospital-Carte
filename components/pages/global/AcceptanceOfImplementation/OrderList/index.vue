@@ -7,7 +7,7 @@
                 <img :src="imageUrl"/> 
             </template>
 
-            <PagesGlobalAcceptanceOfImplementationOrderListSearchField1 />
+            <PagesGlobalAcceptanceOfImplementationOrderListSearchField />
             <PagesGlobalAcceptanceOfImplementationOrderListTable/>
         </PagesGlobalGeneralGlobalBaseLayout>
     </div>

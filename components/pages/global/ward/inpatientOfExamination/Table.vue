@@ -573,7 +573,6 @@
   .table-content {
     border: 0 !important;
     white-space: nowrap;
-    margin-top: 30px;
 
     a {
     margin-top: 0;
