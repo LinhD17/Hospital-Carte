@@ -22,5 +22,6 @@ import imageUrl from '@/assets/icon/title_tick.svg'
     //width: 100%;
     margin-left: 2%;
     margin-top: -12px;
+    font-size: small;
 }
 </style>

@@ -12,20 +12,18 @@
                         clearable 
                         variant="solo" 
                         hide-details
-                        style="background-color: white" 
+                        style="background-color: white;" 
                         class="select-box"
                         placeholder="検査条件呼び出し" 
                         :items="['Vue.js', 'React', 'Angular', 'Buzz']"
                     />
                 </div>
                 <v-btn
-                    color="primary"
-                    class="btn-style  text-white ml-4 mt-3 rounded"
+                rounded small class="btn-effect mt-3 ml-5"
                 >検索
                 </v-btn>
                 <v-btn
-                    color="primary"
-                    class="ml-auto c-toggle text-white mt-3  btn-style rounded"
+                rounded small class="btn-effect mt-3 ml-5 ml-auto c-toggle"
                     @click="searchActive = !searchActive"
                     :class="searchActive ? 'open' : ''"
                 > 
@@ -274,5 +272,10 @@ p.txt-label{
   top: 9px !important;
   height: 30px !important;
 }
-
+.btn-effect {
+    font-size: 12px !important;
+    background-color: #1ea0dc; 
+    color: #ffffff; 
+    padding: 10px; 
+  }
 </style>
