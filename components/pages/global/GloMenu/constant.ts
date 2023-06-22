@@ -181,24 +181,12 @@ export const GLOBAL_MENU: MenuItems = {
                     name: 'プローシートマスタ設定',
                     path: '/global/master/observationPattern',
                 },
-                {
+                                {
                     master_global_menu_id: uniqueId('__globalMenuId__'),
                     menu_level: 2,
-<<<<<<< HEAD
                     name: '文書マスタ設定',
                     path: '/global/master/documentMasterSet',
-=======
-                    name: 'フローシートマスタ設定',
-                    path: '/global/master/flowsheet',
                 },
-                {
-                    master_global_menu_id: uniqueId('__globalMenuId__'),
-                    menu_level: 2,
-                    name: '予約枠マスタ設定',
-                    path: '/global/master/reservationSlot',
->>>>>>> ce8758b2fb4cb36adead0c576fb4f4d5db7ef72f
-                },
-
 
             ],
         },
