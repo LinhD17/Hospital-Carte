@@ -9,10 +9,10 @@
         <template #header>
             <div class="switch-select">
                 <v-btn          
+                    @click="appTabClick('reception')"
                     :class="appTab === 'reception' ? 'is-active' : ''"
                     color="#459caa" 
                     variant="outlined"
-                    @click="appTabClick('reception')"
                 >受付一覧</v-btn>
                 <v-btn
                     @click="appTabClick('instruction')"
@@ -36,8 +36,8 @@
     import imageUrl from '@/assets/icon/schedule.svg'
 
     
-    //const appTab = ref('reception')
-    const appTab = ref('instruction')
+    const appTab = ref('reception')
+    //const appTab = ref('instruction')
     const appTabClick = (appType: string) => {
         appTab.value=appType
     }

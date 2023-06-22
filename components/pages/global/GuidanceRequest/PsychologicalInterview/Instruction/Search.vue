@@ -2,12 +2,12 @@
     <div class="search-fields">
         <div class="search-fields_button">
             <div class="ml-5 mt-3" style="display:flex">
-                <p class="mt-2">記載日</p>
-                <div class="ml-3" style="width: 140px">
+                <p class="mt-4">記載日</p>
+                <div class="ml-3" style="width: 174px">
                     <Datepicker :value.sync="date"/>
                 </div>
             </div>
-            <div class="mt-3 mr-7">
+            <div>
                 <v-menu offset-y :close-on-content-click="false">
                     <template #activator="{ on, attrs }">
                         <v-btn
@@ -28,7 +28,7 @@
 </template>
 
 <script setup lang="ts">
-    import Datepicker from '~/components/General/Form/DatePicker.vue';
+    import Datepicker from '~/components/General/Form/DatePicker1.vue';
 </script>
 
 <style lang="scss" scoped>

@@ -21,8 +21,8 @@
     margin-top: -10px;
 }
 .container--fluid {
-  height: calc(100vh - 44px) !important;
-  width: calc(100% - 50px) !important;
+  height: calc(100vh - 200px) !important;
+  //width: calc(100% - 50px) !important;
   margin-left: 100px !important;
   margin-right: -54px !important;
   padding: 0 !important;

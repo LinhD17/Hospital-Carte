@@ -22,10 +22,7 @@ export const GLOBAL_MENU: MenuItems = {
                     path: '/global/common/wellKnownAndTask',
                 },
             ],
-            icon: '@/assets/icon/globalMenu/common.svg',
-            //icon: url('@/assets/icon/globalMenu/common.svg'),
-            //icon: () => import('@/assets/icon/globalMenu/common.svg') //khong chay 
-            //icon: getImage('assets/icon/globalMenu/common.svg'), //.getImage is not a function
+            //icon: require('@/assets/icon/globalMenu/common.svg'),
         },
         //2 favorite 
         {
@@ -134,6 +131,12 @@ export const GLOBAL_MENU: MenuItems = {
                     name: '精神科退院前訪問',
                     path: '/global/guidanceRequest/psychologicalInterview',
                 },
+                {
+                    master_global_menu_id: uniqueId('__globalMenuId__'),
+                    menu_level: 2,
+                    name: '心理面接',
+                    path: '/global/guidanceRequest/psychologicalInterview',
+                },
             ],
         },
         //9 その他
@@ -169,8 +172,8 @@ export const GLOBAL_MENU: MenuItems = {
                 {
                     master_global_menu_id: uniqueId('__globalMenuId__'),
                     menu_level: 2,
-                    name: '文書マスタ設定',
-                    path: '/global/master/documentMasterSet',
+                    name: '予約枠マスタ設定',
+                    path: '/global/master/reservationSlot',
                 },
                 {
                     master_global_menu_id: uniqueId('__globalMenuId__'),
@@ -181,9 +184,11 @@ export const GLOBAL_MENU: MenuItems = {
                 {
                     master_global_menu_id: uniqueId('__globalMenuId__'),
                     menu_level: 2,
-                    name: '予約枠マスタ設定',
-                    path: '/global/master/reservationSlot',
+                    name: '文書マスタ設定',
+                    path: '/global/master/documentMasterSet',
                 },
+
+
             ],
         },
         //11 管理

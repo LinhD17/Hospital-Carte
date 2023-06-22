@@ -14,7 +14,8 @@
           clearable
           variant="outlined"
           hide-details
-          style="width: 170px"
+          style="width: 180px"
+          placeholder="診察担当医を選択"
           :items="['医師　太郎', '医師　次郎', '医師　花子']"
         />
       </v-col>
@@ -138,24 +139,37 @@
       </v-col>
       <v-col md="auto" class="srch-fld">
         <h4>背景色</h4>
-         <div class="d-flex mt-4 ml-0">
-          <div
-            class="status-list--box ml-0"
-            style="background-color: #ffffff"
-          ></div>
+        <div class="d-flex mt-4 ml-0">          
+          <!-- <v-checkbox
+            v-for="item in OUTPATIENT_STATUS_COLOR"
+            :value="item.value"
+            dense
+            hide-details
+            class="pa-0 ma-0 mr-2"
+          >
+            <template #label>
+              <div
+                :style="`background-color:${item.text}`"
+                class="status-list--box"
+              />
+            </template>
+          </v-checkbox>-->
+
+          <div class="status-list--box ml-0" style="background-color: #ffffff"></div>
           <div class="status-list--box" style="background-color: #a4dcf4"></div>
           <div class="status-list--box" style="background-color: #bce49c"></div>
           <div class="status-list--box" style="background-color: #fbdd9c"></div>
           <div class="status-list--box" style="background-color: #fcc4dc"></div>
-          <div class="status-list--box" style="background-color: #e3def1"></div>
+          <div class="status-list--box" style="background-color: #e3def1"></div> 
         </div>
       </v-col>
       <v-col md="auto" class="srch-fld">
         <h4>コメント</h4>
         <!-- <div class="d-flex mt-4 ml-0"> -->
           <div class="d-flex align-center c-radio-custom">
-            <v-checkbox
+          <v-checkbox
             v-for="item in OUTPATIENT_COMMENT_COLOR"
+            :value="item.value"
             dense
             hide-details
             class="pa-0 ma-0 mr-2"
@@ -174,9 +188,11 @@
 </template>
 
 <script setup lang="ts">
-import DatePicker from '~/components/general/Form/DatePicker.vue'
-import TimePicker from '~/components/general/Form/TimePicker.vue'
-import { OUTPATIENT_COMMENT_COLOR } from '~/constains/global/outpatient/commentColor.ts'
+import DatePicker from '~/components/General/Form/DatePicker1.vue'
+import TimePicker from '~/components/General/Form/TimePicker.vue'
+//import { OUTPATIENT_STATUS_COLOR } from '~/constains/global/outpatient/statusColor'
+import { OUTPATIENT_COMMENT_COLOR } from '~/constains/global/outpatient/commentColor'
+
 </script>
   
   <style lang="scss" scoped>
@@ -187,11 +203,13 @@ import { OUTPATIENT_COMMENT_COLOR } from '~/constains/global/outpatient/commentC
   text-align: left;
 }
 .status-list--box {
-  height: 25px !important;
-  width: 25px !important;
-  border-radius: 7px;
-  border: 1px solid #a9a9a9;
-  margin-left: 12px;
+  height: 22px;
+  width: 22px;
+  border: solid 1px gray;
+  outline: solid 2px white;
+  border-radius: 5px;
+  -webkit-border-radius: 5px;
+  margin-right: 10px;
 }
 .mdi-sticker-text {
   &::before {
