@@ -2,16 +2,14 @@
 import imageUrl from '@/assets/icon/ward.svg'
 </script>
 <template>
-    <div class="outpatient-card-width">
+    <div class="reservation-slot-width">
         <PagesGlobalGeneralGlobalBaseLayout 
             page-title="予約枠マスタ設定"
         >
             <template #iconImg>
                 <img :src="imageUrl"/> 
             </template>
-            <PagesGlobalMasterReservationSlotShowSearchField 
-            />
-            <PagesGlobalMasterReservationSlotShowTable 
+            <PagesGlobalMasterReservationSlotShowTable
             />
             <!-- bulk-register-modal -->
             <template>
@@ -27,7 +25,7 @@ import imageUrl from '@/assets/icon/ward.svg'
     </div>
 </template>
 <style scoped>
-.outpatient-card-width {
+.reservation-slot-width {
     margin-left: 2%;
     margin-top: -12px;
 }
