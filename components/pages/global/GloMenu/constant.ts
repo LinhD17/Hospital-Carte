@@ -181,6 +181,12 @@ export const GLOBAL_MENU: MenuItems = {
                 {
                     master_global_menu_id: uniqueId('__globalMenuId__'),
                     menu_level: 2,
+                    name: 'フローシートマスタ設定',
+                    path: '/global/master/flowsheet',
+                },
+                {
+                    master_global_menu_id: uniqueId('__globalMenuId__'),
+                    menu_level: 2,
                     name: '予約枠マスタ設定',
                     path: '/global/master/reservationSlot',
                 },
