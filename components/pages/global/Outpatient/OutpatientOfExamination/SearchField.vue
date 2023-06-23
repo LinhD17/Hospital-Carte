@@ -2,13 +2,13 @@
   <div>
     <v-row class="ma-4 pa-2 search-area">
       <v-col md="auto" class="srch-fld">
-        <h4>外来受付</h4>
+        <p class="txt-label">外来受付</p>
         <div style="width: 210px">
           <date-picker />
         </div>
       </v-col>
       <v-col md="auto" class="srch-fld">
-        <h4>診察担当医</h4>
+        <p class="txt-label">診察担当医</p>
         <v-select
           dense
           clearable
@@ -20,7 +20,7 @@
         />
       </v-col>
       <v-col md="auto" class="srch-fld">
-        <h4>診察予定時刻</h4>
+        <p class="txt-label">診察予定時刻</p>
         <div class="d-flex align-center">
           <TimePicker clearable />
           <span v-text="'～'" class="mx-2"></span>
@@ -28,7 +28,7 @@
         </div>
       </v-col>
       <v-col md="auto" class="srch-fld">
-        <h4>患者番号</h4>
+        <p class="txt-label">患者番号</p>
         <v-text-field
           dense
           variant="outlined"
@@ -38,7 +38,7 @@
         />
       </v-col>
       <v-col md="auto" class="srch-fld">
-        <h4>患者氏名</h4>
+        <p class="txt-label">患者氏名</p>
         <v-text-field
           dense
           variant="outlined"
@@ -73,7 +73,7 @@
     </v-row>
     <v-row class="ma-4 pa-2 mt-10 search-area">
       <v-col md="auto" class="srch-fld">
-        <h4>外来進行状況</h4>
+        <p class="txt-label">外来進行状況</p>
         <v-select
           dense
           clearable
@@ -84,18 +84,18 @@
         />
       </v-col>
       <v-col md="auto" class="srch-fld">
-        <h4>診療内容</h4>
+        <p class="txt-label">診療内容</p>
         <v-select
           dense
           clearable
           variant="outlined"
           hide-details
-          style="width: 170px"
+          style="width: 140px"
           :items="['診察', '処方', '注射', '検索']"
         />
       </v-col>
       <v-col md="auto" class="srch-fld">
-        <h4>診察科</h4>
+        <p class="txt-label">診察科</p>
         <v-select
           dense
           clearable
@@ -106,29 +106,29 @@
         />
       </v-col>
       <v-col md="auto" class="srch-fld">
-        <h4>併科受診</h4>
+        <p class="txt-label">併科受診</p>
         <v-select
           dense
           clearable
           variant="outlined"
           hide-details
-          style="width: 170px"
+          style="width: 100px"
           :items="['有', '無']"
         />
       </v-col>
       <v-col md="auto" class="srch-fld">
-        <h4>初/再</h4>
+        <p class="txt-label">初/再</p>
         <v-select
           dense
           clearable
           variant="outlined"
           hide-details
-          style="width: 170px"
+          style="width: 100px"
           :items="['初診', '再診']"
         />
       </v-col>
       <v-col md="auto" class="srch-fld">
-        <h4>診察形態特殊</h4>
+        <p class="txt-label">診察形態特殊</p>
         <v-select
           dense
           clearable
@@ -138,7 +138,7 @@
         />
       </v-col>
       <v-col md="auto" class="srch-fld">
-        <h4>背景色</h4>
+        <p class="txt-label">背景色</p>
         <div class="d-flex mt-4 ml-0">          
           <!-- <v-checkbox
             v-for="item in OUTPATIENT_STATUS_COLOR"
@@ -164,7 +164,7 @@
         </div>
       </v-col>
       <v-col md="auto" class="srch-fld">
-        <h4>コメント</h4>
+        <p class="txt-label">コメント</p>
         <!-- <div class="d-flex mt-4 ml-0"> -->
           <div class="d-flex align-center c-radio-custom">
           <v-checkbox
@@ -201,6 +201,14 @@ import { OUTPATIENT_COMMENT_COLOR } from '~/constains/global/outpatient/commentC
 }
 .srch-fld {
   text-align: left;
+  display: block;
+}
+p.txt-label{
+  color: #333333;
+  font-size: 12px;
+  font-weight: 700;
+  margin-bottom: 0;
+  align-self: center;
 }
 .status-list--box {
   height: 22px;

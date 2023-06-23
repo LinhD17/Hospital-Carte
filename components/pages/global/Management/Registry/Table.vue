@@ -65,68 +65,65 @@
             </template> -->
         </v-data-table-virtual>
 
-        <div class="table-footer text-center pt-2">
-            <div style="margin: 0 0 0 auto;">
-                <v-btn
-                    class="mr-3"
-                    rounded
-                    style="background-color: #1ea0dc; color: #ffffff"
-                    @click="openModal"
-                >
-                    登録
-                </v-btn>
-            </div>
-        </div>
-        
-        <modal
-            modal-width="500"
-            :modal-active="modalState"
-            modal-key="modal"
-            modal-color="#ffffff"
-            :modal-title="'精神疾患レジストリCSV出力'"
-            :modal-button="modalButtons"
-            @closeModal="closeModal"
-            @confirm="onExporatCSV"
-        >
-            <div class="content-modal_wrapper">
-                <div class="content-modal_title">
-                </div>
-                <div class="content-modal_content">
-                    <div class="py-4 px-5">
-                        <p class="my-2">精神疾患レジストリの確定データをCSV出力します。よろしいですか？</p>
+
+        <v-dialog v-model="dialog" width="800">
+            <template v-slot:activator="{ props }">
+                <div class="table-footer text-center pt-2">
+                    <div style="margin: 0 0 0 auto;">
+                        <v-btn
+                            v-bind="props"
+                            class="mr-3"
+                            rounded
+                            style="background-color: #1ea0dc; color: #ffffff"
+                        >
+                            登録
+                        </v-btn>
                     </div>
                 </div>
-            </div>
-        </modal>
+            </template>
+            <general-modal
+                modal-width="500"
+                modal-key="modal"
+                modal-color="#ffffff"
+                :modal-title="'精神疾患レジストリCSV出力'"
+                :modal-button="modalButtons"
+                modal-position="center"
+            >
+                <div class="content-modal_wrapper">
+                    <div class="content-modal_title">
+                    </div>
+                    <div class="content-modal_content">
+                        <div class="py-4 px-5">
+                            <p class="ml-5">精神疾患レジストリの確定データをCSV出力します。よろしいですか？</p>
+                        </div>
+                    </div>
+                </div>
+            </general-modal>
+        </v-dialog>
     </div>
 </template>
 
 <script lang="ts">
-    // import type { inject } from 'vue'
-    // import { useStore } from 'vuex'
-    // const store = useStore()
-    // const stateKey = inject(patientConfirmedRegistryListStateKey)
-    // if (!stateKey) {
-    //     throw new Error ('No Global Key')
-    // }
-    // const {
-    //   patientConfirmedRegistryList,
-    //   fetchPatientConfirmedRegistryLoading,
-    //   fetchPatientConfirmedRegistryList,
-    //   downloadPatientConfirmedRegistryCsv,
-    // } = stateKey
-
-    // const state = ref({
-    //     selected: [] as any, 
-    // })
-
-    // const modalState = ref<boolean>(false)
-
-    import Modal from '@/components/General/Modal.vue' 
+    import type { inject } from 'vue'
+    import { useStore } from 'vuex'
+    const store = useStore()
     import moment from 'moment'
     export default {
         data () {
             return {
+                modalButtons: [
+                    {
+                        title: 'CSV出力',
+                        color: 'primary',
+                        methods: 'confirm',
+                    },
+                    {
+                        title: 'キャンセル',
+                        color: 'primary',
+                        methods: 'closeModal',
+                        outlined: true,
+                    },
+                ], 
                 headers: [
                     { title: '患者番号', key: 'patient_no', sortable: false, align: 'center' },
                     { title: '患者情報', key: 'patient_info', sortable: false, align: 'center' },
@@ -234,6 +231,7 @@
                         patient_registry_created_at: "1996年07月17日",
                     },
                 ],
+                dialog: false, 
             }
         },
         methods: {

@@ -10,7 +10,7 @@ const props = defineProps({
     <div class="global-title">
       <div class="global-title-heading" style="display:flex">
 
-        <!--Vite/Vue3 "rewuire is not defined" when using image source as props -->
+        <!--Vite/Vue3 "require is not defined" when using image source as props -->
         <!-- <i class="icon">
           <img :src="require(`@/assets/icons/${titleIcon}`)" alt="" /> 
         </i> -->
@@ -20,6 +20,9 @@ const props = defineProps({
         </i>
 
         <h2 class="title">{{ pageTitle }}</h2>
+
+        <!-- tạm thời bổ sung thêm slot cho header ở đây -->
+        <slot name="header"></slot>
       </div>
       <slot />
     </div>

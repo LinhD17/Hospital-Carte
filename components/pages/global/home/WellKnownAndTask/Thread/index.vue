@@ -9,6 +9,7 @@
                 <v-icon color="white">mdi-plus</v-icon>
               </v-btn>
             </template>
+            <!-- <board-new v-model="dialog" /> -->
             <board-modal v-model="dialog" />
           </v-dialog>
         </div>
@@ -19,10 +20,12 @@
   </template>
   
   <script>
+  // import BoardNew from './Modal/BoardNew.vue'
   import BoardModal from './Modal/BoardModal.vue'
   
   export default {
     components: {
+      // BoardNew,
       BoardModal
     },
     data() {

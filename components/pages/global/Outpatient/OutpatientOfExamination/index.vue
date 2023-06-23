@@ -1,9 +1,12 @@
 <script setup lang="ts">
-import imageUrl from '@/assets/icon/schedule.svg'
+import imageUrl from '@/assets/icon/title_outpatient.svg'
 </script>
+
 <template>
   <div class="outpatient-card-width">
-    <GeneralGlobalHeader page-title="外来患者一覧（診察）">
+    <GeneralGlobalHeader 
+      page-title="外来患者一覧（診察）"
+    >
       <template #iconImg>
         <img :src="imageUrl" />
       </template>

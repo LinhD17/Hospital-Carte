@@ -11,6 +11,10 @@
       >
         <template v-slot:activator="{ on, attrs }">
           <v-text-field
+            dense
+            clearable
+            variant="outlined"
+            hide-details
             v-model="dateFormatted"
             persistent-hint
             prepend-icon="mdi-calendar"

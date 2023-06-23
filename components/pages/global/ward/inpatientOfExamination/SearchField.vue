@@ -20,17 +20,25 @@
                 </div>
                 <v-btn
                     ref="submitButtonRef"
-                    class="btn-style bg-blue text-white ml-6 mt-3 rounded small"
+                    rounded
+                    color="primary"
+                    dense
+                    class="btn-style text-white ml-6 mt-3 small"
                 >検索
                 </v-btn>
                 <v-btn 
                     v-if="searchActive"
                     outlined
-                    class="btn-style bg-grey ml-2 mt-3 rounded"
+                    rounded
+                    dense
+                    color="primary"
+                    class="btn-style ml-2 mt-3 outlined"
                 >条件保存
                 </v-btn>
                 <v-btn
-                    class="ml-auto outlined  btn-style mt-3 bg-grey rounded dark small"
+                    color="grey"
+                    rounded
+                    class="ml-auto outlined  btn-style mt-3 dark small"
                     @click="searchActive = !searchActive"
                 >
                 {{ searchActive ? 'ー閉じる' : '詳細検索' }} 

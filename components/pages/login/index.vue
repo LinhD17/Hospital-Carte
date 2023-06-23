@@ -36,7 +36,7 @@
           </div>
 
             <!-- error -->
-              <!-- chưa xử lý được ẩn-hiện password -->
+              <!-- chưa xử lý được mươt mà ẩn-hiện password -->
             <div  v-if="state.errorText.length" class="login-error mb-3">
               <p v-for="item in state.errorText" :key="item">
                 <v-icon x-small color="danger" class="mr-2">

@@ -41,11 +41,44 @@
                       <span>同姓</span>
                   </div>
               </div>
-              <span>
-                  {{ item.raw.patient_info.patient_birthday }}
-                  <!-- ({{ moment().diff(item.raw.patient_info.patient_birthday, 'years', false) }}) -->
-              </span> 
           </div>
+      </template>
+      <template v-slot:item.patient_birthday="{ item }">
+        <div class="d-block">
+          <div>{{  item.raw.patient_birthday }}</div>
+          <div>
+            (27歳<!-- ({{ moment().diff(item.raw.patient_info.patient_birthday, 'years', false) }}) -->)
+          </div>
+        </div>
+      </template>
+      <template v-slot:item.status="{ item }"> 
+        <v-chip 
+          v-if="item.raw.status"
+          class="justify-center white"
+          style="background-color: black; color: white;"
+        >
+        {{ item.raw.status }}
+        </v-chip>
+      </template>
+      <template v-slot:item.treatments="{ item }">
+        <div 
+          v-for="staff in item.raw.treatments"
+          :key="staff"
+          class="d-flex ma-1"
+        >
+          <v-btn rounded class="ml-1" style="background-color: #1ea0dc; color: #ffffff;">
+            {{ staff }}
+          </v-btn>
+      </div>
+      </template>
+      <template v-slot:item.medical_condition="{ item }">
+        <v-btn
+          variant="outline"
+          dense
+          style="background-color: #1ea0dc; color: #ffffff;"
+        >
+          {{ item.raw.medical_condition }}
+        </v-btn>
       </template>
     </v-data-table-virtual>
     <div class="table-footer text-center">
@@ -65,95 +98,42 @@ export default {
   data() {
     return {
       headers: [
-        { title: "受付番号", value: "id", align: "center", sortable: true },
-        {
-          title: "患者番号",
-          key: "patient_no",
-          align: "center",
-          sortable: true,
-        },
-        {
-          title: "患者情報",
-          key: "patient_info",
-          align: "center",
-          sortable: false,
-        },
-        {
-          title: "外来患者状態",
-          key: "status",
-          align: "center",
-          sortable: false,
-        },
-        {
-          title: "診察予定日時",
-          key: "consultDate",
-          align: "center",
-          sortable: false,
-        },
-        {
-          title: "滞在時間",
-          key: "waitHour",
-          align: "center",
-          sortable: false,
-        },
-        {
-          title: "診療内容",
-          key: "treatments",
-          align: "center",
-          sortable: false,
-        },
-        {
-          title: "受付状態",
-          key: "receptionStatus",
-          align: "center",
-          sortable: false,
-        },
-        {
-          title: "備考",
-          key: "hasRemarks",
-          align: "center",
-          sortable: false,
-        },
-        {
-          title: "併科有無",
-          key: "hasReserved",
-          align: "center",
-          sortable: false,
-        },
-        {
-          title: "診療科",
-          key: "department",
-          align: "center",
-          sortable: false,
-        },
-        { title: "診察医", key: "doctor", align: "center", sortable: false },
-        {
-          title: "コメント",
-          key: "comment",
-          align: "center",
-          sortable: false,
-        },
+        { title: "受付番号", key: "id", align: "center", sortable: true },
+        { title: "患者番号", key: "patient_no", align: "center", sortable: false,},
+        { title: "患者情報", key: "patient_info", align: "center", sortable: false,},
+        { title: "生年月日",  key: "patient_birthday", align: "center", sortable: false,},
+        { title: "外来患者状態", key: "status", align: "center", sortable: false,},
+        { title: "診療科", key: "department", align: "center", sortable: false, },
+        { title: "受付時刻", key: "waitHour",  align: "center", sortable: false,},
+        { title: "診療内容", key: "treatments", align: "center", sortable: false, },
+        { title: "診療予定時刻", key: "estimated_time", align: "center", sortable: false,},
+        { title: "初/再", key: "start_repeat", align: "center", sortable: false,},
+        { title: "診療状況", key: "medical_condition", align: "center", sortable: false,},
+        { title: "診療担当医", key: "doctor", align: "center", sortable: false,},
+        { title: "コメント", key: "comment", align: "center", sortable: false, },
+        { title: "プロファイル注意事項", key: "", align: "center", sortable: false,},
       ],
       dummyItems: [
         {
-          id: "6",
-          patient_no: "12345",
+          id: "",
+          patient_no: "00029",
           patient_info: {
             patient_uuid: "123",
             patient_name: "患者 太郎",
             patient_name_katakana: "カンジャ タロウ",
             patient_gender: 1,
-            patient_birthday: "1996年07月17日",
             is_name_duplicated: true,
           },
-          status: 1,
-          consultDate: "2021/10/22",
+          patient_birthday: "1996年07月17日",
+          status: "未来院",
+          department: "精神内科",
           waitHour: "17:00",
-          receptionStatus: 1,
-          hasRemarks: "",
-          hasReserved: "",
-          department: "",
-          doctor: "doctor taro",
+          treatments: ['診察', '処方',] ,
+          //treatments: ['診察', '処方', '注射','検査', '画像', '心理','予診', '処置', '手術','汎用', 'リハビリ', '指導依頼', ] ,
+          estimated_time: "11:00",
+          start_repeat: "再", 
+          medical_condition: "予約",
+          doctor: " 医師　太郎",
         },
       ],
     };
