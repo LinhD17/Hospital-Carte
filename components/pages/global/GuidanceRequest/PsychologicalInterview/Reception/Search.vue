@@ -95,7 +95,7 @@
 </template>
 
 <script lang="ts">
-    import Datepicker from '@/components/General/Form/DatePicker1.vue'
+    import Datepicker from '@/components/general/Form/DatePicker1.vue'
     import moment from 'moment';
     import { defineComponent, ref } from 'vue'
 

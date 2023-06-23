@@ -3,15 +3,15 @@
 </script>
 
 <template>
-    <div class="description-style">
-        <PagesGlobalGuidanceRequestPsychologicalInterviewInstructionSearch /> 
-        <PagesGlobalGuidanceRequestPsychologicalInterviewInstructionTable /> 
-    </div>
+  <div class="description-style">
+    <PagesGlobalGuidanceRequestPsychologicalInterviewInstructionSearch />
+    <PagesGlobalGuidanceRequestPsychologicalInterviewInstructionTable />
+  </div>
 </template>
   
 <style lang="scss" scoped>
-  .description-style {
-      margin: 10px;
+.description-style {
+  margin: 10px;
       background-color: white;
-  }
+}
 </style>

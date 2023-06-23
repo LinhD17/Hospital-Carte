@@ -7,11 +7,11 @@
 </template>
 
 <script setup lang="ts">
-
 </script>
 
 <style lang="scss" scoped>
 .reception-style {
-
+    margin: 10px;
+      background-color: white;
 }
 </style>

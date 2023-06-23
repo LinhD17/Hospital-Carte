@@ -28,7 +28,7 @@
 </template>
 
 <script setup lang="ts">
-    import Datepicker from '~/components/General/Form/DatePicker1.vue';
+    import Datepicker from '~/components/general/Form/DatePicker1.vue';
 </script>
 
 <style lang="scss" scoped>
