@@ -1,207 +1,368 @@
 <template>
-    <div class="table-content">
-      <v-data-table-virtual
-        :headers="headers"
-        :items="dummyItems"
-        class="elevation-1"
-      >
-        <!-- edit  -->
-        <!-- <template v-slot:item.editAction="{ item }">
-          <div class="d-flex justify-space-between">
-            <div>
-              <v-icon small class="ml-1">mdi-pencil </v-icon>
-            </div>
-          </div>
-        </template> -->
-        <!-- delete  -->
-        <!-- <template v-slot:item.deleteAction="{ item }">
-          <div class="d-flex justify-space-between">
-            <div>
-              <v-icon small class="ml-1">mdi-delete </v-icon>
-            </div>
-          </div>
-        </template> -->
-      </v-data-table-virtual>
-      <div class="table-footer pt-2">
-        <div class="ml-3" style="margin: 0 0 0 auto">
+    <div class="pa-2">
+      <div v-for="(list, index) in documentTemplateList" :key="index" class="template-list">
+        <div class="mr-2 mb-10">
+          <v-data-table-virtual
+            hide-default-footer
+            :headers="list.headers"
+            :items="list.dummyItems"
+          >
+            <template v-slot:item="itemSlot">
+              <div class="d-flex u-ml-10">
+                <template v-if="!isEmptyItem(itemSlot.item.raw[list.itemKey])">
+                  {{ itemSlot.item.raw[list.itemKey] }}
+                  <div class="d-flex ml-auto">
+                    <v-btn
+                      variant="outlined"
+                      rounded
+                      color="#1ea0dc"
+                      @click="goEdit(itemSlot.item.document_uuid)"
+                      class="bt-basic h-small mr-3 px-6"
+                    >
+                      編集
+                    </v-btn>
+                    <v-btn
+                      variant="outlined"
+                      rounded
+                      color="red"
+                      @click="openModal(itemSlot.item.document_uuid)"
+                      class="bt-basic h-small px-6"
+                    >
+                      削除
+                    </v-btn>
+                  </div>
+                </template>
+                <template v-else>
+                    <div class="no-data">
+                        データはありません。
+                    </div>
+                </template>
+              </div>
+            </template>
+          </v-data-table-virtual>
+        </div>
+      </div>
+  
+      <div class="table-footer text-center pt-2">
+        <div style="margin: 0 0 0 auto;">
           <v-btn
-            class="mr-3"
             rounded
             style="background-color: #1ea0dc; color: #ffffff"
-            @click="onModalOpenButtonClick"
+            class="mr-3 px-8"
           >
-            新規作成
+            新規登録
           </v-btn>
         </div>
       </div>
     </div>
   </template>
-  
   <script>
   export default {
     data() {
       return {
-        headers: [
-          { title: '治療計画書', key: 'patternName', sortable: false, align: 'center' },
-          { title: '褥瘡', key: 'freeItemName', sortable: false, align: 'center' },
+        documentTemplateList: [
           {
-            title: '紹介状　情報提供書',
-            key: 'letterOfIntroductionInformationProvision',
-            sortable: false,
-            align: 'center',
+            headers: [
+              { title: '治療計画書', key: 'document_name', sortable: false, align: 'center' },
+            ],
+            dummyItems: [
+              {
+                document_name: '01.入院診療計画書_(厚)別紙2',
+              },
+              {
+                document_name: '02.医療保護入院者の入院届_(精法1)様式13_1',
+              },
+              {
+                document_name: '05.医療保護入院者の定期病状報告書_(精法1)様式19_1',
+              },
+            ],
+            itemKey: 'document_name',
           },
           {
-            title: '診断書',
-            key: 'MedicalCertificate',
-            sortable: false,
-            align: 'center',
+            headers: [
+              { title: '褥瘡', key: 'document_name_1', sortable: false, align: 'center' },
+            ],
+            dummyItems: [
+              {
+                document_name_1: '褥瘡対策に関する診療計画書',
+              },
+              {
+                document_name_1: '04.褥瘡対策に関する評価(DESIGN-R)_(厚)別紙別紙46',
+              },
+              {
+                document_name_1: '04.褥瘡対策に関する評価(DESIGN-R)_(厚)別紙別紙46',
+              },
+            ],
+            itemKey: 'document_name_1',
           },
           {
-            title: '意見書',
-            key: 'opinion',
-            sortable: false,
-            align: 'center',
+            headers: [
+              { title: '紹介状　情報提供書', key: 'document_name_2', sortable: false, align: 'center' },
+            ],
+            dummyItems: [
+              {
+              },
+            ],
+            itemKey: 'document_name_2',
           },
           {
-            title: '傷病手当',
-            key: 'injuryandSicknessAllowance',
-            sortable: false,
-            align: 'center',
+            headers: [
+              { title: '診断書', key: 'document_name_3', sortable: false, align: 'center' },
+            ],
+            dummyItems: [
+              {
+              },
+            ],
+            itemKey: 'document_name_3',
           },
           {
-            title: '指示書',
-            key: 'directions',
-            sortable: false,
-            align: 'center',
+            headers: [
+              { title: '意見書', key: 'document_name_4', sortable: false, align: 'center' },
+            ],
+            dummyItems: [
+              {
+                document_name_4: 'テスト文書１',
+              },
+            ],
+            itemKey: 'document_name_4',
           },
           {
-            title: '生活保護法医療扶助',
-            key: 'publicAssistanceLawMedicalAssistance',
-            sortable: false,
-            align: 'center',
+            headers: [
+              { title: '傷病手当', key: 'document_name_5', sortable: false, align: 'center' },
+            ],
+            dummyItems: [
+              {
+              },
+            ],
+            itemKey: 'document_name_5',
           },
           {
-            title: '医療保護入院',
-            key: 'medicalProtectionHospitalization',
-            sortable: false,
-            align: 'center',
+            headers: [
+              { title: '指示書', key: 'document_name_6', sortable: false, align: 'center' },
+            ],
+            dummyItems: [
+              {
+              },
+            ],
+            itemKey: 'document_name_6',
           },
           {
-            title: '任意入院',
-            key: 'voluntaryHospitalization',
-            sortable: false,
-            align: 'center',
+            headers: [
+              { title: '生活保護法医療扶助', key: 'document_name_7', sortable: false, align: 'center' },
+            ],
+            dummyItems: [
+              {
+              },
+            ],
+            itemKey: 'document_name_7',
           },
           {
-            title: '措置入院',
-            key: 'involuntaryHospitalization',
-            sortable: false,
-            align: 'center',
+            headers: [
+              { title: '医療保護入院', key: 'document_name_8', sortable: false, align: 'center' },
+            ],
+            dummyItems: [
+              {
+              },
+            ],
+            itemKey: 'document_name_8',
           },
           {
-            title: '応急入院',
-            key: 'emergencyHospitalization',
-            sortable: false,
-            align: 'center',
+            headers: [
+              { title: '任意入院', key: 'document_name_9', sortable: false, align: 'center' },
+            ],
+            dummyItems: [
+              {
+              },
+            ],
+            itemKey: 'document_name_9',
           },
           {
-            title: '精神保健福祉法',
-            key: 'mentalHealthWelfareAct',
-            sortable: false,
-            align: 'center',
+            headers: [
+              { title: '措置入院', key: 'document_name_10', sortable: false, align: 'center' },
+            ],
+            dummyItems: [
+              {
+              },
+            ],
+            itemKey: 'document_name_10',
           },
           {
-            title: 'サマリー',
-            key: 'summary',
-            sortable: false,
-            align: 'center',
+            headers: [
+              { title: '応急入院', key: 'document_name_11', sortable: false, align: 'center' },
+            ],
+            dummyItems: [
+              {
+              },
+            ],
+            itemKey: 'document_name_11',
           },
           {
-            title: '栄養管理計画書',
-            key: 'nutritionManagementPlan',
-            sortable: false,
-            align: 'center',
+            headers: [
+              { title: '精神保健福祉法', key: 'document_name_12', sortable: false, align: 'center' },
+            ],
+            dummyItems: [
+              {
+              },
+            ],
+            itemKey: 'document_name_12',
           },
           {
-            title: '病棟管理業務',
-            key: 'wardManagement',
-            sortable: false,
-            align: 'center',
+            headers: [
+              { title: 'サマリー', key: 'document_name_13', sortable: false, align: 'center' },
+            ],
+            dummyItems: [
+              {
+              },
+            ],
+            itemKey: 'document_name_13',
           },
           {
-            title: '行動制限',
-            key: 'movementRestrictions',
-            sortable: false,
-            align: 'center',
+            headers: [
+              { title: '栄養管理計画書', key: 'document_name_14', sortable: false, align: 'center' },
+            ],
+            dummyItems: [
+              {
+              },
+            ],
+            itemKey: 'document_name_14',
           },
           {
-            title: 'インシデント',
-            key: 'incident',
-            sortable: false,
-            align: 'center',
+            headers: [
+              { title: '病棟管理業務', key: 'document_name_15', sortable: false, align: 'center' },
+            ],
+            dummyItems: [
+              {
+              },
+            ],
+            itemKey: 'document_name_15',
           },
           {
-            title: '看護計画',
-            key: 'nursingPlan',
-            sortable: false,
-            align: 'center',
+            headers: [
+              { title: '行動制限', key: 'document_name_16', sortable: false, align: 'center' },
+            ],
+            dummyItems: [
+              {
+              },
+            ],
+            itemKey: 'document_name_16',
           },
           {
-            title: 'リハビリ',
-            key: 'rehabilitation',
-            sortable: false,
-            align: 'center',
+            headers: [
+              { title: 'インシデント', key: 'document_name_17', sortable: false, align: 'center' },
+            ],
+            dummyItems: [
+              {
+              },
+            ],
+            itemKey: 'document_name_17',
           },
           {
-            title: 'その他文書',
-            key: 'otherDocuments',
-            sortable: false,
-            align: 'center',
+            headers: [
+              { title: '看護計画', key: 'document_name_18', sortable: false, align: 'center' },
+            ],
+            dummyItems: [
+              {
+              },
+            ],
+            itemKey: 'document_name_18',
           },
+          {
+            headers: [
+              { title: 'リハビリ', key: 'document_name_18', sortable: false, align: 'center' },
+            ],
+            dummyItems: [
+              {
+              },
+            ],
+            itemKey: 'document_name_18',
+          },
+          {
+            headers: [
+              { title: 'その他文書', key: 'document_name_19', sortable: false, align: 'center' },
+            ],
+            dummyItems: [
+              {
+              },
+            ],
+            itemKey: 'document_name_19',
+          },
+          // Add more template lists here if needed
         ],
-        dummyItems: [
-          {
-            patternName: 'aaa',
-            freeItemName: 'AAA, BBB, CCC, DDD, 気分、通勤時間、通勤種類',
-            default: 'いいえ',
-            validPeriod: '2023/04/01 ~ ',
-          },
-          {
-            patternName: 'afda',
-            freeItemName: '通勤時間、通勤種類',
-            default: 'いいえ',
-            validPeriod: '2017/04/01 ~ ',
-          },
-          {
-            patternName: 'fawfw',
-            freeItemName: 'AAA, 気分、通勤時間、通勤種類',
-            default: 'いいえ',
-            validPeriod: '2017/04/01 ~ ',
-          },
-        ],
-      }
+      };
     },
-  }
+    methods: {
+    isEmptyItem(item) {
+        return !item || Object.keys(item).length === 0;
+    },
+    goEdit(documentUuid) {
+      // Handle goEdit logic here
+    },
+    openModal(documentUuid) {
+      // Handle openModal logic here
+    },
+  },
+};
   </script>
     
-  <style lang="scss" scoped>
-  .table-content {
-    border: 0 !important;
-    white-space: nowrap;
-    margin-top: 10px;
-  
-    a {
-      margin-top: 0;
-      text-decoration: none;
-      color: #1ea0dc;
+<style lang="scss" scoped>
+.v-data-table {
+    padding: 8px 12px;
+    &:deep(.v-data-table) {
+        table > tbody > tr > td {
+            height: auto;
+            padding: 5px 10px;
+            vertical-align: middle !important;
+            background-color: #ffffff;
+            > .u-ml-10 {
+                display: flex;
+                align-items: center;
+                margin: 0;
+            }
+        }
     }
-  }
-  .table-footer {
-    display: flex;
-    position: sticky;
-    top: 0;
-    padding: 5px 0 !important;
-    filter: drop-shadow(0 -3px 3px #e6e6e6);
-    background-color: #ffffff;
-  }
-  </style>
+
+    &:deep(.v-data-table-header) {
+        th {
+            position: relative;
+            height: auto;
+            padding: 5px 10px !important;
+            font-size: 14px !important;
+            font-weight: bold;
+            line-height: 1.1;
+            color: #000 !important;
+
+            &::before {
+                content: '';
+                display: block;
+                position: absolute;
+                top: 50%;
+                transform: translateY(-50%);
+                -webkit-transform: translateY(-50%);
+                left: 0;
+                width: 4px;
+                height: 14px;
+                background-color: #1ea0dc;
+            }
+        }
+    }
+}
+.table-footer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: sticky;
+  top: 0;
+  background-color: #ffffff;
+  filter: drop-shadow(0 -3px 3px #e6e6e6);
+}
+
+.template-list {
+  overflow-y: auto;
+}
+
+.no-data {
+    width: 100%;
+    text-align: center;
+    color: #9e9e9e;
+}
+</style>

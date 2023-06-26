@@ -170,23 +170,17 @@
     //margin-bottom: 0;
     align-self: center;
     }
-    .root {
-        :deep(.v-card .tiptap-vuetify-editor__content > div) {
-            height: 300px;
-            width: 900px;
-        }
+    .root :deep(.v-card .tiptap-vuetify-editor__content > div) {
+        height: 300px;
+        width: 900px;
     }
     .subject-field {
-    width: 950px;
+        width: 950px;
     }
-    .selects {
-        &:deep(.v-text-field.v-file-input > .v-input__control > .v-input__slot) {
+    .selects :deep(.v-text-field.v-file-input > .v-input__control > .v-input__slot) {
         padding: 0 10px;
-        }
-        &:deep(.theme--light.v-label) {
-        color: #adadad;
-        }
     }
-  
-   
-  </style>
+    .selects  :deep(.theme--light.v-label) {
+        color: #adadad;
+    }
+</style>

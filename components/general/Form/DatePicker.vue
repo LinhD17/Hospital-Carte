@@ -185,8 +185,9 @@ export default defineComponent({
   width: 250px;
   background-color: #fff;
   border-radius: 6px;
+}
 
-  &:deep(&.has-date:hover) {
+.Datepicker :deep(&.has-date:hover) {
     .v-input__icon--clear {
       display: block;
     }
@@ -195,27 +196,26 @@ export default defineComponent({
     }
   }
 
-  &:deep(.mdi-calendar::before) {
+.Datepicker :deep(.mdi-calendar::before) {
     color: #1ea0dc;
   }
 
-  &:deep(.v-input__icon--clear) {
+.Datepicker :deep(.v-input__icon--clear) {
     display: none;
     margin-right: 10px;
   }
 
-  &:deep(.v-input__append-inner) {
+.Datepicker :deep(.v-input__append-inner) {
     display: flex;
     height: 100%;
     align-items: center;
   }
 
-  &.error--text {
+  .error--text {
     :deep(.v-input__slot) {
       border-color: #ff5252 !important;
     }
   }
-}
 
 .v-picker {
   &:deep(td:nth-child(6) .v-btn__content) {

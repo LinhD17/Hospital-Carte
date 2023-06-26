@@ -298,7 +298,7 @@
       margin: 0 20px;
     }
     .input-pending {
-      &::v-deep .v-input--checkbox {
+      &:deep(.v-input--checkbox) {
         margin-top: 0;
       }
     }

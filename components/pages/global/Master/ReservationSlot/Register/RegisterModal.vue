@@ -297,10 +297,8 @@
     .spacing {
       margin: 0 20px;
     }
-    .input-pending {
-      &::v-deep .v-input--checkbox {
+    .input-pending :deep(.v-input--checkbox) {
         margin-top: 0;
-      }
     }
     .input-dayOfWeek {
       display: flex;

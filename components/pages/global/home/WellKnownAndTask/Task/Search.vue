@@ -67,20 +67,19 @@
 .calendar {
   flex-wrap: wrap;
   gap: 12px;
+}
 
-  :deep(.v-input__slot, .v-input__control ) {
+.calendar  :deep(.v-input__slot, .v-input__control ) {
     height: 28px !important;
   }
 
-  :deep(.date .v-input__control .v-input__append-inner) {
+.calendar  :deep(.date .v-input__control .v-input__append-inner) {
     margin-top: 1px;
       padding-right: 4px !important;
   }
 
-  :deep( .v-text-field.v-input--dense:not(.v-text-field--outlined) input ) {
+.calendar  :deep( .v-text-field.v-input--dense:not(.v-text-field--outlined) input ) {
     padding: 3px 0;
-  }
-
 }
 .task-search-row {
     display: flex;
@@ -93,24 +92,19 @@
     }
 
 }
-.check-box {
-    :deep {
-    .v-messages {
-      display: none;
-    }
 
-    .v-input {
-      margin-top: 0;
-      padding-top: 0;
-    }
+.check-box :deep(.v-messages) {
+  display: none;
+}
 
-    .v-input__slot {
-      margin-bottom: 0;
-    }
-
-    .v-input--selection-controls__ripple {
-      margin: 0 7px;
-    }
-  }
+.check-box :deep(.v-input) {
+  margin-top: 0;
+  padding-top: 0;
+}
+.check-box :deep(.v-input__slot) {
+  margin-bottom: 0;
+}
+.check-box :deep(.v-input--selection-controls__ripple) {
+  margin: 0 7px;
 }
 </style>

@@ -123,49 +123,41 @@
   }
   
   .date-text-field {
-    ::v-deep {
-      .v-input__append-inner {
-        margin-top: auto;
-        margin-bottom: auto;
-      }
+    :deep(.v-input__append-inner) 
+      {
+      margin-top: auto;
+      margin-bottom: auto;
     }
   }
   .date-picker {
     width: 250px;
     background-color: #fff;
     border-radius: 6px;
+  } 
+  .date-picker :deep(&.has-date:hover ) .v-input__icon--clear {
+    display: block;
+  }
+  .date-picker :deep(&.has-date:hover ) .v-input__icon--append {
+    display: none;
+  }
+
+  .date-picker :deep(.mdi-calendar::before) {
+    color: #1ea0dc;
+  }
+
+  .date-picker :deep(.v-input__icon--clear) {
+    display: none;
+    margin-right: 10px;
+  }
+  .date-picker :deep(.v-input__append-inner) {
+    display: flex;
+    height: 100%;
+    align-items: center;
+  }
   
-    &::v-deep {
-      &.has-date:hover {
-        .v-input__icon--clear {
-          display: block;
-        }
-  
-        .v-input__icon--append {
-          display: none;
-        }
-      }
-  
-      .mdi-calendar::before {
-        color: #1ea0dc;
-      }
-  
-      .v-input__icon--clear {
-        display: none;
-        margin-right: 10px;
-      }
-  
-      .v-input__append-inner {
-        display: flex;
-        height: 100%;
-        align-items: center;
-      }
-    }
-  
-    &.error--text {
-      ::v-deep .v-input__slot {
-        border-color: #ff5252 !important;
-      }
+  &.error--text {
+    :deep(.v-input__slot) {
+      border-color: #ff5252 !important;
     }
   }
   </style>

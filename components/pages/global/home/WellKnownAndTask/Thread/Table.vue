@@ -96,15 +96,13 @@
             text-decoration: none;
             color: #333333;
         }
-    
-        :deep(.td) {
-            height: 36px !important;
-            font-size: 12px !important;
-            padding: 0 6px !important;
-            text-align: center !important;
-            cursor: pointer !important;
-        }
-    
+    }
+    .task-table :deep(.td) {
+        height: 36px !important;
+        font-size: 12px !important;
+        padding: 0 6px !important;
+        text-align: center !important;
+        cursor: pointer !important;
     }
     .table-footer {
         display: flex;

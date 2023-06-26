@@ -178,7 +178,7 @@
       &.after-active {
         height: 46px;
       }
-      &::v-deep .article-writing-footer {
+      &:deep(.article-writing-footer) {
         display: none;
         transition: 0.3s;
       }

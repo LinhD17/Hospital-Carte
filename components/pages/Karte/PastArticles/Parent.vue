@@ -47,7 +47,7 @@ import { useStore } from 'vuex'
 <style lang="scss" scoped>
 .past-articles {
   background-color: #f0f3f4;
-  &::v-deep .v-tabs-bar {
+  &:deep(.v-tabs-bar) {
     background-color: transparent !important;
     .v-tab {
       &--active {

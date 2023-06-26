@@ -12,7 +12,6 @@
                         :class = "menus.active ? 'active' : ''"
                         @click="showSubMenu(index)"
                     >
-                        <!-- <v-icon>mdi-heart</v-icon> -->
                         <img :src="menus.icon" class="icon-size"/>
                         <div class="btn-icon-text">
                             {{ menus.name }}
@@ -64,7 +63,7 @@
             ...item,
             active: i === index,
         }))
-        //nếu subMenu không có thì ko cần show ra 
+        //if subMenu isn't exist =>  not show
         if (Menu.value.items[index].level2_menus.length === 0) {
             isActive.value = false
             return

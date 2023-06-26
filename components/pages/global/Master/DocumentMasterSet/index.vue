@@ -10,7 +10,7 @@ import imageUrl from '@/assets/icon/schedule.svg'
                 <img :src="imageUrl"/> 
             </template>
             <PagesGlobalMasterDocumentMasterSetSearchField />
-            <PagesGlobalMasterDocumentMasterSetTable1 />
+            <PagesGlobalMasterDocumentMasterSetTable />
         </PagesGlobalGeneralGlobalBaseLayout>
     </div>
 </template>
