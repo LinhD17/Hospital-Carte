@@ -3,19 +3,17 @@
         <!-- calender -->
         <div class="d-flex align-center calendar">
           <!-- lấy date picker từ General-> Form -> DatePicker ra cũng không hiẻn thị, tại sao??? -->
-          <div style="width: 200px">
+          <div style="width: 188px">
             <datepicker
               placeholder="年/月/日"
             />
           </div>
           <span class="mt-3">~</span>
-          <div style="width: 200px">
+          <div style="width: 188px">
               <datepicker
                   placeholder="年/月/日"
               />
           </div>
-
-
         </div>
         <!-- select-box  -->
         <div class="d-flex align-center mt-3" style="width: 120px">

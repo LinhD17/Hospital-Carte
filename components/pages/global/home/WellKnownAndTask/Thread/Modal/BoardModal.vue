@@ -18,18 +18,16 @@
                   <p class="txt-label">作成日時 :</p>
                 </div>
                 <div class="pcol2">
-                  <p class="txt-label">
-                    <span>()</span>
-                  </p>
+                  <p class="mt-5">保険指定医 テスト１０(医事部)</p>
+                  <p class="mt-4">2022年11月30日 17時51分29秒</p>
                 </div>
                 <div class="pcol1">
                   <p class="txt-label">更新者 :</p>
                   <p class="txt-label">更新日時 :</p>
                 </div>
                 <div class="pcol2">
-                  <p class="txt-label">
-                    <span>()</span>
-                  </p>
+                  <p class="mt-5">保険指定医 テスト１０(医事部)</p>
+                  <p class="mt-4">2022年11月30日 17時51分29秒</p>
                 </div>
               </div>
               <div class="d-lex r2">
@@ -37,10 +35,20 @@
                   <p class="mx-0 txt-label">投稿期間 :</p>
                   <p class="mx-0 txt-label">件名 :</p>
                 </div>
+                <!-- <div class="flex-column">
+                  <p class="txt-label">~</p>
+                  <p class="txt-label" style="font-weight: 900; font-size: 14px">医療安全委員会からのお知らせ</p>
+                </div> -->
               </div>
               <div class="d-flex r2">
                 <div class="flex-column pcol3">
                   <p class="mx-0 txt-label">掲示先部署 :</p>
+                </div>
+                <div class="pcol4">
+                  <div class="mt-3">
+                    <v-chip variant="outlined">看護部</v-chip>
+                    <v-chip variant="outlined" class="ml-1">診療技術部</v-chip>
+                  </div>
                 </div>
               </div>
               <div class="d-flex r2">
@@ -51,6 +59,17 @@
               <div class="d-flex r2">
                 <div class="flex-column pcol3">
                   <p class="mx-0 txt-label">内容 :</p>
+                </div>
+                <div class="pcol4 mt-5">
+                  <v-textarea
+                    dense 
+                    clearable 
+                    variant="solo" 
+                    hide-details
+                    rows="4"
+                    style="background-color: white" 
+                    placeholder="ここに内容を入力"
+                  ></v-textarea>
                 </div>
               </div>
               <div class="d-flex r2 ml-8 mt-2">
@@ -66,6 +85,7 @@
                   label="@ | コメントを入カ"
                   outlined
                   color="primary"
+                  variant="solo" 
                   background-color="white"
                   dense
                 ></v-text-field>
@@ -81,9 +101,48 @@
                 <v-divider></v-divider>
               </div>
               <v-data-table-virtual
+                :headers="headers"
+                :items="dummyItems"
                 hide-default-header
                 hide-default-footer
               >
+                <template v-slot:item.updateContend=" { item }">
+                  <div class="custom-div">
+                    <div class="flex-column">
+                      <div class="d-flex mx-0 mt-3">
+                        <p class="txt-label mt-0">{{  item.raw.updateContend.index }} :　</p>
+                        <p>{{ item.raw.updateContend.updated_at }}</p>
+                      </div>
+                      <div class="d-flex mx-0 mt-2 mb-2">
+                        <p>{{ item.raw.updateContend.content }}</p>
+                      </div>
+                    </div>
+                    <div
+                      class="d-flex ml-auto"
+                      style="align-items: center; justify-content: space-between"
+                    >
+                      <v-btn
+                          class="mr-1"
+                          dense
+                          small
+                          rounded
+                          variant="outlined"
+                          color="#b7b7b7"
+                        >
+                          編集
+                        </v-btn>
+                        <v-btn
+                          dense
+                          small
+                          rounded
+                          variant="outlined"
+                          color="#b7b7b7"
+                        >
+                          削除
+                        </v-btn>
+                    </div>
+                  </div>
+                </template>
 
               </v-data-table-virtual>
             </div>
@@ -100,6 +159,25 @@
                   title: '更新',
                   color: 'primary',
                   methods: 'onUpdate',
+                },
+              ], 
+              headers: [
+                { title: '', align: 'center', key: 'updateContend', sortable: true },
+              ],
+              dummyItems: [        
+                { 
+                  updateContend: {
+                    index: 1, 
+                    updated_at: '2023年03月22日 00時00分00秒',
+                    content: "掲示板テスト", 
+                  },
+                },
+                { 
+                  updateContend: {
+                    index:2, 
+                    updated_at: '2023年06月26日 00時00分00秒',
+                    content: "あああああああ", 
+                  },
                 },
               ], 
           }
