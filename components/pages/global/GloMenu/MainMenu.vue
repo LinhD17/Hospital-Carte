@@ -5,8 +5,6 @@
                 <v-list-item
                     v-for="(menus, index) in Menu.items"
                     :key="menus.sort_no"
-                    class="pa-0 c-gnav"
-                    :class="menus.name_en"
                     dense
                 >
                     <div
@@ -15,7 +13,7 @@
                         @click="showSubMenu(index)"
                     >
                         <!-- <v-icon>mdi-heart</v-icon> -->
-                        <img :src="imageUrl"/>
+                        <img :src="menus.icon" class="icon-size"/>
                         <div class="btn-icon-text">
                             {{ menus.name }}
                         </div>
@@ -53,8 +51,6 @@
     import { cloneDeep } from 'lodash'
     import { GLOBAL_MENU} from './constant'
     import { Level1, Level2, MenuItems } from '~/hooks/global/globalMenu/useMenu'
-
-    import imageUrl from '@/assets/icon/globalMenu/ward.svg'
 
     const router = useRouter()
     const Menu = ref<MenuItems>(cloneDeep(GLOBAL_MENU))
@@ -96,19 +92,20 @@
 $hover-bg: var(--primary, 'color1');
 .global-menu {
     display: flex;
-    height: 93.5%;
+    height: 100%;
+    // width: 100%;
     position: absolute;
     top: 62px;
     z-index: 5;
     margin-top: -3px;
-    
     &:deep(.v-list--nav .v-list-item:not(:last-child):not(:only-child)) {
         margin-bottom: 0;
     }
 }
 .navbar {
+    overflow: hidden;
     height: 100% !important;
-    width: 60px !important;
+    width: 58px !important;
     &::after {
         content: '';
         display: block;
@@ -126,8 +123,8 @@ $hover-bg: var(--primary, 'color1');
     }
 }
 .menu-item {
-    width: 54px;
-    height: 54px;
+    width: 40px;
+    height: 50px;
     box-sizing: border-box;
     display: flex;
     flex-direction: column;
@@ -137,7 +134,7 @@ $hover-bg: var(--primary, 'color1');
     cursor: pointer;
     
     .image {
-        width: 50%;
+        width: 50% !important;
     }
     
     &:hover {
@@ -152,7 +149,6 @@ $hover-bg: var(--primary, 'color1');
     &.active {
         background-color: #1ea0dc;
         color: #fff;
-    
         .image {
         filter: brightness(0) invert(1);
         }
@@ -181,7 +177,7 @@ $hover-bg: var(--primary, 'color1');
 }
 
 .btn-icon-text {
-  font-size: 12px !important;
+  font-size: 10px !important;
 }
 
 .nav {
@@ -213,156 +209,9 @@ $hover-bg: var(--primary, 'color1');
   background-color: rgba(230, 230, 230, 0.95) !important;
   color: #333333 !important;
 }
-.c-gnav {
-    > .menu-item {
-        > .btn-icon-text {
-            width: 100%;
-            height: 50px;
-            padding-top: 30px;
-            padding-bottom: 2px;
-            background-image: url('@/assets/icon/globalMenu/common.svg');
-            background-repeat: no-repeat;
-            background-position: 50% 4px;
-            background-size: 26px auto;
-            -webkit-transition: 0.3s ease-in-out;
-            transition: 0.3s ease-in-out;
-            text-align: center;
-        }
-        &:hover,
-        &.active {
-            > .btn-icon-text{
-                background-image: url('@/assets/icon/globalMenu/common.svg');
-            }
-        }
-    }
-  
-    &.g-nav2 {
-        > .menu-item {
-            background-image: url('@/assets/icon/globalMenu/favorite.svg');
-        }
-        &:hover,
-        &.active {
-            > .btn-icon-text {
-                background-image: url('@/assets/icon/globalMenu/favorite.svg');
-            }
-        }
-    }
-    &.g-nav3 {
-        > .menu-item {
-            > .btn-icon-text {
-                background-image: url('@/assets/icon/globalMenu/outpatient.svg');
-            }
-            &:hover,
-            &.active {
-                > .btn-icon-text {
-                    background-image: url('@/assets/icon/globalMenu/outpatient_ov.svg');
-                }
-            }
-        }
-    }
-    &.g-nav4 {
-        > .menu-item {
-            > .btn-icon-text {
-                background-image: url('@/assets/icon/globalMenu/ward.svg');
-            }
-            &:hover,
-            &.active {
-                > .btn-icon-text {
-                    background-image: url('@/assets/icon/globalMenu/ward_ov.svg');
-                }
-            }
-        }
-    }
-    &.g-nav5 {
-        > .menu-item {
-            > .btn-icon-text {
-                background-image: url('@/assets/icon/globalMenu/tick.svg');
-            }
-            &:hover,
-            &.active {
-                > .btn-icon-text {
-                    background-image: url('@/assets/icon/globalMenu/tick_ov.svg');
-                }
-            }
-        }
-    }
-    &.g-nav6 {
-        > .menu-item {
-            > .btn-icon-text {
-                background-image: url('@/assets/icon/globalMenu/house.svg');
-            }
-            &:hover,
-            &.active {
-                > .btn-icon-text {
-                    background-image: url('@/assets/icon/globalMenu/house_ov.svg');
-                }
-            }
-        }
-    }
-    &.g-nav7 {
-        > .menu-item {
-            > .btn-icon-text {
-                background-image: url('@/assets/icon/globalMenu/rehabilitation.svg');
-            }
-            &:hover,
-            &.active {
-                > .btn-icon-text {
-                    background-image: url('@/assets/icon/globalMenu/rehabilitation_ov.svg');
-                }
-            }
-        }
-    }
-    &.g-nav8 {
-        > .menu-item {
-            > .btn-icon-text {
-                background-image: url('@/assets/icon/globalMenu/coaching.svg');
-            }
-            &:hover,
-            &.active {
-                > .btn-icon-text {
-                    background-image: url('@/assets/icon/globalMenu/coaching_ov.svg');
-                }
-            }
-        }
-    }
-    &.g-nav9 {
-        > .menu-item {
-            > .btn-icon-text {
-                background-image: url('@/assets/icon/globalMenu/other.svg');
-            }
-            &:hover,
-            &.active {
-                > .btn-icon-text {
-                    background-image: url('@/assets/icon/globalMenu/other_ov.svg');
-                }
-            }
-        }
-    }
-    &.g-nav10 {
-        > .menu-item {
-            > .btn-icon-text {
-                background-image: url('@/assets/icon/globalMenu/master.svg');
-            }
-            &:hover,
-            &.active {
-                > .btn-icon-text {
-                    background-image: url('@/assets/icon/globalMenu/master_ov.svg');
-                }
-            }
-        }
-    }
-    &.g-nav11 {
-        > .menu-item {
-            > .btn-icon-text {
-                background-image: url('@/assets/icon/globalMenu/management.svg');
-            }
-            &:hover,
-            &.active {
-                > .btn-icon-text {
-                    background-image: url('@/assets/icon/globalMenu/management_ov.svg');
-                }
-            }
-        }
-    }
+
+.icon-size {
+  width: 30px;
+  height: 30px;
 }
 </style>
