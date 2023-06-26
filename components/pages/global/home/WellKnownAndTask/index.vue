@@ -25,7 +25,7 @@ import imageUrl from '@/assets/icon/schedule.svg'
 <style lang="scss" scoped>
 .well-known {
     // width: 100%;
-    margin-left: 2%;
+    margin-left: 2.5%;
     margin-top: -12px;
 }
 .contents {
@@ -38,7 +38,7 @@ import imageUrl from '@/assets/icon/schedule.svg'
   margin: 0px 5px;
 }
 .reports {
-  height: 49%;
+  height: 49.5%;
   margin: 10px 0px 0px ;
   border: 1px solid white;
   border-radius: 8px;
@@ -47,7 +47,7 @@ import imageUrl from '@/assets/icon/schedule.svg'
 .threads{
   background: white;
   margin: 7px 5px 0;
-  height: 49%;
+  height: 49.5%;
   border: 1px solid white;
   border-radius: 8px;
   overflow: auto hidden;

@@ -10,7 +10,7 @@
               </v-btn>
             </template>
             <!-- <board-new v-model="dialog" /> -->
-            <board-modal v-model="dialog" />
+            <board-new v-model="dialog" />
           </v-dialog>
         </div>
         <PagesGlobalHomeWellKnownAndTaskThreadSearch />
@@ -20,13 +20,11 @@
   </template>
   
   <script>
-  // import BoardNew from './Modal/BoardNew.vue'
-  import BoardModal from './Modal/BoardModal.vue'
+  import BoardNew from './Modal/BoardNew.vue'
   
   export default {
     components: {
-      // BoardNew,
-      BoardModal
+      BoardNew,
     },
     data() {
       return {

@@ -1,17 +1,18 @@
 <template>
     <div class="task-table">
-        <v-data-table-virtual
-        :headers="headers"
-        :items="dummyItems"
-        height="200"
-    >
-        <!-- <template>
-            <NuxtLink to="https://nuxtjs.org">
-                Nuxt website
-            </NuxtLink>
-        </template> -->
+        <v-dialog v-model="dialog" width="800">
+            <template v-slot:activator="{ props }">
+                <v-data-table-virtual
+                    :headers="headers"
+                    :items="dummyItems"
+                    height="245"
+                    v-bind="props"
+                > 
+                </v-data-table-virtual>
+           </template>
+           <pages-global-home-well-known-and-task-thread-modal-board-modal/>
+        </v-dialog>
 
-        </v-data-table-virtual>
         <div class="table-footer text-center">
             <span>全 {{ totalCount }} 件</span>
             <v-pagination
@@ -28,6 +29,7 @@
     export default {
         data () {
             return {
+                dialog: false, 
                 headers: [
                     { title: '更新日時', key: 'updated_at', align: 'center', sortable: false },
                     { title: '掲示先部署', key: 'to_departments', align: 'center', sortable: false },
@@ -37,6 +39,14 @@
                     { title: 'メンション', key: 'has_mentions', align: 'center', sortable: false },
                 ],
                 dummyItems: [        
+                    {
+                        updated_at: '2023年03月22日 00時00分00秒',
+                        to_departments: '看護部　診察技術部',
+                        staff_name: '保険指定医テスト１０',
+                        title: '医療安全委員からのお知らせ',
+                        has_attachments: '',
+                        has_mentions: '',
+                    },
                     {
                         updated_at: '2023年03月22日 00時00分00秒',
                         to_departments: '看護部　診察技術部',
