@@ -1,172 +1,154 @@
 <template>
-    <div class="search-fields">
-        <div class="search-condition d-flex">
-            <div class="d-flex">
-                <div class="ml-5 mt-5">
-                    <p class="mb-0 text-left">受付日</p>
-                    <div style="width: 230px">
-                        <datepicker
-                            :value.sync="date"
-                            placeholder="年・月・日"
-                        />
-                    </div>
-                </div>
-
-                <div class="ml-3 mt-5">
-                    <p class="mb-0 text-left">担当者</p>
-                    <v-select 
-                        dense 
-                        clearable 
-                        variant="solo" 
-                        hide-details
-                        style="width: 174px; background-color: white" 
-                        placeholder="選択してください" 
-                        :items="['DC花子', '2', '3']"
-                    />
-                </div>
-                <div class="ml-3 mt-5">
-                    <p class="mb-0 text-left">グループ</p>
-                    <v-select 
-                        dense 
-                        clearable 
-                        variant="solo" 
-                        hide-details
-                        style="width: 174px; background-color: white" 
-                        placeholder="選択してください" 
-                        :items="['DC花子', '2', '3']"/>
-                </div>
-                <div class="ml-3 mt-5">
-                    <p class="mb-0 text-left">患者番号</p>
-                    <v-text-field 
-                        dense 
-                        clearable 
-                        variant="solo" 
-                        hide-details
-                        style="width: 174px; background-color: white" 
-                        placeholder="入力してください"
-                        :rules="rules.patient_no_rule"
-                    />
-                </div>
-                <div class="ml-3 mt-5">
-                    <p class="mb-0 text-left">状態</p>
-                    <v-select 
-                        dense 
-                        clearable 
-                        variant="solo" 
-                        hide-details
-                        style="width: 174px; background-color: white" 
-                        placeholder="選択してください" 
-                        :items="['DC花子', '2', '3']"
-                    />
-                </div>
-                <div class="ml-5 mt-7" > 
-                    <v-btn 
-                        rounded 
-                        small 
-                        style="background-color: #1ea0dc; color: #ffffff"
-                    >検索</v-btn>
-                </div>
-
-                <div class="ml-5">
-                    <div>
-                        <v-data-table-virtual
-                        :headers="header"
-                        :items="dummyItems"
-                        hide-default-footer
-                        >
-                        </v-data-table-virtual>
-                    </div>
-                </div>
-                
-                <div>
-                    <v-btn
-                        small
-                        dense
-                        class="mt-7 ml-10"
-                        rounded
-                        style="background-color: #1ea0dc; color: #ffffff"
-                    >
-                        臨時参加
-                    </v-btn>
-                </div>
-            </div>
-        </div>
+    <div class="pa-4 pb-2">
+      <v-container fluid class="white">
+        <v-row dense style="display: flex; justify-content: space-between">
+          <div style="display: flex">
+            <v-col md="auto">
+              <p>受付日</p>
+              <div style="width: 150px">
+                <date-picker placeholder="年/月/日" />
+              </div>
+            </v-col>
+            <v-col md="auto">
+              <p>担当者</p>
+              <div style="width: 150px">
+                <v-select
+                  dense
+                  variant="solo"
+                  clearable
+                  hide-details
+                  placeholder="選択してください"
+                  :items="['DC花子', '2']"
+                />
+              </div>
+            </v-col>
+            <v-col md="auto">
+              <p>グループ</p>
+              <div style="width: 150px">
+                <v-select
+                  dense
+                  variant="solo"
+                  clearable
+                  hide-details
+                  placeholder="選択してください"
+                  :items="['DC花子', '2']"
+                />
+              </div>
+            </v-col>
+            <v-col md="auto" mx="auto">
+              <p>患者番号</p>
+              <div style="width: 150px">
+                <v-text-field
+                  dense
+                  variant="solo"
+                  clearable
+                  hide-details
+                  placeholder="入力してください"
+                />
+              </div>
+            </v-col>
+            <v-col md="auto">
+              <p>状態</p>
+              <div style="width: 150px">
+                <v-select
+                  dense
+                  variant="solo"
+                  clearable
+                  hide-details
+                  placeholder="選択してください"
+                  :items="['DC花子', '2']"
+                />
+              </div>
+            </v-col>
+          </div>
+          <div class="mt-8">
+            <v-col md="auto" align-self="end">
+              <v-btn small width="80" color="primary" rounded>検索</v-btn>
+            </v-col>
+          </div>
+          <div class="mt-0">
+            <v-col md="auto" align-self="end">
+              <v-data-table-virtual
+                :headers="header"
+                :items="dummyItems"
+                hide-default-footer
+              >
+              </v-data-table-virtual>
+            </v-col>
+          </div>
+          <div class="mt-8">
+            <v-col md="auto" align-self="end">
+              <v-btn small width="100" color="primary" rounded>臨時参加</v-btn>
+            </v-col>
+          </div>
+        </v-row>
+      </v-container>
     </div>
-</template>
-
-<script lang="ts">
-    import Datepicker from '@/components/general/Form/DatePicker1.vue'
-    import moment from 'moment';
-    import { defineComponent, ref } from 'vue'
-
-    type HeaderCell = {
-            title: string
-            key: string
-            width?: string| number 
-            sortable: boolean
-            align: string
-        };
-
-    const header: HeaderCell[] = [
-        // { title: 'SC',key: 'sc', width:80, sortable: false, align: 'center'},
-        // { title: 'DC',key: 'dc', width:80, sortable: false, align: 'center'},
-        // { title: 'DNC',key: 'dnc', width:80, sortable: false, align: 'center'},
-        // { title: 'NC',key: 'nc', width:80, sortable: false, align: 'center'},
-        // { title: '他',key: 'other', width:80, sortable: false, align: 'center'},
-        { title: '合計',key: 'total', width:80, sortable: false, align: 'center'},
-    ]
-    const dummyItems = [
-        {
-            // sc: '10人',
-            // dc: '10人',
-            // dnc: '10人',
-            // nc: '10人',
-            // other: '10人',
-            total: '10人',
-        }
-    ]
-    export default defineComponent ({
-        components: {
-            Datepicker,
-        },
-        setup() {
-            const rules = ref({
-                patient_no_rule: [
-                    (v: string) => /^\d+$/.test(v) || !v || '番号を入力してください',
-                ],
-            })
-            return {
-                date: ref(moment().format('YYYY-MM-DD')),
-                rules,
-                header,
-                dummyItems,
-            }
-        },
-    })
-</script>
-
-  <style lang="scss" scoped>
-  .search-fields {
-    display: flex;
-    justify-content: space-between;
-    .search-condition{
-        p {
-            font-size: 14px;
-            font-weight: bold;
-    }
-    }
-  }
-  .v-data-table :deep(.th) {
-    text-align: center !important;
-    background-color: #f0f3f5 !important;
-    font-size: 12px;
-    height: 30px !important;
-  }
-  .v-data-table :deep(.td) {
-  text-align: center;
-  border-bottom: 1px solid #c7ccce;
-  font-size: 12px !important;
-  height: 30px !important;
+  </template>
+    
+    <script lang="ts">
+  import { defineComponent, ref } from 'vue'
+  import moment from 'moment'
+  import DatePicker from '~/components/general/Form/DatePicker.vue'
+  
+  type HeaderCell = {
+    title: string
+    key: string
+    width?: string | number
+    sortable: boolean
+    align: string
   }
   
+  const header: HeaderCell[] = [
+    // { title: 'SC',key: 'sc', width:80, sortable: false, align: 'center'},
+    // { title: 'DC',key: 'dc', width:80, sortable: false, align: 'center'},
+    // { title: 'DNC',key: 'dnc', width:80, sortable: false, align: 'center'},
+    // { title: 'NC',key: 'nc', width:80, sortable: false, align: 'center'},
+    // { title: '他',key: 'other', width:80, sortable: false, align: 'center'},
+    { title: '合計', key: 'total', width: 80, sortable: false, align: 'center' },
+  ]
+  const dummyItems = [
+    {
+      // sc: '10人',
+      // dc: '10人',
+      // dnc: '10人',
+      // nc: '10人',
+      // other: '10人',
+      total: '10人',
+    },
+  ]
+  export default defineComponent({
+    components: {
+      DatePicker,
+    },
+    setup() {
+      const rules = ref({
+        patient_no_rule: [
+          (v: string) => /^\d+$/.test(v) || !v || '番号を入力してください',
+        ],
+      })
+      return {
+        date: ref(moment().format('YYYY-MM-DD')),
+        rules,
+        header,
+        dummyItems,
+      }
+    },
+  })
+  </script>
+    
+    <style lang="scss" scoped>
+  .col {
+    p {
+      font-weight: bold;
+      margin-bottom: 0;
+      padding-bottom: 0;
+    }
+    .v-btn {
+      top: 0;
+      bottom: 0;
+      margin: auto;
+    }
+  }
   </style>
+    

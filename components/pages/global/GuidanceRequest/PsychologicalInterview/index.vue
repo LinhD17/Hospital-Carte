@@ -36,6 +36,7 @@ import imageUrl from '@/assets/icon/schedule.svg'
 import { defineComponent, ref } from 'vue'
 
 export default defineComponent({
+<<<<<<< HEAD
 components: {
   //
 },
@@ -49,6 +50,21 @@ setup() {
     appTabClick,
   }
 },
+=======
+  components: {
+    //
+  },
+  setup() {
+    const appTab = ref('instruction')
+    const appTabClick = (appType: string) => {
+      appTab.value = appType
+    }
+    return {
+      appTab,
+      appTabClick,
+    }
+  },
+>>>>>>> a6fca55f4dd0073d4acb2a086e7e446c9c6b1a7c
 })
 </script>
 
