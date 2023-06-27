@@ -1,15 +1,13 @@
 <template>
-    <div class="well-known">
-        <PagesGlobalGeneralGlobalBaseLayout 
-            page-title="精神疾患レジストリ" 
-        >
-            <template #iconImg>
-                <img :src="imageUrl"/> 
-            </template>
-            <PagesGlobalManagementRegistrySearchField />
-            <PagesGlobalManagementRegistryTable /> 
-        </PagesGlobalGeneralGlobalBaseLayout>
-    </div>
+  <div class="well-known">
+    <PagesGlobalGeneralGlobalBaseLayout page-title="精神疾患レジストリ">
+      <template #iconImg>
+        <img :src="imageUrl" />
+      </template>
+      <PagesGlobalManagementRegistrySearchField />
+      <PagesGlobalManagementRegistryTable />
+    </PagesGlobalGeneralGlobalBaseLayout>
+  </div>
 </template>
   
 <script setup lang="ts">
