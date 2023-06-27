@@ -4,7 +4,7 @@
 
 <template>
   <div class="description-style">
-    <PagesGlobalGuidanceRequestPsychologicalInterviewInstructionSearch />
+    <PagesGlobalGuidanceRequestPsychologicalInterviewInstructionSearchField />
     <PagesGlobalGuidanceRequestPsychologicalInterviewInstructionTable />
   </div>
 </template>
