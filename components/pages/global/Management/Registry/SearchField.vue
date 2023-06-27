@@ -41,9 +41,9 @@
           </v-col>
           <v-col md="auto">
             <p>患者性別</p>
-            <div style="width: 80px">
+            <div style="width: 150px">
               <v-select
-                densedense
+                dense
                 variant="solo"
                 clearable
                 hide-details
