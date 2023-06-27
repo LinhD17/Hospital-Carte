@@ -6,6 +6,7 @@
       :items="dummyItems"
       show-select
       class="elevation-1"
+      @page-count="pageCount=$event"
     >
       <!-- status -->
       <template v-slot:item.status="{ item }"> 
@@ -139,7 +140,7 @@
       <v-pagination
           v-model="page"
           class="ml-4"
-          circle
+          rounded="circle"
           :length="pageCount"
           :total-visible="pageCount"
       ></v-pagination>
@@ -152,235 +153,237 @@
 </template>
 
 <script>
-    export default {
-      data () {
-        return {
-          selected: [],
-          headers: [
-            //{ title: '不参加選択', key: 'check', align:'center', sortable: false},
-            { title: '状態', key: 'status', align:'center', sortable: false, width: 80},
-            { title: '患者番号', key: 'patient_no', align:'center', sortable: false, width: 100},
-            { title: '患者情報', key: 'patient_info', align:'center', sortable: false, width: 320},
-            { title: '受付時間', key: 'recept_time', align:'center', sortable: false, width: 100},
-            { title: '種目', key: 'event', align:'center', sortable: false, width: 120},
-            { title: '食数', key: 'meals', align:'center', sortable: false, width: 100},
-            { title: '早加', key: 'earlyMorning', align:'center', sortable: false, width: 50},
-            { title: '長減/合計', key: 'lengthening', align:'center', sortable: false, width: 100},
-            { title: 'プログラム', key: 'program', align:'center', sortable: false, width: 130},
-            { title: 'グループ', key: 'group', align:'center', sortable: false, width: 120},
-            { title: '診療内容', key: 'consultation', align:'center', sortable: false, width: 200},
-            { title: '主治医', key: 'main_doctor', align:'center', sortable: false, width: 80},
-            { title: '受付メモ', key: 'memo', align:'center', sortable: false},
-          ],
-          dummyItems: [
-            {
-              status: {
-                id:1,
-                name: '記録済'
-              },
-              patient_no: '123456',
-              patient_info: {
-                name: 'テスト患者',
-                name_kana: 'テストカンジャ',
-                birthday: '1993年04月08日',
-                gender: 1,
-                isSameName: true,
-              },
-              recept_time: '8:30',
-              meals: '１食 (昼)',
-              earlyMorning: 'dummy',
-              lengthening: {
-                flag: '//',
-                sum: '1',
-              },
-              total: 1,
-              // program: [
-              //   {
-              //     name: 'カラオケ',
-              //   },
-              //   {
-              //     name: '園芸',
-              //   },
-              // ],
-              program: ['カラオケ','園芸',],
-              consultation: ['診察', '検査', '処方', '画像', '栄養'],
-              main_doctor: '医師太郎',
-              memo: '診察希望',
+  export default {
+    data () {
+      return {
+        selected: [],
+        headers: [
+          //{ title: '不参加選択', key: 'check', align:'center', sortable: false},
+          { title: '状態', key: 'status', align:'center', sortable: false, width: 80},
+          { title: '患者番号', key: 'patient_no', align:'center', sortable: false, width: 100},
+          { title: '患者情報', key: 'patient_info', align:'center', sortable: false, width: 320},
+          { title: '受付時間', key: 'recept_time', align:'center', sortable: false, width: 100},
+          { title: '種目', key: 'event', align:'center', sortable: false, width: 120},
+          { title: '食数', key: 'meals', align:'center', sortable: false, width: 100},
+          { title: '早加', key: 'earlyMorning', align:'center', sortable: false, width: 50},
+          { title: '長減/合計', key: 'lengthening', align:'center', sortable: false, width: 100},
+          { title: 'プログラム', key: 'program', align:'center', sortable: false, width: 130},
+          { title: 'グループ', key: 'group', align:'center', sortable: false, width: 120},
+          { title: '診療内容', key: 'consultation', align:'center', sortable: false, width: 200},
+          { title: '主治医', key: 'main_doctor', align:'center', sortable: false, width: 80},
+          { title: '受付メモ', key: 'memo', align:'center', sortable: false},
+        ],
+        dummyItems: [
+          {
+            status: {
+              id:1,
+              name: '記録済'
             },
-            {
-              status: {
-                id:1,
-                name: '確定済'
-              },
-              patient_no: '123456',
-              patient_info: {
-                name: 'テスト患者',
-                name_kana: 'テストカンジャ',
-                birthday: '1993年04月07日',
-                gender: 0,
-                isSameName: true,
-              },
-              recept_time: '8:30',
-              meals: '１食 (昼)',
-              earlyMorning: 'dummy',
-              lengthening: {
-                flag: '//',
-                sum: 2,
-              },
-              total: 1,
-              // program: [
-              //   {
-              //     name: '未指定'
-              //   },
-              //   {
-              //     name: '園芸',
-              //   },
-              // ],
-              program: ['カラオケ','園芸',],
-              consultation: ['診察', '検査', ],
-              main_doctor: '医師太郎',
-              memo: '診察希望',
+            patient_no: '123456',
+            patient_info: {
+              name: 'テスト患者',
+              name_kana: 'テストカンジャ',
+              birthday: '1993年04月08日',
+              gender: 1,
+              isSameName: true,
             },
-            {
-              status: {
-                id:1,
-                name: '不参加'
-              },
-              patient_no: '123456',
-              patient_info: {
-                name: 'テスト患者',
-                name_kana: 'テストカンジャ',
-                birthday: '1993年01月22日',
-                gender: 1,
-                isSameName: true,
-              },
-              recept_time: '8:30',
-              meals: '１食 (昼)',
-              earlyMorning: 'dummy',
-              lengthening: {
-                flag: '//',
-                sum: '2',
-              },
-              total: 1,
-              // program: [
-              //   {
-              //     name: '未指定'
-              //   },
-              //   {
-              //     name: '園芸',
-              //   },
-              // ],
-              program: ['カラオケ','園芸',],
-              consultation: ['診察', '画像', '栄養'],
-              main_doctor: '医師太郎',
-              memo: '診察希望',
+            recept_time: '8:30',
+            meals: '１食 (昼)',
+            earlyMorning: 'dummy',
+            lengthening: {
+              flag: '//',
+              sum: '1',
             },
-            {
-              status: {
-                id:1,
-                name: '記録済'
-              },
-              patient_no: '123456',
-              patient_info: {
-                name: 'テスト患者',
-                name_kana: 'テストカンジャ',
-                birthday: '1993年04月08日',
-                gender: 1,
-                isSameName: true,
-              },
-              recept_time: '8:30',
-              meals: '１食 (昼)',
-              earlyMorning: 'dummy',
-              lengthening: {
-                flag: '//',
-                sum: '1',
-              },
-              total: 1,
-              // program: [
-              //   {
-              //     name: 'カラオケ',
-              //   },
-              //   {
-              //     name: '園芸',
-              //   },
-              // ],
-              program: ['カラオケ','園芸',],
-              consultation: ['診察', '検査', '処方', '画像', '栄養'],
-              main_doctor: '医師太郎',
-              memo: '診察希望',
+            total: 1,
+            // program: [
+            //   {
+            //     name: 'カラオケ',
+            //   },
+            //   {
+            //     name: '園芸',
+            //   },
+            // ],
+            program: ['カラオケ','園芸',],
+            consultation: ['診察', '検査', '処方', '画像', '栄養'],
+            main_doctor: '医師太郎',
+            memo: '診察希望',
+          },
+          {
+            status: {
+              id:1,
+              name: '確定済'
             },
-            {
-              status: {
-                id:1,
-                name: '記録済'
-              },
-              patient_no: '123456',
-              patient_info: {
-                name: 'テスト患者',
-                name_kana: 'テストカンジャ',
-                birthday: '1993年04月08日',
-                gender: 1,
-                isSameName: true,
-              },
-              recept_time: '8:30',
-              meals: '１食 (昼)',
-              earlyMorning: 'dummy',
-              lengthening: {
-                flag: '//',
-                sum: '1',
-              },
-              total: 1,
-              // program: [
-              //   {
-              //     name: 'カラオケ',
-              //   },
-              //   {
-              //     name: '園芸',
-              //   },
-              // ],
-              program: ['カラオケ','園芸',],
-              consultation: ['診察', '検査', '処方', '画像', '栄養'],
-              main_doctor: '医師太郎',
-              memo: '診察希望',
+            patient_no: '123456',
+            patient_info: {
+              name: 'テスト患者',
+              name_kana: 'テストカンジャ',
+              birthday: '1993年04月07日',
+              gender: 0,
+              isSameName: true,
             },
-            {
-              status: {
-                id:1,
-                name: '記録済'
-              },
-              patient_no: '123456',
-              patient_info: {
-                name: 'テスト患者',
-                name_kana: 'テストカンジャ',
-                birthday: '1993年04月08日',
-                gender: 1,
-                isSameName: true,
-              },
-              recept_time: '8:30',
-              meals: '１食 (昼)',
-              earlyMorning: 'dummy',
-              lengthening: {
-                flag: '//',
-                sum: '1',
-              },
-              total: 1,
-              // program: [
-              //   {
-              //     name: 'カラオケ',
-              //   },
-              //   {
-              //     name: '園芸',
-              //   },
-              // ],
-              program: ['カラオケ','園芸',],
-              consultation: ['診察', '検査', '処方', '画像', '栄養'],
-              main_doctor: '医師太郎',
-              memo: '診察希望',
+            recept_time: '8:30',
+            meals: '１食 (昼)',
+            earlyMorning: 'dummy',
+            lengthening: {
+              flag: '//',
+              sum: 2,
             },
-          ],
-        }
-      },         
-    }
+            total: 1,
+            // program: [
+            //   {
+            //     name: '未指定'
+            //   },
+            //   {
+            //     name: '園芸',
+            //   },
+            // ],
+            program: ['カラオケ','園芸',],
+            consultation: ['診察', '検査', ],
+            main_doctor: '医師太郎',
+            memo: '診察希望',
+          },
+          {
+            status: {
+              id:1,
+              name: '不参加'
+            },
+            patient_no: '123456',
+            patient_info: {
+              name: 'テスト患者',
+              name_kana: 'テストカンジャ',
+              birthday: '1993年01月22日',
+              gender: 1,
+              isSameName: true,
+            },
+            recept_time: '8:30',
+            meals: '１食 (昼)',
+            earlyMorning: 'dummy',
+            lengthening: {
+              flag: '//',
+              sum: '2',
+            },
+            total: 1,
+            // program: [
+            //   {
+            //     name: '未指定'
+            //   },
+            //   {
+            //     name: '園芸',
+            //   },
+            // ],
+            program: ['カラオケ','園芸',],
+            consultation: ['診察', '画像', '栄養'],
+            main_doctor: '医師太郎',
+            memo: '診察希望',
+          },
+          {
+            status: {
+              id:1,
+              name: '記録済'
+            },
+            patient_no: '123456',
+            patient_info: {
+              name: 'テスト患者',
+              name_kana: 'テストカンジャ',
+              birthday: '1993年04月08日',
+              gender: 1,
+              isSameName: true,
+            },
+            recept_time: '8:30',
+            meals: '１食 (昼)',
+            earlyMorning: 'dummy',
+            lengthening: {
+              flag: '//',
+              sum: '1',
+            },
+            total: 1,
+            // program: [
+            //   {
+            //     name: 'カラオケ',
+            //   },
+            //   {
+            //     name: '園芸',
+            //   },
+            // ],
+            program: ['カラオケ','園芸',],
+            consultation: ['診察', '検査', '処方', '画像', '栄養'],
+            main_doctor: '医師太郎',
+            memo: '診察希望',
+          },
+          {
+            status: {
+              id:1,
+              name: '記録済'
+            },
+            patient_no: '123456',
+            patient_info: {
+              name: 'テスト患者',
+              name_kana: 'テストカンジャ',
+              birthday: '1993年04月08日',
+              gender: 1,
+              isSameName: true,
+            },
+            recept_time: '8:30',
+            meals: '１食 (昼)',
+            earlyMorning: 'dummy',
+            lengthening: {
+              flag: '//',
+              sum: '1',
+            },
+            total: 1,
+            // program: [
+            //   {
+            //     name: 'カラオケ',
+            //   },
+            //   {
+            //     name: '園芸',
+            //   },
+            // ],
+            program: ['カラオケ','園芸',],
+            consultation: ['診察', '検査', '処方', '画像', '栄養'],
+            main_doctor: '医師太郎',
+            memo: '診察希望',
+          },
+          {
+            status: {
+              id:1,
+              name: '記録済'
+            },
+            patient_no: '123456',
+            patient_info: {
+              name: 'テスト患者',
+              name_kana: 'テストカンジャ',
+              birthday: '1993年04月08日',
+              gender: 1,
+              isSameName: true,
+            },
+            recept_time: '8:30',
+            meals: '１食 (昼)',
+            earlyMorning: 'dummy',
+            lengthening: {
+              flag: '//',
+              sum: '1',
+            },
+            total: 1,
+            // program: [
+            //   {
+            //     name: 'カラオケ',
+            //   },
+            //   {
+            //     name: '園芸',
+            //   },
+            // ],
+            program: ['カラオケ','園芸',],
+            consultation: ['診察', '検査', '処方', '画像', '栄養'],
+            main_doctor: '医師太郎',
+            memo: '診察希望',
+          },
+        ],
+        page: ref(1), 
+        totalCount: 10,
+      }
+    },         
+  }
 </script>
   
 

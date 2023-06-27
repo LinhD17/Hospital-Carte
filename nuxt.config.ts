@@ -21,5 +21,8 @@ export default defineNuxtConfig({
     head: {
       title: 'HK-Replica-Nuxt3',
     }
+  },
+  vuetify: {
+    customVariables: ['~/assets/variables.scss'],
   }
 })

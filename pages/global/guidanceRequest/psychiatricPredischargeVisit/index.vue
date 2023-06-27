@@ -4,7 +4,7 @@
 <template>     
     <NuxtLayout name="global">
         <div class="screen">
-            <PagesGlobalGuidanceRequestPsychologicalInterview /> 
+            <PagesGlobalGuidanceRequestPsychiatricPredischargeVisit />
         </div>
     </NuxtLayout>
 </template>

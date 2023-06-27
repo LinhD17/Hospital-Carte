@@ -1,14 +1,14 @@
 <template>
     <div>
         <v-data-table-virtual
-        fixed-header
-        fixed-footer
-        :headers="headers"
-        :items="dummyDatas"
-        class="report-table"
-        height="300"
+            fixed-header
+            fixed-footer
+            :headers="headers"
+            :items="dummyDatas"
+            class="report-table"
+            height="300"
+            @page-count="pageCount = $event"
         >
-
             <!-- patient-info -->
             <template v-slot:item.patientInfo = "{ item }">
                 <div class="d-flex" style="justify-content: space-between">
@@ -47,7 +47,7 @@
             <span>全 {{ totalCount }} 件</span>
             <v-pagination
                 v-model="page"
-                circle
+                rounded="circle"
                 :length="pageCount"
                 :total-visible="pageCount"
             ></v-pagination>
@@ -141,39 +141,40 @@
                         reporter: '保険指定医テスト１０',
                     },
                 ],
+                page: ref(1), 
+                totalCount: 10,
             }
         },
     }
 </script>
 
 <style lang="scss" scoped> 
-  .report-table {
-      border: 0 !important;
-      white-space: nowrap;
+    .report-table {
+        border: 0 !important;
+        white-space: nowrap;
 
+    
+        a {
+        margin-top: 0;
+        text-decoration: none;
+        color: #333333;
+        }
+    } 
   
-      a {
-      margin-top: 0;
-      text-decoration: none;
-      color: #333333;
-    }
-  
-    :deep(td) {
+    .report-table :deep(td) {
       text-align: center !important;
     }
-  
-  }
-  .table-footer {
-      display: flex;
-      position: sticky;
-      bottom: 0;
-      padding: 5px 0;
-      justify-content: center;
-      align-items: center;
-      z-index: 100;
-  }
+    .table-footer {
+        display: flex;
+        position: sticky;
+        bottom: 0;
+        padding: 5px 0;
+        justify-content: center;
+        align-items: center;
+        z-index: 100;
+    }
 
-  .table-footer {
+    .table-footer {
       display: flex;
       position: sticky;
       bottom: 0;

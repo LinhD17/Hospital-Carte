@@ -1,6 +1,11 @@
 <template>
   <div class="task-table">
-    <v-data-table :headers="headers" :items="dummyItems" class="elevation-1">
+    <v-data-table
+      :headers="headers" 
+      :items="dummyItems" 
+      class="elevation-1"
+      @page-count="pageCount=$event"
+    >
       <!-- label -->
       <template v-slot:item.treatments="{ item }">
         <div style="display: inline-flex; margin-right: 5px">
@@ -95,7 +100,7 @@
       <span>全 {{ totalCount }} 件</span>
       <v-pagination
         v-model="page"
-        circle
+        rounded="circle"
         :length="pageCount"
         :total-visible="pageCount"
       ></v-pagination>
@@ -106,7 +111,7 @@
   </div>
 </template>
   
-  <script>
+<script>
 export default {
   data() {
     return {
@@ -236,6 +241,8 @@ export default {
           scheduleddateofexamination: '2023年06月05日 09時00分',
         },
       ],
+      page: ref(1),
+      totalCount: 10,
     }
   },
 }

@@ -4,6 +4,7 @@
       :headers="headers" 
       :items="dummyItems" 
       class="elevation-1"
+      @page-count="pageCount=$event"
     >
       <!-- patient-info -->
       <template v-slot:item.patient_info = "{ item }">
@@ -85,7 +86,7 @@
       <span>全 {{ totalCount }} 件</span>
       <v-pagination
         v-model="page"
-        circle
+        rounded="circle"
         :length="pageCount"
         :total-visible="pageCount"
       ></v-pagination>
@@ -136,6 +137,8 @@ export default {
           doctor: " 医師　太郎",
         },
       ],
+      page: ref(1), 
+      totalCount: 10,
     };
   },
 };

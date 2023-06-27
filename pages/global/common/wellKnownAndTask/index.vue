@@ -11,8 +11,6 @@
     <NuxtLayout name="global">
         <div class="screen">
             <PagesGlobalHomeWellKnownAndTask />
-            sfefdsf
-            
         </div>
     </NuxtLayout>
 </template>

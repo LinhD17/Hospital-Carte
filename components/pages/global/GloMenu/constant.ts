@@ -31,6 +31,12 @@ export const GLOBAL_MENU: MenuItems = {
                     name: '周知・業務タスク',
                     path: '/global/common/wellKnownAndTask',
                 },
+                {
+                    master_global_menu_id: uniqueId('__globalMenuId__'),
+                    menu_level: 2,
+                    name: '職員スケジュール',
+                    path: '/global/common/staffSchedule',
+                },
             ],
         },
         //2 favorite 
@@ -138,7 +144,7 @@ export const GLOBAL_MENU: MenuItems = {
                     master_global_menu_id: uniqueId('__globalMenuId__'),
                     menu_level: 2,
                     name: '精神科退院前訪問',
-                    path: '/global/guidanceRequest/psychologicalInterview',
+                    path: '/global/guidanceRequest/psychiatricPredischargeVisit',
                 },
                 {
                     master_global_menu_id: uniqueId('__globalMenuId__'),

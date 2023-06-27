@@ -7,6 +7,7 @@
                     :items="dummyItems"
                     height="245"
                     v-bind="props"
+                    @page-count="pageCount=$event"
                 > 
                 </v-data-table-virtual>
            </template>
@@ -17,7 +18,7 @@
             <span>全 {{ totalCount }} 件</span>
             <v-pagination
                 v-model="page"
-                circle
+                rounded="circle"
                 :length="pageCount"
                 :total-visible="pageCount"
             ></v-pagination>
@@ -80,6 +81,8 @@
                         has_mentions: '',
                     },
                 ],
+                page: ref(1), 
+                totalCount: 10,
             }
         },
     }

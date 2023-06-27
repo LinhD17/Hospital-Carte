@@ -51,6 +51,8 @@
                         status: '未着手',
                     },
                 ],
+                page: ref(1), 
+                totalCount: 10,
             }
         },
     }
@@ -91,7 +93,7 @@
             <span>全 {{ totalCount }} 件</span>
             <v-pagination
                 v-model="page"
-                circle
+                rounded="circle"
                 :length="pageCount"
                 :total-visible="pageCount"
             ></v-pagination>

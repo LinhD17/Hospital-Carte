@@ -1,73 +1,73 @@
 <template>
     <div class="table-content">
         <v-data-table-virtual
-            :headers="headers"
-            :items="dummyItems"
-            :items-per-page="-1"
-            class="elevation-1"
+          :headers="headers"
+          :items="dummyItems"
+          :items-per-page="-1"
+          class="elevation-1"
+          @page-count="pageCount=$event"
         >
-    
-            <!-- patient-info -->
-            <template v-slot:item.patient_info = "{ item }">
-                <div class="d-flex" style="justify-content: space-between">
-                    <div class="info-cell">
-                        <img
-                            v-if="item.raw.patient_info.gender === 1"
-                            src="@/assets/icon/man.svg"
-                            style="width: 25px; height: 25px"
-                        />
-                        <img
-                            v-else
-                            style="width: 25px; height: 25px"
-                            src="@/assets/icon/female.svg"
-                        />
-                        <a>
-                            <ruby class="info-cell__content ml-2" style="min-width: 80px">
+          <!-- patient-info -->
+          <template v-slot:item.patient_info = "{ item }">
+              <div class="d-flex" style="justify-content: space-between">
+                  <div class="info-cell">
+                      <img
+                          v-if="item.raw.patient_info.gender === 1"
+                          src="@/assets/icon/man.svg"
+                          style="width: 25px; height: 25px"
+                      />
+                      <img
+                          v-else
+                          style="width: 25px; height: 25px"
+                          src="@/assets/icon/female.svg"
+                      />
+                      <a>
+                          <ruby class="info-cell__content ml-2" style="min-width: 80px">
 
-                            {{ item.raw.patient_info.name }}
-                            </ruby>
-                        </a>
-                        <div
-                            v-if="item.raw.patient_info.isSameName === true"
-                            class="same-name-field"
-                        >
-                            <img src="@/assets/icon/important_triangle.svg" />
-                            <span>類似</span>
-                        </div>
-                    </div>
-                    <span>
-                    {{ item.raw.patient_info.birthday }}
-                    <!-- ({{ moment().diff(item.raw.patient_info.birthday, 'years', false) }}) -->
-                    </span> 
-                </div>
-            </template>
-            <!-- 内容 -->
-            <template v-slot:item.color_code="{ item }">
-                <div
-                    class="status-list--box"
-                    v-if="item.raw.color_code === 1"
-                    style="background-color: #a4dcf4"
-                ></div>
-                <div
-                    class="status-list--box"
-                    v-if="item.raw.color_code === 2"
-                    style="background-color:#fcc4dc"
-                ></div>
-                <div
-                    class="status-list--box"
-                    v-if="item.raw.color_code === 3"
-                    style="background-color: #fbdd9c"
-                ></div>
-                <div
-                    class="status-list--box"
-                    v-if="item.raw.color_code === 4"
-                    style="background-color: #bce49c"
-                ></div>
-                <div
-                    class="status-list--box"
-                    v-if="item.raw.color_code === 5"
-                    style="background-color: #fcbc9c"
-                ></div>
+                          {{ item.raw.patient_info.name }}
+                          </ruby>
+                      </a>
+                      <div
+                          v-if="item.raw.patient_info.isSameName === true"
+                          class="same-name-field"
+                      >
+                          <img src="@/assets/icon/important_triangle.svg" />
+                          <span>類似</span>
+                      </div>
+                  </div>
+                  <span>
+                  {{ item.raw.patient_info.birthday }}
+                  <!-- ({{ moment().diff(item.raw.patient_info.birthday, 'years', false) }}) -->
+                  </span> 
+              </div>
+          </template>
+          <!-- 内容 -->
+          <template v-slot:item.color_code="{ item }">
+              <div
+                  class="status-list--box"
+                  v-if="item.raw.color_code === 1"
+                  style="background-color: #a4dcf4"
+              ></div>
+              <div
+                  class="status-list--box"
+                  v-if="item.raw.color_code === 2"
+                  style="background-color:#fcc4dc"
+              ></div>
+              <div
+                  class="status-list--box"
+                  v-if="item.raw.color_code === 3"
+                  style="background-color: #fbdd9c"
+              ></div>
+              <div
+                  class="status-list--box"
+                  v-if="item.raw.color_code === 4"
+                  style="background-color: #bce49c"
+              ></div>
+              <div
+                  class="status-list--box"
+                  v-if="item.raw.color_code === 5"
+                  style="background-color: #fcbc9c"
+              ></div>
             </template>
             <!-- 内容 -->
             <template v-slot:item.sticky_note="{ item }"> 
@@ -91,7 +91,7 @@
             <v-pagination
                 v-model="page"
                 class="ml-4"
-                circle
+                rounded="circle"
                 :length="pageCount"
                 :total-visible="pageCount"
             ></v-pagination>
@@ -229,6 +229,8 @@
                 is_self: 1, 
               },
             ],
+            page: ref(1), 
+            totalCount: 10,
           }
         },         
       }

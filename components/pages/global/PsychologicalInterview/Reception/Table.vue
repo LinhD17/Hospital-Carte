@@ -6,6 +6,7 @@
       :items="dummyItems"
       show-select
       class="elevation-1"
+      @page-count="pageCount=$event"
     >
       <!-- status -->
       <template v-slot:item.status="{ item }"> 
@@ -111,7 +112,7 @@
       <v-pagination
           v-model="page"
           class="ml-4"
-          circle
+          rounded="circle"
           :length="pageCount"
           :total-visible="pageCount"
       ></v-pagination>

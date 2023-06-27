@@ -4,6 +4,7 @@
             :headers="headers"
             :items="dummyItems"
             class="elevation-1"
+            @page-count="pageCount = $event"
         >
             <!-- patient-info -->
             <template v-slot:item.patient_info = "{ item }">
@@ -47,7 +48,7 @@
             <v-pagination
                 v-model="page"
                 class="ml-4"
-                circle
+                rounded="circle"
                 :length="pageCount"
                 :total-visible="pageCount"
             ></v-pagination>
@@ -138,6 +139,8 @@
                 orderFinalDate: '2022/08/30',
               },
             ],
+            page: ref(1), 
+            totalCount: 10,
           }
         },         
       }
