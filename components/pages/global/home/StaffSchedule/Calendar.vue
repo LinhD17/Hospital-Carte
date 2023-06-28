@@ -21,13 +21,18 @@
                     </v-btn>
                 </div>
             </div>
-            <v-calendar
+            <!-- <v-calendar
                 ref="calendar"
             >
                 <div style="height: 250px; width: 330px; background-color: pink">
                     RESCHO
                 </div>
-            </v-calendar>
+            </v-calendar> -->
+            <div style="height: 250px; width: 330px; background-color: pink">
+                <calendar-detail>
+
+                </calendar-detail>
+            </div>
             <div class="status-list mt-7">
                 <div class="d-flex mt-2">
                     <div class="status-list--box" style="background-color: #87cefa"></div>
@@ -58,6 +63,12 @@
         </div>
    </div>
 </template>
+<script setup lang="ts">
+import CalendarDetail from './Detail/Month.vue';
+
+ 
+
+</script>
 
 <style lang="scss" scoped>
     .btn-add {
