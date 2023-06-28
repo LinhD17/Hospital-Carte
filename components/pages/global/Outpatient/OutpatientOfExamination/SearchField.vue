@@ -1,178 +1,179 @@
 <template>
-  <div>
-    <v-row class="ma-4 pa-2 search-area">
-      <v-col md="auto" class="srch-fld">
-        <p class="txt-label">外来受付</p>
-        <div style="width: 210px">
-          <date-picker />
+  <div class="pa-4 pb-2">
+    <v-container fluid class="white">
+      <v-row dense style="display: flex; justify-content: space-between">
+        <div style="display: flex">
+          <v-col md="auto">
+            <p style="text-align: left; font-weight: bold">外来受付</p>
+            <div style="width: 150px">
+              <date-picker placeholder="年/月/日" />
+            </div>
+          </v-col>
+          <v-col md="auto">
+            <p style="text-align: left; font-weight: bold">診察担当医</p>
+            <div style="width: 150px">
+              <v-select
+                dense
+                variant="solo"
+                clearable
+                hide-details
+                placeholder="診察担当医を選択"
+                :items="['医師　太郎', '医師　次郎', '医師　花子']"
+              />
+            </div>
+          </v-col>
+          <v-col md="auto">
+            <p style="text-align: left; font-weight: bold">診察予定時刻</p>
+            <div class="d-flex align-center" style="width: 335px">
+              <TimePicker clearable />
+              <span v-text="'～'" class="mx-2"></span>
+              <TimePicker clearable />
+            </div>
+          </v-col>
+          <v-col md="auto" mx="auto">
+            <p style="text-align: left; font-weight: bold">患者番号</p>
+            <div style="width: 150px">
+              <v-text-field
+                dense
+                variant="solo"
+                clearable
+                hide-details
+                placeholder="患者番号を入力"
+              />
+            </div>
+          </v-col>
+          <v-col md="auto" mx="auto">
+            <p style="text-align: left; font-weight: bold">患者氏名</p>
+            <div style="width: 150px">
+              <v-text-field
+                dense
+                variant="solo"
+                clearable
+                hide-details
+                placeholder="患者氏名を入力"
+              />
+            </div>
+          </v-col>
+          <v-col md="auto">
+            <div style="width: 150px" class="mt-5">
+              <v-select
+                dense
+                variant="solo"
+                clearable
+                hide-details
+                :items="['前方一致', '部分一致']"
+              />
+            </div>
+          </v-col>
+          <v-col md="auto" class="mt-8">
+            <div style="width: 110px">
+              <v-btn
+                small
+                width="100"
+                variant="outlined"
+                style="color: #a9a9a9"
+                rounded
+                >項目リセット</v-btn
+              >
+            </div>
+          </v-col>
+          <v-col md="auto">
+            <div style="width: 80px" class="mt-8">
+              <v-btn small color="primary" rounded>検索</v-btn>
+            </div>
+          </v-col>
         </div>
-      </v-col>
-      <v-col md="auto" class="srch-fld">
-        <p class="txt-label">診察担当医</p>
-        <v-select
-          dense
-          clearable
-          variant="outlined"
-          hide-details
-          style="width: 180px"
-          placeholder="診察担当医を選択"
-          :items="['医師　太郎', '医師　次郎', '医師　花子']"
-        />
-      </v-col>
-      <v-col md="auto" class="srch-fld">
-        <p class="txt-label">診察予定時刻</p>
-        <div class="d-flex align-center">
-          <TimePicker clearable />
-          <span v-text="'～'" class="mx-2"></span>
-          <TimePicker clearable />
-        </div>
-      </v-col>
-      <v-col md="auto" class="srch-fld">
-        <p class="txt-label">患者番号</p>
-        <v-text-field
-          dense
-          variant="outlined"
-          hide-details
-          placeholder="患者番号を入力"
-          style="width: 170px"
-        />
-      </v-col>
-      <v-col md="auto" class="srch-fld">
-        <p class="txt-label">患者氏名</p>
-        <v-text-field
-          dense
-          variant="outlined"
-          hide-details
-          placeholder="患者氏名を入力"
-          style="width: 170px"
-        />
-      </v-col>
-      <v-col md="auto" class="srch-fld mt-6">
-        <v-select
-          dense
-          clearable
-          variant="outlined"
-          hide-details
-          style="width: 170px"
-          :items="['前方一致', '部分一致']"
-        />
-      </v-col>
-      <v-col md="auto mt-8" class="srch-fld">
-        <v-btn
-          min-width="100"
-          rounded
-          dense
-          variant="outlined"
-          style="color: #a9a9a9"
-          >項目リセット</v-btn
-        >
-      </v-col>
-      <v-col md="auto mt-8" class="srch-fld">
-        <v-btn dense min-width="80" rounded color="primary">検索</v-btn>
-      </v-col>
-    </v-row>
-    <v-row class="ma-4 pa-2 mt-10 search-area">
-      <v-col md="auto" class="srch-fld">
-        <p class="txt-label">外来進行状況</p>
-        <v-select
-          dense
-          clearable
-          variant="outlined"
-          hide-details
-          style="width: 170px"
-          :items="['']"
-        />
-      </v-col>
-      <v-col md="auto" class="srch-fld">
-        <p class="txt-label">診療内容</p>
-        <v-select
-          dense
-          clearable
-          variant="outlined"
-          hide-details
-          style="width: 140px"
-          :items="['診察', '処方', '注射', '検索']"
-        />
-      </v-col>
-      <v-col md="auto" class="srch-fld">
-        <p class="txt-label">診察科</p>
-        <v-select
-          dense
-          clearable
-          variant="outlined"
-          hide-details
-          style="width: 170px"
-          :items="['神経内科', '脳神経外科', '内科', '精神科']"
-        />
-      </v-col>
-      <v-col md="auto" class="srch-fld">
-        <p class="txt-label">併科受診</p>
-        <v-select
-          dense
-          clearable
-          variant="outlined"
-          hide-details
-          style="width: 100px"
-          :items="['有', '無']"
-        />
-      </v-col>
-      <v-col md="auto" class="srch-fld">
-        <p class="txt-label">初/再</p>
-        <v-select
-          dense
-          clearable
-          variant="outlined"
-          hide-details
-          style="width: 100px"
-          :items="['初診', '再診']"
-        />
-      </v-col>
-      <v-col md="auto" class="srch-fld">
-        <p class="txt-label">診察形態特殊</p>
-        <v-select
-          dense
-          clearable
-          variant="outlined"
-          hide-details
-          style="width: 170px"
-        />
-      </v-col>
-      <v-col md="auto" class="srch-fld">
-        <p class="txt-label">背景色</p>
-        <div class="d-flex mt-4 ml-0">          
-          <!-- <v-checkbox
+      </v-row>
+      <v-row dense style="display: flex; justify-content: space-between">
+        <div style="display: flex">
+          <v-col md="auto">
+            <p style="text-align: left; font-weight: bold">外来進行状況</p>
+            <div style="width: 150px">
+              <v-select dense variant="solo" clearable hide-details />
+            </div>
+          </v-col>
+          <v-col md="auto">
+            <p style="text-align: left; font-weight: bold">診療内容</p>
+            <div style="width: 150px">
+              <v-select
+                dense
+                variant="solo"
+                clearable
+                hide-details
+                :items="['診察', '処方', '注射', '検索']"
+              />
+            </div>
+          </v-col>
+          <v-col md="auto">
+            <p style="text-align: left; font-weight: bold">診察科</p>
+            <div style="width: 150px">
+              <v-select
+                dense
+                variant="solo"
+                clearable
+                hide-details
+                :items="['神経内科', '脳神経外科', '内科', '精神科']"
+              />
+            </div>
+          </v-col>
+          <v-col md="auto">
+            <p style="text-align: left; font-weight: bold">併科受診</p>
+            <div style="width: 150px">
+              <v-select
+                dense
+                variant="solo"
+                clearable
+                hide-details
+                :items="['有', '無']"
+              />
+            </div>
+          </v-col>
+          <v-col md="auto">
+            <p style="text-align: left; font-weight: bold">初/再</p>
+            <div style="width: 150px">
+              <v-select
+                dense
+                variant="solo"
+                clearable
+                hide-details
+                :items="['初診', '再診']"
+              />
+            </div>
+          </v-col>
+          <v-col md="auto">
+            <p style="text-align: left; font-weight: bold">診察形態特殊</p>
+            <div style="width: 150px">
+              <v-select dense variant="solo" clearable hide-details />
+            </div>
+          </v-col>
+          <v-col md="auto">
+            <p style="text-align: left; font-weight: bold">背景色</p>
+            <div style="width: 350px; text-align: left;" class="d-flex">
+              <v-checkbox
             v-for="item in OUTPATIENT_STATUS_COLOR"
-            :value="item.value"
+            :key="item.value" 
             dense
             hide-details
-            class="pa-0 ma-0 mr-2"
+            :value="item.value"
           >
             <template #label>
               <div
                 :style="`background-color:${item.text}`"
-                class="status-list--box"
-              />
+                class="status-box"
+              ></div>
             </template>
-          </v-checkbox>-->
-
-          <div class="status-list--box ml-0" style="background-color: #ffffff"></div>
-          <div class="status-list--box" style="background-color: #a4dcf4"></div>
-          <div class="status-list--box" style="background-color: #bce49c"></div>
-          <div class="status-list--box" style="background-color: #fbdd9c"></div>
-          <div class="status-list--box" style="background-color: #fcc4dc"></div>
-          <div class="status-list--box" style="background-color: #e3def1"></div> 
-        </div>
-      </v-col>
-      <v-col md="auto" class="srch-fld">
-        <p class="txt-label">コメント</p>
-        <!-- <div class="d-flex mt-4 ml-0"> -->
-          <div class="d-flex align-center c-radio-custom">
+          </v-checkbox>
+            </div>
+          </v-col>
+          <v-col md="auto" class="srch-fld">
+            <p style="text-align: left; font-weight: bold">コメント</p>
+          <div style="width: 350px;" class="d-flex">
           <v-checkbox
             v-for="item in OUTPATIENT_COMMENT_COLOR"
+            :key="item.value" 
             :value="item.value"
             dense
             hide-details
-            class="pa-0 ma-0 mr-2"
           >
             <template #label>
               <v-icon :color="item.text" :class="item.class"
@@ -180,44 +181,41 @@
               >
             </template>
           </v-checkbox>
-          <!-- </div> -->
         </div>
       </v-col>
-    </v-row>
+        </div>
+      </v-row>
+    </v-container>
   </div>
 </template>
-
+    
 <script setup lang="ts">
 import DatePicker from '~/components/General/Form/DatePicker1.vue'
 import TimePicker from '~/components/General/Form/TimePicker.vue'
-//import { OUTPATIENT_STATUS_COLOR } from '~/constains/global/outpatient/statusColor'
+import { OUTPATIENT_STATUS_COLOR } from '~/constains/global/outpatient/statusColor'
 import { OUTPATIENT_COMMENT_COLOR } from '~/constains/global/outpatient/commentColor'
 
 </script>
-  
-  <style lang="scss" scoped>
-.search-area {
-  height: 56px;
+    
+    <style lang="scss" scoped>
+.col {
+  .v-btn {
+    top: 0;
+    bottom: 0;
+    margin: auto;
+  }
 }
-.srch-fld {
-  text-align: left;
-  display: block;
-}
-p.txt-label{
-  color: #333333;
-  font-size: 12px;
-  font-weight: 700;
-  margin-bottom: 0;
-  align-self: center;
+.status-box {
+  height: 18px;
+  width: 18px;
+  border: solid 0px #f0f3f4;
+  outline: solid 0px white;
 }
 .status-list--box {
-  height: 22px;
-  width: 22px;
-  border: solid 1px gray;
-  outline: solid 2px white;
-  border-radius: 5px;
-  -webkit-border-radius: 5px;
-  margin-right: 10px;
+  height: 18px;
+  width: 18px;
+  border: solid 0px #c9c9c9;
+  outline: solid 0px white;
 }
 .mdi-sticker-text {
   &::before {
@@ -226,8 +224,6 @@ p.txt-label{
     width: 22px;
     height: 22px;
     background-image: url('@/assets/icon/cmt1.svg');
-    background-repeat: no-repeat;
-    background-position: 50% 50%;
     background-size: 100% auto;
   }
   &.cmt2::before {
@@ -246,34 +242,6 @@ p.txt-label{
     background-image: url('@/assets/icon/cmt6.svg');
   }
 }
-.select-box {
-  width: 210px !important;
-  height: 30px !important;
-}
-.btn-style {
-  font-family: Meiryo;
-  font-weight: bold;
-  font-size: 12px;
-  width: 78px;
-  top: 4px !important;
-  height: 30px !important;
-  margin-left: 20px;
-}
-.basic-info {
-  height: 78px !important;
-  padding-left: 30px;
-  margin-top: 4px;
-}
-p.txt-label {
-  color: #333333;
-  font-size: 12px;
-  font-weight: 700;
-  margin-bottom: 0;
-  text-align: left !important;
-  padding-bottom: 10px !important;
-}
-.search-form__btn.v-btn--disabled {
-  color: #b2b2b2 !important;
-}
+
 </style>
-  
+    

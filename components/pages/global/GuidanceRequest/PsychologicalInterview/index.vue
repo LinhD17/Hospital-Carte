@@ -1,34 +1,34 @@
 <template>
   <div class="screen-header">
-      <PagesGlobalGeneralGlobalBaseLayout page-title="心理面接">
-          <template #iconImg>
-              <img :src="imageUrl"/> 
-          </template>
-          <template #header>
-          <div class="switch-select">
-              <v-btn
-              @click="appTabClick('reception')"
-              :class="appTab === 'reception' ? 'is-active' : ''"
-              color="#459caa"
-              outlined
-              >受付一覧</v-btn
-              >
-              <v-btn
-              @click="appTabClick('instruction')"
-              :class="appTab === 'instruction' ? 'is-active' : ''"
-              color="#459caa"
-              outlined
-              >指示患者一覧</v-btn
-              >
-          </div>
-          </template>
-          <template v-if="appTab === 'reception'">
-            <PagesGlobalGuidanceRequestPsychologicalInterviewReception />
-          </template>
-          <template v-if="appTab === 'instruction'">
-            <PagesGlobalGuidanceRequestPsychologicalInterviewInstruction /> 
-          </template>
-      </PagesGlobalGeneralGlobalBaseLayout>
+    <PagesGlobalGeneralGlobalBaseLayout page-title="精神科退院前訪問看護">
+      <template #iconImg>
+        <img :src="imageUrl" />
+      </template>
+      <template #header>
+        <div class="switch-select">
+          <v-btn
+            @click="appTabClick('reception')"
+            :class="appTab === 'reception' ? 'is-active' : ''"
+            color="#459caa"
+            outlined
+            >受付一覧</v-btn
+          >
+          <v-btn
+            @click="appTabClick('instruction')"
+            :class="appTab === 'instruction' ? 'is-active' : ''"
+            color="#459caa"
+            outlined
+            >指示患者一覧</v-btn
+          >
+        </div>
+      </template>
+      <template v-if="appTab === 'reception'">
+        <PagesGlobalGuidanceRequestPsychiatricPredischargeVisitReception />
+      </template>
+      <template v-if="appTab === 'instruction'">
+        <PagesGlobalGuidanceRequestPsychiatricPredischargeVisitInstruction />
+      </template>
+    </PagesGlobalGeneralGlobalBaseLayout>
   </div>
 </template>
 <script lang="ts">
@@ -36,12 +36,11 @@ import imageUrl from '@/assets/icon/schedule.svg'
 import { defineComponent, ref } from 'vue'
 
 export default defineComponent({
-
   components: {
     //
   },
   setup() {
-    const appTab = ref('instruction')
+    const appTab = ref('reception')
     const appTabClick = (appType: string) => {
       appTab.value = appType
     }

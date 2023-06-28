@@ -14,7 +14,7 @@ import imageUrl from '@/assets/icon/title_outpatient.svg'
     <div class="contents">
       <div class="contents-search-section">
         <PagesGlobalOutpatientOutpatientOfExaminationSearchField />
-        <v-divider class="my-2 mt-15 ml-9 mr-9" />
+        <v-divider class="my-2 mt-2 ml-9 mr-9" />
         <PagesGlobalOutpatientOutpatientOfExaminationConsultationProgress />
       </div>
       <div class="contents-table-section">
