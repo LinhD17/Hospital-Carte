@@ -5,7 +5,6 @@
         <PagesGlobalGeneralGlobalBaseLayout 
             page-title="プローシートマスタ設定"
         >
-            <PagesGlobalMasterObservationPatternSearchField />
             <PagesGlobalMasterObservationPatternFreeItemTable />
         </PagesGlobalGeneralGlobalBaseLayout >
     </div>
