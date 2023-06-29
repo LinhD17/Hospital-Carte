@@ -157,7 +157,6 @@ export default {
   border: 0 !important;
   white-space: nowrap;
   margin-top: 10px;
-
   a {
     margin-top: 0;
     text-decoration: none;

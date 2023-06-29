@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div style="width: 100%;">
     <PagesGlobalMasterFloSheetFlowsheetFreeInputSearch />
     <PagesGlobalMasterFloSheetFlowsheetFreeInputTable />
   </div>

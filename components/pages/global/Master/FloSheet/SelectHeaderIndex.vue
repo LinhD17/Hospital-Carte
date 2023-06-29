@@ -88,7 +88,7 @@
   <script setup lang="ts">
 import { ref } from 'vue'
 
-const isFreeItemMasterBtnClicked = ref(false)
+const isFreeItemMasterBtnClicked = ref(true)
 const isPatternMasterBtnClicked = ref(false)
 const isEnterTypeMasterBtnClicked = ref(false)
 const isBasicBtnClicked = ref(false)
@@ -167,7 +167,7 @@ const onSetMasterClick = () => {
   text-align: center;
   display: inline-block;
   font-size: 14px;
-  margin-right: 2px;
+  margin-left: 10px;
 }
 
 .light-grey-button {
@@ -178,7 +178,7 @@ const onSetMasterClick = () => {
   text-align: center;
   display: inline-block;
   font-size: 14px;
-  margin-right: 10px;
+  margin-left: 10px;
 }
 </style>
         
