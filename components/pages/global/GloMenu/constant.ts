@@ -37,6 +37,12 @@ export const GLOBAL_MENU: MenuItems = {
                     name: '職員スケジュール',
                     path: '/global/common/staffSchedule',
                 },
+                {
+                    master_global_menu_id: uniqueId('__globalMenuId__'),
+                    menu_level: 2,
+                    name: '看護管理日誌',
+                    path: '/global/common/nursingManagementDiary',
+                },
             ],
         },
         //2 favorite 

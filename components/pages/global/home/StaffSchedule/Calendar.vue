@@ -7,17 +7,27 @@
             <div class="d-flex justify-center mb-1">
                 <div>
                     <v-btn 
+                        xsmall
                         icon 
-                        class="nav-btn mb-2"
+                        variant="outlined"
+                        color="primary"
+                        class="nav-btn mr-1 mb-1"
+                        @click="beforeCalendar()"
                     >
-                        <v-icon>mdi-chevron-left</v-icon>
+                        <v-icon class="pb-2">mdi-chevron-left</v-icon>
                     </v-btn>
-                    <span class="calendar-title">2023年06月27日</span>
+                    <span class="calendar-title">
+                        {{  moment(calData.data.value).format('YYYY年MM月') }}
+                    </span>
                     <v-btn
+                        xsmall
                         icon 
-                        class="nav-btn mb-2"
+                        variant="outlined"
+                        color="primary"
+                        class="nav-btn ml-1 mb-1"
+                        @click="nextCalendar()"
                     >
-                        <v-icon>mdi-chevron-right</v-icon>
+                        <v-icon class="pb-2">mdi-chevron-right</v-icon>
                     </v-btn>
                 </div>
             </div>
@@ -63,9 +73,41 @@
         </div>
    </div>
 </template>
-<script setup lang="ts">
+<script lang="ts">
 import CalendarDetail from './Detail/Month.vue';
+import moment from 'moment';
+import { defineComponent, reactive } from 'vue';
 
+export default defineComponent({
+    components: {
+        CalendarDetail, 
+    }, 
+    setup() {
+        const calData = reactive({
+            data: {
+                type: "month",
+                mode: "column",
+                value: moment().format('YYYY-MM'),
+                events: [] as any,
+                color: "primary"
+            }, 
+            weekdays: [1, 2, 3, 4, 5, 6, 0],
+        });
+        const beforeCalendar = () => {
+                calData.data.value = moment(calData.data.value).subtract(1,'month').format('YYYY-MM')
+        }
+        const nextCalendar = () => {
+                calData.data.value = moment(calData.data.value).add(1,'month').format('YYYY-MM')
+        }
+        return {
+            calData, 
+            moment, 
+            beforeCalendar, 
+            nextCalendar,
+        }
+
+    }
+})
  
 
 </script>
@@ -88,8 +130,8 @@ import CalendarDetail from './Detail/Month.vue';
             border-bottom: none;
         }
         .nav-btn {
-            height: 20px;
-            width: 20px;
+            height: 18px;
+            width: 18px;
         }
     }
     .status-list {

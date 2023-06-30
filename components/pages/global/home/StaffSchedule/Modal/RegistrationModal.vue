@@ -24,14 +24,14 @@
                     <div class="d-flex mt-3 mx-5">
                         <p class="mt-2 mb-1 mr-5">日時</p>
                         <div class="d-flex align-center">
-                            <div style="width: 188px">
-                                <datepicker
+                            <div style="width: 160px">
+                                <GeneralFormDatePicker 
                                     placeholder="表示日"
                                 />
                             </div>
                             <span class="mr-2 ml-2">~</span>
-                            <div style="width: 188px">
-                                <datepicker
+                            <div style="width: 160px">
+                                <GeneralFormDatePicker
                                     placeholder="表示日"
                                 />
                             </div>
@@ -167,7 +167,7 @@
     </general-modal>
 </template>
 <script lang="ts">
-  import Datepicker from '@/components/General/Form/DatePicker1.vue';
+    import Datepicker from '@/components/General/Form/DatePicker1.vue';
     export default {
         data () {
             return {

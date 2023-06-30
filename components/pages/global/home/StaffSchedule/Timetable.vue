@@ -68,20 +68,17 @@
                         @click="switchCalendar('week')"
                         class="switch-calendar-button switch-calendar-button--week"
                         :class="calData.data.type === 'week' ? 'is-active' : ''"
-                    >週
-                    </p>
+                    >週</p>
                     <p
                         @click="switchCalendar('month')"
                         class="switch-calendar-button switch-calendar-button--month"
                         :class="calData.data.type === 'month' ? 'is-active' : ''"
-                    >
-                    月</p>
+                    >月</p>
                     <p
                         @click="switchCalendar('category')"
                         class="switch-calendar-button switch-calendar-button--category"
                         :class="calData.data.type === 'category' ? 'is-active' : ''"
-                    >
-                    日</p>
+                    >日</p>
                 </div>
             </div>
             <template v-if="calData.data.type === 'week'"> 
@@ -101,8 +98,8 @@
         </div>
         
         <!-- modal -->
-        <DetailModal :dialog-state="detailModal"/> 
-        <RegistrationModal :dialog-state="registrationModal"/> 
+        <!-- <DetailModal :dialog-state="detailModal"/> 
+        <RegistrationModal :dialog-state="registrationModal"/>  -->
     </div>
 </template>
 

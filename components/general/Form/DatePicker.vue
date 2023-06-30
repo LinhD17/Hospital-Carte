@@ -43,55 +43,6 @@
 <script lang="ts">
   import { ref, defineComponent, computed, watch } from 'vue';
   import { momentFormat, FORMAT } from '~/hooks/Methods/moments';
-
-  // const dayFormat = args => {
-  //   return `${args.getFullYear()}年${args.getMonth() + 1}月${args.getDate()}日`
-  // }
-
-  // const props = defineProps({
-  //   min: {
-  //     type: String,
-  //     default: null,
-  //   },
-  //   max: {
-  //     type: String,
-  //     default: null,
-  //   },
-  //   placeholder: {
-  //     type: String,
-  //     default: '年/月/日',
-  //   },
-  //   value: {
-  //     type: String,
-  //     required: false,
-  //     default: null,
-  //   },
-  //   disabled: {
-  //     type: Boolean,
-  //     default: false,
-  //   },
-  //   rules: {
-  //     type: Array,
-  //     default: () => [],
-  //   },
-  //   hideDetails: {
-  //     type: Boolean,
-  //     default: false,
-  //   },
-  //   height: {
-  //     type: String,
-  //     default: 'auto',
-  //   },
-  //   clearable: {
-  //     type: Boolean,
-  //     default: true,
-  //   },
-  // })
-  // const state = ref({
-  //   date: '',
-  //   menu: false,
-  // })
-
 export default defineComponent({
   props: {
     min: {
@@ -226,3 +177,19 @@ export default defineComponent({
   }
 }
 </style>
+
+
+
+<!-- <template>
+  <v-date-picker v-model="selectedDate" />
+</template>
+
+<script>
+export default {
+  data() {
+    return {
+      selectedDate: null,
+    };
+  },
+};
+</script> -->

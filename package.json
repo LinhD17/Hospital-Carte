@@ -19,6 +19,7 @@
     "@nuxtjs/vuetify": "^1.12.3",
     "moment": "^2.29.4",
     "sass": "^1.63.3",
+    "v-calendar": "^2.4.1",
     "vuetify": "^3.3.4",
     "vuex": "^4.1.0"
   }
