@@ -10,6 +10,7 @@
             @click="appTabClick('reception')"
             :class="appTab === 'reception' ? 'is-active' : ''"
             color="#459caa"
+            class="last-of-type"
             outlined
             >受付一覧</v-btn
           >
@@ -17,6 +18,7 @@
             @click="appTabClick('instruction')"
             :class="appTab === 'instruction' ? 'is-active' : ''"
             color="#459caa"
+            class="first-of-type"
             outlined
             >指示患者一覧</v-btn
           >
@@ -72,18 +74,26 @@ export default defineComponent({
     border-radius: 0;
     font-weight: bold;
     &:first-of-type {
-      border-top-left-radius: 20px;
-      border-bottom-left-radius: 20px;
+      border-top-right-radius: 20px;
+      border-bottom-right-radius: 20px;
       border-right: 0;
     }
     &:last-of-type {
-      border-top-right-radius: 20px;
-      border-bottom-right-radius: 20px;
+      border-top-left-radius: 20px;
+      border-bottom-left-radius: 20px;
       border-left: 0;
     }
-    &.is-active {
-      background-color: #459caa;
+
+    &:active,
+    &:focus {
+      background-color: #459caa !important;
       color: #ffffff !important;
+      border: 1px solid #459caa !important;
+    }
+    &:not(.is-active) {
+      background-color: #ffffff !important;
+      color: #459caa !important;
+      border: 1px solid #459caa !important;
     }
   }
 }
