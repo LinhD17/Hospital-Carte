@@ -200,7 +200,7 @@ export const GLOBAL_MENU: MenuItems = {
                     master_global_menu_id: uniqueId('__globalMenuId__'),
                     menu_level: 2,
                     name: 'プローシートマスタ設定',
-                    path: '/global/master/observationPattern',
+                    path: '/global/master/floSheet',
                 },
                 {
                     master_global_menu_id: uniqueId('__globalMenuId__'),
