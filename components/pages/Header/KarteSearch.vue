@@ -87,7 +87,7 @@
       width: 100%;
       overflow-x: hidden;
   }
-  .page-header:deep(.v-toolbar__content) {
+  .page-header :deep(.v-toolbar__content) {
     padding: 0 !important;
   }
   .my-app-bar {

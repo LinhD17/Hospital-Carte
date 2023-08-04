@@ -5,7 +5,6 @@
     <NuxtLayout name="global">
         <div class="screen">
             <PagesGlobalHomeStaffSchedule />
-            <!-- <PagesGlobalHomeWellKnownAndTask /> -->
         </div>
     </NuxtLayout>
 </template>

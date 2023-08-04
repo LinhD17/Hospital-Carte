@@ -15,19 +15,17 @@
       color: #aaa !important;
     }
   }
+}
 
-  :deep(.v-input--selection-controls__input) {
-      margin-right: 3px;
-    }
-
-  :deep(.v-input--selection-controls__ripple) {
-    width: 20px;
-    height: 19px;
-    left: 2px;
-    top: calc(50% - 10px) !important;
-    margin: 0;
+.v-radio  :deep(.v-input--selection-controls__input) {
+    margin-right: 3px;
   }
-
+.v-radio  :deep(.v-input--selection-controls__ripple) {
+  width: 20px;
+  height: 19px;
+  left: 2px;
+  top: calc(50% - 10px) !important;
+  margin: 0;
 }
 // チェックボックス
 .v-input--checkbox {
@@ -43,21 +41,21 @@
       color: #aaa !important;
     }
   }
+}
 
-  :deep(.v-input--selection-controls__input) {
+.v-input--checkbox  :deep(.v-input--selection-controls__input) {
     margin-right: 1px !important;
   }
-  :deep(.mdi-checkbox-blank-outline) {
+.v-input--checkbox   :deep(.mdi-checkbox-blank-outline) {
     color: #c8c8c8;
   }
-  :deep(.v-input--selection-controls__ripple) {
+.v-input--checkbox   :deep(.v-input--selection-controls__ripple) {
     width: 16px !important;
     height: 16px !important;
     top: -3px !important;
     left: -3px !important;
-  }
-
 }
+
 
 
 // インプット

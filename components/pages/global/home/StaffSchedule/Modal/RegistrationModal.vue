@@ -90,7 +90,6 @@
                         </div>
                     </div>
 
-
                     <div class="d-flex mt-3 mx-5">
                         <div class="leftColumn">
                             <p class="mt-2 mb-1">施設</p>
