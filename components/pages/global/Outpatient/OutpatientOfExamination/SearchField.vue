@@ -194,10 +194,9 @@ import DatePicker from '~/components/General/Form/DatePicker1.vue'
 import TimePicker from '~/components/General/Form/TimePicker.vue'
 import { OUTPATIENT_STATUS_COLOR } from '~/constains/global/outpatient/statusColor'
 import { OUTPATIENT_COMMENT_COLOR } from '~/constains/global/outpatient/commentColor'
-
 </script>
-    
-    <style lang="scss" scoped>
+
+<style lang="scss" scoped>
 .col {
   .v-btn {
     top: 0;

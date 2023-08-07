@@ -19,6 +19,7 @@
           </v-btn>
         </div>
         <v-textarea
+          v-model="state.ward_1"
           dense
           variant="solo"
           hide-details="auto"
@@ -41,6 +42,7 @@
           </v-btn>
         </div>
         <v-textarea
+          v-model="state.ward_2"
           dense
           variant="solo"
           hide-details="auto"
@@ -63,6 +65,7 @@
           </v-btn>
         </div>
         <v-textarea
+          v-model="state.outpatient"
           dense
           variant="solo"
           hide-details="auto"
@@ -76,6 +79,87 @@
   </template>
   
   <script lang="ts">
+  import { stat } from 'fs';
+import { reactive, watch, defineComponent } from 'vue';
+  
+  export default defineComponent({
+    props:{
+      wardFirst: {
+        type: String, 
+        required: true,
+      }, 
+      wardSecond: {
+        type: String, 
+        required: true
+      },
+      outpatient: {
+        type: String, 
+        required: true
+      }, 
+      loading: {
+        type: Boolean, 
+        required: true,
+      }
+      
+    }, 
+    setup(props, { emit }) {
+      const state = reactive({
+        ward_1: '',
+        ward_2: '',
+        outpatient: '',
+      })
+      // watch: cung cấp phương thức để quan sát và phản ứng với những thay đổi trong dữ liệu mà không cần gọi các phương thức 1 cách rõ ràng hoặc dựa vào các thuộc tính được tính toán 
+      watch(
+        () => props.wardFirst, 
+        (val) => {
+          state.ward_1 = val
+        }, 
+        {immediate: true}
+      )
+      watch(
+        () => props.wardSecond, 
+        (val) => {
+          state.ward_2 = val
+        }, 
+        {immediate: true}
+      )
+      watch(
+        () => props.outpatient, 
+        (val)=> {
+          state.outpatient = val
+        }, 
+        {immediate: true}
+      )
+
+      watch(
+        () => state.ward_1, 
+        (val) => {
+          emit('update:wardFirst', val)
+        }
+      )
+      watch(
+        () => state.ward_2, 
+        (val) => {
+          emit('update:wardSecond', val)
+        }
+      )
+      watch(
+        () => state.outpatient, 
+        (val) => {
+          emit('update:outpatient', val)
+        }
+      )
+
+      return {
+        state,
+      }
+    }
+  })
+
+
+
+
+  
   </script>
   
   <style lang="scss" scoped>

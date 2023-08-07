@@ -22,15 +22,15 @@
         <div class="text-title">更新履歴</div>
         <div class="change-log-list">
           <div 
-            v-for="times in logs"
-            :key="times"
+            v-for="time in changeLogData"
+            :key="time.value"
             class="change-log-list__item"
+            :value="time.value"
           >
-          {{ times }}
+          {{ time.text }}
           </div>
 
-
-          <v-list class="py-0 item-list">
+          <!-- <v-list class="py-0 item-list">
             <v-list-item-group>
               <v-list-item
                 v-for="(item, index) in logs"
@@ -40,32 +40,23 @@
                 {{ item.text }}
               </v-list-item>
             </v-list-item-group>
-          </v-list>
-
+          </v-list> -->
 
         </div>
       </div>
     </div>
   </template>
   
-<script lang="ts">
+<script setup lang="ts">
     const changeLogData = [
-        {
-          logs: [ 
-              '2021年10月12日　12時00分00秒　山田花子',
-              '2021年10月12日　12時00分00秒　山田花子',
-              '2021年10月12日　12時00分00秒　山田花子',
-              '2021年10月12日　12時00分00秒　山田花子',
-              '2021年10月12日　12時00分00秒　山田花子',
-              '2021年10月12日　12時00分00秒　山田花子',
-              '2021年10月12日　12時00分00秒　山田花子',
-              '2021年10月12日　12時00分00秒　山田花子',
-              '2021年10月12日　12時00分00秒　山田花子',
-              '2021年10月12日　12時00分00秒　山田花子',
-              '2021年10月12日　12時00分00秒　山田花子',
-              '2021年10月12日　12時00分00秒　山田花子',
-          ]
-        }
+      { value: 1, text: '2021年10月12日　12時00分00秒　山田花子',},
+      { value: 2, text: '2021年09月11日　12時20分00秒　山田花子',},
+      { value: 3, text: '2021年08月12日　11時00分00秒　山田花子',},
+      { value: 4, text: '2021年07月10日　10時44分00秒　山田花子',},
+      { value: 5, text: '2021年06月12日　13時34分00秒　山田花子',},
+      { value: 6, text: '2021年06月10日　12時00分00秒　山田花子',},
+      { value: 7, text: '2021年05月12日　12時00分00秒　山田花子',},
+      { value: 8, text: '2021年04月12日　12時00分00秒　山田花子',},
     ]
 </script>
   
